@@ -2,6 +2,8 @@
 {
     internal class Location
     {
+        private Tile[,] tiles;
+
         public int Width { get; set; }
         public int Height { get; set; }
 

@@ -10,7 +10,7 @@ namespace game
         public GameModel(Vector2 playerPosition)
         {
             Location = Location.GetStartLocation();
-            Player = new Player(playerPosition, 100f);
+            Player = new(playerPosition, 100f);
         }
 
         public void SetLocation()

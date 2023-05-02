@@ -6,7 +6,7 @@ using System;
 
 namespace game
 {
-    internal class Game1 : Game
+    internal class Game1 : Game, IPauseHandler
     {
         private Dictionary<Keys, Action<float>> actions;
 
@@ -15,10 +15,12 @@ namespace game
         private GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
 
-        private Texture2D playerTexture;
+        private Sprite playerSprite;
 
         public int WindowWidth => graphics.PreferredBackBufferWidth;
         public int WindowHeight => graphics.PreferredBackBufferHeight;
+
+        private PauseManager PauseManager => GameManager.Instance.PauseManager;
 
         public Game1()
         {
@@ -45,21 +47,28 @@ namespace game
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            playerTexture = Content.Load<Texture2D>("Player");
+            playerSprite = new(Content.Load<Texture2D>("Player"));
         }
 
         protected override void Update(GameTime gameTime)
         {
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
+            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
                 Exit();
 
-            var keyboardState = Keyboard.GetState();
+            if (KeyboardManager.IsSingleDown(Keys.Escape))
+                PauseManager.SetPaused(!PauseManager.IsPaused);
+
             var deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
 
+            var keyboardState = Keyboard.GetState();
             var pressedKeys = keyboardState.GetPressedKeys();
             HandleKeys(pressedKeys, deltaTime);
 
-            model.CheckPlayerOnOutBounds(playerTexture.Width, playerTexture.Height);
+            if (!PauseManager.IsPaused)
+            {
+                playerSprite.UpdateDirection(Mouse.GetState().Position.ToVector2(), model.Player.Position);
+                model.CheckPlayerOnOutBounds(playerSprite.Width, playerSprite.Height);
+            }
 
             base.Update(gameTime);
         }
@@ -69,16 +78,7 @@ namespace game
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             spriteBatch.Begin();
-            spriteBatch.Draw(
-                playerTexture,
-                model.Player.Position,
-                null,
-                Color.White,
-                0f,
-                new Vector2(playerTexture.Width / 2, playerTexture.Height / 2),
-                Vector2.One,
-                SpriteEffects.None,
-                0f);  
+            playerSprite.Draw(spriteBatch, model.Player.Position);
             spriteBatch.End();
              
             base.Draw(gameTime);
@@ -99,6 +99,14 @@ namespace game
             actions[Keys.S] = deltaTime => model.Player.Move(Directions.Down, deltaTime);
             actions[Keys.A] = deltaTime => model.Player.Move(Directions.Left, deltaTime);
             actions[Keys.D] = deltaTime => model.Player.Move(Directions.Right, deltaTime);
+        }
+
+        public void SetPaused(bool isPaused)
+        {
+            if (isPaused)
+            {
+                // Отрисовать UI паузы
+            }
         }
     }
 }

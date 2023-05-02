@@ -4,9 +4,11 @@
   <Platform>Windows</Platform>
   <Config />
   <SourceFiles>
+    <File>D:/Programming/C# Projects/GhostOfDarkness/game/Content/PausedUI.spritefont</File>
     <File>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Player.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
   </DestFiles>
 </SourceFileCollection>

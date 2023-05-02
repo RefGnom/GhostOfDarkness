@@ -8,6 +8,7 @@ namespace game
         private float playerSpeed;
 
         public Vector2 Position => position;
+        private bool IsPaused => GameManager.Instance.PauseManager.IsPaused;
 
         public Player(Vector2 position, float speed)
         {
@@ -32,6 +33,8 @@ namespace game
 
         public void Move(Directions direction, float deltaTime)
         {
+            if (IsPaused)
+                return;
             if (direction == Directions.Up)
                 position.Y -= playerSpeed * deltaTime;
 
