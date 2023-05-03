@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
 using System;
+using game.Managers;
 
 namespace game
 {
@@ -16,6 +17,7 @@ namespace game
         private SpriteBatch spriteBatch;
 
         private Sprite playerSprite;
+        private Texture2D bulletTexture;
 
         public int WindowWidth => graphics.PreferredBackBufferWidth;
         public int WindowHeight => graphics.PreferredBackBufferHeight;
@@ -47,6 +49,7 @@ namespace game
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
+            bulletTexture = Content.Load<Texture2D>("Bullet");
             playerSprite = new(Content.Load<Texture2D>("Player"));
         }
 
@@ -61,14 +64,22 @@ namespace game
             var deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
 
             var keyboardState = Keyboard.GetState();
+            var mouseState = Mouse.GetState();
+
+            var mousePosition = mouseState.Position.ToVector2();
+            var direction = mousePosition - model.Player.Position;
+            direction.Normalize();
+            if (MouseManager.LeftButtomClicked())
+                model.Player.Shoot(direction);
+
             var pressedKeys = keyboardState.GetPressedKeys();
             HandleKeys(pressedKeys, deltaTime);
 
             if (!PauseManager.IsPaused)
             {
-                playerSprite.UpdateDirection(Mouse.GetState().Position.ToVector2(), model.Player.Position);
-                model.CheckPlayerOnOutBounds(playerSprite.Width, playerSprite.Height);
+                playerSprite.UpdateDirection(mousePosition, model.Player.Position);
             }
+            model.Update(deltaTime);
 
             base.Update(gameTime);
         }
@@ -78,7 +89,13 @@ namespace game
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             spriteBatch.Begin();
+
             playerSprite.Draw(spriteBatch, model.Player.Position);
+            foreach (var bullet in model.Player.Bullets)
+            {
+                spriteBatch.Draw(bulletTexture, bullet.Position, Color.White);
+            }
+
             spriteBatch.End();
              
             base.Draw(gameTime);
@@ -95,10 +112,10 @@ namespace game
 
         public void RegisterAllKeys()
         {
-            actions[Keys.W] = deltaTime => model.Player.Move(Directions.Up, deltaTime);
-            actions[Keys.S] = deltaTime => model.Player.Move(Directions.Down, deltaTime);
-            actions[Keys.A] = deltaTime => model.Player.Move(Directions.Left, deltaTime);
-            actions[Keys.D] = deltaTime => model.Player.Move(Directions.Right, deltaTime);
+            actions[Keys.W] = deltaTime => model.Player.EnableMoves[Directions.Up] = true;
+            actions[Keys.S] = deltaTime => model.Player.EnableMoves[Directions.Down] = true;
+            actions[Keys.A] = deltaTime => model.Player.EnableMoves[Directions.Left] = true;
+            actions[Keys.D] = deltaTime => model.Player.EnableMoves[Directions.Right] = true;
         }
 
         public void SetPaused(bool isPaused)

@@ -1,7 +1,7 @@
 ﻿using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
 
-namespace game
+namespace game.Managers
 {
     internal static class KeyboardManager
     {

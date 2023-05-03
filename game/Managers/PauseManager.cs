@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace game
+namespace game.Managers
 {
     internal class PauseManager : IPauseHandler
     {

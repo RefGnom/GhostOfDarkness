@@ -36,4 +36,4 @@ D:\Programming\C# Projects\GhostOfDarkness\game\obj\Debug\net6.0-windows\game.pd
 D:\Programming\C# Projects\GhostOfDarkness\game\obj\Debug\net6.0-windows\game.genruntimeconfig.cache
 D:\Programming\C# Projects\GhostOfDarkness\game\obj\Debug\net6.0-windows\ref\game.dll
 D:\Programming\C# Projects\GhostOfDarkness\game\bin\Debug\net6.0-windows\Content\Player.xnb
-D:\Programming\C# Projects\GhostOfDarkness\game\bin\Debug\net6.0-windows\Content\PausedUI.xnb
+D:\Programming\C# Projects\GhostOfDarkness\game\bin\Debug\net6.0-windows\Content\Bullet.xnb
