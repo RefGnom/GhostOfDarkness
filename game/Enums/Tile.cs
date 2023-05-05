@@ -1,4 +1,6 @@
-﻿namespace game
+﻿using game.Interfaces;
+
+namespace game.Enums
 {
     internal class Tile
     {

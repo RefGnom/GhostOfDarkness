@@ -1,8 +1,9 @@
-﻿using game.Managers;
+﻿using game.Creatures;
+using game.Managers;
 using Microsoft.Xna.Framework;
 using System.Collections.Generic;
 
-namespace game
+namespace game.Model
 {
     internal class GameModel
     {

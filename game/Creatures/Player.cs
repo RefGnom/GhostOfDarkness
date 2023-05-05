@@ -1,19 +1,17 @@
-﻿using Microsoft.Xna.Framework;
+﻿using game.Enums;
+using Microsoft.Xna.Framework;
 using System.Collections.Generic;
 
-namespace game
+namespace game.Creatures
 {
-    internal class Player
+    internal class Player : Creature
     {
-        private Vector2 position;
-        private float playerSpeed;
         private int width;
         private int height;
         private float cooldown = 0;
         private float currentColdown;
 
         public List<Bullet> Bullets { get; private set; }
-        public Vector2 Position => position;
 
         public readonly Dictionary<Directions, bool> EnableDirections = new()
         {
@@ -23,16 +21,14 @@ namespace game
             [Directions.Right] = false
         };
 
-        public Player(Vector2 position, float speed)
+        public Player(Vector2 position, float speed) : base(position, speed)
         {
-            this.position = position;
-            playerSpeed = speed;
             Bullets = new();
         }
 
         public void SetPosition(Vector2 position)
         {
-            this.position = position;
+            Position = position;
         }
 
         public void SetSize(int width, int height)
@@ -45,7 +41,7 @@ namespace game
         {
             if (currentColdown <= 0)
             {
-                Bullets.Add(new Bullet(position, direction));
+                Bullets.Add(new Bullet(Position, direction));
                 currentColdown = cooldown;
             }
         }
@@ -76,7 +72,7 @@ namespace game
             if (moveVector != Vector2.Zero)
             {
                 moveVector.Normalize();
-                position += moveVector * playerSpeed * deltaTime;
+                Position += moveVector * Speed * deltaTime;
             }
             CheckOnOutBounds(locationWidth, locationHeight);
 

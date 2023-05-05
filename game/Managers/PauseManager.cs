@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using game.Interfaces;
 
 namespace game.Managers
 {

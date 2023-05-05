@@ -4,8 +4,11 @@ using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
 using System;
 using game.Managers;
+using game.Interfaces;
+using game.Enums;
+using game.Model;
 
-namespace game
+namespace game.View
 {
     internal class Game1 : Game, IPauseHandler
     {
@@ -17,6 +20,7 @@ namespace game
         private SpriteBatch spriteBatch;
 
         private Sprite playerSprite;
+        private Animator meleeEnemyAnimator;
         private Texture2D bulletTexture;
 
         public int WindowWidth => graphics.PreferredBackBufferWidth;
@@ -51,6 +55,7 @@ namespace game
 
             bulletTexture = Content.Load<Texture2D>("Bullet");
             playerSprite = new(Content.Load<Texture2D>("Player"));
+            meleeEnemyAnimator = AnimatorsCreator.GetAnimator("Melee Enemy", Content.Load<Texture2D>("Melee Enemy"));
         }
 
         protected override void Update(GameTime gameTime)
@@ -96,9 +101,10 @@ namespace game
             {
                 spriteBatch.Draw(bulletTexture, bullet.Position, Color.White);
             }
+            meleeEnemyAnimator.Draw(new Vector2(150, 100), 1, spriteBatch);
 
             spriteBatch.End();
-             
+
             base.Draw(gameTime);
         }
 

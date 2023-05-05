@@ -1,6 +1,7 @@
-﻿using Microsoft.Xna.Framework;
+﻿using game.Enums;
+using Microsoft.Xna.Framework;
 
-namespace game
+namespace game.Model
 {
     internal class Location
     {

@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using game.Creatures;
+using Microsoft.Xna.Framework;
 using NUnit.Framework;
 
 namespace game.Tests

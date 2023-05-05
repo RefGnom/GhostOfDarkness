@@ -45,3 +45,4 @@ D:\Programming\C# Projects\GhostOfDarkness\game\bin\Debug\net6.0-windows\nunit.e
 D:\Programming\C# Projects\GhostOfDarkness\game\bin\Debug\net6.0-windows\testcentric.engine.metadata.dll
 D:\Programming\C# Projects\GhostOfDarkness\game\bin\Debug\net6.0-windows\nunit.framework.dll
 D:\Programming\C# Projects\GhostOfDarkness\game\bin\Debug\net6.0-windows\nunitlite.dll
+D:\Programming\C# Projects\GhostOfDarkness\game\bin\Debug\net6.0-windows\Content\Melee Enemy.xnb

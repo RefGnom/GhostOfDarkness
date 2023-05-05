@@ -2,7 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using System;
 
-namespace game
+namespace game.View
 {
     internal class Sprite
     {
