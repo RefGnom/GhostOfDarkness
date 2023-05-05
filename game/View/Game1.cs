@@ -22,6 +22,7 @@ namespace game.View
         private Sprite playerSprite;
         private Animator meleeEnemyAnimator;
         private Texture2D bulletTexture;
+        private Texture2D pauseMenu;
 
         public int WindowWidth => graphics.PreferredBackBufferWidth;
         public int WindowHeight => graphics.PreferredBackBufferHeight;
@@ -38,13 +39,9 @@ namespace game.View
         protected override void Initialize()
         {
             actions = new();
-            model = new(new Vector2(WindowWidth / 2, WindowHeight / 2));
-            // Убрать, после добавления генерации локации
-            #region tempInitLocation
-            model.Location.Width = WindowWidth;
-            model.Location.Height = WindowHeight;
-            #endregion
+            model = new(new Vector2(WindowWidth / 2, WindowHeight / 2), WindowWidth, WindowHeight);
 
+            GameManager.Instance.PauseManager.RegisterHandler(this);
             RegisterAllKeys();
             base.Initialize();
         }
@@ -54,8 +51,10 @@ namespace game.View
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             bulletTexture = Content.Load<Texture2D>("Bullet");
+            pauseMenu = Content.Load<Texture2D>("Pause Menu");
             playerSprite = new(Content.Load<Texture2D>("Player"));
             meleeEnemyAnimator = AnimatorsCreator.GetAnimator("Melee Enemy", Content.Load<Texture2D>("Melee Enemy"));
+            meleeEnemyAnimator.SetAnimation(1);
         }
 
         protected override void Update(GameTime gameTime)
@@ -75,14 +74,13 @@ namespace game.View
             var direction = mousePosition - model.Player.Position;
             direction.Normalize();
 
-            if (MouseManager.LeftButtomClicked())
-                model.Player.Shoot(direction);
-
             var pressedKeys = keyboardState.GetPressedKeys();
             HandleKeys(pressedKeys, deltaTime);
 
             if (!PauseManager.IsPaused)
             {
+                if (MouseManager.LeftButtomClicked())
+                    model.Player.Shoot(direction);
                 playerSprite.UpdateDirection(direction);
             }
             model.Update(deltaTime);
@@ -92,8 +90,10 @@ namespace game.View
 
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+            if (PauseManager.IsPaused)
+                return;
 
+            GraphicsDevice.Clear(Color.CornflowerBlue);
             spriteBatch.Begin();
 
             playerSprite.Draw(spriteBatch, model.Player.Position);
@@ -101,10 +101,15 @@ namespace game.View
             {
                 spriteBatch.Draw(bulletTexture, bullet.Position, Color.White);
             }
-            meleeEnemyAnimator.Draw(new Vector2(150, 100), 1, spriteBatch);
+            foreach (var enemy in model.Location.Enemies)
+            {
+                var flip = SpriteEffects.None;
+                if (enemy.Direction.X < 0)
+                    flip = SpriteEffects.FlipHorizontally;
+                meleeEnemyAnimator.Draw(enemy.Position, spriteBatch, flip);
+            }
 
             spriteBatch.End();
-
             base.Draw(gameTime);
         }
 
@@ -129,7 +134,9 @@ namespace game.View
         {
             if (isPaused)
             {
-                // Отрисовать UI паузы
+                spriteBatch.Begin();
+                spriteBatch.Draw(pauseMenu, Vector2.Zero, null, Color.White, 0, Vector2.One, 1, SpriteEffects.None, 0);
+                spriteBatch.End();
             }
         }
     }

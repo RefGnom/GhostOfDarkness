@@ -46,3 +46,4 @@ D:\Programming\C# Projects\GhostOfDarkness\game\bin\Debug\net6.0-windows\testcen
 D:\Programming\C# Projects\GhostOfDarkness\game\bin\Debug\net6.0-windows\nunit.framework.dll
 D:\Programming\C# Projects\GhostOfDarkness\game\bin\Debug\net6.0-windows\nunitlite.dll
 D:\Programming\C# Projects\GhostOfDarkness\game\bin\Debug\net6.0-windows\Content\Melee Enemy.xnb
+D:\Programming\C# Projects\GhostOfDarkness\game\bin\Debug\net6.0-windows\Content\Pause menu.xnb

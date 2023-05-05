@@ -8,7 +8,7 @@ namespace game.Creatures
     {
         private int width;
         private int height;
-        private float cooldown = 0;
+        private float cooldown;
         private float currentColdown;
 
         public List<Bullet> Bullets { get; private set; }
@@ -21,8 +21,9 @@ namespace game.Creatures
             [Directions.Right] = false
         };
 
-        public Player(Vector2 position, float speed) : base(position, speed)
+        public Player(Vector2 position, float speed, float cooldown) : base(position, speed)
         {
+            this.cooldown = cooldown;
             Bullets = new();
         }
 

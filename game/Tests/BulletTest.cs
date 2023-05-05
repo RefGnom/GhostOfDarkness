@@ -10,7 +10,7 @@ namespace game.Tests
         [Test]
         public void TestCountBullets()
         {
-            var player = new Player(Vector2.Zero, 0);
+            var player = new Player(Vector2.Zero, 0, -1);
             var count = 10;
             var countCallUpdate = 2;
             for (int i = 0; i < count; i++)
@@ -26,7 +26,7 @@ namespace game.Tests
         [Test]
         public void TestUpdateBullets()
         {
-            var player = new Player(Vector2.Zero, 0);
+            var player = new Player(Vector2.Zero, 0, -1);
             var count = 10;
             var bulletSpeed = 600;
             var deltaTime = 0.2f;

@@ -16,5 +16,15 @@ namespace game.Managers
                 handler.SetPaused(isPaused);
             }
         }
+
+        public void RegisterHandler(IPauseHandler handler)
+        {
+            pauseHandlers.Add(handler);
+        }
+
+        public void UnregisterHandler(IPauseHandler handler)
+        {
+            pauseHandlers.Remove(handler);
+        }
     }
 }

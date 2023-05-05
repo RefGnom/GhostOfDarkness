@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework;
 
 namespace game.Creatures
 {
-    internal class Creature : IEntity
+    public class Creature : IEntity
     {
         public Vector2 Position { get; protected set; }
         public float Damage { get; protected set; }
@@ -15,6 +15,8 @@ namespace game.Creatures
         {
             Position = position;
             Speed = speed;
+            Health = 100;
+            Damage = 10;
         }
 
         public virtual void Attack(Creature target)

@@ -1,5 +1,8 @@
 ﻿using game.Enums;
+using game.Interfaces;
 using Microsoft.Xna.Framework;
+using System;
+using System.Collections.Generic;
 
 namespace game.Model
 {
@@ -7,17 +10,39 @@ namespace game.Model
     {
         private Tile[,] tiles;
 
-        public int Width { get; set; }
-        public int Height { get; set; }
+        public List<IEnemy> Enemies { get; private set; }
+        public int Width { get; private set; }
+        public int Height { get; private set; }
+
+        public Location(int width, int height)
+        {
+            tiles = new Tile[Width, Height];
+            Width = width;
+            Height = height;
+            Enemies = new();
+        }
 
         public static Location GetStartLocation()
         {
-            return new Location();
+            throw new NotImplementedException();
         }
 
-        public static Location GetLocation()
+        public static Location GetLocation(int width, int height)
         {
-            return new Location();
+            return new Location(width, height);
+        }
+
+        public void Update(float deltaTime, Vector2 playerPosition)
+        {
+            for (int i = 0; i < Enemies.Count; i++)
+            {
+                Enemies[i].Update(deltaTime, playerPosition);
+                if (Enemies[i].IsDead)
+                {
+                    Enemies.RemoveAt(i);
+                    i--;
+                }
+            }
         }
 
         public Vector2 GetPositionObjectInBounds(Vector2 position, int objectWidth, int objectHeigth)
