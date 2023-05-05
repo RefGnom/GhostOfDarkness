@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" name="game.dll" fullname="D:/Programming/C# Projects/GhostOfDarkness/game/bin/Debug/net6.0-windows/game.dll" testcasecount="2" result="Passed" start-time="2023-05-05T00:01:42.4440930Z" end-time="2023-05-05T00:01:42.4839775Z" duration="0.039847" total="2" passed="2" failed="0" inconclusive="0" skipped="0" warnings="0" asserts="47" random-seed="1226462956">
+  <command-line><![CDATA["D:\Programming\C# Projects\GhostOfDarkness\game\bin\Debug\net6.0-windows\game.dll"]]></command-line>
+  <filter />
+  <test-suite type="Assembly" id="1003" name="game.dll" fullname="D:/Programming/C# Projects/GhostOfDarkness/game/bin/Debug/net6.0-windows/game.dll" runstate="Runnable" testcasecount="2" result="Passed" start-time="2023-05-05T00:01:42.4440930Z" end-time="2023-05-05T00:01:42.4839775Z" duration="0.039847" total="2" passed="2" failed="0" warnings="0" inconclusive="0" skipped="0" asserts="47">
+    <environment framework-version="3.13.3.0" clr-version="6.0.14" os-version="Microsoft Windows 10.0.19044" platform="Win32NT" cwd="D:\Programming\C# Projects\GhostOfDarkness\game\bin\Debug\net6.0-windows" machine-name="DESKTOP-FR35C90" user="vepr" user-domain="DESKTOP-FR35C90" culture="ru-RU" uiculture="ru-RU" os-architecture="x64" />
+    <settings>
+      <setting name="WorkDirectory" value="D:\Programming\C# Projects\GhostOfDarkness\game\bin\Debug\net6.0-windows" />
+      <setting name="NumberOfTestWorkers" value="4" />
+    </settings>
+    <properties>
+      <property name="_PID" value="15772" />
+      <property name="_APPDOMAIN" value="game" />
+    </properties>
+    <test-suite type="TestSuite" id="1004" name="game" fullname="game" runstate="Runnable" testcasecount="2" result="Passed" start-time="2023-05-05T00:01:42.4489105Z" end-time="2023-05-05T00:01:42.4839707Z" duration="0.035060" total="2" passed="2" failed="0" warnings="0" inconclusive="0" skipped="0" asserts="47">
+      <test-suite type="TestSuite" id="1005" name="Tests" fullname="game.Tests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2023-05-05T00:01:42.4492167Z" end-time="2023-05-05T00:01:42.4839556Z" duration="0.034739" total="2" passed="2" failed="0" warnings="0" inconclusive="0" skipped="0" asserts="47">
+        <test-suite type="TestFixture" id="1000" name="BulletTest" fullname="game.Tests.BulletTest" classname="game.Tests.BulletTest" runstate="Runnable" testcasecount="2" result="Passed" start-time="2023-05-05T00:01:42.4505169Z" end-time="2023-05-05T00:01:42.4836017Z" duration="0.033085" total="2" passed="2" failed="0" warnings="0" inconclusive="0" skipped="0" asserts="47">
+          <test-case id="1001" name="TestCountBullets" fullname="game.Tests.BulletTest.TestCountBullets" methodname="TestCountBullets" classname="game.Tests.BulletTest" runstate="Runnable" seed="624203506" result="Passed" start-time="2023-05-05T00:01:42.4524823Z" end-time="2023-05-05T00:01:42.4772242Z" duration="0.024836" asserts="2" />
+          <test-case id="1002" name="TestUpdateBullets" fullname="game.Tests.BulletTest.TestUpdateBullets" methodname="TestUpdateBullets" classname="game.Tests.BulletTest" runstate="Runnable" seed="328988553" result="Passed" start-time="2023-05-05T00:01:42.4788874Z" end-time="2023-05-05T00:01:42.4822710Z" duration="0.003384" asserts="45" />
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

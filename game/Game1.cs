@@ -69,6 +69,7 @@ namespace game
             var mousePosition = mouseState.Position.ToVector2();
             var direction = mousePosition - model.Player.Position;
             direction.Normalize();
+
             if (MouseManager.LeftButtomClicked())
                 model.Player.Shoot(direction);
 
@@ -77,7 +78,7 @@ namespace game
 
             if (!PauseManager.IsPaused)
             {
-                playerSprite.UpdateDirection(mousePosition, model.Player.Position);
+                playerSprite.UpdateDirection(direction);
             }
             model.Update(deltaTime);
 
@@ -112,10 +113,10 @@ namespace game
 
         public void RegisterAllKeys()
         {
-            actions[Keys.W] = deltaTime => model.Player.EnableMoves[Directions.Up] = true;
-            actions[Keys.S] = deltaTime => model.Player.EnableMoves[Directions.Down] = true;
-            actions[Keys.A] = deltaTime => model.Player.EnableMoves[Directions.Left] = true;
-            actions[Keys.D] = deltaTime => model.Player.EnableMoves[Directions.Right] = true;
+            actions[Keys.W] = deltaTime => model.Player.EnableDirections[Directions.Up] = true;
+            actions[Keys.S] = deltaTime => model.Player.EnableDirections[Directions.Down] = true;
+            actions[Keys.A] = deltaTime => model.Player.EnableDirections[Directions.Left] = true;
+            actions[Keys.D] = deltaTime => model.Player.EnableDirections[Directions.Right] = true;
         }
 
         public void SetPaused(bool isPaused)

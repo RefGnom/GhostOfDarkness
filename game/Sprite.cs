@@ -21,9 +21,8 @@ namespace game
             Scale = 1;
         }
 
-        public void UpdateDirection(Vector2 target, Vector2 position)
+        public void UpdateDirection(Vector2 direction)
         {
-            var direction = target - position;
             var angle = -Math.Atan(direction.X / direction.Y);
             if (direction.Y > 0)
                 angle += Math.PI;

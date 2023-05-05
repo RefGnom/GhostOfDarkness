@@ -15,7 +15,7 @@ namespace game
         public List<Bullet> Bullets { get; private set; }
         public Vector2 Position => position;
 
-        public readonly Dictionary<Directions, bool> EnableMoves = new()
+        public readonly Dictionary<Directions, bool> EnableDirections = new()
         {
             [Directions.Up] = false,
             [Directions.Down] = false,
@@ -43,7 +43,7 @@ namespace game
 
         public void Shoot(Vector2 direction)
         {
-            if (currentColdown < 0)
+            if (currentColdown <= 0)
             {
                 Bullets.Add(new Bullet(position, direction));
                 currentColdown = cooldown;
@@ -53,24 +53,24 @@ namespace game
         public void Update(float deltaTime, int locationWidth, int locationHeight)
         {
             var moveVector = Vector2.Zero;
-            if (EnableMoves[Directions.Up])
+            if (EnableDirections[Directions.Up])
             {
-                EnableMoves[Directions.Up] = false;
+                EnableDirections[Directions.Up] = false;
                 moveVector.Y--;
             }
-            if (EnableMoves[Directions.Down])
+            if (EnableDirections[Directions.Down])
             {
-                EnableMoves[Directions.Down] = false;
+                EnableDirections[Directions.Down] = false;
                 moveVector.Y++;
             }
-            if (EnableMoves[Directions.Left])
+            if (EnableDirections[Directions.Left])
             {
-                EnableMoves[Directions.Left] = false;
+                EnableDirections[Directions.Left] = false;
                 moveVector.X--;
             }
-            if (EnableMoves[Directions.Right])
+            if (EnableDirections[Directions.Right])
             {
-                EnableMoves[Directions.Right] = false;
+                EnableDirections[Directions.Right] = false;
                 moveVector.X++;
             }
             if (moveVector != Vector2.Zero)
@@ -84,7 +84,10 @@ namespace game
             {
                 Bullets[i].Update(deltaTime);
                 if (Bullets[i].IsDead)
+                {
                     Bullets.RemoveAt(i);
+                    i--;
+                }
             }
             currentColdown -= deltaTime;
         }
