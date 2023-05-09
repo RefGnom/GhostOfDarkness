@@ -1,8 +1,9 @@
-﻿using Microsoft.Xna.Framework;
+﻿using game.Interfaces;
+using Microsoft.Xna.Framework;
 
 namespace game
 {
-    internal class Bullet
+    internal class Bullet : IEntity
     {
         private Vector2 direction;
         private float speed = 600;

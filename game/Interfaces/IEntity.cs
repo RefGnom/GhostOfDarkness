@@ -1,8 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿namespace game.Interfaces;
 
-namespace game.Interfaces
+internal interface IEntity
 {
-    internal interface IEntity
-    {
-    }
 }

@@ -21,8 +21,6 @@ namespace game.View
 
         private Sprite playerSprite;
         private Animator meleeEnemyAnimator;
-        private Texture2D bulletTexture;
-        private Texture2D pauseMenu;
 
         public int WindowWidth => graphics.PreferredBackBufferWidth;
         public int WindowHeight => graphics.PreferredBackBufferHeight;
@@ -49,11 +47,10 @@ namespace game.View
         protected override void LoadContent()
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
+            TexturesManager.Load(Content);
 
-            bulletTexture = Content.Load<Texture2D>("Bullet");
-            pauseMenu = Content.Load<Texture2D>("Pause Menu");
-            playerSprite = new(Content.Load<Texture2D>("Player"));
-            meleeEnemyAnimator = AnimatorsCreator.GetAnimator("Melee Enemy", Content.Load<Texture2D>("Melee Enemy"));
+            playerSprite = new(TexturesManager.Player);
+            meleeEnemyAnimator = AnimatorsCreator.GetAnimator("Melee Enemy", TexturesManager.MeleeEnemy);
             meleeEnemyAnimator.SetAnimation(1);
         }
 
@@ -99,7 +96,7 @@ namespace game.View
             playerSprite.Draw(spriteBatch, model.Player.Position);
             foreach (var bullet in model.Player.Bullets)
             {
-                spriteBatch.Draw(bulletTexture, bullet.Position, Color.White);
+                spriteBatch.Draw(TexturesManager.Bullet, bullet.Position, Color.White);
             }
             foreach (var enemy in model.Location.Enemies)
             {
@@ -135,7 +132,7 @@ namespace game.View
             if (isPaused)
             {
                 spriteBatch.Begin();
-                spriteBatch.Draw(pauseMenu, Vector2.Zero, null, Color.White, 0, Vector2.One, 1, SpriteEffects.None, 0);
+                spriteBatch.Draw(TexturesManager.PauseMenu, Vector2.Zero, null, Color.White, 0, Vector2.One, 1, SpriteEffects.None, 0);
                 spriteBatch.End();
             }
         }

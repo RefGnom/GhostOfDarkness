@@ -1,4 +1,5 @@
-﻿using game.Enums;
+﻿using game.CreatureStates;
+using game.Enums;
 using Microsoft.Xna.Framework;
 using System.Collections.Generic;
 

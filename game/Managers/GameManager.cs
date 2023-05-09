@@ -1,4 +1,6 @@
-﻿namespace game.Managers
+﻿using Microsoft.Xna.Framework;
+
+namespace game.Managers
 {
     internal class GameManager
     {
