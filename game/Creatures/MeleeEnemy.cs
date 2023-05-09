@@ -1,4 +1,4 @@
-﻿using game.CreatureStates;
+﻿using game.Creatures;
 using game.Interfaces;
 using game.Managers;
 using game.View;

@@ -1,14 +1,15 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using game.Interfaces;
 
 namespace game.CreatureStates;
 
-internal class StationController : IStationStateSwitcher
+internal class StatesController : IStateSwitcher
 {
     private CreatureState currentState;
     private readonly List<CreatureState> states;
 
-    public StationController()
+    public StatesController()
     {
         states = new List<CreatureState>()
         {
@@ -17,7 +18,8 @@ internal class StationController : IStationStateSwitcher
             new FightState(this),
             new AttackState(this),
             new TakeDamageState(this),
-            new DeadState(this)
+            new DeadState(this),
+            new KilledState(this)
         };
     }
 
@@ -29,17 +31,7 @@ internal class StationController : IStationStateSwitcher
         currentState = state;
     }
 
-    public void Attack() => currentState.Attack();
+    public void StateAttack() => currentState.Attack();
 
-    public void Dead() => currentState.Dead();
-
-    public void Run() => currentState.Run();
-
-    public void Start() => currentState.Start();
-
-    public void StartFight() => currentState.StartFight();
-
-    public void Stop() => currentState.Stop();
-
-    public void TakeDamage(float damage) => currentState.TakeDamage(damage);
+    public void SetHealth(float health) => currentState.SetHealth(health);
 }

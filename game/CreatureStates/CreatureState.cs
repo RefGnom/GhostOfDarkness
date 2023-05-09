@@ -1,10 +1,16 @@
-﻿namespace game.CreatureStates;
+﻿using game.Interfaces;
+using game.View;
+using System.Collections.Generic;
 
-internal abstract class CreatureState : Creature
+namespace game.CreatureStates;
+
+internal abstract class CreatureState
 {
-    protected readonly IStationStateSwitcher stateSwitcher;
+    protected readonly IStateSwitcher stateSwitcher;
+    public Animator Animator { get; private set; }
+    protected readonly Dictionary<string, int> animations;
 
-    public CreatureState(IStationStateSwitcher stateSwitcher)
+    public CreatureState(IStateSwitcher stateSwitcher)
     {
         this.stateSwitcher = stateSwitcher;
     }
@@ -19,7 +25,9 @@ internal abstract class CreatureState : Creature
 
     public abstract void Attack();
 
-    public abstract void TakeDamage(float damage);
+    public abstract void SetHealth(float health);
 
     public abstract void Dead();
+
+    public abstract void Update(float deltaTime);
 }

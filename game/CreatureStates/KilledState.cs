@@ -2,9 +2,9 @@
 
 namespace game.CreatureStates;
 
-internal class RunState : CreatureState
+internal class KilledState : CreatureState
 {
-    public RunState(IStateSwitcher stateSwitcher) : base(stateSwitcher)
+    public KilledState(IStateSwitcher stateSwitcher) : base(stateSwitcher)
     {
     }
 
@@ -26,7 +26,6 @@ internal class RunState : CreatureState
 
     public override void Start()
     {
-        Animator.SetAnimation(animations["run"]);
     }
 
     public override void StartFight()

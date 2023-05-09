@@ -1,43 +1,50 @@
-﻿namespace game.CreatureStates;
+﻿using game.Interfaces;
+
+namespace game.CreatureStates;
 
 internal class DeadState : CreatureState
 {
-    public DeadState(IStationStateSwitcher stateSwitcher) : base(stateSwitcher)
+    protected float animationTime = 1;
+    private float leftTime;
+
+    public DeadState(IStateSwitcher stateSwitcher) : base(stateSwitcher)
     {
     }
 
     public override void Attack()
     {
-        throw new System.NotImplementedException();
     }
 
     public override void Dead()
     {
-        throw new System.NotImplementedException();
     }
 
     public override void Run()
     {
-        throw new System.NotImplementedException();
+    }
+
+    public override void SetHealth(float health)
+    {
     }
 
     public override void Start()
     {
-        throw new System.NotImplementedException();
+        Animator.SetAnimation(animations["dead"]);
+        leftTime = animationTime;
     }
 
     public override void StartFight()
     {
-        throw new System.NotImplementedException();
     }
 
     public override void Stop()
     {
-        throw new System.NotImplementedException();
     }
 
-    public override void TakeDamage(float damage)
+    public override void Update(float deltaTime)
     {
-        throw new System.NotImplementedException();
+        leftTime -= deltaTime;
+        if (leftTime <= 0)
+            stateSwitcher.SwitchState<KilledState>();
     }
 }
