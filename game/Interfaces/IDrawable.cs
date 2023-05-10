@@ -1,5 +1,4 @@
-﻿using game.Managers;
-using Microsoft.Xna.Framework.Graphics;
+﻿using Microsoft.Xna.Framework.Graphics;
 
 namespace game.Interfaces;
 

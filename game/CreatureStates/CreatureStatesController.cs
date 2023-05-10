@@ -46,7 +46,7 @@ internal class CreatureStatesController : IStateSwitcher
 
     public Type GetStateType() => currentState.GetType();
 
-    protected void SetStateIdle() => SwitchState<IdleState>();
+    protected void SetStateIdle() => currentState.Idle();
 
     protected void SetStateRun() => currentState.Run();
 

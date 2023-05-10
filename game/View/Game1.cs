@@ -27,6 +27,7 @@ internal class Game1 : Game, IPauseHandler
 
     public Game1()
     {
+        GameManager.Instance.Game = this;
         graphics = new GraphicsDeviceManager(this);
         Content.RootDirectory = "Content";
         IsMouseVisible = true;

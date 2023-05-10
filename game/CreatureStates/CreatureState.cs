@@ -1,5 +1,6 @@
 ﻿using game.Interfaces;
 using game.View;
+using System;
 using System.Collections.Generic;
 
 namespace game.CreatureStates;
@@ -27,6 +28,8 @@ internal abstract class CreatureState
     public abstract void Stop();
 
     public abstract void Run();
+
+    public abstract void Idle();
 
     public abstract void Attack();
 

@@ -47,3 +47,5 @@ D:\Programming\C# Projects\GhostOfDarkness\game\bin\Debug\net6.0-windows\nunit.f
 D:\Programming\C# Projects\GhostOfDarkness\game\bin\Debug\net6.0-windows\nunitlite.dll
 D:\Programming\C# Projects\GhostOfDarkness\game\bin\Debug\net6.0-windows\Content\Melee Enemy.xnb
 D:\Programming\C# Projects\GhostOfDarkness\game\bin\Debug\net6.0-windows\Content\Pause menu.xnb
+D:\Programming\C# Projects\GhostOfDarkness\game\bin\Debug\net6.0-windows\Content\HealthBarBackground.xnb
+D:\Programming\C# Projects\GhostOfDarkness\game\bin\Debug\net6.0-windows\Content\HealthBarForeground.xnb

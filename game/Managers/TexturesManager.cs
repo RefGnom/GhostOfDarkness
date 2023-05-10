@@ -9,6 +9,8 @@ namespace game.Managers
         public static Texture2D Bullet { get; private set; }
         public static Texture2D MeleeEnemy { get; private set; }
         public static Texture2D PauseMenu { get; private set; }
+        public static Texture2D HealthBarForeground { get; private set; }
+        public static Texture2D HealthBarBackground { get; private set; }
 
         public static void Load(ContentManager content)
         {
@@ -16,6 +18,8 @@ namespace game.Managers
             Bullet = content.Load<Texture2D>("Bullet");
             MeleeEnemy = content.Load<Texture2D>("Melee Enemy");
             PauseMenu = content.Load<Texture2D>("Pause Menu");
+            HealthBarForeground = content.Load<Texture2D>("HealthBarForeground");
+            HealthBarBackground = content.Load<Texture2D>("HealthBarBackground");
         }
     }
 }

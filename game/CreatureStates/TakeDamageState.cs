@@ -15,14 +15,6 @@ internal class TakeDamageState : CreatureState
         CanMove = false;
     }
 
-    public override void Attack()
-    {
-    }
-
-    public override void Run()
-    {
-    }
-
     public override void TakeDamage()
     {
         stateSwitcher.SwitchState<TakeDamageState>();
@@ -50,5 +42,17 @@ internal class TakeDamageState : CreatureState
     public override void Kill()
     {
         stateSwitcher.SwitchState<DeadState>();
+    }
+
+    public override void Run()
+    {
+    }
+
+    public override void Idle()
+    {
+    }
+
+    public override void Attack()
+    {
     }
 }

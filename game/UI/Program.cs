@@ -1,4 +1,5 @@
-﻿using game.CreatureStates;
+﻿using game;
+using game.CreatureStates;
 using NUnitLite;
 
 public class Program
@@ -7,6 +8,7 @@ public class Program
     {
         //new AutoRun().Execute(args); 
         var game = new game.View.Game1();
+        //var game = new TestGame();
         game.Run();
     }
 }

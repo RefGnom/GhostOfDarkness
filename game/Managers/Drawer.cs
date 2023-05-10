@@ -2,7 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
 
-namespace game.View;
+namespace game.Managers;
 
 internal class Drawer
 {

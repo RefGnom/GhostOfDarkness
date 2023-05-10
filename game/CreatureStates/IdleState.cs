@@ -44,4 +44,8 @@ internal class IdleState : CreatureState
     {
         stateSwitcher.SwitchState<DeadState>();
     }
+
+    public override void Idle()
+    {
+    }
 }

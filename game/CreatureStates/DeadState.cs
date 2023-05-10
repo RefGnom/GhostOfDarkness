@@ -48,4 +48,8 @@ internal class DeadState : CreatureState
     public override void Kill()
     {
     }
+
+    public override void Idle()
+    {
+    }
 }

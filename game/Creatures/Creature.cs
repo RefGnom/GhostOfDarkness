@@ -12,7 +12,7 @@ internal abstract class Creature : ICollisionable
     public float AttackDistance { get; protected set; }
     public float Speed { get; protected set; }
     public Vector2 Size { get; protected set; }
-    Rectangle ICollisionable.Hitbox => new((Position - Size / 2).ToPoint(), Size.ToPoint());
+    Rectangle ICollisionable.Hitbox { get; set; }
 
     protected readonly float cooldown;
     protected float currentColdown;

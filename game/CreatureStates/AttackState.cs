@@ -48,4 +48,8 @@ internal class AttackState : CreatureState
     public override void Kill()
     {
     }
+
+    public override void Idle()
+    {
+    }
 }
