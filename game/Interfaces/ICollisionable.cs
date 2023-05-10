@@ -4,7 +4,7 @@ namespace game.Interfaces;
 
 internal interface ICollisionable
 {
-    public Rectangle Hitbox { get; set; }
+    public Rectangle Hitbox { get; }
 
     public bool Collision(ICollisionable collisionable)
     {

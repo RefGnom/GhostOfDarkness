@@ -1,6 +1,7 @@
 ﻿using game.Interfaces;
 using game.Managers;
 using Microsoft.Xna.Framework;
+using System;
 
 namespace game.Creatures;
 
@@ -11,10 +12,11 @@ internal abstract class Enemy : Creature, IEnemy
 
     private EnemyView view;
 
-    public Enemy(Vector2 position, Vector2 size, float speed, float health, float damage, float attackDistance, float cooldown)
+    protected event Action OnUpdate;
+
+    public Enemy(Vector2 position, float speed, float health, float damage, float attackDistance, float cooldown)
         : base(position, speed, health, damage, attackDistance, cooldown)
     {
-        Size = size;
     }
 
     protected void Initialize(EnemyView view)
@@ -73,6 +75,7 @@ internal abstract class Enemy : Creature, IEnemy
             view.Idle();
         }
 
+        OnUpdate?.Invoke();
         currentColdown -= deltaTime;
     }
 

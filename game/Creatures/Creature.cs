@@ -11,8 +11,7 @@ internal abstract class Creature : ICollisionable
     public float Health { get; protected set; }
     public float AttackDistance { get; protected set; }
     public float Speed { get; protected set; }
-    public Vector2 Size { get; protected set; }
-    Rectangle ICollisionable.Hitbox { get; set; }
+    public Rectangle Hitbox { get; protected set; }
 
     protected readonly float cooldown;
     protected float currentColdown;
