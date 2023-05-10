@@ -1,6 +1,6 @@
 ﻿using game.Enums;
 using game.Managers;
-using game.View;
+using game.Objects;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
@@ -27,7 +27,7 @@ internal class Player : Creature
     {
         view = new(this);
         Bullets = new();
-        Drawer.Register(view);
+        GameManager.Instance.Drawer.Register(view);
     }
 
     public void SetPosition(Vector2 position)
@@ -47,7 +47,7 @@ internal class Player : Creature
         {
             var bullet = new Bullet(Position, Direction);
             Bullets.Add(bullet);
-            Drawer.Register(bullet);
+            GameManager.Instance.Drawer.Register(bullet);
             currentColdown = cooldown;
             view.Attack();
         }
@@ -57,7 +57,7 @@ internal class Player : Creature
     {
         if (view.Killed)
         {
-            Drawer.Unregister(view);
+            GameManager.Instance.Drawer.Unregister(view);
             return;
         }
         UpdateDirection();
@@ -76,9 +76,11 @@ internal class Player : Creature
         for (int i = 0; i < Bullets.Count; i++)
         {
             Bullets[i].Update(deltaTime);
-            if (Bullets[i].IsDead)
+            var enemy = GameManager.Instance.CollisionDetecter.CollisionWithEnemies(Bullets[i]);
+            enemy?.TakeDamage(Damage);
+            if (Bullets[i].IsDead || enemy is not null)
             {
-                Drawer.Unregister(Bullets[i]);
+                GameManager.Instance.Drawer.Unregister(Bullets[i]);
                 Bullets.RemoveAt(i);
                 i--;
             }

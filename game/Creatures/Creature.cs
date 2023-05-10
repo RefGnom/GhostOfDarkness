@@ -1,8 +1,9 @@
-﻿using Microsoft.Xna.Framework;
+﻿using game.Interfaces;
+using Microsoft.Xna.Framework;
 
 namespace game.Creatures;
 
-internal abstract class Creature
+internal abstract class Creature : ICollisionable
 {
     public Vector2 Position { get; protected set; }
     public Vector2 Direction { get; protected set; }
@@ -10,6 +11,9 @@ internal abstract class Creature
     public float Health { get; protected set; }
     public float AttackDistance { get; protected set; }
     public float Speed { get; protected set; }
+    public Vector2 Size { get; protected set; }
+    Rectangle ICollisionable.Hitbox => new((Position - Size / 2).ToPoint(), Size.ToPoint());
+
     protected readonly float cooldown;
     protected float currentColdown;
 

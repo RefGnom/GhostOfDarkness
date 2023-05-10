@@ -4,21 +4,21 @@ using System.Collections.Generic;
 
 namespace game.View;
 
-internal static class Drawer
+internal class Drawer
 {
-    private static List<IDrawable> drawables = new();
+    private List<IDrawable> drawables = new();
 
-    public static void Register(IDrawable drawable)
+    public void Register(IDrawable drawable)
     {
         drawables.Add(drawable);
     }
 
-    public static void Unregister(IDrawable drawable)
+    public void Unregister(IDrawable drawable)
     {
         drawables.Remove(drawable);
     }
 
-    public static void Draw(SpriteBatch spriteBatch)
+    public void Draw(SpriteBatch spriteBatch)
     {
         foreach (var drawable in drawables)
         {

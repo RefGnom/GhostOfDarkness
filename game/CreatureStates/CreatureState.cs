@@ -10,9 +10,10 @@ internal abstract class CreatureState
     public readonly Animator Animator;
     protected readonly Dictionary<string, int> animations;
 
-    public bool Killed { get; protected set; }
     public bool CanAttack { get; protected set; }
     public bool CanMove { get; protected set; }
+    public bool Killed { get; protected set; }
+    public bool CanDelete { get; protected set; }
 
     public CreatureState(IStateSwitcher stateSwitcher, Animator animator, Dictionary<string, int> animations)
     {

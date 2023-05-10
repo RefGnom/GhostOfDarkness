@@ -25,6 +25,7 @@ internal class TakeDamageState : CreatureState
 
     public override void TakeDamage()
     {
+        stateSwitcher.SwitchState<TakeDamageState>();
     }
 
     public override void Start()
@@ -48,5 +49,6 @@ internal class TakeDamageState : CreatureState
 
     public override void Kill()
     {
+        stateSwitcher.SwitchState<DeadState>();
     }
 }

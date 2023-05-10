@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 namespace game.Creatures;
 
-internal class MeleeEnemyView : CreatureStatesController,  IDrawable
+internal class MeleeEnemyView : EnemyView
 {
     private static readonly Dictionary<string, int> animations = new Dictionary<string, int>()
     {
@@ -17,28 +17,7 @@ internal class MeleeEnemyView : CreatureStatesController,  IDrawable
         ["dead"] = 4,
     };
 
-    private MeleeEnemy model;
-
-    public int Radius => animator.Radius;
-
-    public MeleeEnemyView(MeleeEnemy model) : base(AnimatorsCreator.GetAnimator("Melee Enemy"), animations)
+    public MeleeEnemyView(Enemy model) : base(model, AnimatorsCreator.GetAnimator("Melee Enemy"), animations)
     {
-        this.model = model;
-    }
-
-    public void Attack() => SetStateAttack();
-
-    public void TakeDamage() => SetStateTakeDamage();
-
-    public void Kill() => SetStateDead();
-
-    public void Idle() => SetStateIdle();
-
-    public void Run() => SetStateRun();
-
-    public void Draw(SpriteBatch spriteBatch)
-    {
-        var flip = model.Direction.X < 0 ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
-        animator.Draw(model.Position, spriteBatch, flip);
     }
 }

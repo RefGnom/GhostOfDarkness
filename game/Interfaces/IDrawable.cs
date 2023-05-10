@@ -1,8 +1,9 @@
-﻿using Microsoft.Xna.Framework.Graphics;
+﻿using game.Managers;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace game.Interfaces;
 
 internal interface IDrawable
 {
-    public abstract void Draw(SpriteBatch spriteBatch); 
+    public abstract void Draw(SpriteBatch spriteBatch);
 }

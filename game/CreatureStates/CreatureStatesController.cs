@@ -13,9 +13,10 @@ internal class CreatureStatesController : IStateSwitcher
 
     protected Animator animator;
 
-    public bool Killed => currentState.Killed;
     public bool CanAttack => currentState.CanAttack;
     public bool CanMove => currentState.CanMove;
+    public bool Killed => currentState.Killed;
+    public bool CanDelete => currentState.CanDelete;
 
     public CreatureStatesController(Animator animator, Dictionary<string, int> animations)
     {
@@ -29,7 +30,6 @@ internal class CreatureStatesController : IStateSwitcher
             new AttackState(this, animator, animations),
             new TakeDamageState(this, animator, animations),
             new DeadState(this, animator, animations),
-            new KilledState(this, animator, animations)
         };
         currentState = states[0];
     }

@@ -1,5 +1,6 @@
 ﻿using game.Creatures;
 using game.Managers;
+using game.Objects;
 using Microsoft.Xna.Framework;
 using System.Collections.Generic;
 

@@ -1,5 +1,5 @@
 ﻿using game.Creatures;
-using game.View;
+using game.Managers;
 using Microsoft.Xna.Framework;
 using NUnit.Framework;
 
@@ -10,7 +10,7 @@ internal class PlayerTest : Player
     public PlayerTest(Vector2 position, float speed, float cooldown) : base(position, speed, cooldown)
     {
         Direction = Vector2.One;
-        Drawer.Unregister(view);
+        GameManager.Instance.Drawer.Unregister(view);
     }
 
     public new void Shoot()

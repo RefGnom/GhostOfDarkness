@@ -46,6 +46,8 @@ internal class Game1 : Game, IPauseHandler
 
     protected override void LoadContent()
     {
+        
+
         spriteBatch = new SpriteBatch(GraphicsDevice);
     }
 
@@ -81,7 +83,7 @@ internal class Game1 : Game, IPauseHandler
 
         GraphicsDevice.Clear(Color.CornflowerBlue);
         spriteBatch.Begin();
-        Drawer.Draw(spriteBatch);
+        GameManager.Instance.Drawer.Draw(spriteBatch);
         spriteBatch.End();
         base.Draw(gameTime);
     }

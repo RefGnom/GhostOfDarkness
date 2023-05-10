@@ -12,6 +12,7 @@ namespace game.View
         private readonly int[] countFramesInAnimations;
         private readonly int[] countFrames;
         private int countDrawsForUpdateFrame;
+        private bool animationLooped;
 
         private int currentAnimation;
 
@@ -30,12 +31,13 @@ namespace game.View
 
         public float GetAnimationTime(int animation)
         {
-            return countFramesInAnimations[animation] / 10f;
+            return countFramesInAnimations[animation] * countDrawsForUpdateFrame / 30f;
         }
 
-        public void SetAnimation(int animation)
+        public void SetAnimation(int animation, bool looped = true)
         {
             currentAnimation = animation;
+            animationLooped = looped;
         }
 
         public void Draw(Vector2 position, SpriteBatch spriteBatch, SpriteEffects flip)
@@ -60,8 +62,11 @@ namespace game.View
 
         private void IncrementFrame()
         {
-            countFrames[currentAnimation] = (countFrames[currentAnimation] + 1) 
+            var lastFrame = countFrames[currentAnimation];
+            countFrames[currentAnimation] = (countFrames[currentAnimation] + 1)
                 % (countFramesInAnimations[currentAnimation] * countDrawsForUpdateFrame);
+            if (!animationLooped && countFrames[currentAnimation] == 0)
+                countFrames[currentAnimation] = lastFrame;
         }
     }
 }

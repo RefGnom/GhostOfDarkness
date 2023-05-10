@@ -29,8 +29,9 @@ internal class DeadState : CreatureState
 
     public override void Start()
     {
-        Animator.SetAnimation(animations["dead"]);
-        leftTime = Animator.GetAnimationTime(animations["dead"]);
+        Killed = true;
+        Animator.SetAnimation(animations["dead"], false);
+        leftTime = Animator.GetAnimationTime(animations["dead"]) * 10;
     }
 
     public override void Stop()
@@ -41,7 +42,7 @@ internal class DeadState : CreatureState
     {
         leftTime -= deltaTime;
         if (leftTime <= 0)
-            stateSwitcher.SwitchState<KilledState>();
+            CanDelete = true;
     }
 
     public override void Kill()
