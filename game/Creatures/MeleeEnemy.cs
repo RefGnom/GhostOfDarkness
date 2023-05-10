@@ -1,47 +1,77 @@
-﻿using game.Creatures;
-using game.Interfaces;
+﻿using game.Interfaces;
 using game.Managers;
 using game.View;
 using Microsoft.Xna.Framework;
 
-namespace game.Enemies
+namespace game.Creatures;
+
+internal class MeleeEnemy : Creature, IEnemy
 {
-    // Создать Enum States и менять состояние MeleeEnemy,
-    // затем обрабатывать в отдельном методе через словарь соответствий State -> номер анимации
-    // или просто в методах Attack, Kill, TakeDamage, Update сразу устанавливать номер анимации?
+    private bool isIdle;
+    public bool IsDead => view.Killed;
 
-    internal class MeleeEnemy : Creature, IEnemy
+    private readonly MeleeEnemyView view;
+
+    public MeleeEnemy(Vector2 position, float speed) : base(position, speed, 100, 10, 16, 1)
     {
-        public float AttackDistance;
-        public Vector2 Direction { get; private set; }
-        public Animator Animator { get; private set; }
+        view = new MeleeEnemyView(this);
+        Drawer.Register(view);
+    }
 
-        public MeleeEnemy(Vector2 position, float speed) : base(position, speed)
+    private void Attack(Creature target)
+    {
+        var distance = Vector2.Distance(Position, target.Position);
+        if (distance <= AttackDistance && currentColdown <= 0)
         {
-            Animator = AnimatorsCreator.GetAnimator("Melee Enemy", TexturesManager.MeleeEnemy);
+            target.TakeDamage(Damage);
+            currentColdown = cooldown;
+            view.Attack();
         }
+    }
 
-        public override void Attack(Creature target)
-        {
-            // Установить State Attack
-            // Animator.SetAnimation(2); Или сделать через Enum?
-            var distance = Vector2.Distance(Position, target.Position);
-            if (distance <= AttackDistance)
-                target.TakeDamage(Damage);
-        }
+    public override void TakeDamage(float damage)
+    {
+        Health -= damage;
+        if (Health > 0)
+            view.TakeDamage();
+        else
+            view.Kill();
+    }
 
-        public void Update(float deltaTime, Vector2 target)
+    public void Update(float deltaTime, Creature target)
+    {
+        if (view.Killed)
         {
-            // Установить State либо Idle, либо Run
-            var direction = target - Position;
-            direction.Normalize();
-            Direction = direction;
-            Position += direction * Speed * deltaTime;
+            Drawer.Unregister(view);
+            return;
         }
+        UpdateDirection(target);
+        if (view.CanAttack)
+            Attack(target);
+        if (view.CanMove)
+            MoveToPlayer(deltaTime);
+        currentColdown -= deltaTime;
+        view.Update(deltaTime);
+    }
 
-        public override void Kill()
+    private void MoveToPlayer(float deltaTime)
+    {
+        if (isIdle)
         {
-            // Установить State Dead
+            view.Idle();
         }
+        else
+        {
+            Position += Direction * Speed * deltaTime;
+            view.Run();
+        }
+    }
+
+    private void UpdateDirection(Creature target)
+    {
+        var direction = target.Position - Position;
+        isIdle = direction.Length() <= view.Radius;
+        direction.Normalize();
+        Direction = direction;
     }
 }

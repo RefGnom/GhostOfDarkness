@@ -1,19 +1,20 @@
 ﻿using game.Interfaces;
+using game.View;
+using System.Collections.Generic;
 
 namespace game.CreatureStates;
 
 internal class IdleState : CreatureState
 {
-    public IdleState(IStateSwitcher stateSwitcher) : base(stateSwitcher)
+    public IdleState(IStateSwitcher stateSwitcher, Animator animator, Dictionary<string, int> animations) : base(stateSwitcher, animator, animations)
     {
+        CanMove = true;
+        CanAttack = true;
     }
 
     public override void Attack()
     {
-    }
-
-    public override void Dead()
-    {
+        stateSwitcher.SwitchState<AttackState>();
     }
 
     public override void Run()
@@ -21,16 +22,9 @@ internal class IdleState : CreatureState
         stateSwitcher.SwitchState<RunState>();
     }
 
-    public override void SetHealth(float health)
+    public override void TakeDamage()
     {
-        if (health < 0)
-        {
-            stateSwitcher.SwitchState<DeadState>();
-        }
-        else
-        {
-            stateSwitcher.SwitchState<TakeDamageState>();
-        }
+        stateSwitcher.SwitchState<TakeDamageState>();
     }
 
     public override void Start()
@@ -38,18 +32,16 @@ internal class IdleState : CreatureState
         Animator.SetAnimation(animations["idle"]);
     }
 
-    public override void StartFight()
-    {
-        throw new System.NotImplementedException();
-    }
-
     public override void Stop()
     {
-        throw new System.NotImplementedException();
     }
 
     public override void Update(float deltaTime)
     {
-        throw new System.NotImplementedException();
+    }
+
+    public override void Kill()
+    {
+        stateSwitcher.SwitchState<DeadState>();
     }
 }

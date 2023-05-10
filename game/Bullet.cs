@@ -1,9 +1,11 @@
 ﻿using game.Interfaces;
+using game.Managers;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace game
 {
-    internal class Bullet : IEntity
+    internal class Bullet : IEntity, Interfaces.IDrawable
     {
         private Vector2 direction;
         private float speed = 600;
@@ -22,6 +24,11 @@ namespace game
         {
             Position += direction * speed * deltaTime;
             lifetime -= deltaTime;
+        }
+
+        public void Draw(SpriteBatch spriteBatch)
+        {
+            spriteBatch.Draw(TexturesManager.Bullet, Position, Color.White);
         }
     }
 }

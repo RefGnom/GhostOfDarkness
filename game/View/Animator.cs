@@ -15,6 +15,8 @@ namespace game.View
 
         private int currentAnimation;
 
+        public int Radius => (frameHeight + frameWidth) / 4;
+
         public Animator(Texture2D texture, int frameWidth, int frameHeight, int[] countFramesInAnimations, int countDrawsForUpdateFrame)
         {
             this.texture = texture;
@@ -26,6 +28,11 @@ namespace game.View
             this.countDrawsForUpdateFrame = countDrawsForUpdateFrame;
         }
 
+        public float GetAnimationTime(int animation)
+        {
+            return countFramesInAnimations[animation] / 10f;
+        }
+
         public void SetAnimation(int animation)
         {
             currentAnimation = animation;
@@ -35,6 +42,13 @@ namespace game.View
         {
             var frame = GetFrame();
             spriteBatch.Draw(texture, position, frame, Color.White, 0, origin, 1, flip, 0);
+            IncrementFrame();
+        }
+
+        public void Draw(Vector2 position, SpriteBatch spriteBatch, SpriteEffects flip, float rotation)
+        {
+            var frame = GetFrame();
+            spriteBatch.Draw(texture, position, frame, Color.White, rotation, origin, 1, flip, 0);
             IncrementFrame();
         }
 

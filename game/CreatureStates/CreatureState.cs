@@ -7,12 +7,18 @@ namespace game.CreatureStates;
 internal abstract class CreatureState
 {
     protected readonly IStateSwitcher stateSwitcher;
-    public Animator Animator { get; private set; }
+    public readonly Animator Animator;
     protected readonly Dictionary<string, int> animations;
 
-    public CreatureState(IStateSwitcher stateSwitcher)
+    public bool Killed { get; protected set; }
+    public bool CanAttack { get; protected set; }
+    public bool CanMove { get; protected set; }
+
+    public CreatureState(IStateSwitcher stateSwitcher, Animator animator, Dictionary<string, int> animations)
     {
         this.stateSwitcher = stateSwitcher;
+        Animator = animator;
+        this.animations = animations;
     }
 
     public abstract void Start();
@@ -21,13 +27,11 @@ internal abstract class CreatureState
 
     public abstract void Run();
 
-    public abstract void StartFight();
-
     public abstract void Attack();
 
-    public abstract void SetHealth(float health);
+    public abstract void TakeDamage();
 
-    public abstract void Dead();
+    public abstract void Kill();
 
     public abstract void Update(float deltaTime);
 }

@@ -1,21 +1,21 @@
 ﻿using game.Interfaces;
+using game.View;
+using System.Collections.Generic;
 
 namespace game.CreatureStates;
 
 internal class AttackState : CreatureState
 {
-    protected readonly float stateTime = 1;
     private float timeLeft;
 
-    public AttackState(IStateSwitcher stateSwitcher) : base(stateSwitcher)
+    public AttackState(IStateSwitcher stateSwitcher, Animator animator, Dictionary<string, int> animations)
+        : base(stateSwitcher, animator, animations)
     {
+        CanMove = false;
+        CanAttack = true;
     }
 
     public override void Attack()
-    {
-    }
-
-    public override void Dead()
     {
     }
 
@@ -23,18 +23,14 @@ internal class AttackState : CreatureState
     {
     }
 
-    public override void SetHealth(float health)
+    public override void TakeDamage()
     {
     }
 
     public override void Start()
     {
         Animator.SetAnimation(animations["attack"]);
-        timeLeft = stateTime;
-    }
-
-    public override void StartFight()
-    {
+        timeLeft = Animator.GetAnimationTime(animations["attack"]);
     }
 
     public override void Stop()
@@ -47,5 +43,9 @@ internal class AttackState : CreatureState
         timeLeft -= deltaTime;
         if (timeLeft <= 0)
             stateSwitcher.SwitchState<FightState>();
+    }
+
+    public override void Kill()
+    {
     }
 }

@@ -1,36 +1,25 @@
 ﻿using game.Interfaces;
+using game.View;
+using System.Collections.Generic;
 
 namespace game.CreatureStates;
 
 internal class RunState : CreatureState
 {
-    public RunState(IStateSwitcher stateSwitcher) : base(stateSwitcher)
+    public RunState(IStateSwitcher stateSwitcher, Animator animator, Dictionary<string, int> animations) : base(stateSwitcher, animator, animations)
     {
+        CanMove = true;
+        CanAttack = true;
     }
 
-    public override void Attack()
+    public override void TakeDamage()
     {
-    }
-
-    public override void Dead()
-    {
-    }
-
-    public override void Run()
-    {
-    }
-
-    public override void SetHealth(float health)
-    {
+        stateSwitcher.SwitchState<TakeDamageState>();
     }
 
     public override void Start()
     {
         Animator.SetAnimation(animations["run"]);
-    }
-
-    public override void StartFight()
-    {
     }
 
     public override void Stop()
@@ -39,5 +28,19 @@ internal class RunState : CreatureState
 
     public override void Update(float deltaTime)
     {
+    }
+
+    public override void Run()
+    {
+    }
+
+    public override void Attack()
+    {
+        stateSwitcher.SwitchState<AttackState>();
+    }
+
+    public override void Kill()
+    {
+        stateSwitcher.SwitchState<DeadState>();
     }
 }
