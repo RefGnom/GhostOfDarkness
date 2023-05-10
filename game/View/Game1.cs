@@ -7,6 +7,7 @@ using game.Managers;
 using game.Interfaces;
 using game.Enums;
 using game.Model;
+using game.Service;
 
 namespace game.View;
 
@@ -39,15 +40,32 @@ internal class Game1 : Game, IPauseHandler
         actions = new();
         model = new(new Vector2(WindowWidth / 2, WindowHeight / 2), WindowWidth, WindowHeight);
 
+        OnFullScreen();
+        SetSizeScreen(1280, 720);
+
         GameManager.Instance.PauseManager.RegisterHandler(this);
         RegisterAllKeys();
         base.Initialize();
     }
 
+    private void SetSizeScreen(int width, int height)
+    {
+        graphics.PreferredBackBufferWidth = width;
+        graphics.PreferredBackBufferHeight = height;
+        graphics.IsFullScreen = false;
+        graphics.ApplyChanges();
+    }
+
+    private void OnFullScreen()
+    {
+        graphics.PreferredBackBufferWidth = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width;
+        graphics.PreferredBackBufferHeight = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height;
+        graphics.IsFullScreen = true;
+        graphics.ApplyChanges();
+    }
+
     protected override void LoadContent()
     {
-        
-
         spriteBatch = new SpriteBatch(GraphicsDevice);
     }
 
@@ -55,6 +73,12 @@ internal class Game1 : Game, IPauseHandler
     {
         if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
             Exit();
+
+        if (KeyboardManager.IsSingleDown(Settings.ChangeScreen))
+        {
+            if (graphics.IsFullScreen) SetSizeScreen(1280, 720);
+            else OnFullScreen();
+        }
 
         if (KeyboardManager.IsSingleDown(Keys.Escape))
             PauseManager.SetPaused(!PauseManager.IsPaused);
@@ -99,10 +123,10 @@ internal class Game1 : Game, IPauseHandler
 
     public void RegisterAllKeys()
     {
-        actions[Keys.W] = deltaTime => model.Player.EnableDirections[Directions.Up] = true;
-        actions[Keys.S] = deltaTime => model.Player.EnableDirections[Directions.Down] = true;
-        actions[Keys.A] = deltaTime => model.Player.EnableDirections[Directions.Left] = true;
-        actions[Keys.D] = deltaTime => model.Player.EnableDirections[Directions.Right] = true;
+        actions[Settings.MoveForward] = deltaTime => model.Player.EnableDirections[Directions.Up] = true;
+        actions[Settings.MoveBack] = deltaTime => model.Player.EnableDirections[Directions.Down] = true;
+        actions[Settings.MoveLeft] = deltaTime => model.Player.EnableDirections[Directions.Left] = true;
+        actions[Settings.MoveRight] = deltaTime => model.Player.EnableDirections[Directions.Right] = true;
     }
 
     public void SetPaused(bool isPaused)
