@@ -10,8 +10,10 @@
     <File>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Melee Enemy.png</File>
     <File>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Pause Menu.png</File>
     <File>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Player.png</File>
+    <File>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Wall.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

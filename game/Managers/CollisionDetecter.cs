@@ -6,25 +6,25 @@ namespace game.Managers;
 
 internal class CollisionDetecter
 {
-    private List<ICollisionable> items;
+    private List<ICollisionable> objects = new();
 
     public void Register(ICollisionable item)
     {
-        items.Add(item);
+        objects.Add(item);
     }
 
     public void Unregister(ICollisionable item)
     {
-        items.Remove(item);
+        objects.Remove(item);
     }
 
-    public Creature CollisionWithEnemies(ICollisionable item)
+    public ICollisionable CollisionWithbjects(ICollisionable item)
     {
-        foreach (var enemy in GameManager.Instance.EnemiesManager.Enemies)
+        foreach (var obj in objects)
         {
-            if (item.Collision(enemy))
+            if (item.Collision(obj))
             {
-                return enemy;
+                return obj;
             }
         }
         return null;

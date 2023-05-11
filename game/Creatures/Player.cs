@@ -12,7 +12,6 @@ internal class Player : Creature
 {
     private int width;
     private int height;
-    protected PlayerView view;
     private HealthBar healthBar;
 
     public List<Bullet> Bullets { get; private set; }
@@ -29,10 +28,10 @@ internal class Player : Creature
     public Player(Vector2 position, float speed, float health, float cooldown) : base(position, speed, health, 20, 100, cooldown)
     {
         MaxHealth = health;
-        view = new(this);
+        View = new PlayerView(this);
         Bullets = new();
         healthBar = new HealthBar(this);
-        GameManager.Instance.Drawer.Register(view);
+        Create(this);
     }
 
     public void SetPosition(Vector2 position)
@@ -54,36 +53,41 @@ internal class Player : Creature
             Bullets.Add(bullet);
             GameManager.Instance.Drawer.Register(bullet);
             currentColdown = cooldown;
-            view.Attack();
+            View.Attack();
         }
     }
 
     public void Update(float deltaTime, int locationWidth, int locationHeight)
     {
-        if (view.Killed)
+        if (View.Killed)
         {
-            GameManager.Instance.Drawer.Unregister(view);
+            Delete(this);
             return;
         }
         UpdateDirection();
-        if (view.CanAttack && MouseManager.LeftButtomClicked())
+        if (View.CanAttack && MouseManager.LeftButtomClicked())
             Shoot();
-        if (view.CanMove)
+        if (View.CanMove)
             Move(deltaTime);
         CheckOnOutBounds(locationWidth, locationHeight);
         UpdateBullets(deltaTime);
         currentColdown -= deltaTime;
-        view.Update(deltaTime);
+        View.Update(deltaTime);
     }
 
+    // Переместить в класс Gun
     protected void UpdateBullets(float deltaTime)
     {
         for (int i = 0; i < Bullets.Count; i++)
         {
             Bullets[i].Update(deltaTime);
-            var enemy = GameManager.Instance.CollisionDetecter.CollisionWithEnemies(Bullets[i]);
-            enemy?.TakeDamage(Damage);
-            if (Bullets[i].IsDead || enemy is not null)
+            var obj = GameManager.Instance.CollisionDetecter.CollisionWithbjects(Bullets[i]);
+            if (obj is Enemy)
+            {
+                var enemy = obj as Enemy;
+                enemy?.TakeDamage(Damage);
+            }
+            if (Bullets[i].IsDead || obj is not null)
             {
                 GameManager.Instance.Drawer.Unregister(Bullets[i]);
                 Bullets.RemoveAt(i);
@@ -126,11 +130,11 @@ internal class Player : Creature
         {
             moveVector.Normalize();
             Position += moveVector * Speed * deltaTime;
-            view.Run();
+            View.Run();
         }
         else
         {
-            view.Idle();
+            View.Idle();
         }
     }
 
@@ -157,8 +161,8 @@ internal class Player : Creature
     {
         Health -= damage;
         if (Health > 0)
-            view.TakeDamage();
+            View.TakeDamage();
         else
-            view.Kill();
+            View.Kill();
     }
 }

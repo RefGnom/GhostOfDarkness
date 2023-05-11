@@ -10,7 +10,7 @@ internal class PlayerTest : Player
     public PlayerTest(Vector2 position, float speed, float cooldown) : base(position, speed, 100, cooldown)
     {
         Direction = Vector2.One;
-        GameManager.Instance.Drawer.Unregister(view);
+        GameManager.Instance.Drawer.Unregister(View);
     }
 
     public new void Shoot()

@@ -12,7 +12,6 @@ namespace game.Managers
         public PauseManager PauseManager { get; private set; }
         public Drawer Drawer { get; private set; }
         public CollisionDetecter CollisionDetecter { get; private set; }
-        public EnemiesManager EnemiesManager { get; private set; }
 
         private GameManager()
         {
@@ -20,7 +19,6 @@ namespace game.Managers
             PauseManager = new();
             Drawer = new();
             CollisionDetecter = new();
-            EnemiesManager = new();
         }
     }
 }

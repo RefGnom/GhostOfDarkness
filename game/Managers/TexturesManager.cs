@@ -11,6 +11,7 @@ namespace game.Managers
         public static Texture2D PauseMenu { get; private set; }
         public static Texture2D HealthBarForeground { get; private set; }
         public static Texture2D HealthBarBackground { get; private set; }
+        public static Texture2D Wall { get; private set; }
 
         public static void Load(ContentManager content)
         {
@@ -20,6 +21,7 @@ namespace game.Managers
             PauseMenu = content.Load<Texture2D>("Pause Menu");
             HealthBarForeground = content.Load<Texture2D>("HealthBarForeground");
             HealthBarBackground = content.Load<Texture2D>("HealthBarBackground");
+            Wall = content.Load<Texture2D>("Wall");
         }
     }
 }

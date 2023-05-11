@@ -1,26 +1,41 @@
 ﻿using game.Creatures;
-using game.Enums;
 using game.Interfaces;
-using Microsoft.Xna.Framework;
+using game.Managers;
+using game.Objects;
+using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
 
 namespace game.Model;
 
-internal class Location
+internal class Location : IDrawable
 {
     private Tile[,] tiles;
+    private int tileSize = 32;
 
-    public List<IEnemy> Enemies { get; private set; }
+    public List<Enemy> Enemies { get; private set; }
     public int Width { get; private set; }
     public int Height { get; private set; }
 
     public Location(int width, int height)
     {
-        tiles = new Tile[Width, Height];
+        tiles = new Tile[width / tileSize, height / tileSize];
         Width = width;
         Height = height;
         Enemies = new();
+        Initialize();
+        GameManager.Instance.Drawer.Register(this);
+    }
+
+    private void Initialize()
+    {
+        for (int column = 0; column < tiles.GetLength(0); column++)
+        {
+            for (int row = 0; row < tiles.GetLength(1); row++)
+            {
+                tiles[column, row] = new Tile(tileSize * column, tileSize * row, tileSize);
+            }
+        }
     }
 
     public static Location GetStartLocation()
@@ -40,28 +55,32 @@ internal class Location
             Enemies[i].Update(deltaTime, player);
             if (Enemies[i].IsDead)
             {
-                Enemies.RemoveAt(i);
+                DeleteEnemy(i);
                 i--;
             }
         }
     }
 
-    public Vector2 GetPositionObjectInBounds(Vector2 position, int objectWidth, int objectHeigth)
+    public void Draw(SpriteBatch spriteBatch)
     {
-        var rightBound = Width - objectWidth / 2;
-        var leftBound = objectWidth / 2;
-        var bottomBound = Height - objectHeigth / 2;
-        var upperBound = objectHeigth / 2;
+        for (int column = 0; column < tiles.GetLength(0); column++)
+        {
+            for (int row = 0; row < tiles.GetLength(1); row++)
+            {
+                tiles[column, row].Entity?.Draw(spriteBatch);
+            }
+        }
+    }
 
-        if (position.X > rightBound)
-            position.X = rightBound;
-        else if (position.X < leftBound)
-            position.X = leftBound;
+    public void CreateEnemy(Enemy enemy)
+    {
+        Creature.Create(enemy);
+        Enemies.Add(enemy);
+    }
 
-        if (position.Y > bottomBound)
-            position.Y = bottomBound;
-        else if (position.Y < upperBound)
-            position.Y = upperBound;
-        return position;
+    public void DeleteEnemy(int index)
+    {
+        Creature.DeleteFromLocation(Enemies[index]);
+        Enemies.RemoveAt(index);
     }
 }

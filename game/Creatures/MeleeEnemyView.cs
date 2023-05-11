@@ -17,7 +17,7 @@ internal class MeleeEnemyView : EnemyView
         ["dead"] = 4,
     };
 
-    public MeleeEnemyView(Enemy model) : base(model, AnimatorsCreator.GetAnimator("Melee Enemy"), animations)
+    public MeleeEnemyView() : base(AnimatorsCreator.GetAnimator("Melee Enemy"), animations)
     {
     }
 }

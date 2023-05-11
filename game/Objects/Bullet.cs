@@ -6,7 +6,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace game.Objects
 {
-    internal class Bullet : IEntity, Interfaces.IDrawable, ICollisionable
+    internal class Bullet : Interfaces.IDrawable, ICollisionable
     {
         private Vector2 direction;
         private float speed = 800;

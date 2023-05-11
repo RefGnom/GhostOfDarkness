@@ -42,7 +42,7 @@ internal class CreatureStatesController : IStateSwitcher
         currentState = state;
     }
 
-    public void Update(float deltaTime) => currentState.Update(deltaTime);
+    public void UpdateState(float deltaTime) => currentState.Update(deltaTime);
 
     public Type GetStateType() => currentState.GetType();
 

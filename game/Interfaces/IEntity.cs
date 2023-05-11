@@ -1,5 +1,6 @@
 ﻿namespace game.Interfaces;
 
-internal interface IEntity
+internal interface IEntity : IDrawable, ICollisionable
 {
+    public bool CanCollided { get; }
 }

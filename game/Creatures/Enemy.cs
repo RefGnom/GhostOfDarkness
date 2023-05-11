@@ -1,29 +1,22 @@
-﻿using game.Interfaces;
-using game.Managers;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using System;
 
 namespace game.Creatures;
 
-internal abstract class Enemy : Creature, IEnemy
+internal abstract class Enemy : Creature
 {
     private bool isIdle;
-    public bool IsDead { get; private set; }
+    private bool hitboxDeleted;
+    public bool IsDead => View.CanDelete;
 
-    private EnemyView view;
+    public event Action OnUpdate;
 
-    protected event Action OnUpdate;
-
-    public Enemy(Vector2 position, float speed, float health, float damage, float attackDistance, float cooldown)
+    public Enemy(EnemyView view, Vector2 position, float speed, float health, float damage, float attackDistance, float cooldown)
         : base(position, speed, health, damage, attackDistance, cooldown)
     {
-    }
-
-    protected void Initialize(EnemyView view)
-    {
-        this.view = view;
-        GameManager.Instance.Drawer.Register(view);
-        GameManager.Instance.EnemiesManager.Add(this);
+        View = view;
+        view.PositionChanged += () => Position;
+        view.DirectionChanged += () => Direction;
     }
 
     private void Attack(Creature target)
@@ -33,7 +26,7 @@ internal abstract class Enemy : Creature, IEnemy
         {
             target.TakeDamage(Damage);
             currentColdown = cooldown;
-            view.Attack();
+            View.Attack();
         }
     }
 
@@ -41,40 +34,36 @@ internal abstract class Enemy : Creature, IEnemy
     {
         Health -= damage;
         if (Health > 0)
-            view.TakeDamage();
+            View.TakeDamage();
         else
-            view.Kill();
+            View.Kill();
     }
 
     public void Update(float deltaTime, Creature target)
     {
-        view.Update(deltaTime);
-        if (view.CanDelete)
-        {
-            GameManager.Instance.Drawer.Unregister(view);
-            IsDead = true;
+        View.Update(deltaTime);
+        if (hitboxDeleted)
             return;
-        }
-        if (view.Killed)
+        if (View.Killed)
         {
-            GameManager.Instance.EnemiesManager.Remove(this);
+            DeleteHitbox(this);
+            hitboxDeleted = true;
             return;
         }
         UpdateDirection(target);
-        if (view.CanAttack)
+        if (View.CanAttack)
             Attack(target);
 
         if (!isIdle)
         {
-            if (view.CanMove)
+            if (View.CanMove)
                 MoveToPlayer(deltaTime);
-            view.Run();
+            View.Run();
         }
         else
         {
-            view.Idle();
+            View.Idle();
         }
-
         OnUpdate?.Invoke();
         currentColdown -= deltaTime;
     }
@@ -87,7 +76,7 @@ internal abstract class Enemy : Creature, IEnemy
     private void UpdateDirection(Creature target)
     {
         var direction = target.Position - Position;
-        isIdle = direction.Length() <= view.Radius;
+        isIdle = direction.Length() <= AttackDistance * 0.9;
         direction.Normalize();
         Direction = direction;
     }

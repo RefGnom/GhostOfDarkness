@@ -1,4 +1,5 @@
 ﻿using game.Interfaces;
+using game.Managers;
 using Microsoft.Xna.Framework;
 
 namespace game.Creatures;
@@ -12,6 +13,7 @@ internal abstract class Creature : ICollisionable
     public float AttackDistance { get; protected set; }
     public float Speed { get; protected set; }
     public Rectangle Hitbox { get; protected set; }
+    public CreatureView View { get; protected set; }
 
     protected readonly float cooldown;
     protected float currentColdown;
@@ -27,4 +29,26 @@ internal abstract class Creature : ICollisionable
     }
 
     public abstract void TakeDamage(float damage);
+
+    public static void Create(Creature creature)
+    {
+        GameManager.Instance.CollisionDetecter.Register(creature);
+        GameManager.Instance.Drawer.Register(creature.View);
+    }
+
+    public static void Delete(Creature creature)
+    {
+        DeleteHitbox(creature);
+        DeleteFromLocation(creature);
+    }
+
+    public static void DeleteHitbox(Creature creature)
+    {
+        GameManager.Instance.CollisionDetecter.Unregister(creature);
+    }
+
+    public static void DeleteFromLocation(Creature creature)
+    {
+        GameManager.Instance.Drawer.Unregister(creature.View);
+    }
 }

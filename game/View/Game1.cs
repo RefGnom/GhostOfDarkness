@@ -16,6 +16,7 @@ internal class Game1 : Game, IPauseHandler
     private Dictionary<Keys, Action<float>> actions;
 
     private GameModel model;
+    private Camera camera;
 
     private GraphicsDeviceManager graphics;
     private SpriteBatch spriteBatch;
@@ -40,6 +41,7 @@ internal class Game1 : Game, IPauseHandler
         // ???
         actions = new();
         model = new(new Vector2(WindowWidth / 2, WindowHeight / 2), WindowWidth, WindowHeight);
+        camera = new();
 
         OnFullScreen();
         SetSizeScreen(1280, 720);
@@ -97,6 +99,7 @@ internal class Game1 : Game, IPauseHandler
         HandleKeys(pressedKeys, deltaTime);
 
         model.Update(deltaTime);
+        camera.Follow(model.Player.Position, WindowWidth, WindowHeight);
 
         base.Update(gameTime);
     }
@@ -109,6 +112,7 @@ internal class Game1 : Game, IPauseHandler
         GraphicsDevice.Clear(Color.CornflowerBlue);
         spriteBatch.Begin();
         GameManager.Instance.Drawer.Draw(spriteBatch);
+        spriteBatch.Draw(TexturesManager.Wall, Vector2.Zero, null, Color.White, 0, Vector2.Zero, 0.5f, SpriteEffects.None, 0);
         spriteBatch.End();
         base.Draw(gameTime);
     }
