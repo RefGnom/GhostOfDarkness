@@ -1,6 +1,6 @@
 ﻿namespace game.Algorithms;
 
-internal class PathsFinder
+internal static class PathsFinder
 {
 
 }
