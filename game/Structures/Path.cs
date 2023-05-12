@@ -1,43 +1,29 @@
-﻿using Microsoft.Xna.Framework;
-using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 
 namespace game.Structures;
 
-internal class Path : IEnumerable<Vector2>
+internal class Path<T> : IEnumerable<T>
 {
-    private List<Vector2> movementVectors = new();
+    public readonly T Value;
+    public readonly Path<T> Previous;
+    public readonly int Length;
 
-    public int Count => movementVectors.Count;
-
-    public Vector2 this[int index]
+    public Path(T value, Path<T> previous = null)
     {
-        get
-        {
-            if (index < 0 || index >= movementVectors.Count)
-                throw new IndexOutOfRangeException();
-            return movementVectors[index];
-        }
-        set
-        {
-            if (index < 0 || index >= movementVectors.Count)
-                throw new IndexOutOfRangeException();
-            movementVectors[index] = value;
-        }
+        Value = value;
+        Previous = previous;
+        Length = previous?.Length + 1 ?? 1;
     }
 
-    public void Add(Vector2 value) =>
-        movementVectors.Add(value);
-
-    public void Remove(Vector2 value) =>
-        movementVectors.Remove(value);
-
-    public IEnumerator<Vector2> GetEnumerator()
+    public IEnumerator<T> GetEnumerator()
     {
-        foreach (var value in movementVectors)
+        yield return Value;
+        var pathItem = Previous;
+        while (pathItem != null)
         {
-            yield return value;
+            yield return pathItem.Value;
+            pathItem = pathItem.Previous;
         }
     }
 
