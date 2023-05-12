@@ -1,7 +1,6 @@
 ﻿using game.Creatures;
 using game.Interfaces;
 using game.Managers;
-using game.Objects;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;

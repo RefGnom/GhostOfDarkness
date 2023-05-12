@@ -1,5 +1,6 @@
 ﻿using game.Interfaces;
 using game.Managers;
+using game.Service;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -30,6 +31,8 @@ namespace game.Objects
         public void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(TexturesManager.Bullet, Position, Color.White);
+            if (Settings.ShowHitboxes)
+                HitboxManager.DrawHitbox(spriteBatch, Position, HitboxManager.Bullet, Vector2.Zero);
         }
     }
 }

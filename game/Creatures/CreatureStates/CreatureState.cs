@@ -3,7 +3,7 @@ using game.View;
 using System;
 using System.Collections.Generic;
 
-namespace game.CreatureStates;
+namespace game.Creatures.CreatureStates;
 
 internal abstract class CreatureState
 {

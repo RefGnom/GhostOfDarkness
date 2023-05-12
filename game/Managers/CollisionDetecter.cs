@@ -45,4 +45,16 @@ internal class CollisionDetecter
         }
         return false;
     }
+
+    public Vector2 GetMovementVectorWithoutCollision(ICollisionable item, float deltaX, float deltaY, float speed, float deltaTime)
+    {
+        var moveVector = Vector2.Zero;
+        moveVector.X = deltaX;
+        if (CollisionWithbjects(item, moveVector * speed * deltaTime))
+            moveVector.X = 0;
+        moveVector.Y = deltaY;
+        if (CollisionWithbjects(item, moveVector * speed * deltaTime))
+            moveVector.Y = 0;
+        return moveVector;
+    }
 }

@@ -1,7 +1,7 @@
 ﻿using game.View;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
-using game.CreatureStates;
+using game.Creatures.CreatureStates;
 
 namespace game.Creatures;
 

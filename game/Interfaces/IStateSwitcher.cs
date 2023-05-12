@@ -1,4 +1,4 @@
-﻿using game.CreatureStates;
+﻿using game.Creatures.CreatureStates;
 
 namespace game.Interfaces;
 

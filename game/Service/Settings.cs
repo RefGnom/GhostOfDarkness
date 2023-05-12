@@ -4,6 +4,8 @@ namespace game.Service;
 
 internal static class Settings
 {
+    public static bool ShowHitboxes;
+
     #region controls
     public static Keys MoveForward = Keys.W;
     public static Keys MoveBack = Keys.S;
@@ -13,4 +15,5 @@ internal static class Settings
 
     public static Keys OpenMenu = Keys.Escape;
     public static Keys ChangeScreen = Keys.F;
+    public static Keys ShowOrHideHitboxes = Keys.B;
 }

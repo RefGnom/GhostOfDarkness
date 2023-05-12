@@ -85,6 +85,9 @@ internal class Game1 : Game, IPauseHandler
         if (KeyboardManager.IsSingleDown(Keys.Escape))
             PauseManager.SetPaused(!PauseManager.IsPaused);
 
+        if (KeyboardManager.IsSingleDown(Settings.ShowOrHideHitboxes))
+            Settings.ShowHitboxes = !Settings.ShowHitboxes;
+
         var deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
 
         var keyboardState = Keyboard.GetState();

@@ -2,15 +2,11 @@
 using game.View;
 using System.Collections.Generic;
 
-namespace game.CreatureStates;
+namespace game.Creatures.CreatureStates;
 
-internal class FightState : CreatureState
+internal class IdleState : CreatureState
 {
-    private readonly float activeTime = 3;
-    private float leftTime;
-
-    public FightState(IStateSwitcher stateSwitcher, Animator animator, Dictionary<string, int> animations)
-        : base(stateSwitcher, animator, animations)
+    public IdleState(IStateSwitcher stateSwitcher, Animator animator, Dictionary<string, int> animations) : base(stateSwitcher, animator, animations)
     {
         CanMove = true;
         CanAttack = true;
@@ -34,7 +30,6 @@ internal class FightState : CreatureState
     public override void Start()
     {
         Animator.SetAnimation(animations["idle"]);
-        leftTime = activeTime;
     }
 
     public override void Stop()
@@ -43,9 +38,6 @@ internal class FightState : CreatureState
 
     public override void Update(float deltaTime)
     {
-        leftTime -= deltaTime;
-        if (leftTime <= 0)
-            stateSwitcher.SwitchState<IdleState>();
     }
 
     public override void Kill()

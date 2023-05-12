@@ -2,7 +2,7 @@
 using game.View;
 using System.Collections.Generic;
 
-namespace game.CreatureStates;
+namespace game.Creatures.CreatureStates;
 
 internal class RunState : CreatureState
 {

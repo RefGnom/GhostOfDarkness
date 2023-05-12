@@ -1,5 +1,4 @@
 ﻿using game;
-using game.CreatureStates;
 using NUnitLite;
 
 public class Program

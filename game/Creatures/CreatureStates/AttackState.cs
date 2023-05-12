@@ -2,7 +2,7 @@
 using game.View;
 using System.Collections.Generic;
 
-namespace game.CreatureStates;
+namespace game.Creatures.CreatureStates;
 
 internal class AttackState : CreatureState
 {
@@ -25,6 +25,7 @@ internal class AttackState : CreatureState
 
     public override void TakeDamage()
     {
+        stateSwitcher.SwitchState<TakeDamageState>();
     }
 
     public override void Start()

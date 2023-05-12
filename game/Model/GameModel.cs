@@ -16,7 +16,7 @@ internal class GameModel
     public GameModel(Vector2 playerPosition, int width, int height)
     {
         Location = Location.GetLocation(width, height);
-        Location.CreateEnemy(new MeleeEnemy(Vector2.Zero, 60));
+        Location.CreateEnemy(new MeleeEnemy(new Vector2(60, 60), 60));
         Player = new(playerPosition, 130f, 100, 0.3f);
         Bullets = new List<Bullet>();
     }

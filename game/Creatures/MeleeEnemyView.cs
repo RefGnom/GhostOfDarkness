@@ -1,5 +1,4 @@
-﻿using game.CreatureStates;
-using game.Interfaces;
+﻿using game.Interfaces;
 using game.View;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;

@@ -23,6 +23,8 @@ internal class Player : Creature
         [Directions.Right] = 0
     };
 
+    private CollisionDetecter CollisionDetecter => GameManager.Instance.CollisionDetecter;
+
     public Player(Vector2 position, float speed, float health, float cooldown) : base(position, speed, health, 20, 100, cooldown)
     {
         MaxHealth = health;
@@ -76,7 +78,7 @@ internal class Player : Creature
         for (int i = 0; i < Bullets.Count; i++)
         {
             Bullets[i].Update(deltaTime);
-            var obj = GameManager.Instance.CollisionDetecter.CollisionWithbjects(Bullets[i]);
+            var obj = CollisionDetecter.CollisionWithbjects(Bullets[i]);
             if (obj is Enemy)
             {
                 var enemy = obj as Enemy;
@@ -100,19 +102,14 @@ internal class Player : Creature
 
     private void Move(float deltaTime)
     {
-        var speed = Speed * deltaTime;
-        var moveVector = Vector2.Zero;
-        moveVector.X = EnableDirections[Directions.Left] + EnableDirections[Directions.Right];
-        if (GameManager.Instance.CollisionDetecter.CollisionWithbjects(this, moveVector * speed))
-            moveVector.X = 0;
-        moveVector.Y = EnableDirections[Directions.Up] + EnableDirections[Directions.Down];
-        if (GameManager.Instance.CollisionDetecter.CollisionWithbjects(this, moveVector * speed))
-            moveVector.Y = 0;
+        var deltaX = EnableDirections[Directions.Left] + EnableDirections[Directions.Right];
+        var deltaY = EnableDirections[Directions.Up] + EnableDirections[Directions.Down];
+        var movementVector = CollisionDetecter.GetMovementVectorWithoutCollision(this, deltaX, deltaY, Speed, deltaTime);
 
-        if (moveVector != Vector2.Zero)
+        if (movementVector != Vector2.Zero)
         {
-            moveVector.Normalize();
-            Position += moveVector * speed;
+            movementVector.Normalize();
+            Position += movementVector * Speed * deltaTime;
             View.Idle();
         }
         else

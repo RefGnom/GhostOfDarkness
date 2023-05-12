@@ -4,7 +4,7 @@ using System.Linq;
 using game.Interfaces;
 using game.View;
 
-namespace game.CreatureStates;
+namespace game.Creatures.CreatureStates;
 
 internal class CreatureStatesController : IStateSwitcher
 {

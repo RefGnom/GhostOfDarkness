@@ -1,4 +1,5 @@
 ﻿using game.Managers;
+using game.Service;
 using game.View;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -40,6 +41,7 @@ internal class PlayerView : CreatureView
     {
         var flip = SpriteEffects.None;
         animator.Draw(model.Position, spriteBatch, flip, rotation);
-        HitboxManager.DrawHitbox(spriteBatch, model.Position, HitboxManager.Player, animator.Origin);
+        if (Settings.ShowHitboxes)
+            HitboxManager.DrawHitbox(spriteBatch, model.Position, HitboxManager.Player, animator.Origin);
     }
 }
