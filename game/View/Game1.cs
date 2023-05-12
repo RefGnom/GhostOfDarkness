@@ -9,6 +9,7 @@ using game.Enums;
 using game.Model;
 using game.Service;
 using game.Input;
+using game.Controllers;
 
 namespace game.View;
 
@@ -17,6 +18,7 @@ internal class Game1 : Game, IPauseHandler
     private Dictionary<Keys, Action<float>> actions;
 
     private GameModel model;
+    private Controller controller;
     private Camera camera;
     private GraphicsDeviceManager graphics;
     private SpriteBatch spriteBatch;
@@ -41,29 +43,14 @@ internal class Game1 : Game, IPauseHandler
         // ???
         actions = new();
         model = new(new Vector2(WindowWidth / 2, WindowHeight / 2), 1920, 1080);
+        controller = new(graphics);
         camera = new();
 
-        OnFullScreen();
-        SetSizeScreen(1280, 720);
+        controller.SetSizeScreen(1280, 720);
 
         GameManager.Instance.PauseManager.RegisterHandler(this);
         RegisterAllKeys();
         base.Initialize();
-    }
-
-    private void SetSizeScreen(int width, int height)
-    {
-        graphics.PreferredBackBufferWidth = width;
-        graphics.PreferredBackBufferHeight = height;
-        graphics.IsFullScreen = false;
-        graphics.ApplyChanges();
-    }
-
-    private void OnFullScreen()
-    {
-        graphics.PreferredBackBufferWidth = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width;
-        graphics.PreferredBackBufferHeight = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height;
-        graphics.ApplyChanges();
     }
 
     protected override void LoadContent()
@@ -73,29 +60,18 @@ internal class Game1 : Game, IPauseHandler
 
     protected override void Update(GameTime gameTime)
     {
-        MyKeyboard.Update();
-        MyMouse.Update();
-        if (MyKeyboard.IsSingleKeyDown(Settings.ChangeScreen))
-        {
-            if (graphics.IsFullScreen)
-                SetSizeScreen(1280, 720);
-            else
-                OnFullScreen();
-        }
-
-        if (MyKeyboard.IsSingleKeyDown(Settings.OpenMenu))
-            PauseManager.SetPaused(!PauseManager.IsPaused);
-
-        if (MyKeyboard.IsSingleKeyDown(Settings.ShowOrHideHitboxes))
-            Settings.ShowHitboxes = !Settings.ShowHitboxes;
+        KeyboardController.Update();
+        MouseController.Update();
+        controller.Update();
+        
 
         var deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
 
-        HandleKeys(MyKeyboard.GetPressedKeys(), deltaTime);
+        HandleKeys(KeyboardController.GetPressedKeys(), deltaTime);
 
         model.Update(deltaTime);
         camera.Follow(model.Player.Position, WindowWidth, WindowHeight);
-        camera.ChangeScale(MyMouse.ScrollValue());
+        camera.ChangeScale(MouseController.ScrollValue());
 
         base.Update(gameTime);
     }

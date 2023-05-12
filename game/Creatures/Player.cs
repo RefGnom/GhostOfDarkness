@@ -63,7 +63,7 @@ internal class Player : Creature
             return;
         }
         UpdateDirection();
-        if (View.CanAttack && MyMouse.LeftButtomClicked())
+        if (View.CanAttack && MouseController.LeftButtomClicked())
             Shoot();
         if (View.CanMove)
             Move(deltaTime);
@@ -96,7 +96,7 @@ internal class Player : Creature
 
     private void UpdateDirection()
     {
-        var direction = MyMouse.Position - Position;
+        var direction = MouseController.Position - Position;
         direction.Normalize();
         Direction = direction;
     }

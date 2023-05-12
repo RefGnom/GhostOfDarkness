@@ -2,7 +2,7 @@
 
 namespace game.Input;
 
-internal static class MyKeyboard
+internal static class KeyboardController
 {
     private static KeyboardState currentState;
     private static KeyboardState previousState;

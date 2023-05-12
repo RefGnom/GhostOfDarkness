@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework.Input;
 
 namespace game.Input;
 
-internal static class MyMouse
+internal static class MouseController
 {
     private static MouseState currentState;
     private static MouseState previousState;
