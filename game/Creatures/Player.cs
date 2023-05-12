@@ -10,19 +10,17 @@ namespace game.Creatures;
 
 internal class Player : Creature
 {
-    private int width;
-    private int height;
     private HealthBar healthBar;
 
     public List<Bullet> Bullets { get; private set; }
     public float MaxHealth { get; private set; }
 
-    public readonly Dictionary<Directions, bool> EnableDirections = new()
+    public readonly Dictionary<Directions, int> EnableDirections = new()
     {
-        [Directions.Up] = false,
-        [Directions.Down] = false,
-        [Directions.Left] = false,
-        [Directions.Right] = false
+        [Directions.Up] = 0,
+        [Directions.Down] = 0,
+        [Directions.Left] = 0,
+        [Directions.Right] = 0
     };
 
     public Player(Vector2 position, float speed, float health, float cooldown) : base(position, speed, health, 20, 100, cooldown)
@@ -31,7 +29,9 @@ internal class Player : Creature
         View = new PlayerView(this);
         Bullets = new();
         healthBar = new HealthBar(this);
+        Hitbox = HitboxManager.Player;
         Create(this);
+        //Speed = 1000;
     }
 
     public void SetPosition(Vector2 position)
@@ -39,17 +39,12 @@ internal class Player : Creature
         Position = position;
     }
 
-    public void SetSize(int width, int height)
-    {
-        this.width = width;
-        this.height = height;
-    }
-
     protected void Shoot()
     {
         if (currentColdown <= 0)
         {
-            var bullet = new Bullet(Position, Direction);
+            // 20?? (Чтобы пули вылетали вне хитбокса)
+            var bullet = new Bullet(Position + Direction * 20, Direction);
             Bullets.Add(bullet);
             GameManager.Instance.Drawer.Register(bullet);
             currentColdown = cooldown;
@@ -69,10 +64,10 @@ internal class Player : Creature
             Shoot();
         if (View.CanMove)
             Move(deltaTime);
-        CheckOnOutBounds(locationWidth, locationHeight);
         UpdateBullets(deltaTime);
         currentColdown -= deltaTime;
         View.Update(deltaTime);
+        DisableDirections();
     }
 
     // Переместить в класс Gun
@@ -105,32 +100,20 @@ internal class Player : Creature
 
     private void Move(float deltaTime)
     {
+        var speed = Speed * deltaTime;
         var moveVector = Vector2.Zero;
-        if (EnableDirections[Directions.Up])
-        {
-            EnableDirections[Directions.Up] = false;
-            moveVector.Y--;
-        }
-        if (EnableDirections[Directions.Down])
-        {
-            EnableDirections[Directions.Down] = false;
-            moveVector.Y++;
-        }
-        if (EnableDirections[Directions.Left])
-        {
-            EnableDirections[Directions.Left] = false;
-            moveVector.X--;
-        }
-        if (EnableDirections[Directions.Right])
-        {
-            EnableDirections[Directions.Right] = false;
-            moveVector.X++;
-        }
+        moveVector.X = EnableDirections[Directions.Left] + EnableDirections[Directions.Right];
+        if (GameManager.Instance.CollisionDetecter.CollisionWithbjects(this, moveVector * speed))
+            moveVector.X = 0;
+        moveVector.Y = EnableDirections[Directions.Up] + EnableDirections[Directions.Down];
+        if (GameManager.Instance.CollisionDetecter.CollisionWithbjects(this, moveVector * speed))
+            moveVector.Y = 0;
+
         if (moveVector != Vector2.Zero)
         {
             moveVector.Normalize();
-            Position += moveVector * Speed * deltaTime;
-            View.Run();
+            Position += moveVector * speed;
+            View.Idle();
         }
         else
         {
@@ -138,23 +121,12 @@ internal class Player : Creature
         }
     }
 
-    public void CheckOnOutBounds(int locationWidth, int locationHeight)
+    private void DisableDirections()
     {
-        var position = Position;
-        var rightBound = locationWidth - width / 2;
-        var leftBound = width / 2;
-        var bottomBound = locationHeight - height / 2;
-        var upperBound = height / 2;
-
-        if (position.X > rightBound)
-            position.X = rightBound;
-        else if (position.X < leftBound)
-            position.X = leftBound;
-
-        if (position.Y > bottomBound)
-            position.Y = bottomBound;
-        else if (position.Y < upperBound)
-            position.Y = upperBound;
+        foreach (var direction in EnableDirections.Keys)
+        {
+            EnableDirections[direction] = 0;
+        }
     }
 
     public override void TakeDamage(float damage)

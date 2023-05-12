@@ -1,5 +1,4 @@
-﻿using game.Extensions;
-using game.Interfaces;
+﻿using game.Interfaces;
 using game.Managers;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -13,7 +12,7 @@ namespace game.Objects
         private float lifetime = 1.2f;
 
         public Vector2 Position { get; private set; }
-        public Rectangle Hitbox => HiboxManager.Bullet.Shift(Position);
+        public Rectangle Hitbox => HitboxManager.Bullet;
         public bool IsDead => lifetime <= 0;
 
         public Bullet(Vector2 position, Vector2 direction)

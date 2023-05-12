@@ -11,7 +11,7 @@ namespace game.Model;
 internal class Location : IDrawable
 {
     private Tile[,] tiles;
-    private int tileSize = 32;
+    private readonly int tileSize = 32;
 
     public List<Enemy> Enemies { get; private set; }
     public int Width { get; private set; }
@@ -19,9 +19,9 @@ internal class Location : IDrawable
 
     public Location(int width, int height)
     {
-        tiles = new Tile[width / tileSize, height / tileSize];
-        Width = width;
-        Height = height;
+        Width = (int)Math.Ceiling(width / (double)tileSize);
+        Height = (int)Math.Ceiling(height / (double)tileSize);
+        tiles = new Tile[Width, Height];
         Enemies = new();
         Initialize();
         GameManager.Instance.Drawer.Register(this);
@@ -29,12 +29,18 @@ internal class Location : IDrawable
 
     private void Initialize()
     {
-        for (int column = 0; column < tiles.GetLength(0); column++)
+        for (int column = 0; column < Width; column++)
         {
-            for (int row = 0; row < tiles.GetLength(1); row++)
+            for (int row = 0; row < Height; row++)
             {
                 tiles[column, row] = new Tile(tileSize * column, tileSize * row, tileSize);
+                if (row == 0 || row == Height - 1 || column == 0 || column == Width - 1)
+                    tiles[column, row].SetWall();
             }
+        }
+        for (int i = 0; i < 10; i++)
+        {
+            tiles[6 + i, 5].SetWall();
         }
     }
 

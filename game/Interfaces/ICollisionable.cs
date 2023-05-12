@@ -1,13 +1,24 @@
-﻿using Microsoft.Xna.Framework;
+﻿using game.Extensions;
+using Microsoft.Xna.Framework;
 
 namespace game.Interfaces;
 
 internal interface ICollisionable
 {
     public Rectangle Hitbox { get; }
+    public Vector2 Position { get; }
 
     public bool Collision(ICollisionable collisionable)
     {
-        return Hitbox.Intersects(collisionable.Hitbox);
+        var hitbox1 = Hitbox.Shift(Position);
+        var hitbox2 = collisionable.Hitbox.Shift(collisionable.Position);
+        return hitbox1.Intersects(hitbox2);
+    }
+
+    public bool Collision(ICollisionable collisionable, Vector2 moveVector)
+    {
+        var hitbox1 = Hitbox.Shift(Position + moveVector);
+        var hitbox2 = collisionable.Hitbox.Shift(collisionable.Position);
+        return hitbox1.Intersects(hitbox2);
     }
 }

@@ -15,6 +15,7 @@ internal class QuadTree
     private QuadTree topLeft;
     private QuadTree downLeft;
     private QuadTree downRight;
+    private bool isDivided;
 
     public QuadTree(Rectangle boundary)
     {
@@ -31,7 +32,7 @@ internal class QuadTree
             return;
         }
 
-        if (topRight == null)
+        if (!isDivided)
             Subdivide();
 
         topRight.Insert(item);
@@ -50,5 +51,6 @@ internal class QuadTree
         downRight = new(quarter);
         quarter.Offset(-quarter.Width, 0);
         downLeft = new(quarter);
+        isDivided = true;
     }
 }

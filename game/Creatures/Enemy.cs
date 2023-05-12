@@ -9,8 +9,6 @@ internal abstract class Enemy : Creature
     private bool hitboxDeleted;
     public bool IsDead => View.CanDelete;
 
-    public event Action OnUpdate;
-
     public Enemy(EnemyView view, Vector2 position, float speed, float health, float damage, float attackDistance, float cooldown)
         : base(position, speed, health, damage, attackDistance, cooldown)
     {
@@ -64,7 +62,6 @@ internal abstract class Enemy : Creature
         {
             View.Idle();
         }
-        OnUpdate?.Invoke();
         currentColdown -= deltaTime;
     }
 

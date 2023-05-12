@@ -5,7 +5,7 @@ namespace game.View
 {
     internal class Animator
     {
-        private readonly Vector2 origin;
+        public readonly Vector2 Origin;
         private readonly Texture2D texture;
         private readonly int frameWidth;
         private readonly int frameHeight;
@@ -23,7 +23,7 @@ namespace game.View
             this.texture = texture;
             this.frameWidth = frameWidth;
             this.frameHeight = frameHeight;
-            origin = new Vector2(frameWidth / 2, frameHeight / 2);
+            Origin = new Vector2(frameWidth / 2, frameHeight / 2);
             this.countFramesInAnimations = countFramesInAnimations;
             countFrames = new int[countFramesInAnimations.Length];
             this.countDrawsForUpdateFrame = countDrawsForUpdateFrame;
@@ -43,14 +43,14 @@ namespace game.View
         public void Draw(Vector2 position, SpriteBatch spriteBatch, SpriteEffects flip)
         {
             var frame = GetFrame();
-            spriteBatch.Draw(texture, position, frame, Color.White, 0, origin, 1, flip, 0);
+            spriteBatch.Draw(texture, position, frame, Color.White, 0, Origin, 1, flip, 0);
             IncrementFrame();
         }
 
         public void Draw(Vector2 position, SpriteBatch spriteBatch, SpriteEffects flip, float rotation)
         {
             var frame = GetFrame();
-            spriteBatch.Draw(texture, position, frame, Color.White, rotation, origin, 1, flip, 0);
+            spriteBatch.Draw(texture, position, frame, Color.White, rotation, Origin, 1, flip, 0);
             IncrementFrame();
         }
 

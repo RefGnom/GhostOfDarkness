@@ -1,4 +1,5 @@
-﻿using game.View;
+﻿using game.Managers;
+using game.View;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
@@ -26,5 +27,6 @@ internal class EnemyView : CreatureView
         direction = DirectionChanged.Invoke();
         var flip = direction.X < 0 ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
         animator.Draw(position, spriteBatch, flip);
+        HitboxManager.DrawHitbox(spriteBatch, position, HitboxManager.MeleeEnemy, new Vector2(11, 11));
     }
 }

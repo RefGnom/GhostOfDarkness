@@ -1,5 +1,4 @@
-﻿using game.Extensions;
-using game.Interfaces;
+﻿using game.Interfaces;
 using game.Managers;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -8,17 +7,18 @@ namespace game.Objects;
 
 internal class Wall : IEntity
 {
-    private Vector2 position;
-    public Rectangle Hitbox => HiboxManager.Wall.Shift(position);
+    public Vector2 Position { get; private set; }
+    public Rectangle Hitbox => HitboxManager.Wall;
     public bool CanCollided => true;
 
     public Wall(Vector2 position)
     {
-        this.position = position;
+        Position = position;
     }
 
     public void Draw(SpriteBatch spriteBatch)
     {
-        spriteBatch.Draw(TexturesManager.Wall, position, null, Color.White, 0, Vector2.Zero, 0.5f, SpriteEffects.None, 0);
+        spriteBatch.Draw(TexturesManager.Wall, Position, null, Color.White, 0, Vector2.Zero, 0.5f, SpriteEffects.None, 0);
+        HitboxManager.DrawHitbox(spriteBatch, Position, HitboxManager.Wall, Vector2.Zero);
     }
 }

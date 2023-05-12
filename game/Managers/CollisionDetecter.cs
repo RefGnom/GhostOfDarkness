@@ -1,5 +1,5 @@
-﻿using game.Creatures;
-using game.Interfaces;
+﻿using game.Interfaces;
+using Microsoft.Xna.Framework;
 using System.Collections.Generic;
 
 namespace game.Managers;
@@ -22,11 +22,27 @@ internal class CollisionDetecter
     {
         foreach (var obj in objects)
         {
+            if (obj == item)
+                continue;
             if (item.Collision(obj))
             {
                 return obj;
             }
         }
         return null;
+    }
+
+    public bool CollisionWithbjects(ICollisionable item, Vector2 moveVector)
+    {
+        foreach (var obj in objects)
+        {
+            if (obj == item)
+                continue;
+            if (item.Collision(obj, moveVector))
+            {
+                return true;
+            }
+        }
+        return false;
     }
 }

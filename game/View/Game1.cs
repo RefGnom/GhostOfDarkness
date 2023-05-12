@@ -17,7 +17,6 @@ internal class Game1 : Game, IPauseHandler
 
     private GameModel model;
     private Camera camera;
-
     private GraphicsDeviceManager graphics;
     private SpriteBatch spriteBatch;
 
@@ -40,7 +39,7 @@ internal class Game1 : Game, IPauseHandler
         TexturesManager.Load(Content);
         // ???
         actions = new();
-        model = new(new Vector2(WindowWidth / 2, WindowHeight / 2), WindowWidth, WindowHeight);
+        model = new(new Vector2(WindowWidth / 2, WindowHeight / 2), 1920, 1080);
         camera = new();
 
         OnFullScreen();
@@ -128,10 +127,10 @@ internal class Game1 : Game, IPauseHandler
 
     public void RegisterAllKeys()
     {
-        actions[Settings.MoveForward] = deltaTime => model.Player.EnableDirections[Directions.Up] = true;
-        actions[Settings.MoveBack] = deltaTime => model.Player.EnableDirections[Directions.Down] = true;
-        actions[Settings.MoveLeft] = deltaTime => model.Player.EnableDirections[Directions.Left] = true;
-        actions[Settings.MoveRight] = deltaTime => model.Player.EnableDirections[Directions.Right] = true;
+        actions[Settings.MoveForward] = deltaTime => model.Player.EnableDirections[Directions.Up] = -1;
+        actions[Settings.MoveBack] = deltaTime => model.Player.EnableDirections[Directions.Down] = 1;
+        actions[Settings.MoveLeft] = deltaTime => model.Player.EnableDirections[Directions.Left] = -1;
+        actions[Settings.MoveRight] = deltaTime => model.Player.EnableDirections[Directions.Right] = 1;
     }
 
     public void SetPaused(bool isPaused)

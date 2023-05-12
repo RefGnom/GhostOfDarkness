@@ -31,7 +31,7 @@ internal class DeadState : CreatureState
     {
         Killed = true;
         Animator.SetAnimation(animations["dead"], false);
-        leftTime = Animator.GetAnimationTime(animations["dead"]) * 10;
+        leftTime = Animator.GetAnimationTime(animations["dead"]) * 20;
     }
 
     public override void Stop()
