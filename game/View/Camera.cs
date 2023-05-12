@@ -4,13 +4,26 @@ namespace game.View;
 
 internal class Camera
 {
+    private readonly float maxScale = 1.4f;
+    private readonly float minScale = 0.8f;
+    private float scale = 1f;
+    private float scaleStepSize = 0.05f;
+
     public Matrix Transform { get; private set; }
 
     public void Follow(Vector2 playerPosition, int width, int height)
     {
         var position = Matrix.CreateTranslation(-playerPosition.X, -playerPosition.Y, 0);
-        var offset = Matrix.CreateTranslation(width / 2, height / 2, 0);
+        var offset = Matrix.CreateTranslation(width / 2 / scale, height / 2 / scale, 0);
+        var scaleMatrix = Matrix.CreateScale(scale);
 
-        Transform = position * offset;
+        Transform = position * offset * scaleMatrix;
+    }
+
+    public void ChangeScale(int amount)
+    {
+        if ((scale <= maxScale || amount < 0)
+            && (scale >= minScale || amount > 0))
+            scale += amount * scaleStepSize;
     }
 }

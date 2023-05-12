@@ -7,10 +7,10 @@ internal static class Settings
     public static bool ShowHitboxes;
 
     #region controls
-    public static Keys MoveForward = Keys.W;
-    public static Keys MoveBack = Keys.S;
-    public static Keys MoveLeft = Keys.A;
-    public static Keys MoveRight = Keys.D;
+    public static Keys Up = Keys.W;
+    public static Keys Down = Keys.S;
+    public static Keys Left = Keys.A;
+    public static Keys Right = Keys.D;
     #endregion
 
     public static Keys OpenMenu = Keys.Escape;

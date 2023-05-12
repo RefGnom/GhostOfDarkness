@@ -8,6 +8,7 @@ using game.Interfaces;
 using game.Enums;
 using game.Model;
 using game.Service;
+using game.Input;
 
 namespace game.View;
 
@@ -62,7 +63,6 @@ internal class Game1 : Game, IPauseHandler
     {
         graphics.PreferredBackBufferWidth = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width;
         graphics.PreferredBackBufferHeight = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height;
-        graphics.IsFullScreen = true;
         graphics.ApplyChanges();
     }
 
@@ -73,35 +73,29 @@ internal class Game1 : Game, IPauseHandler
 
     protected override void Update(GameTime gameTime)
     {
-        if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
-            Exit();
-
-        if (KeyboardManager.IsSingleDown(Settings.ChangeScreen))
+        MyKeyboard.Update();
+        MyMouse.Update();
+        if (MyKeyboard.IsSingleKeyDown(Settings.ChangeScreen))
         {
-            if (graphics.IsFullScreen) SetSizeScreen(1280, 720);
-            else OnFullScreen();
+            if (graphics.IsFullScreen)
+                SetSizeScreen(1280, 720);
+            else
+                OnFullScreen();
         }
 
-        if (KeyboardManager.IsSingleDown(Keys.Escape))
+        if (MyKeyboard.IsSingleKeyDown(Settings.OpenMenu))
             PauseManager.SetPaused(!PauseManager.IsPaused);
 
-        if (KeyboardManager.IsSingleDown(Settings.ShowOrHideHitboxes))
+        if (MyKeyboard.IsSingleKeyDown(Settings.ShowOrHideHitboxes))
             Settings.ShowHitboxes = !Settings.ShowHitboxes;
 
         var deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
 
-        var keyboardState = Keyboard.GetState();
-        var mouseState = Mouse.GetState();
-
-        var mousePosition = mouseState.Position.ToVector2();
-        var direction = mousePosition - model.Player.Position;
-        direction.Normalize();
-
-        var pressedKeys = keyboardState.GetPressedKeys();
-        HandleKeys(pressedKeys, deltaTime);
+        HandleKeys(MyKeyboard.GetPressedKeys(), deltaTime);
 
         model.Update(deltaTime);
         camera.Follow(model.Player.Position, WindowWidth, WindowHeight);
+        camera.ChangeScale(MyMouse.ScrollValue());
 
         base.Update(gameTime);
     }
@@ -112,9 +106,9 @@ internal class Game1 : Game, IPauseHandler
             return;
 
         GraphicsDevice.Clear(Color.CornflowerBlue);
+        //spriteBatch.Begin(transformMatrix: camera.Transform);
         spriteBatch.Begin();
         GameManager.Instance.Drawer.Draw(spriteBatch);
-        spriteBatch.Draw(TexturesManager.Wall, Vector2.Zero, null, Color.White, 0, Vector2.Zero, 0.5f, SpriteEffects.None, 0);
         spriteBatch.End();
         base.Draw(gameTime);
     }
@@ -130,10 +124,10 @@ internal class Game1 : Game, IPauseHandler
 
     public void RegisterAllKeys()
     {
-        actions[Settings.MoveForward] = deltaTime => model.Player.EnableDirections[Directions.Up] = -1;
-        actions[Settings.MoveBack] = deltaTime => model.Player.EnableDirections[Directions.Down] = 1;
-        actions[Settings.MoveLeft] = deltaTime => model.Player.EnableDirections[Directions.Left] = -1;
-        actions[Settings.MoveRight] = deltaTime => model.Player.EnableDirections[Directions.Right] = 1;
+        actions[Settings.Up] = deltaTime => model.Player.EnableDirections[Directions.Up] = -1;
+        actions[Settings.Down] = deltaTime => model.Player.EnableDirections[Directions.Down] = 1;
+        actions[Settings.Left] = deltaTime => model.Player.EnableDirections[Directions.Left] = -1;
+        actions[Settings.Right] = deltaTime => model.Player.EnableDirections[Directions.Right] = 1;
     }
 
     public void SetPaused(bool isPaused)

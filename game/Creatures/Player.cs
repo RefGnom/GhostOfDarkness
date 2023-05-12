@@ -1,4 +1,5 @@
 ﻿using game.Enums;
+using game.Input;
 using game.Managers;
 using game.Objects;
 using game.UI;
@@ -62,7 +63,7 @@ internal class Player : Creature
             return;
         }
         UpdateDirection();
-        if (View.CanAttack && MouseManager.LeftButtomClicked())
+        if (View.CanAttack && MyMouse.LeftButtomClicked())
             Shoot();
         if (View.CanMove)
             Move(deltaTime);
@@ -95,7 +96,7 @@ internal class Player : Creature
 
     private void UpdateDirection()
     {
-        var direction = Mouse.GetState().Position.ToVector2() - Position;
+        var direction = MyMouse.Position - Position;
         direction.Normalize();
         Direction = direction;
     }
