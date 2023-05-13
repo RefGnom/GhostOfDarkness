@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
 
-namespace game.View;
+namespace game.Service;
 
 internal static class Debug
 {
@@ -19,7 +19,7 @@ internal static class Debug
         topPosition = new Vector2(10, windowHeight - 10);
     }
 
-    public static void AddMessage(string message)
+    public static void Log(string message)
     {
         messages.Add((message, drawsCount));
 

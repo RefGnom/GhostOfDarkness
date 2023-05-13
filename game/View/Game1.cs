@@ -86,6 +86,7 @@ internal class Game1 : Game, IPauseHandler
 
         spriteBatch.Begin();
         Debug.DrawMessages(spriteBatch);
+        GameManager.Instance.Drawer.DrawUI(spriteBatch);
         spriteBatch.End();
 
         spriteBatch.Begin(transformMatrix: Camera.Transform);
