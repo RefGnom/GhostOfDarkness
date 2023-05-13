@@ -1,25 +1,22 @@
-﻿using game.View;
+﻿namespace game;
 
-namespace game.Managers
+internal class GameManager
 {
-    internal class GameManager
+    private static GameManager instance;
+    public static GameManager Instance => instance ?? new GameManager();
+
+    public Game1 Game { get; set; }
+    public PauseManager PauseManager { get; private set; }
+    public Drawer Drawer { get; private set; }
+    public CollisionDetecter CollisionDetecter { get; private set; }
+    public Camera Camera { get; private set; }
+
+    private GameManager()
     {
-        private static GameManager instance;
-        public static GameManager Instance => instance ?? new GameManager();
-
-        public Game1 Game { get; set; }
-        public PauseManager PauseManager { get; private set; }
-        public Drawer Drawer { get; private set; }
-        public CollisionDetecter CollisionDetecter { get; private set; }
-        public Camera Camera { get; private set; }
-
-        private GameManager()
-        {
-            instance = this;
-            PauseManager = new();
-            Drawer = new();
-            CollisionDetecter = new();
-            Camera = new(true);
-        }
+        instance = this;
+        PauseManager = new();
+        Drawer = new();
+        CollisionDetecter = new();
+        Camera = new(true);
     }
 }

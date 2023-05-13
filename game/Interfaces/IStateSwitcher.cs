@@ -1,6 +1,4 @@
-﻿using game.Creatures.CreatureStates;
-
-namespace game.Interfaces;
+﻿namespace game;
 
 internal interface IStateSwitcher
 {

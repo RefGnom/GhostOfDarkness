@@ -1,10 +1,5 @@
-﻿using game.Managers;
-using game.Model;
-using game.Service;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System.Collections.Generic;
-using System;
 using Microsoft.Xna.Framework.Input;
 
 namespace game;

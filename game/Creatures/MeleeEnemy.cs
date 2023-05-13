@@ -1,7 +1,6 @@
-﻿using game.Managers;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 
-namespace game.Creatures;
+namespace game;
 
 internal class MeleeEnemy : Enemy
 {

@@ -1,7 +1,6 @@
-﻿namespace game.Interfaces
+﻿namespace game;
+
+internal interface IPauseHandler
 {
-    internal interface IPauseHandler
-    {
-        void SetPaused(bool isPaused);
-    }
+    void SetPaused(bool isPaused);
 }

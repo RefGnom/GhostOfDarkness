@@ -1,7 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using System.Collections.Generic;
 
-namespace game.Extensions;
+namespace game;
 
 internal static class PointExtension
 {

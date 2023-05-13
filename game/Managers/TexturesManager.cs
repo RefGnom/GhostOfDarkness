@@ -1,7 +1,7 @@
 ﻿using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace game.Managers;
+namespace game;
 
 internal static class TexturesManager
 {

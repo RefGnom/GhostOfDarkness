@@ -1,9 +1,8 @@
-﻿using game.Managers;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
 
-namespace game.Service;
+namespace game;
 
 internal static class Debug
 {
@@ -56,7 +55,7 @@ internal static class Debug
                 topPosition.Y += offset.Y;
                 continue;
             }
-            spriteBatch.DrawString(FontsManager.Arial, message, currentPosition, Color.Black);
+            spriteBatch.DrawString(FontsManager.Arial, message, currentPosition, Color.Black, 0, Vector2.Zero, 1, SpriteEffects.None, Layers.Text);
             currentPosition.Y += offset.Y;
         }
     }

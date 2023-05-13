@@ -1,12 +1,9 @@
-﻿using game.Creatures;
-using game.Managers;
-using game.Service;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace game.UI;
+namespace game;
 
-internal class HealthBar : Interfaces.IDrawable
+internal class HealthBar : IDrawable
 {
     private readonly Player player;
     private Vector2 origin;

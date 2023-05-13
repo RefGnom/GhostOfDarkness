@@ -1,72 +1,71 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace game.View
+namespace game;
+
+internal class Animator
 {
-    internal class Animator
+    public readonly Vector2 Origin;
+    private readonly Texture2D texture;
+    private readonly int frameWidth;
+    private readonly int frameHeight;
+    private readonly int[] countFramesInAnimations;
+    private readonly int[] countFrames;
+    private int countDrawsForUpdateFrame;
+    private bool animationLooped;
+
+    private int currentAnimation;
+
+    public int Radius => (frameHeight + frameWidth) / 4;
+
+    public Animator(Texture2D texture, int frameWidth, int frameHeight, int[] countFramesInAnimations, int countDrawsForUpdateFrame)
     {
-        public readonly Vector2 Origin;
-        private readonly Texture2D texture;
-        private readonly int frameWidth;
-        private readonly int frameHeight;
-        private readonly int[] countFramesInAnimations;
-        private readonly int[] countFrames;
-        private int countDrawsForUpdateFrame;
-        private bool animationLooped;
+        this.texture = texture;
+        this.frameWidth = frameWidth;
+        this.frameHeight = frameHeight;
+        Origin = new Vector2(frameWidth / 2, frameHeight / 2);
+        this.countFramesInAnimations = countFramesInAnimations;
+        countFrames = new int[countFramesInAnimations.Length];
+        this.countDrawsForUpdateFrame = countDrawsForUpdateFrame;
+    }
 
-        private int currentAnimation;
+    public float GetAnimationTime(int animation)
+    {
+        return countFramesInAnimations[animation] * countDrawsForUpdateFrame / 30f;
+    }
 
-        public int Radius => (frameHeight + frameWidth) / 4;
+    public void SetAnimation(int animation, bool looped = true)
+    {
+        currentAnimation = animation;
+        animationLooped = looped;
+    }
 
-        public Animator(Texture2D texture, int frameWidth, int frameHeight, int[] countFramesInAnimations, int countDrawsForUpdateFrame)
-        {
-            this.texture = texture;
-            this.frameWidth = frameWidth;
-            this.frameHeight = frameHeight;
-            Origin = new Vector2(frameWidth / 2, frameHeight / 2);
-            this.countFramesInAnimations = countFramesInAnimations;
-            countFrames = new int[countFramesInAnimations.Length];
-            this.countDrawsForUpdateFrame = countDrawsForUpdateFrame;
-        }
+    public void Draw(Vector2 position, SpriteBatch spriteBatch, SpriteEffects flip, float layerDepth)
+    {
+        var frame = GetFrame();
+        spriteBatch.Draw(texture, position, frame, Color.White, 0, Origin, 1, flip, layerDepth);
+        IncrementFrame();
+    }
 
-        public float GetAnimationTime(int animation)
-        {
-            return countFramesInAnimations[animation] * countDrawsForUpdateFrame / 30f;
-        }
+    public void Draw(Vector2 position, SpriteBatch spriteBatch, SpriteEffects flip, float rotation, float layerDepth)
+    {
+        var frame = GetFrame();
+        spriteBatch.Draw(texture, position, frame, Color.White, rotation, Origin, 1, flip, layerDepth);
+        IncrementFrame();
+    }
 
-        public void SetAnimation(int animation, bool looped = true)
-        {
-            currentAnimation = animation;
-            animationLooped = looped;
-        }
+    private Rectangle GetFrame()
+    {
+        return new Rectangle(countFrames[currentAnimation] / countDrawsForUpdateFrame * frameWidth,
+            frameHeight * currentAnimation, frameWidth, frameHeight);
+    }
 
-        public void Draw(Vector2 position, SpriteBatch spriteBatch, SpriteEffects flip, float layerDepth)
-        {
-            var frame = GetFrame();
-            spriteBatch.Draw(texture, position, frame, Color.White, 0, Origin, 1, flip, layerDepth);
-            IncrementFrame();
-        }
-
-        public void Draw(Vector2 position, SpriteBatch spriteBatch, SpriteEffects flip, float rotation, float layerDepth)
-        {
-            var frame = GetFrame();
-            spriteBatch.Draw(texture, position, frame, Color.White, rotation, Origin, 1, flip, layerDepth);
-            IncrementFrame();
-        }
-
-        private Rectangle GetFrame()
-        {
-            return new Rectangle(countFrames[currentAnimation] / countDrawsForUpdateFrame * frameWidth,
-                frameHeight * currentAnimation, frameWidth, frameHeight);
-        }
-
-        private void IncrementFrame()
-        {
-            var lastFrame = countFrames[currentAnimation];
-            countFrames[currentAnimation] = (countFrames[currentAnimation] + 1)
-                % (countFramesInAnimations[currentAnimation] * countDrawsForUpdateFrame);
-            if (!animationLooped && countFrames[currentAnimation] == 0)
-                countFrames[currentAnimation] = lastFrame;
-        }
+    private void IncrementFrame()
+    {
+        var lastFrame = countFrames[currentAnimation];
+        countFrames[currentAnimation] = (countFrames[currentAnimation] + 1)
+            % (countFramesInAnimations[currentAnimation] * countDrawsForUpdateFrame);
+        if (!animationLooped && countFrames[currentAnimation] == 0)
+            countFrames[currentAnimation] = lastFrame;
     }
 }

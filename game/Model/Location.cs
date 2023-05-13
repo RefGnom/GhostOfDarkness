@@ -1,16 +1,12 @@
-﻿using game.Algorithms;
-using game.Creatures;
-using game.Extensions;
-using game.Managers;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace game.Model;
+namespace game;
 
-internal class Location : Interfaces.IDrawable
+internal class Location : IDrawable
 {
     private Tile[,] tiles;
     private readonly int tileSize = 32;

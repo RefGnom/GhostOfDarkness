@@ -1,8 +1,7 @@
-﻿using game.Interfaces;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using System.Collections.Generic;
 
-namespace game.Managers;
+namespace game;
 
 internal class CollisionDetecter
 {

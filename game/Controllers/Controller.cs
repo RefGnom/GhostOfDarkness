@@ -1,11 +1,7 @@
-﻿using game.Input;
-using game.Managers;
-using game.Service;
-using game.View;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace game.Controllers;
+namespace game;
 
 internal class Controller
 {

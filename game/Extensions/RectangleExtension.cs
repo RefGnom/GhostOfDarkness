@@ -1,6 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 
-namespace game.Extensions;
+namespace game;
 
 internal static class RectangleExtension
 {

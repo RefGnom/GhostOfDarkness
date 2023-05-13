@@ -1,4 +1,4 @@
-﻿namespace game.Interfaces;
+﻿namespace game;
 
 internal interface IEntity : IDrawable, ICollisionable
 {

@@ -3,15 +3,8 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
 using System;
-using game.Managers;
-using game.Interfaces;
-using game.Enums;
-using game.Model;
-using game.Service;
-using game.Input;
-using game.Controllers;
 
-namespace game.View;
+namespace game;
 
 internal class Game1 : Game, IPauseHandler
 {

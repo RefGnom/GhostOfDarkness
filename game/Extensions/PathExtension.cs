@@ -1,9 +1,8 @@
-﻿using game.Structures;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace game.Extensions;
+namespace game;
 
 internal static class PathExtension
 {

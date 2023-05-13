@@ -1,8 +1,7 @@
-﻿using game.Interfaces;
-using Microsoft.Xna.Framework.Graphics;
+﻿using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
 
-namespace game.Managers;
+namespace game;
 
 internal class Drawer
 {

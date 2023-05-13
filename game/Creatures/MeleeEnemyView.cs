@@ -1,9 +1,6 @@
-﻿using game.Interfaces;
-using game.View;
-using Microsoft.Xna.Framework.Graphics;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
-namespace game.Creatures;
+namespace game;
 
 internal class MeleeEnemyView : EnemyView
 {

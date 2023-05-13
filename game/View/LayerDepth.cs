@@ -1,4 +1,4 @@
-﻿namespace game.View;
+﻿namespace game;
 
 internal static class LayerDepth
 {

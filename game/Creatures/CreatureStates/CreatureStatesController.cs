@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using game.Interfaces;
-using game.View;
 
-namespace game.Creatures.CreatureStates;
+namespace game;
 
 internal class CreatureStatesController : IStateSwitcher
 {

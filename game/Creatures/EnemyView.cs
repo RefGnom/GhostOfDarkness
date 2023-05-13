@@ -1,12 +1,9 @@
-﻿using game.Managers;
-using game.Service;
-using game.View;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
 
-namespace game.Creatures;
+namespace game;
 
 internal class EnemyView : CreatureView
 {

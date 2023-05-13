@@ -1,9 +1,7 @@
-﻿using game.Managers;
-using game.View;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 
-namespace game.Input;
+namespace game;
 
 internal static class MouseController
 {

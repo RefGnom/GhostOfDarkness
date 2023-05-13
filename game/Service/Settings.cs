@@ -1,6 +1,6 @@
 ﻿using Microsoft.Xna.Framework.Input;
 
-namespace game.Service;
+namespace game;
 
 internal static class Settings
 {

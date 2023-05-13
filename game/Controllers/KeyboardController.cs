@@ -1,6 +1,6 @@
 ﻿using Microsoft.Xna.Framework.Input;
 
-namespace game.Input;
+namespace game;
 
 internal static class KeyboardController
 {

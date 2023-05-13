@@ -1,8 +1,7 @@
-﻿using game.Extensions;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using System.Collections.Generic;
 
-namespace game.Structures;
+namespace game;
 
 internal class QuadTree
 {

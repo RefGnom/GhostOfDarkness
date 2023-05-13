@@ -1,11 +1,8 @@
-﻿using game.Model;
-using game.Structures;
-using game.Extensions;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using System.Collections.Generic;
 using System;
 
-namespace game.Algorithms;
+namespace game;
 
 internal static class PathsFinder
 {

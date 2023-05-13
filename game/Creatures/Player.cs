@@ -1,13 +1,7 @@
-﻿using game.Enums;
-using game.Input;
-using game.Managers;
-using game.Objects;
-using game.UI;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Input;
+﻿using Microsoft.Xna.Framework;
 using System.Collections.Generic;
 
-namespace game.Creatures;
+namespace game;
 
 internal class Player : Creature
 {

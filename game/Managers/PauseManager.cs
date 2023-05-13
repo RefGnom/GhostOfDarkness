@@ -1,30 +1,28 @@
 ﻿using System.Collections.Generic;
-using game.Interfaces;
 
-namespace game.Managers
+namespace game;
+
+internal class PauseManager : IPauseHandler
 {
-    internal class PauseManager : IPauseHandler
+    private List<IPauseHandler> pauseHandlers = new();
+    public bool IsPaused { get; private set; }
+
+    public void SetPaused(bool isPaused)
     {
-        private List<IPauseHandler> pauseHandlers = new();
-        public bool IsPaused { get; private set; }
-
-        public void SetPaused(bool isPaused)
+        IsPaused = isPaused;
+        foreach (var handler in pauseHandlers)
         {
-            IsPaused = isPaused;
-            foreach (var handler in pauseHandlers)
-            {
-                handler.SetPaused(isPaused);
-            }
+            handler.SetPaused(isPaused);
         }
+    }
 
-        public void RegisterHandler(IPauseHandler handler)
-        {
-            pauseHandlers.Add(handler);
-        }
+    public void RegisterHandler(IPauseHandler handler)
+    {
+        pauseHandlers.Add(handler);
+    }
 
-        public void UnregisterHandler(IPauseHandler handler)
-        {
-            pauseHandlers.Remove(handler);
-        }
+    public void UnregisterHandler(IPauseHandler handler)
+    {
+        pauseHandlers.Remove(handler);
     }
 }

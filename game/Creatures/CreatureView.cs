@@ -1,11 +1,9 @@
-﻿using game.View;
-using Microsoft.Xna.Framework.Graphics;
+﻿using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
-using game.Creatures.CreatureStates;
 
-namespace game.Creatures;
+namespace game;
 
-internal abstract class CreatureView : CreatureStatesController, Interfaces.IDrawable
+internal abstract class CreatureView : CreatureStatesController, IDrawable
 {
     public CreatureView(Animator animator, Dictionary<string, int> animations) : base(animator, animations)
     {

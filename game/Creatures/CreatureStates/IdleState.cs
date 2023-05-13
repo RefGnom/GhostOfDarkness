@@ -1,8 +1,6 @@
-﻿using game.Interfaces;
-using game.View;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
-namespace game.Creatures.CreatureStates;
+namespace game;
 
 internal class IdleState : CreatureState
 {

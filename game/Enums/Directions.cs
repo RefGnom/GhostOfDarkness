@@ -1,10 +1,9 @@
-﻿namespace game.Enums
+﻿namespace game;
+
+internal enum Directions
 {
-    internal enum Directions
-    {
-        Up,
-        Down,
-        Left,
-        Right
-    }
+    Up,
+    Down,
+    Left,
+    Right
 }

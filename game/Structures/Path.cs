@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 
-namespace game.Structures;
+namespace game;
 
 internal class Path<T> : IEnumerable<T>
 {

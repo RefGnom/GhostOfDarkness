@@ -1,10 +1,7 @@
-﻿using game.Interfaces;
-using game.Managers;
-using game.Service;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace game.Objects;
+namespace game;
 
 internal class Wall : IEntity
 {
