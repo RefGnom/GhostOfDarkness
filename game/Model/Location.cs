@@ -8,8 +8,8 @@ namespace game;
 
 internal class Location : IDrawable
 {
-    private Tile[,] tiles;
     private readonly int tileSize = 32;
+    private readonly Tile[,] tiles;
 
     public List<Enemy> Enemies { get; private set; }
     public int Width { get; private set; }
@@ -20,6 +20,7 @@ internal class Location : IDrawable
         Width = (int)Math.Ceiling(width / (double)tileSize);
         Height = (int)Math.Ceiling(height / (double)tileSize);
         tiles = new Tile[Width, Height];
+        PathFinder.Location = tiles;
         Enemies = new();
         Initialize();
         GameManager.Instance.Drawer.Register(this);
@@ -56,10 +57,13 @@ internal class Location : IDrawable
     {
         for (int i = 0; i < Enemies.Count; i++)
         {
-            var movementVector = PathsFinder.GetPathToPlayer(tiles, Enemies[i].Position, player.Position)
-                .ToMovementVetors()
-                .FirstOrDefault(Vector2.Zero);
-            movementVector.Normalize();
+            var path = PathFinder.GetPath(Enemies[i].Position, player.Position, 20);
+            if (path is not null)
+            {
+                var movementVector = path.ToMovementVectors()
+                    .FirstOrDefault(Vector2.Zero);
+                movementVector.Normalize();
+            }
             Enemies[i].Update(deltaTime, player);
             if (Enemies[i].IsDead)
             {

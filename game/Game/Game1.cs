@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
 using System;
+using System.Linq;
 
 namespace game;
 
@@ -74,19 +75,25 @@ internal class Game1 : Game, IPauseHandler
     {
         if (PauseManager.IsPaused)
             return;
-
         GraphicsDevice.Clear(Color.CornflowerBlue);
+        Draw();
+        DrawUI();
+        base.Draw(gameTime);
+    }
 
+    private void Draw()
+    {
         spriteBatch.Begin(sortMode: SpriteSortMode.BackToFront, transformMatrix: Camera.Transform);
         GameManager.Instance.Drawer.Draw(spriteBatch);
         spriteBatch.End();
+    }
 
+    private void DrawUI()
+    {
         spriteBatch.Begin(sortMode: SpriteSortMode.BackToFront);
         Debug.DrawMessages(spriteBatch);
         GameManager.Instance.Drawer.DrawUI(spriteBatch);
         spriteBatch.End();
-
-        base.Draw(gameTime);
     }
 
     public void HandleKeys(Keys[] keys, float deltaTime)

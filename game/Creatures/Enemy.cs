@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using System.Linq;
 
 namespace game;
 
@@ -55,7 +56,7 @@ internal abstract class Enemy : Creature
         if (!isIdle)
         {
             if (View.CanMove)
-                MoveToPlayer(deltaTime);
+                MoveToPlayer(deltaTime, target);
             View.Run();
         }
         else
@@ -65,9 +66,17 @@ internal abstract class Enemy : Creature
         currentColdown -= deltaTime;
     }
 
-    protected virtual void MoveToPlayer(float deltaTime)
+    protected virtual void MoveToPlayer(float deltaTime, Creature target)
     {
-        var movementVector = CollisionDetecter.GetMovementVectorWithoutCollision(this, Direction.X, Direction.Y, Speed, deltaTime);
+        var path = PathFinder.GetPath(Position, target.Position, 20);
+        if (path == null)
+        {
+            isIdle = true;
+            return;
+        }
+        var movementVector = path.ToMovementVectors().First();
+        movementVector.Normalize();
+        //movementVector = CollisionDetecter.GetMovementVectorWithoutCollision(this, movementVector.X, movementVector.Y, Speed, deltaTime);
         Position += movementVector * Speed * deltaTime;
     }
 

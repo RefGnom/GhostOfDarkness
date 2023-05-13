@@ -4,12 +4,14 @@ using System;
 
 namespace game;
 
-internal static class PathsFinder
+internal static class PathFinder
 {
-    public static Path<Point> GetPathToPlayer(Tile[,] location, Vector2 position, Vector2 playerPosition)
+    public static Tile[,] Location { get; set; }
+
+    public static Path<Point> GetPath(Vector2 position, Vector2 target, int maxDistance)
     {
-        var start = ConvertToCoordinatePoint(position, location[0, 0].Size);
-        var end = ConvertToCoordinatePoint(playerPosition, location[0, 0].Size);
+        var start = ConvertToCoordinatePoint(position, Location[0, 0].Size);
+        var end = ConvertToCoordinatePoint(target, Location[0, 0].Size);
 
         var path = new Path<Point>(start);
         var nextTiles = new Queue<Path<Point>>();
@@ -22,18 +24,19 @@ internal static class PathsFinder
             var currentPath = nextTiles.Dequeue();
             foreach (var nextPoint in currentPath.Value.GetNeighbors())
             {
-                if (location[nextPoint.X, nextPoint.Y].Entity is null
+                if (Location[nextPoint.X, nextPoint.Y].Entity is null
                     && !visited.Contains(nextPoint))
                 {
                     var nextPath = new Path<Point>(nextPoint, currentPath);
                     if (nextPoint == end)
                         return nextPath;
-                    nextTiles.Enqueue(nextPath);
+                    if (nextPath.Length <= maxDistance)
+                        nextTiles.Enqueue(nextPath);
                     visited.Add(nextPoint);
                 }
             }
         }
-        return path;
+        return null;
     }
 
     private static Point ConvertToCoordinatePoint(Vector2 vector, int tileSize)

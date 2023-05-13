@@ -6,7 +6,7 @@ namespace game;
 
 internal static class PathExtension
 {
-    public static List<Vector2> ToMovementVetors(this Path<Point> value)
+    public static List<Vector2> ToMovementVectors(this Path<Point> value)
     {
         var path = value.ToList();
         path.Reverse();
