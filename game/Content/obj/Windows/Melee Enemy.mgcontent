@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Player.png</SourceFile>
-  <SourceTime>2023-04-28T03:38:19.0100207+03:00</SourceTime>
-  <DestFile>D:/Programming/C# Projects/GhostOfDarkness/game/Content/bin/Windows/Player.xnb</DestFile>
-  <DestTime>2023-05-13T23:18:29.1943183+03:00</DestTime>
+  <SourceFile>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Melee Enemy.png</SourceFile>
+  <SourceTime>2023-05-05T20:38:05.1915153+03:00</SourceTime>
+  <DestFile>D:/Programming/C# Projects/GhostOfDarkness/game/Content/bin/Windows/Melee Enemy.xnb</DestFile>
+  <DestTime>2023-05-13T23:18:29.133481+03:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2022-07-26T14:44:56+03:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

@@ -49,18 +49,21 @@ internal class Game1 : Game, IPauseHandler
 
         GameManager.Instance.PauseManager.RegisterHandler(this);
         RegisterAllKeys();
+        Debug.Initialize(WindowHeight);
         base.Initialize();
     }
 
     protected override void LoadContent()
     {
         spriteBatch = new SpriteBatch(GraphicsDevice);
+        FontsManager.Load(Content);
     }
 
     protected override void Update(GameTime gameTime)
     {
         KeyboardController.Update();
         MouseController.Update();
+        Debug.Update(WindowHeight);
         controller.Update();
 
         var deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
@@ -80,9 +83,15 @@ internal class Game1 : Game, IPauseHandler
             return;
 
         GraphicsDevice.Clear(Color.CornflowerBlue);
+
+        spriteBatch.Begin();
+        Debug.DrawMessages(spriteBatch);
+        spriteBatch.End();
+
         spriteBatch.Begin(transformMatrix: Camera.Transform);
         GameManager.Instance.Drawer.Draw(spriteBatch);
         spriteBatch.End();
+
         base.Draw(gameTime);
     }
 
