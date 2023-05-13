@@ -84,13 +84,13 @@ internal class Game1 : Game, IPauseHandler
 
         GraphicsDevice.Clear(Color.CornflowerBlue);
 
-        spriteBatch.Begin();
-        Debug.DrawMessages(spriteBatch);
-        GameManager.Instance.Drawer.DrawUI(spriteBatch);
+        spriteBatch.Begin(sortMode: SpriteSortMode.BackToFront, transformMatrix: Camera.Transform);
+        GameManager.Instance.Drawer.Draw(spriteBatch);
         spriteBatch.End();
 
-        spriteBatch.Begin(transformMatrix: Camera.Transform);
-        GameManager.Instance.Drawer.Draw(spriteBatch);
+        spriteBatch.Begin(sortMode: SpriteSortMode.BackToFront);
+        Debug.DrawMessages(spriteBatch);
+        GameManager.Instance.Drawer.DrawUI(spriteBatch);
         spriteBatch.End();
 
         base.Draw(gameTime);

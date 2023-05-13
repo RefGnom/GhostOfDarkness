@@ -40,7 +40,7 @@ internal class PlayerView : CreatureView
     public override void Draw(SpriteBatch spriteBatch)
     {
         var flip = SpriteEffects.None;
-        animator.Draw(model.Position, spriteBatch, flip, rotation);
+        animator.Draw(model.Position, spriteBatch, flip, rotation, Layers.Creatures);
         if (Settings.ShowHitboxes)
             HitboxManager.DrawHitbox(spriteBatch, model.Position, HitboxManager.Player, animator.Origin);
     }

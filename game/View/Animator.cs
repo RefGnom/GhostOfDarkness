@@ -40,17 +40,17 @@ namespace game.View
             animationLooped = looped;
         }
 
-        public void Draw(Vector2 position, SpriteBatch spriteBatch, SpriteEffects flip)
+        public void Draw(Vector2 position, SpriteBatch spriteBatch, SpriteEffects flip, float layerDepth)
         {
             var frame = GetFrame();
-            spriteBatch.Draw(texture, position, frame, Color.White, 0, Origin, 1, flip, 0);
+            spriteBatch.Draw(texture, position, frame, Color.White, 0, Origin, 1, flip, layerDepth);
             IncrementFrame();
         }
 
-        public void Draw(Vector2 position, SpriteBatch spriteBatch, SpriteEffects flip, float rotation)
+        public void Draw(Vector2 position, SpriteBatch spriteBatch, SpriteEffects flip, float rotation, float layerDepth)
         {
             var frame = GetFrame();
-            spriteBatch.Draw(texture, position, frame, Color.White, rotation, Origin, 1, flip, 0);
+            spriteBatch.Draw(texture, position, frame, Color.White, rotation, Origin, 1, flip, layerDepth);
             IncrementFrame();
         }
 
