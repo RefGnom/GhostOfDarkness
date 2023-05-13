@@ -3,6 +3,7 @@ using game.Structures;
 using game.Extensions;
 using Microsoft.Xna.Framework;
 using System.Collections.Generic;
+using System;
 
 namespace game.Algorithms;
 
@@ -40,6 +41,6 @@ internal static class PathsFinder
 
     private static Point ConvertToCoordinatePoint(Vector2 vector, int tileSize)
     {
-        return new Point((int)vector.X / tileSize, (int)vector.Y / tileSize);
+        return new Point((int)Math.Ceiling(vector.X / tileSize), (int)Math.Ceiling(vector.Y / tileSize));
     }
 }

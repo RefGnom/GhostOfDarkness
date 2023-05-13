@@ -1,13 +1,16 @@
-﻿using game.Creatures;
-using game.Interfaces;
+﻿using game.Algorithms;
+using game.Creatures;
+using game.Extensions;
 using game.Managers;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace game.Model;
 
-internal class Location : IDrawable
+internal class Location : Interfaces.IDrawable
 {
     private Tile[,] tiles;
     private readonly int tileSize = 32;
@@ -57,6 +60,10 @@ internal class Location : IDrawable
     {
         for (int i = 0; i < Enemies.Count; i++)
         {
+            var movementVector = PathsFinder.GetPathToPlayer(tiles, Enemies[i].Position, player.Position)
+                .ToMovementVetors()
+                .FirstOrDefault(Vector2.Zero);
+            movementVector.Normalize();
             Enemies[i].Update(deltaTime, player);
             if (Enemies[i].IsDead)
             {

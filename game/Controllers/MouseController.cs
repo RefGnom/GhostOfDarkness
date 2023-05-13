@@ -1,4 +1,6 @@
-﻿using Microsoft.Xna.Framework;
+﻿using game.Managers;
+using game.View;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 
 namespace game.Input;
@@ -8,7 +10,10 @@ internal static class MouseController
     private static MouseState currentState;
     private static MouseState previousState;
 
-    public static Vector2 Position => currentState.Position.ToVector2();
+    public static Vector2 WindowPosition => currentState.Position.ToVector2();
+    public static Vector2 WorldPosition => Camera.ScreenToWorld(WindowPosition);
+    private static Camera Camera => GameManager.Instance.Camera;
+
 
     public static bool LeftButtomClicked()
     {

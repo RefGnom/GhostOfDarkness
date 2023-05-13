@@ -1,6 +1,7 @@
 ﻿using game.Input;
 using game.Managers;
 using game.Service;
+using game.View;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -11,6 +12,7 @@ internal class Controller
     private GraphicsDeviceManager graphics;
 
     private PauseManager PauseManager => GameManager.Instance.PauseManager;
+    private Camera Camera => GameManager.Instance.Camera;
 
     public Controller(GraphicsDeviceManager graphics)
     {
@@ -19,7 +21,7 @@ internal class Controller
 
     public void Update()
     {
-        if (KeyboardController.IsSingleKeyDown(Settings.ChangeScreen))
+        if (KeyboardController.IsSingleKeyDown(Settings.SwitchScreen))
         {
             if (graphics.IsFullScreen)
                 SetSizeScreen(1280, 720);
@@ -32,6 +34,9 @@ internal class Controller
 
         if (KeyboardController.IsSingleKeyDown(Settings.ShowOrHideHitboxes))
             Settings.ShowHitboxes = !Settings.ShowHitboxes;
+
+        if (KeyboardController.IsSingleKeyDown(Settings.SwitchCameraFollow))
+            Camera.FollowPlayer = !Camera.FollowPlayer;
     }
 
     public void SetSizeScreen(int width, int height)

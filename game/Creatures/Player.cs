@@ -96,7 +96,7 @@ internal class Player : Creature
 
     private void UpdateDirection()
     {
-        var direction = MouseController.Position - Position;
+        var direction = MouseController.WorldPosition - Position;
         direction.Normalize();
         Direction = direction;
     }

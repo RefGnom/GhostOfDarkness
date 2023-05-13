@@ -1,5 +1,4 @@
-﻿using game.Creatures;
-using game.View;
+﻿using game.View;
 
 namespace game.Managers
 {
@@ -12,6 +11,7 @@ namespace game.Managers
         public PauseManager PauseManager { get; private set; }
         public Drawer Drawer { get; private set; }
         public CollisionDetecter CollisionDetecter { get; private set; }
+        public Camera Camera { get; private set; }
 
         private GameManager()
         {
@@ -19,6 +19,7 @@ namespace game.Managers
             PauseManager = new();
             Drawer = new();
             CollisionDetecter = new();
+            Camera = new(true);
         }
     }
 }

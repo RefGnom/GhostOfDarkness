@@ -21,6 +21,7 @@ internal class HealthBar : Interfaces.IDrawable
     public void Draw(SpriteBatch spriteBatch)
     {
         var position = new Vector2(GameManager.Instance.Game.WindowWidth - 15, 15);
+        position = GameManager.Instance.Camera.ScreenToWorld(position);
         var localScale = GameManager.Instance.Game.WindowWidth / 1920f;
         var percent = player.Health / player.MaxHealth;
         var width = TexturesManager.HealthBarBackground.Width * percent;

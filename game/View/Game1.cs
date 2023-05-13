@@ -19,7 +19,6 @@ internal class Game1 : Game, IPauseHandler
 
     private GameModel model;
     private Controller controller;
-    private Camera camera;
     private GraphicsDeviceManager graphics;
     private SpriteBatch spriteBatch;
 
@@ -27,6 +26,7 @@ internal class Game1 : Game, IPauseHandler
     public int WindowHeight => graphics.PreferredBackBufferHeight;
 
     private PauseManager PauseManager => GameManager.Instance.PauseManager;
+    private Camera Camera => GameManager.Instance.Camera;
 
     public Game1()
     {
@@ -44,7 +44,6 @@ internal class Game1 : Game, IPauseHandler
         actions = new();
         model = new(new Vector2(WindowWidth / 2, WindowHeight / 2), 1920, 1080);
         controller = new(graphics);
-        camera = new();
 
         controller.SetSizeScreen(1280, 720);
 
@@ -63,15 +62,14 @@ internal class Game1 : Game, IPauseHandler
         KeyboardController.Update();
         MouseController.Update();
         controller.Update();
-        
 
         var deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
 
         HandleKeys(KeyboardController.GetPressedKeys(), deltaTime);
 
         model.Update(deltaTime);
-        camera.Follow(model.Player.Position, WindowWidth, WindowHeight);
-        camera.ChangeScale(MouseController.ScrollValue());
+        Camera.Follow(model.Player.Position, WindowWidth, WindowHeight, deltaTime);
+        Camera.ChangeScale(MouseController.ScrollValue());
 
         base.Update(gameTime);
     }
@@ -82,8 +80,7 @@ internal class Game1 : Game, IPauseHandler
             return;
 
         GraphicsDevice.Clear(Color.CornflowerBlue);
-        //spriteBatch.Begin(transformMatrix: camera.Transform);
-        spriteBatch.Begin();
+        spriteBatch.Begin(transformMatrix: Camera.Transform);
         GameManager.Instance.Drawer.Draw(spriteBatch);
         spriteBatch.End();
         base.Draw(gameTime);
