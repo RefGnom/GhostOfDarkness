@@ -35,8 +35,6 @@ D:\Programming\C# Projects\GhostOfDarkness\game\obj\Debug\net6.0-windows\refint\
 D:\Programming\C# Projects\GhostOfDarkness\game\obj\Debug\net6.0-windows\game.pdb
 D:\Programming\C# Projects\GhostOfDarkness\game\obj\Debug\net6.0-windows\game.genruntimeconfig.cache
 D:\Programming\C# Projects\GhostOfDarkness\game\obj\Debug\net6.0-windows\ref\game.dll
-D:\Programming\C# Projects\GhostOfDarkness\game\bin\Debug\net6.0-windows\Content\Player.xnb
-D:\Programming\C# Projects\GhostOfDarkness\game\bin\Debug\net6.0-windows\Content\Bullet.xnb
 D:\Programming\C# Projects\GhostOfDarkness\game\bin\Debug\net6.0-windows\NUnit3.TestAdapter.dll
 D:\Programming\C# Projects\GhostOfDarkness\game\bin\Debug\net6.0-windows\NUnit3.TestAdapter.pdb
 D:\Programming\C# Projects\GhostOfDarkness\game\bin\Debug\net6.0-windows\nunit.engine.dll
@@ -45,11 +43,14 @@ D:\Programming\C# Projects\GhostOfDarkness\game\bin\Debug\net6.0-windows\nunit.e
 D:\Programming\C# Projects\GhostOfDarkness\game\bin\Debug\net6.0-windows\testcentric.engine.metadata.dll
 D:\Programming\C# Projects\GhostOfDarkness\game\bin\Debug\net6.0-windows\nunit.framework.dll
 D:\Programming\C# Projects\GhostOfDarkness\game\bin\Debug\net6.0-windows\nunitlite.dll
-D:\Programming\C# Projects\GhostOfDarkness\game\bin\Debug\net6.0-windows\Content\Melee Enemy.xnb
-D:\Programming\C# Projects\GhostOfDarkness\game\bin\Debug\net6.0-windows\Content\Pause menu.xnb
-D:\Programming\C# Projects\GhostOfDarkness\game\bin\Debug\net6.0-windows\Content\HealthBarBackground.xnb
-D:\Programming\C# Projects\GhostOfDarkness\game\bin\Debug\net6.0-windows\Content\HealthBarForeground.xnb
-D:\Programming\C# Projects\GhostOfDarkness\game\bin\Debug\net6.0-windows\Content\Wall.xnb
-D:\Programming\C# Projects\GhostOfDarkness\game\bin\Debug\net6.0-windows\Content\Hitbox.xnb
 D:\Programming\C# Projects\GhostOfDarkness\game\bin\Debug\net6.0-windows\Content\Arial16.xnb
 D:\Programming\C# Projects\GhostOfDarkness\game\bin\Debug\net6.0-windows\Content\Fonts\Arial16.xnb
+D:\Programming\C# Projects\GhostOfDarkness\game\bin\Debug\net6.0-windows\Content\Fonts\Arial.xnb
+D:\Programming\C# Projects\GhostOfDarkness\game\bin\Debug\net6.0-windows\Content\Textures\Creatures\Bullet.xnb
+D:\Programming\C# Projects\GhostOfDarkness\game\bin\Debug\net6.0-windows\Content\Textures\Creatures\Hitbox.xnb
+D:\Programming\C# Projects\GhostOfDarkness\game\bin\Debug\net6.0-windows\Content\Textures\Creatures\Melee Enemy.xnb
+D:\Programming\C# Projects\GhostOfDarkness\game\bin\Debug\net6.0-windows\Content\Textures\Creatures\Player.xnb
+D:\Programming\C# Projects\GhostOfDarkness\game\bin\Debug\net6.0-windows\Content\Textures\Tiles\Wall.xnb
+D:\Programming\C# Projects\GhostOfDarkness\game\bin\Debug\net6.0-windows\Content\Textures\UI\HealthBarBackground.xnb
+D:\Programming\C# Projects\GhostOfDarkness\game\bin\Debug\net6.0-windows\Content\Textures\UI\HealthBarForeground.xnb
+D:\Programming\C# Projects\GhostOfDarkness\game\bin\Debug\net6.0-windows\Content\Textures\UI\Pause Menu.xnb

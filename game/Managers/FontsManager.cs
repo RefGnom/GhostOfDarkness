@@ -9,6 +9,6 @@ internal static class FontsManager
 
     public static void Load(ContentManager content)
     {
-        Arial = content.Load<SpriteFont>("Fonts\\Arial16");
+        Arial = content.Load<SpriteFont>("Fonts\\Arial");
     }
 }

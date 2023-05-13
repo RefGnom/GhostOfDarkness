@@ -4,15 +4,15 @@
   <Platform>Windows</Platform>
   <Config />
   <SourceFiles>
-    <File>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Bullet.png</File>
-    <File>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Fonts/Arial16.spritefont</File>
-    <File>D:/Programming/C# Projects/GhostOfDarkness/game/Content/HealthBarBackground.png</File>
-    <File>D:/Programming/C# Projects/GhostOfDarkness/game/Content/HealthBarForeground.png</File>
-    <File>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Hitbox.png</File>
-    <File>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Melee Enemy.png</File>
-    <File>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Pause Menu.png</File>
-    <File>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Player.png</File>
-    <File>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Wall.png</File>
+    <File>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Fonts/Arial.spritefont</File>
+    <File>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Textures/Creatures/Bullet.png</File>
+    <File>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Textures/Creatures/Hitbox.png</File>
+    <File>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Textures/Creatures/Melee Enemy.png</File>
+    <File>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Textures/Creatures/Player.png</File>
+    <File>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Textures/Tiles/Wall.png</File>
+    <File>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Textures/UI/HealthBarBackground.png</File>
+    <File>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Textures/UI/HealthBarForeground.png</File>
+    <File>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Textures/UI/Pause Menu.png</File>
   </SourceFiles>
   <DestFiles>
     <File xsi:nil="true" />

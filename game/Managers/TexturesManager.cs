@@ -16,13 +16,13 @@ internal static class TexturesManager
 
     public static void Load(ContentManager content)
     {
-        Hitbox = content.Load<Texture2D>("Hitbox");
-        Player = content.Load<Texture2D>("Player");
-        Bullet = content.Load<Texture2D>("Bullet");
-        MeleeEnemy = content.Load<Texture2D>("Melee Enemy");
-        PauseMenu = content.Load<Texture2D>("Pause Menu");
-        HealthBarForeground = content.Load<Texture2D>("HealthBarForeground");
-        HealthBarBackground = content.Load<Texture2D>("HealthBarBackground");
-        Wall = content.Load<Texture2D>("Wall");
+        Hitbox = content.Load<Texture2D>("Textures\\Creatures\\Hitbox");
+        Player = content.Load<Texture2D>("Textures\\Creatures\\Player");
+        Bullet = content.Load<Texture2D>("Textures\\Creatures\\Bullet");
+        MeleeEnemy = content.Load<Texture2D>("Textures\\Creatures\\Melee Enemy");
+        PauseMenu = content.Load<Texture2D>("Textures\\UI\\Pause Menu");
+        HealthBarForeground = content.Load<Texture2D>("Textures\\UI\\HealthBarForeground");
+        HealthBarBackground = content.Load<Texture2D>("Textures\\UI\\HealthBarBackground");
+        Wall = content.Load<Texture2D>("Textures\\Tiles\\Wall");
     }
 }
