@@ -5,10 +5,9 @@ namespace game;
 
 internal class Player : Creature
 {
-    private HealthBar healthBar;
+    private readonly HealthBar healthBar;
 
     public List<Bullet> Bullets { get; private set; }
-    public float MaxHealth { get; private set; }
 
     public readonly Dictionary<Directions, int> EnableDirections = new()
     {
@@ -22,10 +21,9 @@ internal class Player : Creature
 
     public Player(Vector2 position, float speed, float health, float cooldown) : base(position, speed, health, 20, 100, cooldown)
     {
-        MaxHealth = health;
         View = new PlayerView(this);
         Bullets = new();
-        healthBar = new HealthBar(this);
+        healthBar = new HealthBar(health);
         Hitbox = HitboxManager.Player;
         Create(this);
         //Speed = 1000;
@@ -124,6 +122,7 @@ internal class Player : Creature
     public override void TakeDamage(float damage)
     {
         Health -= damage;
+        healthBar.SetHealth(Health);
         if (Health > 0)
             View.TakeDamage();
         else

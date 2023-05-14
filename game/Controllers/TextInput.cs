@@ -24,7 +24,6 @@ internal class TextInput : IDrawable
     public void Delete()
     {
         KeyboardController.GameWindow.TextInput -= InputText;
-        Debug.Log("Text input deleted");
     }
 
     private void InputText(object sender, TextInputEventArgs e)
