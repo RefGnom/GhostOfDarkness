@@ -13,6 +13,7 @@ internal static class TexturesManager
     public static Texture2D HealthBarForeground { get; private set; }
     public static Texture2D HealthBarBackground { get; private set; }
     public static Texture2D Wall { get; private set; }
+    public static Texture2D ButtonBackground { get; private set; }
 
     public static void Load(ContentManager content)
     {
@@ -21,8 +22,9 @@ internal static class TexturesManager
         Bullet = content.Load<Texture2D>("Textures\\Creatures\\Bullet");
         MeleeEnemy = content.Load<Texture2D>("Textures\\Creatures\\Melee Enemy");
         PauseMenu = content.Load<Texture2D>("Textures\\UI\\Pause Menu");
-        HealthBarForeground = content.Load<Texture2D>("Textures\\UI\\HealthBarForeground");
-        HealthBarBackground = content.Load<Texture2D>("Textures\\UI\\HealthBarBackground");
+        HealthBarForeground = content.Load<Texture2D>("Textures\\HUD\\HealthBarForeground");
+        HealthBarBackground = content.Load<Texture2D>("Textures\\HUD\\HealthBarBackground");
         Wall = content.Load<Texture2D>("Textures\\Tiles\\Wall");
+        ButtonBackground = content.Load<Texture2D>("Textures\\UI\\ButtonBackground");
     }
 }

@@ -23,8 +23,8 @@ internal class HealthBar : IDrawable
         var percent = player.Health / player.MaxHealth;
         var width = TexturesManager.HealthBarBackground.Width * percent;
         var height = TexturesManager.HealthBarBackground.Height;
-        var healtRectangle = new Rectangle(0, 0, (int)width, height);
-        spriteBatch.Draw(TexturesManager.HealthBarBackground, position, null, Color.White, 0, origin, scale * localScale, SpriteEffects.None, Layers.UI);
-        spriteBatch.Draw(TexturesManager.HealthBarForeground, position, healtRectangle, Color.White, 0, origin, scale * localScale, SpriteEffects.None, Layers.UI);
+        var healthRectangle = new Rectangle(0, 0, (int)width, height);
+        spriteBatch.Draw(TexturesManager.HealthBarBackground, position, null, Color.White, 0, origin, scale * localScale, SpriteEffects.None, Layers.HUD);
+        spriteBatch.Draw(TexturesManager.HealthBarForeground, position, healthRectangle, Color.White, 0, origin, scale * localScale, SpriteEffects.None, Layers.HUD);
     }
 }

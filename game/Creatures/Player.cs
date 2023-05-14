@@ -57,7 +57,7 @@ internal class Player : Creature
             return;
         }
         UpdateDirection();
-        if (View.CanAttack && MouseController.LeftButtomClicked())
+        if (View.CanAttack && MouseController.LeftButtonClicked())
             Shoot();
         if (View.CanMove)
             Move(deltaTime);

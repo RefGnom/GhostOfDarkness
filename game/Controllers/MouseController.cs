@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
+using System;
 
 namespace game;
 
@@ -12,14 +13,15 @@ internal static class MouseController
     public static Vector2 WorldPosition => Camera.ScreenToWorld(WindowPosition);
     private static Camera Camera => GameManager.Instance.Camera;
 
+    public static event Action LeftButtonOnClicked;
 
-    public static bool LeftButtomClicked()
+    public static bool LeftButtonClicked()
     {
         return currentState.LeftButton == ButtonState.Pressed
             && previousState.LeftButton == ButtonState.Released;
     }
 
-    public static bool RightButtomClicked()
+    public static bool RightButtonClicked()
     {
         return currentState.RightButton == ButtonState.Pressed
             && previousState.RightButton == ButtonState.Released;
@@ -32,6 +34,8 @@ internal static class MouseController
 
     public static void Update()
     {
+        if (LeftButtonClicked())
+            LeftButtonOnClicked?.Invoke();
         previousState = currentState;
         currentState = Mouse.GetState();
     }

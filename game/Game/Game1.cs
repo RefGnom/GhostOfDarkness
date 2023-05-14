@@ -25,7 +25,6 @@ internal class Game1 : Game, IPauseHandler
     public Game1()
     {
         GameManager.Instance.Game = this;
-        view = new();
         actions = new();
         graphics = new GraphicsDeviceManager(this);
         controller = new(graphics);
@@ -39,7 +38,7 @@ internal class Game1 : Game, IPauseHandler
         TexturesManager.Load(Content);
         // ???
         model = new(new Vector2(WindowWidth / 2, WindowHeight / 2), 1920, 1080);
-
+        view = new();
         controller.SetSizeScreen(1280, 720);
         GameManager.Instance.PauseManager.RegisterHandler(this);
         RegisterAllKeys();
@@ -76,6 +75,7 @@ internal class Game1 : Game, IPauseHandler
         if (PauseManager.IsPaused)
             return;
         GraphicsDevice.Clear(Color.CornflowerBlue);
+        DrawUI();
         Draw();
         DrawHUD();
         base.Draw(gameTime);
@@ -85,6 +85,14 @@ internal class Game1 : Game, IPauseHandler
     {
         spriteBatch.Begin(sortMode: SpriteSortMode.BackToFront, transformMatrix: Camera.Transform);
         GameManager.Instance.Drawer.Draw(spriteBatch);
+        spriteBatch.End();
+    }
+
+    private void DrawUI()
+    {
+        spriteBatch.Begin(sortMode: SpriteSortMode.BackToFront);
+        Debug.DrawMessages(spriteBatch);
+        GameManager.Instance.Drawer.DrawUI(spriteBatch);
         spriteBatch.End();
     }
 

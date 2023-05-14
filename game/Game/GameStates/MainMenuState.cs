@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework.Graphics;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace game;
 
@@ -55,6 +56,10 @@ internal class MainMenuState : GameState
 
     public override void Start(IState previousState)
     {
+        var b = new Button(TexturesManager.ButtonBackground, Vector2.One, "Hello world!");
+        GameManager.Instance.Drawer.RegisterUI(b);
+        b.OnClicked += () => Debug.Log("Click");
+        MouseController.LeftButtonOnClicked += () => b.Clicked();
     }
 
     public override void Stop()

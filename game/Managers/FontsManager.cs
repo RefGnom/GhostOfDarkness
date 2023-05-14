@@ -6,9 +6,11 @@ namespace game;
 internal static class FontsManager
 {
     public static SpriteFont Arial { get; private set; }
+    public static SpriteFont TimesNewRoman { get; private set; }
 
     public static void Load(ContentManager content)
     {
         Arial = content.Load<SpriteFont>("Fonts\\Arial");
+        TimesNewRoman = content.Load<SpriteFont>("Fonts\\TimesNewRoman");
     }
 }

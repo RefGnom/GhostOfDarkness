@@ -20,6 +20,13 @@
 /processorParam:TextureFormat=Compressed
 /build:Fonts/Arial.spritefont
 
+#begin Fonts/TimesNewRoman.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:PremultiplyAlpha=True
+/processorParam:TextureFormat=Compressed
+/build:Fonts/TimesNewRoman.spritefont
+
 #begin Textures/Creatures/Bullet.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -68,6 +75,30 @@
 /processorParam:TextureFormat=Color
 /build:Textures/Creatures/Player.png
 
+#begin Textures/HUD/HealthBarBackground.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Textures/HUD/HealthBarBackground.png
+
+#begin Textures/HUD/HealthBarForeground.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Textures/HUD/HealthBarForeground.png
+
 #begin Textures/Tiles/Wall.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -80,7 +111,7 @@
 /processorParam:TextureFormat=Color
 /build:Textures/Tiles/Wall.png
 
-#begin Textures/UI/HealthBarBackground.png
+#begin Textures/UI/ButtonBackground.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -90,19 +121,7 @@
 /processorParam:ResizeToPowerOfTwo=False
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
-/build:Textures/UI/HealthBarBackground.png
-
-#begin Textures/UI/HealthBarForeground.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:Textures/UI/HealthBarForeground.png
+/build:Textures/UI/ButtonBackground.png
 
 #begin Textures/UI/Pause Menu.png
 /importer:TextureImporter

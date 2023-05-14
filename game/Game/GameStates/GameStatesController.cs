@@ -23,6 +23,7 @@ internal class GameStatesController : IStateSwitcher, IDrawable
             new SettingsState(this)
         };
         currentState = states[0];
+        currentState.Start(currentState);
     }
 
     public void Back() => currentState.Back();
