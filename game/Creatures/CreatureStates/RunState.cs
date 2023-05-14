@@ -12,10 +12,10 @@ internal class RunState : CreatureState
 
     public override void TakeDamage()
     {
-        stateSwitcher.SwitchState<TakeDamageState>();
+        switcher.SwitchState<TakeDamageState>();
     }
 
-    public override void Start()
+    public override void Start(IState previousState)
     {
         Animator.SetAnimation(animations["run"]);
     }
@@ -34,16 +34,16 @@ internal class RunState : CreatureState
 
     public override void Attack()
     {
-        stateSwitcher.SwitchState<AttackState>();
+        switcher.SwitchState<AttackState>();
     }
 
     public override void Kill()
     {
-        stateSwitcher.SwitchState<DeadState>();
+        switcher.SwitchState<DeadState>();
     }
 
     public override void Idle()
     {
-        stateSwitcher.SwitchState<IdleState>();
+        switcher.SwitchState<IdleState>();
     }
 }

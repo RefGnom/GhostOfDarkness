@@ -32,11 +32,11 @@ internal class CreatureStatesController : IStateSwitcher
         currentState = states[0];
     }
 
-    public void SwitchState<T>() where T : CreatureState
+    public void SwitchState<T>() where T : IState
     {
         var state = states.FirstOrDefault(s => s is T);
         currentState.Stop();
-        state.Start();
+        state.Start(currentState);
         currentState = state;
     }
 

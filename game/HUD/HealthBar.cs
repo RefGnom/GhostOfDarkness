@@ -13,7 +13,7 @@ internal class HealthBar : IDrawable
     {
         this.player = player;
         origin = new Vector2(TexturesManager.HealthBarBackground.Width, 0);
-        GameManager.Instance.Drawer.RegisterUI(this);
+        GameManager.Instance.Drawer.RegisterHUD(this);
     }
 
     public void Draw(SpriteBatch spriteBatch)

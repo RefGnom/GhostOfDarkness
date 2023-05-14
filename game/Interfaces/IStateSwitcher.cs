@@ -2,5 +2,10 @@
 
 internal interface IStateSwitcher
 {
-    void SwitchState<T>() where T : CreatureState;
+    public void SwitchState<T>() where T : IState;
+
+    public void SwitchState<T>(T state) where T : IState
+    {
+        SwitchState<T>();
+    }
 }

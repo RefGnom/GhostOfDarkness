@@ -74,9 +74,10 @@ internal abstract class Enemy : Creature
             isIdle = true;
             return;
         }
+        // Работает некорректно
         var movementVector = path.ToMovementVectors().First();
         movementVector.Normalize();
-        //movementVector = CollisionDetecter.GetMovementVectorWithoutCollision(this, movementVector.X, movementVector.Y, Speed, deltaTime);
+        movementVector = CollisionDetecter.GetMovementVectorWithoutCollision(this, movementVector.X, movementVector.Y, Speed, deltaTime);
         Position += movementVector * Speed * deltaTime;
     }
 

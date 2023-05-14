@@ -6,16 +6,16 @@ namespace game;
 internal class Drawer
 {
     private List<IDrawable> drawables = new();
-    private List<IDrawable> UIdrawables = new();
+    private List<IDrawable> HUDdrawables = new();
 
     public void Register(IDrawable drawable)
     {
         drawables.Add(drawable);
     }
 
-    public void RegisterUI(IDrawable drawable)
+    public void RegisterHUD(IDrawable drawable)
     {
-        UIdrawables.Add(drawable);
+        HUDdrawables.Add(drawable);
     }
 
     public void Unregister(IDrawable drawable)
@@ -23,9 +23,9 @@ internal class Drawer
         drawables.Remove(drawable);
     }
 
-    public void UnregisterUI(IDrawable drawable)
+    public void UnregisterHUD(IDrawable drawable)
     {
-        UIdrawables.Remove(drawable);
+        HUDdrawables.Remove(drawable);
     }
 
     public void Draw(SpriteBatch spriteBatch)
@@ -36,9 +36,9 @@ internal class Drawer
         }
     }
 
-    public void DrawUI(SpriteBatch spriteBatch)
+    public void DrawHUD(SpriteBatch spriteBatch)
     {
-        foreach (var drawable in UIdrawables)
+        foreach (var drawable in HUDdrawables)
         {
             drawable.Draw(spriteBatch);
         }

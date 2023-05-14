@@ -57,13 +57,6 @@ internal class Location : IDrawable
     {
         for (int i = 0; i < Enemies.Count; i++)
         {
-            var path = PathFinder.GetPath(Enemies[i].Position, player.Position, 20);
-            if (path is not null)
-            {
-                var movementVector = path.ToMovementVectors()
-                    .FirstOrDefault(Vector2.Zero);
-                movementVector.Normalize();
-            }
             Enemies[i].Update(deltaTime, player);
             if (Enemies[i].IsDead)
             {

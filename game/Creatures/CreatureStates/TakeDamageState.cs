@@ -15,10 +15,10 @@ internal class TakeDamageState : CreatureState
 
     public override void TakeDamage()
     {
-        stateSwitcher.SwitchState<TakeDamageState>();
+        switcher.SwitchState<TakeDamageState>();
     }
 
-    public override void Start()
+    public override void Start(IState previousState)
     {
         Animator.SetAnimation(animations["take damage"]);
         leftTime = Animator.GetAnimationTime(animations["take damage"]);
@@ -33,13 +33,13 @@ internal class TakeDamageState : CreatureState
         leftTime -= deltaTime;
         if (leftTime <= 0)
         {
-            stateSwitcher.SwitchState<FightState>();
+            switcher.SwitchState<FightState>();
         }
     }
 
     public override void Kill()
     {
-        stateSwitcher.SwitchState<DeadState>();
+        switcher.SwitchState<DeadState>();
     }
 
     public override void Run()

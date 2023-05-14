@@ -3,7 +3,6 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
 using System;
-using System.Linq;
 
 namespace game;
 
@@ -12,6 +11,7 @@ internal class Game1 : Game, IPauseHandler
     private Dictionary<Keys, Action<float>> actions;
 
     private GameModel model;
+    private GameStatesController view;
     private Controller controller;
     private GraphicsDeviceManager graphics;
     private SpriteBatch spriteBatch;
@@ -25,7 +25,10 @@ internal class Game1 : Game, IPauseHandler
     public Game1()
     {
         GameManager.Instance.Game = this;
+        view = new();
+        actions = new();
         graphics = new GraphicsDeviceManager(this);
+        controller = new(graphics);
         Content.RootDirectory = "Content";
         IsMouseVisible = true;
     }
@@ -35,12 +38,9 @@ internal class Game1 : Game, IPauseHandler
         // Текстуры должны подгружаться раньше, чем создастся модель уровня
         TexturesManager.Load(Content);
         // ???
-        actions = new();
         model = new(new Vector2(WindowWidth / 2, WindowHeight / 2), 1920, 1080);
-        controller = new(graphics);
 
         controller.SetSizeScreen(1280, 720);
-
         GameManager.Instance.PauseManager.RegisterHandler(this);
         RegisterAllKeys();
         Debug.Initialize(WindowHeight);
@@ -77,7 +77,7 @@ internal class Game1 : Game, IPauseHandler
             return;
         GraphicsDevice.Clear(Color.CornflowerBlue);
         Draw();
-        DrawUI();
+        DrawHUD();
         base.Draw(gameTime);
     }
 
@@ -88,11 +88,11 @@ internal class Game1 : Game, IPauseHandler
         spriteBatch.End();
     }
 
-    private void DrawUI()
+    private void DrawHUD()
     {
         spriteBatch.Begin(sortMode: SpriteSortMode.BackToFront);
         Debug.DrawMessages(spriteBatch);
-        GameManager.Instance.Drawer.DrawUI(spriteBatch);
+        GameManager.Instance.Drawer.DrawHUD(spriteBatch);
         spriteBatch.End();
     }
 

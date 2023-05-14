@@ -25,7 +25,7 @@ internal class DeadState : CreatureState
     {
     }
 
-    public override void Start()
+    public override void Start(IState previousState)
     {
         Killed = true;
         Animator.SetAnimation(animations["dead"], false);

@@ -2,9 +2,9 @@
 
 namespace game;
 
-internal abstract class CreatureState
+internal abstract class CreatureState : IState
 {
-    protected readonly IStateSwitcher stateSwitcher;
+    protected readonly IStateSwitcher switcher;
     public readonly Animator Animator;
     protected readonly Dictionary<string, int> animations;
 
@@ -15,12 +15,12 @@ internal abstract class CreatureState
 
     public CreatureState(IStateSwitcher stateSwitcher, Animator animator, Dictionary<string, int> animations)
     {
-        this.stateSwitcher = stateSwitcher;
+        switcher = stateSwitcher;
         Animator = animator;
         this.animations = animations;
     }
 
-    public abstract void Start();
+    public abstract void Start(IState previousState);
 
     public abstract void Stop();
 

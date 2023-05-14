@@ -41,6 +41,6 @@ internal static class PathFinder
 
     private static Point ConvertToCoordinatePoint(Vector2 vector, int tileSize)
     {
-        return new Point((int)Math.Ceiling(vector.X / tileSize), (int)Math.Ceiling(vector.Y / tileSize));
+        return new Point((int)Math.Floor(vector.X / tileSize), (int)Math.Floor(vector.Y / tileSize));
     }
 }
