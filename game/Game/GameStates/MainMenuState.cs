@@ -22,6 +22,10 @@ internal class MainMenuState : GameState
         throw new System.NotImplementedException();
     }
 
+    public override void Update(float deltaTime)
+    {
+    }
+
     public override void Exit()
     {
         GameIsExit = true;
@@ -56,13 +60,35 @@ internal class MainMenuState : GameState
 
     public override void Start(IState previousState)
     {
-        var b = new Button(TexturesManager.ButtonBackground, Vector2.One, "Hello world!");
-        GameManager.Instance.Drawer.RegisterUI(b);
-        b.OnClicked += () => Debug.Log("Click");
-        MouseController.LeftButtonOnClicked += () => b.Clicked();
+        var buttonDistance = 150;
+        var position = new Vector2(160, 275);
+        var newGame = new Button(TexturesManager.ButtonBackground, position, "New game");
+        newGame.OnClicked += NewGame;
+        position.Y += buttonDistance;
+        var loadSave = new Button(TexturesManager.ButtonBackground, position, "Load save");
+        loadSave.OnClicked += LoadSave;
+        position.Y += buttonDistance;
+        var settings = new Button(TexturesManager.ButtonBackground, position, "Settings");
+        settings.OnClicked += OpenSettings;
+        position.Y += buttonDistance;
+        var exit = new Button(TexturesManager.ButtonBackground, position, "Exit");
+        exit.OnClicked += Exit;
+
+        buttons = new()
+        {
+            newGame,
+            loadSave,
+            settings,
+            exit
+        };
+
+        RegisterButtons();
+        MouseController.LeftButtonOnClicked += ClickedButtons;
     }
 
     public override void Stop()
     {
+        UnregisterButtons();
+        MouseController.LeftButtonOnClicked -= ClickedButtons;
     }
 }

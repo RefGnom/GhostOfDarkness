@@ -123,6 +123,18 @@
 /processorParam:TextureFormat=Color
 /build:Textures/UI/ButtonBackground.png
 
+#begin Textures/UI/FieldForGameName.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Textures/UI/FieldForGameName.png
+
 #begin Textures/UI/Pause Menu.png
 /importer:TextureImporter
 /processor:TextureProcessor

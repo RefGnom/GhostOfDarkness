@@ -43,6 +43,7 @@ internal class Game1 : Game, IPauseHandler
         GameManager.Instance.PauseManager.RegisterHandler(this);
         RegisterAllKeys();
         Debug.Initialize(WindowHeight);
+        KeyboardController.GameWindow = Window;
         base.Initialize();
     }
 
@@ -54,6 +55,9 @@ internal class Game1 : Game, IPauseHandler
 
     protected override void Update(GameTime gameTime)
     {
+        if (view.GameIsExit)
+            Exit();
+
         KeyboardController.Update();
         MouseController.Update();
         Debug.Update(WindowHeight);
@@ -64,6 +68,7 @@ internal class Game1 : Game, IPauseHandler
         HandleKeys(KeyboardController.GetPressedKeys(), deltaTime);
 
         model.Update(deltaTime);
+        view.Update(deltaTime);
         Camera.Follow(model.Player.Position, WindowWidth, WindowHeight, deltaTime);
         Camera.ChangeScale(MouseController.ScrollValue());
 
@@ -75,9 +80,9 @@ internal class Game1 : Game, IPauseHandler
         if (PauseManager.IsPaused)
             return;
         GraphicsDevice.Clear(Color.CornflowerBlue);
-        DrawUI();
         Draw();
         DrawHUD();
+        DrawUI();
         base.Draw(gameTime);
     }
 

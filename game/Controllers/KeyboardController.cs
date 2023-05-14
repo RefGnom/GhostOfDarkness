@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework.Input;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Input;
 
 namespace game;
 
@@ -6,6 +7,13 @@ internal static class KeyboardController
 {
     private static KeyboardState currentState;
     private static KeyboardState previousState;
+
+    public static GameWindow GameWindow { get; set; }
+
+    public static bool IsKeyDown(Keys key, bool single = true)
+    {
+        return currentState.IsKeyDown(key) && (!previousState.IsKeyDown(key) || !single);
+    }
 
     public static bool IsSingleKeyDown(Keys key)
     {

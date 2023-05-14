@@ -57,4 +57,8 @@ internal class PlayState : GameState
     public override void Stop()
     {
     }
+
+    public override void Update(float deltaTime)
+    {
+    }
 }

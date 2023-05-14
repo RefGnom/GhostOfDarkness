@@ -58,4 +58,8 @@ internal class PlayerDeadState : GameState
     public override void Stop()
     {
     }
+
+    public override void Update(float deltaTime)
+    {
+    }
 }

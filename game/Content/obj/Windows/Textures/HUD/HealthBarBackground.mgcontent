@@ -3,7 +3,7 @@
   <SourceFile>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Textures/HUD/HealthBarBackground.png</SourceFile>
   <SourceTime>2023-05-11T00:08:05.4494549+03:00</SourceTime>
   <DestFile>D:/Programming/C# Projects/GhostOfDarkness/game/Content/bin/Windows/Textures/HUD/HealthBarBackground.xnb</DestFile>
-  <DestTime>2023-05-14T21:07:48.7487362+03:00</DestTime>
+  <DestTime>2023-05-15T01:02:39.4373323+03:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2022-07-26T14:44:56+03:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

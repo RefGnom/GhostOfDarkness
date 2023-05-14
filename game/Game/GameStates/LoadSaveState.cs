@@ -59,4 +59,8 @@ internal class LoadSaveState : GameState
     public override void Stop()
     {
     }
+
+    public override void Update(float deltaTime)
+    {
+    }
 }

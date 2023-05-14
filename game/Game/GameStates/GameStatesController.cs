@@ -9,6 +9,8 @@ internal class GameStatesController : IStateSwitcher, IDrawable
     private GameState currentState;
     private readonly List<GameState> states;
 
+    public bool GameIsExit => currentState.GameIsExit;
+
     public GameStatesController()
     {
         states = new List<GameState>()
@@ -28,21 +30,21 @@ internal class GameStatesController : IStateSwitcher, IDrawable
 
     public void Back() => currentState.Back();
 
-    public void NewGame()=> currentState.NewGame();
+    public void NewGame() => currentState.NewGame();
 
-    public void LoadSave()=> currentState.LoadSave();
+    public void LoadSave() => currentState.LoadSave();
 
-    public void OpenSettings()=> currentState.OpenSettings();
+    public void OpenSettings() => currentState.OpenSettings();
 
-    public void Exit()=> currentState.Exit();
+    public void Exit() => currentState.Exit();
 
-    public void Play()=> currentState.Play();
+    public void Play() => currentState.Play();
 
-    public void Restart()=> currentState.Restart();
+    public void Restart() => currentState.Restart();
 
-    public void Confirm()=> currentState.Confirm();
+    public void Confirm() => currentState.Confirm();
 
-    public void Save()=> currentState.Save();
+    public void Save() => currentState.Save();
 
     public void SwitchState<T>() where T : IState
     {
@@ -50,6 +52,11 @@ internal class GameStatesController : IStateSwitcher, IDrawable
         currentState.Stop();
         state.Start(currentState);
         currentState = state;
+    }
+
+    public void Update(float deltaTime)
+    {
+        currentState.Update(deltaTime);
     }
 
     void IDrawable.Draw(SpriteBatch spriteBatch)

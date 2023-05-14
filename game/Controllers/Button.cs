@@ -33,9 +33,10 @@ internal class Button : IDrawable
     public void Draw(SpriteBatch spriteBatch)
     {
         scale = GameManager.Instance.Game.WindowWidth / 1920f;
+        var position = this.position * scale;
         spriteBatch.Draw(TexturesManager.ButtonBackground, position, null, Color.White, 0, Vector2.Zero, scale, SpriteEffects.None, Layers.UI);
         var textSize = FontsManager.TimesNewRoman.MeasureString(text);
-        var textPosition = new Vector2(texture.Width / 2 - textSize.X / 2, texture.Height / 2 - textSize.Y / 2) * scale;
+        var textPosition = position + new Vector2(texture.Width / 2 - textSize.X / 2, texture.Height / 2 - textSize.Y / 2) * scale;
         spriteBatch.DrawString(FontsManager.TimesNewRoman, text, textPosition, Color.White, 0, Vector2.Zero, scale, SpriteEffects.None, Layers.Text);
     }
 
@@ -43,7 +44,9 @@ internal class Button : IDrawable
     {
         var width = texture.Width * scale;
         var height = texture.Height * scale;
-        var bounds = new Rectangle((int)position.X, (int)position.Y, (int)width, (int)height);
+        var x = position.X * scale;
+        var y = position.Y * scale;
+        var bounds = new Rectangle((int)x, (int)y, (int)width, (int)height);
         return bounds.Contains(mousePosition);
     }
 }
