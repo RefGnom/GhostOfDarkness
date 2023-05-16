@@ -41,6 +41,10 @@ internal class CreateGameState : GameState
         switcher.SwitchState<PlayState>();
     }
 
+    public override void Dead()
+    {
+    }
+
     public override void Restart()
     {
     }
@@ -49,9 +53,8 @@ internal class CreateGameState : GameState
     {
     }
 
-    public override void Start(IState previousState)
+    public override void Start(GameState previousState)
     {
-        this.previousState = (GameState)previousState;
         var back = new Button(TexturesManager.ButtonBackground, new Vector2(1432, 960), "Back");
         back.OnClicked += Back;
         var create = new Button(TexturesManager.ButtonBackground, new Vector2(380, 600), "Create");
@@ -78,7 +81,7 @@ internal class CreateGameState : GameState
         MouseController.LeftButtonOnClicked -= ClickedButtons;
     }
 
-    public override void Draw(SpriteBatch spriteBatch)
+    public override void Draw(SpriteBatch spriteBatch, float scale)
     {
     }
 

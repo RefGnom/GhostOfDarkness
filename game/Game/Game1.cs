@@ -10,6 +10,8 @@ internal class Game1 : Game, IPauseHandler
 {
     private Dictionary<Keys, Action<float>> actions;
 
+    private float maxWindowWidth = 1920;
+
     private GameModel model;
     private GameStatesController view;
     private Controller controller;
@@ -18,13 +20,13 @@ internal class Game1 : Game, IPauseHandler
 
     public int WindowWidth => graphics.PreferredBackBufferWidth;
     public int WindowHeight => graphics.PreferredBackBufferHeight;
+    public float Scale => WindowWidth / maxWindowWidth;
 
     private PauseManager PauseManager => GameManager.Instance.PauseManager;
     private Camera Camera => GameManager.Instance.Camera;
 
     public Game1()
     {
-        GameManager.Instance.Game = this;
         actions = new();
         graphics = new GraphicsDeviceManager(this);
         controller = new(graphics);
@@ -57,10 +59,17 @@ internal class Game1 : Game, IPauseHandler
     {
         if (view.GameIsExit)
             Exit();
+
         KeyboardController.Update();
         MouseController.Update();
         Debug.Update(WindowHeight);
         controller.Update();
+
+        if (model.Player.IsDead)
+            view.Dead();
+
+        if (KeyboardController.IsSingleKeyDown(Keys.Escape))
+            view.Back();
 
         var deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
 
@@ -88,7 +97,7 @@ internal class Game1 : Game, IPauseHandler
     private void Draw()
     {
         spriteBatch.Begin(sortMode: SpriteSortMode.BackToFront, transformMatrix: Camera.Transform);
-        GameManager.Instance.Drawer.Draw(spriteBatch);
+        GameManager.Instance.Drawer.Draw(spriteBatch, Scale);
         spriteBatch.End();
     }
 
@@ -96,7 +105,7 @@ internal class Game1 : Game, IPauseHandler
     {
         spriteBatch.Begin(sortMode: SpriteSortMode.BackToFront);
         Debug.DrawMessages(spriteBatch);
-        GameManager.Instance.Drawer.DrawUI(spriteBatch);
+        GameManager.Instance.Drawer.DrawUI(spriteBatch, Scale);
         spriteBatch.End();
     }
 
@@ -104,7 +113,7 @@ internal class Game1 : Game, IPauseHandler
     {
         spriteBatch.Begin(sortMode: SpriteSortMode.BackToFront);
         Debug.DrawMessages(spriteBatch);
-        GameManager.Instance.Drawer.DrawHUD(spriteBatch);
+        GameManager.Instance.Drawer.DrawHUD(spriteBatch, Scale);
         spriteBatch.End();
     }
 

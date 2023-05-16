@@ -40,6 +40,8 @@ internal class GameStatesController : IStateSwitcher, IDrawable
 
     public void Play() => currentState.Play();
 
+    public void Dead() => currentState.Dead();
+
     public void Restart() => currentState.Restart();
 
     public void Confirm() => currentState.Confirm();
@@ -64,8 +66,8 @@ internal class GameStatesController : IStateSwitcher, IDrawable
         currentState.Update(deltaTime);
     }
 
-    void IDrawable.Draw(SpriteBatch spriteBatch)
+    void IDrawable.Draw(SpriteBatch spriteBatch, float scale)
     {
-        currentState.Draw(spriteBatch);
+        currentState.Draw(spriteBatch, scale);
     }
 }

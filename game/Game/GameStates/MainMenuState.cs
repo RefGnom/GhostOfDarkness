@@ -17,7 +17,7 @@ internal class MainMenuState : GameState
     {
     }
 
-    public override void Draw(SpriteBatch spriteBatch)
+    public override void Draw(SpriteBatch spriteBatch, float scale)
     {
         throw new System.NotImplementedException();
     }
@@ -28,7 +28,7 @@ internal class MainMenuState : GameState
 
     public override void Exit()
     {
-        GameIsExit = true;
+        switcher.SwitchState<ConfirmationState>();
     }
 
     public override void NewGame()
@@ -50,6 +50,10 @@ internal class MainMenuState : GameState
     {
     }
 
+    public override void Dead()
+    {
+    }
+
     public override void Restart()
     {
     }
@@ -58,8 +62,11 @@ internal class MainMenuState : GameState
     {
     }
 
-    public override void Start(IState previousState)
+    public override void Start(GameState previousState)
     {
+        if (previousState.IsConfirmed)
+            GameIsExit = true;
+
         var buttonDistance = 150;
         var position = new Vector2(160, 275);
         var newGame = new Button(TexturesManager.ButtonBackground, position, "New game");

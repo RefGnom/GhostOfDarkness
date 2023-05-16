@@ -25,7 +25,7 @@ internal class Bullet : IDrawable, ICollisionable
         lifetime -= deltaTime;
     }
 
-    public void Draw(SpriteBatch spriteBatch)
+    public void Draw(SpriteBatch spriteBatch, float scale)
     {
         spriteBatch.Draw(TexturesManager.Bullet, Position, Color.White);
         if (Settings.ShowHitboxes)

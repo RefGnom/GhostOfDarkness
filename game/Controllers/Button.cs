@@ -30,9 +30,9 @@ internal class Button : IDrawable
         return false;
     }
 
-    public void Draw(SpriteBatch spriteBatch)
+    public void Draw(SpriteBatch spriteBatch, float scale)
     {
-        scale = GameManager.Instance.Game.WindowWidth / 1920f;
+        this.scale = scale;
         var position = this.position * scale;
         spriteBatch.Draw(TexturesManager.ButtonBackground, position, null, Color.White, 0, Vector2.Zero, scale, SpriteEffects.None, Layers.UI);
         var textSize = FontsManager.TimesNewRoman.MeasureString(text);

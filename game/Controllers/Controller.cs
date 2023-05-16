@@ -25,8 +25,8 @@ internal class Controller
                 OnFullScreen();
         }
 
-        if (KeyboardController.IsSingleKeyDown(Settings.OpenMenu))
-            PauseManager.SetPaused(!PauseManager.IsPaused);
+        //if (KeyboardController.IsSingleKeyDown(Settings.OpenMenu))
+            //PauseManager.SetPaused(!PauseManager.IsPaused);
 
         if (KeyboardController.IsSingleKeyDown(Settings.ShowOrHideHitboxes))
             Settings.ShowHitboxes = !Settings.ShowHitboxes;

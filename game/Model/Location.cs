@@ -66,13 +66,13 @@ internal class Location : IDrawable
         }
     }
 
-    public void Draw(SpriteBatch spriteBatch)
+    public void Draw(SpriteBatch spriteBatch, float scale)
     {
         for (int column = 0; column < tiles.GetLength(0); column++)
         {
             for (int row = 0; row < tiles.GetLength(1); row++)
             {
-                tiles[column, row].Entity?.Draw(spriteBatch);
+                tiles[column, row].Entity?.Draw(spriteBatch, scale);
             }
         }
     }

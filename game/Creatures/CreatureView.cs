@@ -19,7 +19,7 @@ internal abstract class CreatureView : CreatureStatesController, IDrawable
 
     public void Run() => SetStateRun();
 
-    public abstract void Draw(SpriteBatch spriteBatch);
+    public abstract void Draw(SpriteBatch spriteBatch, float scale);
 
     public virtual void Update(float deltaTime)
     {

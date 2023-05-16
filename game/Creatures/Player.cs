@@ -26,7 +26,6 @@ internal class Player : Creature
         healthBar = new HealthBar(health);
         Hitbox = HitboxManager.Player;
         Create(this);
-        //Speed = 1000;
     }
 
     public void SetPosition(Vector2 position)
@@ -51,6 +50,7 @@ internal class Player : Creature
     {
         if (View.Killed)
         {
+            IsDead = true;
             Delete(this);
             return;
         }

@@ -1,10 +1,12 @@
-﻿using Microsoft.Xna.Framework.Graphics;
-using SharpDX.MediaFoundation;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace game;
 
 internal class ConfirmationState : GameState
 {
+    private Sprite background;
+
     public ConfirmationState(IStateSwitcher stateSwitcher) : base(stateSwitcher)
     {
     }
@@ -24,7 +26,7 @@ internal class ConfirmationState : GameState
     {
     }
 
-    public override void Draw(SpriteBatch spriteBatch)
+    public override void Draw(SpriteBatch spriteBatch, float scale)
     {
     }
 
@@ -44,6 +46,10 @@ internal class ConfirmationState : GameState
     {
     }
 
+    public override void Dead()
+    {
+    }
+
     public override void Restart()
     {
     }
@@ -52,13 +58,33 @@ internal class ConfirmationState : GameState
     {
     }
 
-    public override void Start(IState previousState)
+    public override void Start(GameState previousState)
     {
-        this.previousState = (GameState)previousState;
+        background = new Sprite(TexturesManager.PauseBackground, new Vector2(564, 312));
+
+        var position = new Vector2(736, 430);
+        var confirm = new Button(TexturesManager.ButtonBackground, position, "Confirm");
+        confirm.OnClicked += Confirm;
+        position.Y += 140;
+        var cancel = new Button(TexturesManager.ButtonBackground, position, "Cancel");
+        cancel.OnClicked += Back;
+
+        buttons = new()
+        {
+            confirm,
+            cancel
+        };
+
+        GameManager.Instance.Drawer.RegisterUI(background);
+        RegisterButtons();
+        MouseController.LeftButtonOnClicked += ClickedButtons;
     }
 
     public override void Stop()
     {
+        GameManager.Instance.Drawer.UnregisterUI(background);
+        UnregisterButtons();
+        MouseController.LeftButtonOnClicked -= ClickedButtons;
     }
 
     public override void Update(float deltaTime)

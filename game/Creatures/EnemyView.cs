@@ -19,7 +19,7 @@ internal class EnemyView : CreatureView
     {
     }
 
-    public override void Draw(SpriteBatch spriteBatch)
+    public override void Draw(SpriteBatch spriteBatch, float scale)
     {
         position = PositionChanged.Invoke();
         direction = DirectionChanged.Invoke();

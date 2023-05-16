@@ -5,6 +5,8 @@ namespace game;
 
 internal class LoadSaveState : GameState
 {
+    private Sprite background;
+
     public LoadSaveState(IStateSwitcher stateSwitcher) : base(stateSwitcher)
     {
     }
@@ -22,7 +24,7 @@ internal class LoadSaveState : GameState
     {
     }
 
-    public override void Draw(SpriteBatch spriteBatch)
+    public override void Draw(SpriteBatch spriteBatch, float scale)
     {
     }
 
@@ -44,6 +46,10 @@ internal class LoadSaveState : GameState
         switcher.SwitchState<PlayState>();
     }
 
+    public override void Dead()
+    {
+    }
+
     public override void Restart()
     {
     }
@@ -52,9 +58,9 @@ internal class LoadSaveState : GameState
     {
     }
 
-    public override void Start(IState previousState)
+    public override void Start(GameState previousState)
     {
-        this.previousState = (GameState) previousState;
+        background = new Sprite(TexturesManager.SavesWindow, new Vector2(40, 70));
 
         var load = new Button(TexturesManager.ButtonBackground, new Vector2(40, 960), "Load");
         load.OnClicked += Play;
@@ -70,12 +76,14 @@ internal class LoadSaveState : GameState
             back,
         };
 
+        GameManager.Instance.Drawer.RegisterUI(background);
         RegisterButtons();
         MouseController.LeftButtonOnClicked += ClickedButtons;
     }
 
     public override void Stop()
     {
+        GameManager.Instance.Drawer.UnregisterUI(background);
         UnregisterButtons();
         MouseController.LeftButtonOnClicked -= ClickedButtons;
     }

@@ -34,7 +34,7 @@ internal class PlayerView : CreatureView
         base.Update(deltaTime);
     }
 
-    public override void Draw(SpriteBatch spriteBatch)
+    public override void Draw(SpriteBatch spriteBatch, float scale)
     {
         var flip = SpriteEffects.None;
         animator.Draw(model.Position, spriteBatch, flip, rotation, Layers.Creatures);

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Textures/Creatures/Hitbox.png</SourceFile>
-  <SourceTime>2023-05-12T11:24:58.8172951+03:00</SourceTime>
-  <DestFile>D:/Programming/C# Projects/GhostOfDarkness/game/Content/bin/Windows/Textures/Creatures/Hitbox.xnb</DestFile>
-  <DestTime>2023-05-16T23:29:00.9223007+03:00</DestTime>
+  <SourceFile>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Textures/UI/Pause background.png</SourceFile>
+  <SourceTime>2023-05-16T23:27:16.9381976+03:00</SourceTime>
+  <DestFile>D:/Programming/C# Projects/GhostOfDarkness/game/Content/bin/Windows/Content/Textures/UI/Pause background.xnb</DestFile>
+  <DestTime>2023-05-16T23:29:07.3623568+03:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2022-07-26T14:44:56+03:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

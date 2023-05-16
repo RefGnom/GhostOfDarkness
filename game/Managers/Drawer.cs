@@ -39,27 +39,27 @@ internal class Drawer
         HUDdrawables.Remove(drawable);
     }
 
-    public void Draw(SpriteBatch spriteBatch)
+    public void Draw(SpriteBatch spriteBatch, float scale)
     {
         foreach (var drawable in drawables)
         {
-            drawable.Draw(spriteBatch);
+            drawable.Draw(spriteBatch, scale);
         }
     }
 
-    public void DrawUI(SpriteBatch spriteBatch)
+    public void DrawUI(SpriteBatch spriteBatch, float scale)
     {
         foreach (var drawable in UIdrawables)
         {
-            drawable.Draw(spriteBatch);
+            drawable.Draw(spriteBatch, scale);
         }
     }
 
-    public void DrawHUD(SpriteBatch spriteBatch)
+    public void DrawHUD(SpriteBatch spriteBatch, float scale)
     {
         foreach (var drawable in HUDdrawables)
         {
-            drawable.Draw(spriteBatch);
+            drawable.Draw(spriteBatch, scale);
         }
     }
 }

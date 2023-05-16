@@ -14,7 +14,7 @@ internal class Wall : IEntity
         Position = position;
     }
 
-    public void Draw(SpriteBatch spriteBatch)
+    public void Draw(SpriteBatch spriteBatch, float scale)
     {
         spriteBatch.Draw(TexturesManager.Wall, Position, null, Color.White, 0, Vector2.Zero, 0.5f, SpriteEffects.None, Layers.Tiles);
         if (Settings.ShowHitboxes)

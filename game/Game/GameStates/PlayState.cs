@@ -21,7 +21,7 @@ internal class PlayState : GameState
     {
     }
 
-    public override void Draw(SpriteBatch spriteBatch)
+    public override void Draw(SpriteBatch spriteBatch, float scale)
     {
         throw new System.NotImplementedException();
     }
@@ -42,6 +42,11 @@ internal class PlayState : GameState
     {
     }
 
+    public override void Dead()
+    {
+        switcher.SwitchState<PlayerDeadState>();
+    }
+
     public override void Restart()
     {
     }
@@ -50,7 +55,7 @@ internal class PlayState : GameState
     {
     }
 
-    public override void Start(IState previousState)
+    public override void Start(GameState previousState)
     {
     }
 

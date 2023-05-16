@@ -54,9 +54,8 @@ internal class TextInput : IDrawable
         return textSize.X <= background.Width - 2 * textSize.Y;
     }
 
-    public void Draw(SpriteBatch spriteBatch)
+    public void Draw(SpriteBatch spriteBatch, float scale)
     {
-        var scale = GameManager.Instance.Game.WindowWidth / 1920f;
         var position = this.position * scale;
         var textSize = Font.MeasureString(Text);
         var textPosition = position + new Vector2(textSize.Y, background.Height / 2 - textSize.Y / 2) * scale;

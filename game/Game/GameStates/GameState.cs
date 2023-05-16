@@ -17,7 +17,14 @@ internal abstract class GameState : IState, IDrawable
         switcher = stateSwitcher;
     }
 
-    public abstract void Start(IState previousState);
+    public void Start(IState previousState)
+    {
+        var state = (GameState)previousState;
+        this.previousState = state;
+        Start(state);
+    }
+
+    public abstract void Start(GameState previousState);
 
     public abstract void Stop();
 
@@ -33,6 +40,8 @@ internal abstract class GameState : IState, IDrawable
 
     public abstract void Play();
 
+    public abstract void Dead();
+
     public abstract void Restart();
 
     public abstract void Confirm();
@@ -41,7 +50,7 @@ internal abstract class GameState : IState, IDrawable
 
     public abstract void Update(float deltaTime);
 
-    public abstract void Draw(SpriteBatch spriteBatch);
+    public abstract void Draw(SpriteBatch spriteBatch, float scale);
 
     protected void RegisterButtons()
     {
