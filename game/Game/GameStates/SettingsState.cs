@@ -1,9 +1,11 @@
-﻿using Microsoft.Xna.Framework.Graphics;
+﻿using Microsoft.Xna.Framework;
 
 namespace game;
 
 internal class SettingsState : GameState
 {
+    private Sprite background;
+
     public SettingsState(IStateSwitcher stateSwitcher) : base(stateSwitcher)
     {
     }
@@ -21,13 +23,9 @@ internal class SettingsState : GameState
     {
     }
 
-    public override void Draw(SpriteBatch spriteBatch, float scale)
-    {
-        throw new System.NotImplementedException();
-    }
-
     public override void Exit()
     {
+        switcher.SwitchState(previousState);
     }
 
     public override void NewGame()
@@ -58,13 +56,39 @@ internal class SettingsState : GameState
 
     public override void Start(GameState previousState)
     {
+        background = new Sprite(TexturesManager.Background, Vector2.Zero, Layers.Background);
+
+        var save = new Button(TexturesManager.ButtonBackground, new Vector2(934, 960), "Save");
+        save.OnClicked += Save;
+
+        var exit = new Button(TexturesManager.ButtonBackground, new Vector2(1432, 960), "Exit");
+        exit.OnClicked += Exit;
+
+        buttons = new()
+        {
+            save,
+            exit
+        };
+
+        Draw();
+        MouseController.LeftButtonOnClicked += ClickedButtons;
     }
 
     public override void Stop()
     {
+        Erase();
+        MouseController.LeftButtonOnClicked -= ClickedButtons;
     }
 
-    public override void Update(float deltaTime)
+    public override void Draw()
     {
+        GameManager.Instance.Drawer.RegisterUI(background);
+        RegisterButtons();
+    }
+
+    public override void Erase()
+    {
+        GameManager.Instance.Drawer.UnregisterUI(background);
+        UnregisterButtons();
     }
 }

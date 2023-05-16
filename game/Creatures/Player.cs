@@ -8,16 +8,10 @@ internal class Player : Creature
     private readonly HealthBar healthBar;
 
     public List<Bullet> Bullets { get; private set; }
+    public int DeltaX { get; set; }
+    public int DeltaY { get; set; }
 
-    public readonly Dictionary<Directions, int> EnableDirections = new()
-    {
-        [Directions.Up] = 0,
-        [Directions.Down] = 0,
-        [Directions.Left] = 0,
-        [Directions.Right] = 0
-    };
-
-    private CollisionDetecter CollisionDetecter => GameManager.Instance.CollisionDetecter;
+    private static CollisionDetecter CollisionDetecter => GameManager.Instance.CollisionDetecter;
 
     public Player(Vector2 position, float speed, float health, float cooldown) : base(position, speed, health, 20, 100, cooldown)
     {
@@ -46,7 +40,7 @@ internal class Player : Creature
         }
     }
 
-    public void Update(float deltaTime, int locationWidth, int locationHeight)
+    public void Update(float deltaTime)
     {
         if (View.Killed)
         {
@@ -62,7 +56,6 @@ internal class Player : Creature
         UpdateBullets(deltaTime);
         currentColdown -= deltaTime;
         View.Update(deltaTime);
-        DisableDirections();
     }
 
     // Переместить в класс Gun
@@ -95,9 +88,9 @@ internal class Player : Creature
 
     private void Move(float deltaTime)
     {
-        var deltaX = EnableDirections[Directions.Left] + EnableDirections[Directions.Right];
-        var deltaY = EnableDirections[Directions.Up] + EnableDirections[Directions.Down];
-        var movementVector = CollisionDetecter.GetMovementVectorWithoutCollision(this, deltaX, deltaY, Speed, deltaTime);
+        var movementVector = CollisionDetecter.GetMovementVectorWithoutCollision(this, DeltaX, DeltaY, Speed, deltaTime);
+        DeltaX = 0;
+        DeltaY = 0;
 
         if (movementVector != Vector2.Zero)
         {
@@ -108,14 +101,6 @@ internal class Player : Creature
         else
         {
             View.Idle();
-        }
-    }
-
-    private void DisableDirections()
-    {
-        foreach (var direction in EnableDirections.Keys)
-        {
-            EnableDirections[direction] = 0;
         }
     }
 

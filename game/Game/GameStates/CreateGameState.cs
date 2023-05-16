@@ -1,11 +1,11 @@
 ﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 
 namespace game;
 
 internal class CreateGameState : GameState
 {
     private TextInput textInput;
+    private Sprite background;
 
     public CreateGameState(IStateSwitcher stateSwitcher) : base(stateSwitcher)
     {
@@ -53,10 +53,19 @@ internal class CreateGameState : GameState
     {
     }
 
+    private void CreateGame()
+    {
+        // Создать новое сохранение
+        Play();
+    }
+
     public override void Start(GameState previousState)
     {
+        background = new Sprite(TexturesManager.Background, Vector2.Zero, Layers.Background);
+
         var back = new Button(TexturesManager.ButtonBackground, new Vector2(1432, 960), "Back");
         back.OnClicked += Back;
+
         var create = new Button(TexturesManager.ButtonBackground, new Vector2(380, 600), "Create");
         create.OnClicked += CreateGame;
 
@@ -68,30 +77,28 @@ internal class CreateGameState : GameState
             create
         };
 
-        GameManager.Instance.Drawer.RegisterUI(textInput);
-        RegisterButtons();
+        Draw();
         MouseController.LeftButtonOnClicked += ClickedButtons;
     }
 
     public override void Stop()
     {
+        Erase();
         textInput.Delete();
-        GameManager.Instance.Drawer.UnregisterUI(textInput);
-        UnregisterButtons();
         MouseController.LeftButtonOnClicked -= ClickedButtons;
     }
 
-    public override void Draw(SpriteBatch spriteBatch, float scale)
+    public override void Draw()
     {
+        GameManager.Instance.Drawer.RegisterUI(background);
+        GameManager.Instance.Drawer.RegisterUI(textInput);
+        RegisterButtons();
     }
 
-    public override void Update(float deltaTime)
+    public override void Erase()
     {
-    }
-
-    private void CreateGame()
-    {
-        // Создать новое сохранение
-        Play();
+        GameManager.Instance.Drawer.UnregisterUI(background);
+        GameManager.Instance.Drawer.UnregisterUI(textInput);
+        UnregisterButtons();
     }
 }

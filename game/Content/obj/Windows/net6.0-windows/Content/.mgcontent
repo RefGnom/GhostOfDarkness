@@ -13,6 +13,7 @@
     <File>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Textures/HUD/HealthBarBackground.png</File>
     <File>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Textures/HUD/HealthBarForeground.png</File>
     <File>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Textures/Tiles/Wall.png</File>
+    <File>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Textures/UI/Background.png</File>
     <File>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Textures/UI/ButtonBackground.png</File>
     <File>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Textures/UI/FieldForGameName.png</File>
     <File>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Textures/UI/Pause background.png</File>
@@ -20,6 +21,7 @@
     <File>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Textures/UI/Saves window.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

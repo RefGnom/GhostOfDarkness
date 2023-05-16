@@ -1,9 +1,8 @@
-﻿using Microsoft.Xna.Framework.Graphics;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace game;
 
-internal abstract class GameState : IState, IDrawable
+internal abstract class GameState : IState
 {
     protected readonly IStateSwitcher switcher;
     protected GameState previousState;
@@ -26,6 +25,10 @@ internal abstract class GameState : IState, IDrawable
 
     public abstract void Start(GameState previousState);
 
+    public abstract void Draw();
+
+    public abstract void Erase();
+
     public abstract void Stop();
 
     public abstract void Back();
@@ -47,10 +50,6 @@ internal abstract class GameState : IState, IDrawable
     public abstract void Confirm();
 
     public abstract void Save();
-
-    public abstract void Update(float deltaTime);
-
-    public abstract void Draw(SpriteBatch spriteBatch, float scale);
 
     protected void RegisterButtons()
     {

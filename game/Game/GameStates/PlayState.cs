@@ -1,6 +1,4 @@
-﻿using Microsoft.Xna.Framework.Graphics;
-
-namespace game;
+﻿namespace game;
 
 internal class PlayState : GameState
 {
@@ -19,11 +17,6 @@ internal class PlayState : GameState
 
     public override void LoadSave()
     {
-    }
-
-    public override void Draw(SpriteBatch spriteBatch, float scale)
-    {
-        throw new System.NotImplementedException();
     }
 
     public override void Exit()
@@ -63,7 +56,11 @@ internal class PlayState : GameState
     {
     }
 
-    public override void Update(float deltaTime)
+    public override void Draw()
+    {
+    }
+
+    public override void Erase()
     {
     }
 }

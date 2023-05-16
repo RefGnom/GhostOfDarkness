@@ -7,7 +7,7 @@ internal abstract class Enemy : Creature
 {
     private bool isIdle;
     private bool hitboxDeleted;
-    public bool IsDead => View.CanDelete;
+    public new bool IsDead => View.CanDelete;
     private CollisionDetecter CollisionDetecter => GameManager.Instance.CollisionDetecter;
 
     public Enemy(EnemyView view, Vector2 position, float speed, float health, float damage, float attackDistance, float cooldown)

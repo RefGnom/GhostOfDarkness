@@ -1,10 +1,10 @@
 ﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 
 namespace game;
 
 internal class LoadSaveState : GameState
 {
+    private Sprite savesStorage;
     private Sprite background;
 
     public LoadSaveState(IStateSwitcher stateSwitcher) : base(stateSwitcher)
@@ -21,10 +21,6 @@ internal class LoadSaveState : GameState
     }
 
     public override void LoadSave()
-    {
-    }
-
-    public override void Draw(SpriteBatch spriteBatch, float scale)
     {
     }
 
@@ -60,7 +56,8 @@ internal class LoadSaveState : GameState
 
     public override void Start(GameState previousState)
     {
-        background = new Sprite(TexturesManager.SavesWindow, new Vector2(40, 70));
+        savesStorage = new Sprite(TexturesManager.SavesWindow, new Vector2(40, 70), Layers.UIBackground);
+        background = new Sprite(TexturesManager.Background, Vector2.Zero, Layers.Background);
 
         var load = new Button(TexturesManager.ButtonBackground, new Vector2(40, 960), "Load");
         load.OnClicked += Play;
@@ -76,19 +73,27 @@ internal class LoadSaveState : GameState
             back,
         };
 
-        GameManager.Instance.Drawer.RegisterUI(background);
-        RegisterButtons();
+        Draw();
         MouseController.LeftButtonOnClicked += ClickedButtons;
     }
 
     public override void Stop()
     {
-        GameManager.Instance.Drawer.UnregisterUI(background);
-        UnregisterButtons();
+        Erase();
         MouseController.LeftButtonOnClicked -= ClickedButtons;
     }
 
-    public override void Update(float deltaTime)
+    public override void Draw()
     {
+        GameManager.Instance.Drawer.RegisterUI(background);
+        GameManager.Instance.Drawer.RegisterUI(savesStorage);
+        RegisterButtons();
+    }
+
+    public override void Erase()
+    {
+        GameManager.Instance.Drawer.UnregisterUI(background);
+        GameManager.Instance.Drawer.UnregisterUI(savesStorage);
+        UnregisterButtons();
     }
 }

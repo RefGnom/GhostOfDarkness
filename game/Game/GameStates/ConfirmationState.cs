@@ -1,5 +1,4 @@
 ﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 
 namespace game;
 
@@ -23,10 +22,6 @@ internal class ConfirmationState : GameState
     }
 
     public override void LoadSave()
-    {
-    }
-
-    public override void Draw(SpriteBatch spriteBatch, float scale)
     {
     }
 
@@ -60,13 +55,13 @@ internal class ConfirmationState : GameState
 
     public override void Start(GameState previousState)
     {
-        background = new Sprite(TexturesManager.PauseBackground, new Vector2(564, 312));
+        background = new Sprite(TexturesManager.PauseBackground, new Vector2(564, 312), Layers.ConfirmationWindowBackground);
 
         var position = new Vector2(736, 430);
-        var confirm = new Button(TexturesManager.ButtonBackground, position, "Confirm");
+        var confirm = new Button(TexturesManager.ButtonBackground, position, "Confirm", Layers.ConfirmationWindowUI, Layers.ConfirmationWindowText);
         confirm.OnClicked += Confirm;
         position.Y += 140;
-        var cancel = new Button(TexturesManager.ButtonBackground, position, "Cancel");
+        var cancel = new Button(TexturesManager.ButtonBackground, position, "Cancel", Layers.ConfirmationWindowUI, Layers.ConfirmationWindowText);
         cancel.OnClicked += Back;
 
         buttons = new()
@@ -75,19 +70,27 @@ internal class ConfirmationState : GameState
             cancel
         };
 
-        GameManager.Instance.Drawer.RegisterUI(background);
-        RegisterButtons();
+        Draw();
         MouseController.LeftButtonOnClicked += ClickedButtons;
     }
 
     public override void Stop()
     {
-        GameManager.Instance.Drawer.UnregisterUI(background);
-        UnregisterButtons();
+        Erase();
         MouseController.LeftButtonOnClicked -= ClickedButtons;
     }
 
-    public override void Update(float deltaTime)
+    public override void Draw()
     {
+        previousState.Draw();
+        GameManager.Instance.Drawer.RegisterUI(background);
+        RegisterButtons();
+    }
+
+    public override void Erase()
+    {
+        previousState.Erase();
+        GameManager.Instance.Drawer.UnregisterUI(background);
+        UnregisterButtons();
     }
 }

@@ -1,10 +1,11 @@
 ﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 
 namespace game;
 
 internal class MainMenuState : GameState
 {
+    private Sprite background;
+
     public MainMenuState(IStateSwitcher stateSwitcher) : base(stateSwitcher)
     {
     }
@@ -14,15 +15,6 @@ internal class MainMenuState : GameState
     }
 
     public override void Confirm()
-    {
-    }
-
-    public override void Draw(SpriteBatch spriteBatch, float scale)
-    {
-        throw new System.NotImplementedException();
-    }
-
-    public override void Update(float deltaTime)
     {
     }
 
@@ -67,16 +59,21 @@ internal class MainMenuState : GameState
         if (previousState.IsConfirmed)
             GameIsExit = true;
 
+        background = new Sprite(TexturesManager.Background, Vector2.Zero, Layers.Background);
+
         var buttonDistance = 150;
         var position = new Vector2(160, 275);
         var newGame = new Button(TexturesManager.ButtonBackground, position, "New game");
         newGame.OnClicked += NewGame;
+
         position.Y += buttonDistance;
         var loadSave = new Button(TexturesManager.ButtonBackground, position, "Load save");
         loadSave.OnClicked += LoadSave;
+
         position.Y += buttonDistance;
         var settings = new Button(TexturesManager.ButtonBackground, position, "Settings");
         settings.OnClicked += OpenSettings;
+
         position.Y += buttonDistance;
         var exit = new Button(TexturesManager.ButtonBackground, position, "Exit");
         exit.OnClicked += Exit;
@@ -89,13 +86,25 @@ internal class MainMenuState : GameState
             exit
         };
 
-        RegisterButtons();
+        Draw();
         MouseController.LeftButtonOnClicked += ClickedButtons;
     }
 
     public override void Stop()
     {
-        UnregisterButtons();
+        Erase();
         MouseController.LeftButtonOnClicked -= ClickedButtons;
+    }
+
+    public override void Draw()
+    {
+        GameManager.Instance.Drawer.RegisterUI(background);
+        RegisterButtons();
+    }
+
+    public override void Erase()
+    {
+        GameManager.Instance.Drawer.UnregisterUI(background);
+        UnregisterButtons();
     }
 }

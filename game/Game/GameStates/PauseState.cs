@@ -1,5 +1,4 @@
 ﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 
 namespace game;
 
@@ -13,7 +12,7 @@ internal class PauseState : GameState
 
     public override void Back()
     {
-        switcher.SwitchState(previousState);
+        switcher.SwitchState<PlayState>();
     }
 
     public override void Confirm()
@@ -22,11 +21,6 @@ internal class PauseState : GameState
 
     public override void LoadSave()
     {
-    }
-
-    public override void Draw(SpriteBatch spriteBatch, float scale)
-    {
-        throw new System.NotImplementedException();
     }
 
     public override void Exit()
@@ -62,7 +56,7 @@ internal class PauseState : GameState
 
     public override void Start(GameState previousState)
     {
-        background = new Sprite(TexturesManager.PauseBackground, new Vector2(564, 312));
+        background = new Sprite(TexturesManager.PauseBackground, new Vector2(564, 312), Layers.UIBackground);
 
         var position = new Vector2(736, 370);
         var mainMenu = new Button(TexturesManager.ButtonBackground, position, "In main menu");
@@ -81,19 +75,25 @@ internal class PauseState : GameState
             continueGame
         };
 
-        GameManager.Instance.Drawer.RegisterUI(background);
-        RegisterButtons();
+        Draw();
         MouseController.LeftButtonOnClicked += ClickedButtons;
     }
 
     public override void Stop()
     {
-        GameManager.Instance.Drawer.UnregisterUI(background);
-        UnregisterButtons();
+        Erase();
         MouseController.LeftButtonOnClicked -= ClickedButtons;
     }
 
-    public override void Update(float deltaTime)
+    public override void Draw()
     {
+        GameManager.Instance.Drawer.RegisterUI(background);
+        RegisterButtons();
+    }
+
+    public override void Erase()
+    {
+        GameManager.Instance.Drawer.UnregisterUI(background);
+        UnregisterButtons();
     }
 }

@@ -8,7 +8,7 @@ internal class GameModel
     public Location Location { get; private set; }
     public Player Player { get; private set; }
     public List<Bullet> Bullets { get; private set; }
-
+    
     public GameModel(Vector2 playerPosition, int width, int height)
     {
         Location = Location.GetLocation(width, height);
@@ -25,6 +25,6 @@ internal class GameModel
     public void Update(float deltaTime)
     {
         Location.Update(deltaTime, Player);
-        Player.Update(deltaTime, Location.Width, Location.Height);
+        Player.Update(deltaTime);
     }
 }

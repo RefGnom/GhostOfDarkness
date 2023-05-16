@@ -6,10 +6,12 @@ namespace game;
 
 internal class Button : IDrawable
 {
-    private Texture2D texture;
+    private readonly Texture2D texture;
     private readonly Vector2 position;
     private readonly string text;
     private float scale;
+    private readonly float buttonLayer;
+    private readonly float textLayer;
 
     public event Action OnClicked;
 
@@ -18,6 +20,17 @@ internal class Button : IDrawable
         this.texture = texture;
         this.position = position;
         this.text = text;
+        buttonLayer = Layers.UI;
+        textLayer = Layers.Text;
+    }
+
+    public Button(Texture2D texture, Vector2 position, string text, float buttonLayer, float textLayer)
+    {
+        this.texture = texture;
+        this.position = position;
+        this.text = text;
+        this.buttonLayer = buttonLayer;
+        this.textLayer = textLayer;
     }
 
     public bool Clicked()
@@ -34,10 +47,10 @@ internal class Button : IDrawable
     {
         this.scale = scale;
         var position = this.position * scale;
-        spriteBatch.Draw(TexturesManager.ButtonBackground, position, null, Color.White, 0, Vector2.Zero, scale, SpriteEffects.None, Layers.UI);
+        spriteBatch.Draw(TexturesManager.ButtonBackground, position, null, Color.White, 0, Vector2.Zero, scale, SpriteEffects.None, buttonLayer);
         var textSize = FontsManager.TimesNewRoman.MeasureString(text);
         var textPosition = position + new Vector2(texture.Width / 2 - textSize.X / 2, texture.Height / 2 - textSize.Y / 2) * scale;
-        spriteBatch.DrawString(FontsManager.TimesNewRoman, text, textPosition, Color.White, 0, Vector2.Zero, scale, SpriteEffects.None, Layers.Text);
+        spriteBatch.DrawString(FontsManager.TimesNewRoman, text, textPosition, Color.White, 0, Vector2.Zero, scale, SpriteEffects.None, textLayer);
     }
 
     private bool InBounds(Vector2 mousePosition)
