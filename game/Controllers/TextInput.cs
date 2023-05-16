@@ -11,6 +11,7 @@ internal class TextInput : IDrawable
     private readonly Vector2 position;
     private readonly StringBuilder text;
 
+    private SpriteFont Font => FontsManager.TimesNewRoman;
     public string Text => text.ToString();
 
     public TextInput(Texture2D background, Vector2 position)
@@ -33,7 +34,7 @@ internal class TextInput : IDrawable
             if (text.Length > 0)
                 text.Remove(text.Length - 1, 1);
         }
-        else if (IsValid(e.Character))
+        else if (IsValid(e.Character) && IsHavePlace())
         {
             text.Append(e.Character);
         }
@@ -47,13 +48,19 @@ internal class TextInput : IDrawable
             || symbol >= '0' && symbol <= '9';
     }
 
+    private bool IsHavePlace()
+    {
+        var textSize = Font.MeasureString(Text);
+        return textSize.X <= background.Width - 2 * textSize.Y;
+    }
+
     public void Draw(SpriteBatch spriteBatch)
     {
         var scale = GameManager.Instance.Game.WindowWidth / 1920f;
         var position = this.position * scale;
-        var textSize = FontsManager.TimesNewRoman.MeasureString(Text);
+        var textSize = Font.MeasureString(Text);
         var textPosition = position + new Vector2(textSize.Y, background.Height / 2 - textSize.Y / 2) * scale;
         spriteBatch.Draw(background, position, null, Color.White, 0, Vector2.Zero, scale, SpriteEffects.None, Layers.UI);
-        spriteBatch.DrawString(FontsManager.TimesNewRoman, Text, textPosition, Color.White, 0, Vector2.Zero, scale, SpriteEffects.None, Layers.Text);
+        spriteBatch.DrawString(Font, Text, textPosition, Color.White, 0, Vector2.Zero, scale, SpriteEffects.None, Layers.Text);
     }
 }
