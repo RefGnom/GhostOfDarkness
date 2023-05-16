@@ -6,7 +6,7 @@ using System;
 
 namespace game;
 
-internal class Game1 : Game, IPauseHandler
+internal class Game1 : Game
 {
     private Dictionary<Keys, Action<float>> actions;
 
@@ -22,7 +22,6 @@ internal class Game1 : Game, IPauseHandler
     public int WindowHeight => graphics.PreferredBackBufferHeight;
     public float Scale => WindowWidth / maxWindowWidth;
 
-    private PauseManager PauseManager => GameManager.Instance.PauseManager;
     private Camera Camera => GameManager.Instance.Camera;
 
     public Game1()
@@ -42,7 +41,6 @@ internal class Game1 : Game, IPauseHandler
         model = new(new Vector2(WindowWidth / 2, WindowHeight / 2), 1920, 1080);
         view = new();
         controller.SetSizeScreen(1280, 720);
-        GameManager.Instance.PauseManager.RegisterHandler(this);
         RegisterAllKeys();
         Debug.Initialize(WindowHeight);
         KeyboardController.GameWindow = Window;
@@ -85,8 +83,6 @@ internal class Game1 : Game, IPauseHandler
 
     protected override void Draw(GameTime gameTime)
     {
-        if (PauseManager.IsPaused)
-            return;
         GraphicsDevice.Clear(Color.CornflowerBlue);
         Draw();
         DrawHUD();
@@ -132,15 +128,5 @@ internal class Game1 : Game, IPauseHandler
         actions[Settings.Down] = deltaTime => model.Player.EnableDirections[Directions.Down] = 1;
         actions[Settings.Left] = deltaTime => model.Player.EnableDirections[Directions.Left] = -1;
         actions[Settings.Right] = deltaTime => model.Player.EnableDirections[Directions.Right] = 1;
-    }
-
-    public void SetPaused(bool isPaused)
-    {
-        if (isPaused)
-        {
-            spriteBatch.Begin();
-            spriteBatch.Draw(TexturesManager.PauseMenu, Vector2.Zero, null, Color.White, 0, Vector2.One, 1, SpriteEffects.None, 0);
-            spriteBatch.End();
-        }
     }
 }

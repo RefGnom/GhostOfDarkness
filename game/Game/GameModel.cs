@@ -8,7 +8,6 @@ internal class GameModel
     public Location Location { get; private set; }
     public Player Player { get; private set; }
     public List<Bullet> Bullets { get; private set; }
-    private bool IsPaused => GameManager.Instance.PauseManager.IsPaused;
 
     public GameModel(Vector2 playerPosition, int width, int height)
     {
@@ -25,8 +24,6 @@ internal class GameModel
 
     public void Update(float deltaTime)
     {
-        if (IsPaused)
-            return;
         Location.Update(deltaTime, Player);
         Player.Update(deltaTime, Location.Width, Location.Height);
     }

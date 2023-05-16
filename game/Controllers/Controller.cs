@@ -7,7 +7,6 @@ internal class Controller
 {
     private GraphicsDeviceManager graphics;
 
-    private PauseManager PauseManager => GameManager.Instance.PauseManager;
     private Camera Camera => GameManager.Instance.Camera;
 
     public Controller(GraphicsDeviceManager graphics)
