@@ -57,7 +57,6 @@ internal class Game1 : Game, IPauseHandler
     {
         if (view.GameIsExit)
             Exit();
-
         KeyboardController.Update();
         MouseController.Update();
         Debug.Update(WindowHeight);

@@ -15,6 +15,8 @@ internal static class TexturesManager
     public static Texture2D Wall { get; private set; }
     public static Texture2D ButtonBackground { get; private set; }
     public static Texture2D FieldForText { get; private set; }
+    public static Texture2D SavesWindow { get; private set; }
+    public static Texture2D PauseBackground { get; private set; }
 
     public static void Load(ContentManager content)
     {
@@ -28,5 +30,7 @@ internal static class TexturesManager
         Wall = content.Load<Texture2D>("Textures\\Tiles\\Wall");
         ButtonBackground = content.Load<Texture2D>("Textures\\UI\\ButtonBackground");
         FieldForText = content.Load<Texture2D>("Textures\\UI\\FieldForGameName");
+        SavesWindow = content.Load<Texture2D>("Textures\\UI\\Saves window");
+        PauseBackground = content.Load<Texture2D>("Textures\\UI\\Pause background");
     }
 }

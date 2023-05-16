@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework.Graphics;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace game;
 
@@ -56,6 +57,7 @@ internal class PauseState : GameState
     public override void Start(IState previousState)
     {
         this.previousState = (GameState)previousState;
+        var backround = new Sprite(TexturesManager.PauseBackground, new Vector2(564, 312));
     }
 
     public override void Stop()

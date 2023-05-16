@@ -35,9 +35,14 @@ internal class CreatureStatesController : IStateSwitcher
     public void SwitchState<T>() where T : IState
     {
         var state = states.FirstOrDefault(s => s is T);
+        SwitchState(state);
+    }
+
+    public void SwitchState(IState state)
+    {
         currentState.Stop();
         state.Start(currentState);
-        currentState = state;
+        currentState = (CreatureState)state;
     }
 
     public void UpdateState(float deltaTime) => currentState.Update(deltaTime);
