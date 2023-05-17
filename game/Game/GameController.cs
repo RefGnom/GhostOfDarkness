@@ -1,37 +1,50 @@
-﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
+﻿using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
 
 namespace game;
 
-internal class GameController
+internal class GameController : GameStatesController
 {
     private readonly Dictionary<Keys, Action> actions;
 
-    private readonly GraphicsDeviceManager graphics;
-
     private readonly GameModel model;
+    private readonly GameView view;
 
     private static Camera Camera => GameManager.Instance.Camera;
 
-    public GameController(GraphicsDeviceManager graphics, GameModel model)
+    public GameController(GameModel model, GameView view)
     {
         actions = new();
-        this.graphics = graphics;
         this.model = model;
+        this.view = view;
         RegisterKeys();
     }
 
     public void Update(float deltaTime)
     {
+        KeyboardController.Update();
+        MouseController.Update();
+
+        if (GameIsExit)
+            view.CloseGame();
+
+        if (model.Player.IsDead)
+            Dead();
+
+        if (KeyboardController.IsSingleKeyDown(Keys.Escape))
+            Back();
+
+        if (KeyboardController.IsSingleKeyDown(Keys.Enter))
+        {
+            Restart();
+            Confirm();
+            Save();
+        }
+
         if (KeyboardController.IsSingleKeyDown(Settings.SwitchScreen))
         {
-            if (graphics.IsFullScreen)
-                SetSizeScreen(1280, 720);
-            else
-                OnFullScreen();
+            view.SwitchScreenState();
         }
 
         if (KeyboardController.IsSingleKeyDown(Settings.ShowOrHideHitboxes))
@@ -41,22 +54,6 @@ internal class GameController
             Camera.FollowPlayer = !Camera.FollowPlayer;
 
         HandleKeys(KeyboardController.GetPressedKeys());
-    }
-
-    public void SetSizeScreen(int width, int height)
-    {
-        graphics.PreferredBackBufferWidth = width;
-        graphics.PreferredBackBufferHeight = height;
-        graphics.IsFullScreen = false;
-        graphics.ApplyChanges();
-    }
-
-    public void OnFullScreen()
-    {
-        graphics.PreferredBackBufferWidth = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width;
-        graphics.PreferredBackBufferHeight = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height;
-        graphics.IsFullScreen = true;
-        graphics.ApplyChanges();
     }
 
     public void HandleKeys(Keys[] keys)

@@ -9,6 +9,7 @@ internal class GameStatesController : IStateSwitcher
     private readonly List<GameState> states;
 
     public bool GameIsExit => currentState.GameIsExit;
+    public bool IsPlay => currentState is PlayState;
 
     public GameStatesController()
     {

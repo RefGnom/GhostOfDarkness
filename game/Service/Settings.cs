@@ -14,7 +14,7 @@ internal static class Settings
     #endregion
 
     public static Keys OpenMenu = Keys.Escape;
-    public static Keys SwitchScreen = Keys.F;
+    public static Keys SwitchScreen = Keys.F12;
     public static Keys ShowOrHideHitboxes = Keys.B;
     public static Keys SwitchCameraFollow = Keys.F1;
 }
