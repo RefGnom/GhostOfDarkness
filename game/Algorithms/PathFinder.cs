@@ -24,7 +24,7 @@ internal static class PathFinder
             var currentPath = nextTiles.Dequeue();
             foreach (var nextPoint in currentPath.Value.GetNeighbors())
             {
-                if (Location[nextPoint.X, nextPoint.Y].Entity is null
+                if (Location[nextPoint.X, nextPoint.Y].Entity is not ICollisionable
                     && !visited.Contains(nextPoint))
                 {
                     var nextPath = new Path<Point>(nextPoint, currentPath);

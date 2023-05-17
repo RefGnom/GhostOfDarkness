@@ -3,11 +3,10 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace game;
 
-internal class Wall : IEntity
+internal class Wall : IDrawable, ICollisionable
 {
     public Vector2 Position { get; private set; }
     public Rectangle Hitbox => HitboxManager.Wall;
-    public bool CanCollided => true;
 
     public Wall(Vector2 position)
     {

@@ -53,16 +53,13 @@ internal abstract class Enemy : Creature
         if (View.CanAttack)
             Attack(target);
 
-        if (!isIdle)
-        {
-            if (View.CanMove)
-                MoveToPlayer(deltaTime, target);
-            View.Run();
-        }
-        else
-        {
+        if (View.CanMove)
+            MoveToPlayer(deltaTime, target);
+
+        if (isIdle)
             View.Idle();
-        }
+        else
+            View.Run();
         currentColdown -= deltaTime;
     }
 

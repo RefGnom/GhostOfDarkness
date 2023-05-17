@@ -33,6 +33,9 @@ internal class Location : IDrawable
             for (int row = 0; row < Height; row++)
             {
                 tiles[column, row] = new Tile(tileSize * column, tileSize * row, tileSize);
+
+
+                tiles[column, row].SetFloor();
                 if (row == 0 || row == Height - 1 || column == 0 || column == Width - 1)
                     tiles[column, row].SetWall();
             }

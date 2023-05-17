@@ -40,17 +40,17 @@ internal class Animator
         animationLooped = looped;
     }
 
-    public void Draw(Vector2 position, SpriteBatch spriteBatch, SpriteEffects flip, float layerDepth)
+    public void Draw(Vector2 position, SpriteBatch spriteBatch, SpriteEffects flip, float layerDepth, float scale = 1f)
     {
         var frame = GetFrame();
-        spriteBatch.Draw(texture, position, frame, Color.White, 0, Origin, 1, flip, layerDepth);
+        spriteBatch.Draw(texture, position, frame, Color.White, 0, Origin, scale, flip, layerDepth);
         IncrementFrame();
     }
 
-    public void Draw(Vector2 position, SpriteBatch spriteBatch, SpriteEffects flip, float rotation, float layerDepth)
+    public void Draw(Vector2 position, SpriteBatch spriteBatch, SpriteEffects flip, float rotation, float layerDepth, float scale)
     {
         var frame = GetFrame();
-        spriteBatch.Draw(texture, position, frame, Color.White, rotation, Origin, 1, flip, layerDepth);
+        spriteBatch.Draw(texture, position, frame, Color.White, rotation, Origin, scale, flip, layerDepth);
         IncrementFrame();
     }
 

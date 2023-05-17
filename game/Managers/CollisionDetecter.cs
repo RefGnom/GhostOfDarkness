@@ -5,7 +5,7 @@ namespace game;
 
 internal class CollisionDetecter
 {
-    private List<ICollisionable> objects = new();
+    private readonly List<ICollisionable> objects = new();
 
     public void Register(ICollisionable item)
     {

@@ -5,6 +5,8 @@ namespace game;
 
 internal static class TexturesManager
 {
+    private static ContentManager contentManager;
+
     public static Texture2D Hitbox { get; private set; }
     public static Texture2D Player { get; private set; }
     public static Texture2D Bullet { get; private set; }
@@ -13,6 +15,7 @@ internal static class TexturesManager
     public static Texture2D HealthBarForeground { get; private set; }
     public static Texture2D HealthBarBackground { get; private set; }
     public static Texture2D Wall { get; private set; }
+    public static Texture2D Floor { get; private set; }
     public static Texture2D ButtonBackground { get; private set; }
     public static Texture2D FieldForText { get; private set; }
     public static Texture2D SavesWindow { get; private set; }
@@ -21,6 +24,7 @@ internal static class TexturesManager
 
     public static void Load(ContentManager content)
     {
+        contentManager = content;
         Hitbox = content.Load<Texture2D>("Textures\\Creatures\\Hitbox");
         Player = content.Load<Texture2D>("Textures\\Creatures\\Player");
         Bullet = content.Load<Texture2D>("Textures\\Creatures\\Bullet");
@@ -29,10 +33,26 @@ internal static class TexturesManager
         HealthBarForeground = content.Load<Texture2D>("Textures\\HUD\\HealthBarForeground");
         HealthBarBackground = content.Load<Texture2D>("Textures\\HUD\\HealthBarBackground");
         Wall = content.Load<Texture2D>("Textures\\Tiles\\Wall");
+        Floor = content.Load<Texture2D>("Textures\\Tiles\\Floors\\Metal");
         ButtonBackground = content.Load<Texture2D>("Textures\\UI\\ButtonBackground");
         FieldForText = content.Load<Texture2D>("Textures\\UI\\FieldForGameName");
         SavesWindow = content.Load<Texture2D>("Textures\\UI\\Saves window");
         PauseBackground = content.Load<Texture2D>("Textures\\UI\\Pause background");
         Background = content.Load<Texture2D>("Textures\\UI\\Background");
+    }
+
+    public static Texture2D GetFloorTexture(string name)
+    {
+        Texture2D texture;
+        try
+        {
+            texture = contentManager.Load<Texture2D>($"Textures\\Tiles\\Floors\\{name}");
+            return texture;
+        }
+        catch
+        {
+            Debug.Log($"Floor {name} not found");
+            return Floor;
+        }
     }
 }

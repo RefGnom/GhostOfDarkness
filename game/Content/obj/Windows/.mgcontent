@@ -12,6 +12,18 @@
     <File>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Textures/Creatures/Player.png</File>
     <File>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Textures/HUD/HealthBarBackground.png</File>
     <File>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Textures/HUD/HealthBarForeground.png</File>
+    <File>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Textures/Tiles/Floors/Dirt1.png</File>
+    <File>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Textures/Tiles/Floors/Dirt2.png</File>
+    <File>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Textures/Tiles/Floors/Grass.png</File>
+    <File>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Textures/Tiles/Floors/Ice1.png</File>
+    <File>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Textures/Tiles/Floors/Metal.png</File>
+    <File>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Textures/Tiles/Floors/Sand1.png</File>
+    <File>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Textures/Tiles/Floors/Sand2.png</File>
+    <File>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Textures/Tiles/Floors/Stone1.png</File>
+    <File>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Textures/Tiles/Floors/Stone2.png</File>
+    <File>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Textures/Tiles/Floors/Stone3.png</File>
+    <File>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Textures/Tiles/Floors/Wooden1.png</File>
+    <File>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Textures/Tiles/Floors/Wooden2.png</File>
     <File>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Textures/Tiles/Wall.png</File>
     <File>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Textures/UI/Background.png</File>
     <File>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Textures/UI/ButtonBackground.png</File>
@@ -21,6 +33,18 @@
     <File>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Textures/UI/Saves window.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

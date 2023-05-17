@@ -24,7 +24,7 @@ internal class EnemyView : CreatureView
         position = PositionChanged.Invoke();
         direction = DirectionChanged.Invoke();
         var flip = direction.X < 0 ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
-        animator.Draw(position, spriteBatch, flip, Layers.Creatures);
+        animator.Draw(position, spriteBatch, flip, Layers.Creatures, 1.5f);
         if (Settings.ShowHitboxes)
             HitboxManager.DrawHitbox(spriteBatch, position, HitboxManager.MeleeEnemy, new Vector2(11, 11));
     }
