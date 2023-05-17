@@ -49,7 +49,6 @@ internal class GameView : Game
         var deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
 
         controller.Update(deltaTime);
-        model.Update(deltaTime);
 
         Camera.Follow(model.Player.Position, WindowWidth, WindowHeight, deltaTime);
         Camera.ChangeScale(MouseController.ScrollValue());

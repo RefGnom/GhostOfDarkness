@@ -11,7 +11,7 @@ internal class Animator
     private readonly int frameHeight;
     private readonly int[] countFramesInAnimations;
     private readonly int[] countFrames;
-    private int countDrawsForUpdateFrame;
+    private readonly int countDrawsForUpdateFrame;
     private bool animationLooped;
 
     private int currentAnimation;
@@ -62,6 +62,8 @@ internal class Animator
 
     private void IncrementFrame()
     {
+        if (GameController.IsPaused)
+            return;
         var lastFrame = countFrames[currentAnimation];
         countFrames[currentAnimation] = (countFrames[currentAnimation] + 1)
             % (countFramesInAnimations[currentAnimation] * countDrawsForUpdateFrame);

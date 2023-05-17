@@ -12,6 +12,7 @@ internal class GameController : GameStatesController
     private readonly GameView view;
 
     private static Camera Camera => GameManager.Instance.Camera;
+    public static bool IsPaused { get; private set; }
 
     public GameController(GameModel model, GameView view)
     {
@@ -47,6 +48,16 @@ internal class GameController : GameStatesController
             view.SwitchScreenState();
         }
 
+        if (IsPlay)
+            UpdateModel(deltaTime);
+
+        IsPaused = !IsPlay;
+    }
+
+    private void UpdateModel(float deltaTime)
+    {
+        model.Update(deltaTime);
+
         if (KeyboardController.IsSingleKeyDown(Settings.ShowOrHideHitboxes))
             Settings.ShowHitboxes = !Settings.ShowHitboxes;
 
@@ -56,7 +67,7 @@ internal class GameController : GameStatesController
         HandleKeys(KeyboardController.GetPressedKeys());
     }
 
-    public void HandleKeys(Keys[] keys)
+    private void HandleKeys(Keys[] keys)
     {
         foreach (var key in keys)
         {
@@ -65,7 +76,7 @@ internal class GameController : GameStatesController
         }
     }
 
-    public void RegisterKeys()
+    private void RegisterKeys()
     {
         actions[Settings.Up] = () => model.Player.DeltaY -= 1;
         actions[Settings.Down] = () => model.Player.DeltaY += 1;
