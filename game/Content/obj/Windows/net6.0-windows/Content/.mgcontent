@@ -6,12 +6,30 @@
   <SourceFiles>
     <File>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Fonts/Arial.spritefont</File>
     <File>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Fonts/TimesNewRoman.spritefont</File>
+    <File>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Service/Door color.png</File>
+    <File>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Service/Hallway floor color.png</File>
+    <File>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Service/Room floor color.png</File>
+    <File>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Service/Wall color.png</File>
+    <File>D:/Programming/C# Projects/GhostOfDarkness/game/Content/test.png</File>
     <File>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Textures/Creatures/Bullet.png</File>
     <File>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Textures/Creatures/Hitbox.png</File>
     <File>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Textures/Creatures/Melee Enemy.png</File>
     <File>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Textures/Creatures/Player.png</File>
     <File>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Textures/HUD/HealthBarBackground.png</File>
     <File>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Textures/HUD/HealthBarForeground.png</File>
+    <File>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Textures/Rooms/Boss room.png</File>
+    <File>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Textures/Rooms/Education room.png</File>
+    <File>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Textures/Rooms/Hallway.png</File>
+    <File>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Textures/Rooms/Room1.png</File>
+    <File>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Textures/Rooms/Room2.png</File>
+    <File>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Textures/Rooms/Room3.png</File>
+    <File>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Textures/Rooms/Room4.png</File>
+    <File>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Textures/Rooms/Room5.png</File>
+    <File>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Textures/Rooms/Room6.png</File>
+    <File>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Textures/Rooms/Room7.png</File>
+    <File>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Textures/Rooms/Room8.png</File>
+    <File>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Textures/Rooms/Room9.png</File>
+    <File>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Textures/Tiles/Door.png</File>
     <File>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Textures/Tiles/Floors/Dirt1.png</File>
     <File>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Textures/Tiles/Floors/Dirt2.png</File>
     <File>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Textures/Tiles/Floors/Grass.png</File>
@@ -33,6 +51,24 @@
     <File>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Textures/UI/Saves window.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

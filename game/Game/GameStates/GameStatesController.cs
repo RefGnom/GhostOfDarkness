@@ -24,7 +24,7 @@ internal class GameStatesController : IStateSwitcher
             new PlayState(this),
             new SettingsState(this)
         };
-        currentState = states[0];
+        currentState = states[6];
         currentState.Start(currentState);
     }
 

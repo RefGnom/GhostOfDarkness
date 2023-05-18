@@ -26,6 +26,13 @@ internal class Tile
         Size = size;
     }
 
+    public Tile(IDrawable entity, Vector2 position, int size)
+    {
+        Entity = entity;
+        Position = position;
+        Size = size;
+    }
+
     public void SetWall()
     {
         Entity = new Wall(Position);

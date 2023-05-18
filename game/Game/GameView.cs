@@ -29,9 +29,9 @@ internal class GameView : Game
     protected override void Initialize()
     {
         LoadContent();
-        model = new(new Vector2(WindowWidth / 2, WindowHeight / 2), 1920, 1080);
-        controller = new(model, this);
         SetSizeScreen(1280, 720);
+        model = new();
+        controller = new(model, this);
         Debug.Initialize(WindowHeight);
         KeyboardController.GameWindow = Window;
         base.Initialize();
@@ -59,7 +59,7 @@ internal class GameView : Game
 
     protected override void Draw(GameTime gameTime)
     {
-        GraphicsDevice.Clear(Color.CornflowerBlue);
+        GraphicsDevice.Clear(new Color(40, 32, 27, 255));
 
         DrawLocation();
         DrawHUD();

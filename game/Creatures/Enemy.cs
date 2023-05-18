@@ -1,5 +1,4 @@
 ﻿using Microsoft.Xna.Framework;
-using System.Linq;
 
 namespace game;
 
@@ -65,17 +64,17 @@ internal abstract class Enemy : Creature
 
     protected virtual void MoveToPlayer(float deltaTime, Creature target)
     {
-        var path = PathFinder.GetPath(Position, target.Position, 20);
-        if (path == null)
-        {
-            isIdle = true;
-            return;
-        }
-        // Работает некорректно
-        var movementVector = path.ToMovementVectors().First();
-        movementVector.Normalize();
-        movementVector = CollisionDetecter.GetMovementVectorWithoutCollision(this, movementVector.X, movementVector.Y, Speed, deltaTime);
-        Position += movementVector * Speed * deltaTime;
+        //var path = PathFinder.GetPath(Position, target.Position, 20);
+        //if (path == null)
+        //{
+        //    isIdle = true;
+        //    return;
+        //}
+        //// Работает некорректно
+        //var movementVector = path.ToMovementVectors().First();
+        //movementVector.Normalize();
+        //movementVector = CollisionDetecter.GetMovementVectorWithoutCollision(this, movementVector.X, movementVector.Y, Speed, deltaTime);
+        //Position += movementVector * Speed * deltaTime;
     }
 
     private void UpdateDirection(Creature target)
