@@ -1,7 +1,12 @@
-﻿namespace game;
+﻿using Microsoft.Xna.Framework.Input;
+using System.Collections.Generic;
+
+namespace game;
 
 internal class GameModel
 {
+    private static readonly List<IInteractable> interactables = new();
+
     public World World { get; private set; }
     public Player Player { get; private set; }
     
@@ -14,7 +19,26 @@ internal class GameModel
 
     public void Update(float deltaTime)
     {
-        World.CurrentRoom.Update(deltaTime, Player);
+        World.Update(deltaTime, Player);
         Player.Update(deltaTime);
+        UpdateInteractables(deltaTime);
+    }
+
+    public static void AddInteractable(IInteractable interactable)
+    {
+        interactables.Add(interactable);
+    }
+
+    private void UpdateInteractables(float deltaTime)
+    {
+        foreach (var item in interactables)
+        {
+            if (item.CanInteract(Player.Position))
+            {
+                if (KeyboardController.IsSingleKeyDown(Keys.E))
+                    item.Interact();
+            }
+            item.Update(deltaTime);
+        }
     }
 }

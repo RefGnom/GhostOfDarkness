@@ -115,6 +115,7 @@ internal class GameView : Game
     private void DrawHUD()
     {
         spriteBatch.Begin(sortMode: SpriteSortMode.BackToFront);
+        HintManager.Draw(spriteBatch, Scale);
         Debug.DrawMessages(spriteBatch);
         GameManager.Instance.Drawer.DrawHUD(spriteBatch, Scale);
         spriteBatch.End();

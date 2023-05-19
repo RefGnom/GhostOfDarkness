@@ -7,6 +7,7 @@ internal class Wall : IDrawable, ICollisionable
 {
     public Vector2 Position { get; private set; }
     public Rectangle Hitbox => HitboxManager.Wall;
+    public bool CanCollide => true;
 
     public Wall(Vector2 position)
     {

@@ -48,6 +48,11 @@ internal class GameController : GameStatesController
             view.SwitchScreenState();
         }
 
+        if (KeyboardController.IsSingleKeyDown(Settings.SwitchPlayerCollision))
+        {
+            model.Player.IsCollide = !model.Player.IsCollide;
+        }
+
         if (IsPlay)
             UpdateModel(deltaTime);
 

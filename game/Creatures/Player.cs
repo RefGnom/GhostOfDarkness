@@ -10,6 +10,7 @@ internal class Player : Creature
     public List<Bullet> Bullets { get; private set; }
     public int DeltaX { get; set; }
     public int DeltaY { get; set; }
+    public bool IsCollide { get; set; }
 
     private static CollisionDetecter CollisionDetecter => GameManager.Instance.CollisionDetecter;
 
@@ -19,6 +20,7 @@ internal class Player : Creature
         Bullets = new();
         healthBar = new HealthBar(health);
         Hitbox = HitboxManager.Player;
+        IsCollide = true;
         Create(this);
     }
 
@@ -88,7 +90,11 @@ internal class Player : Creature
 
     private void Move(float deltaTime)
     {
-        var movementVector = CollisionDetecter.GetMovementVectorWithoutCollision(this, DeltaX, DeltaY, Speed, deltaTime);
+        Vector2 movementVector;
+        if (IsCollide)
+            movementVector = CollisionDetecter.GetMovementVectorWithoutCollision(this, DeltaX, DeltaY, Speed, deltaTime);
+        else
+            movementVector = new Vector2(DeltaX, DeltaY);
         DeltaX = 0;
         DeltaY = 0;
 

@@ -18,6 +18,7 @@ internal static class TexturesManager
     public static Texture2D HealthBarBackground { get; private set; }
     public static Texture2D Wall { get; private set; }
     public static Texture2D Door { get; private set; }
+    public static Texture2D OpenedDoor { get; private set; }
     public static Texture2D Floor { get; private set; }
     public static Texture2D ButtonBackground { get; private set; }
     public static Texture2D FieldForText { get; private set; }
@@ -46,6 +47,7 @@ internal static class TexturesManager
         HealthBarBackground = Load("Textures\\HUD\\HealthBarBackground");
         Wall = Load("Textures\\Tiles\\Wall");
         Door = Load("Textures\\Tiles\\Door");
+        OpenedDoor = Load("Textures\\Tiles\\Opened door");
         Floor = Load("Textures\\Tiles\\Floors\\Metal");
         ButtonBackground = Load("Textures\\UI\\ButtonBackground");
         FieldForText = Load("Textures\\UI\\FieldForGameName");

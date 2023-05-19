@@ -11,6 +11,7 @@ internal class Bullet : IDrawable, ICollisionable
 
     public Vector2 Position { get; private set; }
     public Rectangle Hitbox => HitboxManager.Bullet;
+    public bool CanCollide => true;
     public bool IsDead => lifetime <= 0;
 
     public Bullet(Vector2 position, Vector2 direction)

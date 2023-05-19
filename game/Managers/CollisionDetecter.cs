@@ -23,6 +23,8 @@ internal class CollisionDetecter
         {
             if (obj == item)
                 continue;
+            if (!obj.CanCollide)
+                continue;
             if (item.Collision(obj))
             {
                 return obj;
@@ -36,6 +38,8 @@ internal class CollisionDetecter
         foreach (var obj in objects)
         {
             if (obj == item)
+                continue;
+            if (!obj.CanCollide)
                 continue;
             if (item.Collision(obj, moveVector))
             {

@@ -15,7 +15,7 @@ internal class PlayerView : CreatureView
         ["dead"] = 0,
     };
 
-    private Player model;
+    private readonly Player model;
     private float rotation;
 
     public PlayerView(Player model) : base(AnimatorsCreator.GetAnimator("Player"), animations)

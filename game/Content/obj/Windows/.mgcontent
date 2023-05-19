@@ -42,6 +42,7 @@
     <File>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Textures/Tiles/Floors/Stone3.png</File>
     <File>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Textures/Tiles/Floors/Wooden1.png</File>
     <File>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Textures/Tiles/Floors/Wooden2.png</File>
+    <File>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Textures/Tiles/Opened door.png</File>
     <File>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Textures/Tiles/Wall.png</File>
     <File>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Textures/UI/Background.png</File>
     <File>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Textures/UI/ButtonBackground.png</File>
@@ -51,6 +52,7 @@
     <File>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Textures/UI/Saves window.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

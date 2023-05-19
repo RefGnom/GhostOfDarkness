@@ -6,7 +6,7 @@ internal static class Settings
 {
     public static bool ShowHitboxes;
 
-    #region controls
+    #region Controls
     public static Keys Up = Keys.W;
     public static Keys Down = Keys.S;
     public static Keys Left = Keys.A;
@@ -15,6 +15,10 @@ internal static class Settings
 
     public static Keys OpenMenu = Keys.Escape;
     public static Keys SwitchScreen = Keys.F12;
+
+    #region Debug mod
     public static Keys ShowOrHideHitboxes = Keys.B;
     public static Keys SwitchCameraFollow = Keys.F1;
+    public static Keys SwitchPlayerCollision = Keys.F2;
+    #endregion
 }

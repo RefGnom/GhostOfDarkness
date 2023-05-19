@@ -57,11 +57,11 @@ internal class PlayerDeadState : GameState
         background = new Sprite(TexturesManager.PauseBackground, new Vector2(564, 312), Layers.UIBackground);
 
         var position = new Vector2(736, 430);
-        var mainMenu = new Button(TexturesManager.ButtonBackground, position, "In main menu");
-        mainMenu.OnClicked += Exit;
-        position.Y += 140;
         var restart = new Button(TexturesManager.ButtonBackground, position, "Restart");
         restart.OnClicked += Restart;
+        position.Y += 140;
+        var mainMenu = new Button(TexturesManager.ButtonBackground, position, "To Main Menu");
+        mainMenu.OnClicked += Exit;
 
         buttons = new()
         {

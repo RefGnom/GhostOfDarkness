@@ -59,14 +59,14 @@ internal class PauseState : GameState
         background = new Sprite(TexturesManager.PauseBackground, new Vector2(564, 312), Layers.UIBackground);
 
         var position = new Vector2(736, 370);
-        var mainMenu = new Button(TexturesManager.ButtonBackground, position, "In main menu");
-        mainMenu.OnClicked += Exit;
+        var continueGame = new Button(TexturesManager.ButtonBackground, position, "Resume");
+        continueGame.OnClicked += Play;
         position.Y += 130;
         var settings = new Button(TexturesManager.ButtonBackground, position, "Settings");
         settings.OnClicked += OpenSettings;
         position.Y += 130;
-        var continueGame = new Button(TexturesManager.ButtonBackground, position, "Continue");
-        continueGame.OnClicked += Play;
+        var mainMenu = new Button(TexturesManager.ButtonBackground, position, "To Main Menu");
+        mainMenu.OnClicked += Exit;
 
         buttons = new()
         {

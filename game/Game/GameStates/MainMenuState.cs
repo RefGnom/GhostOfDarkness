@@ -63,11 +63,11 @@ internal class MainMenuState : GameState
 
         var buttonDistance = 150;
         var position = new Vector2(160, 275);
-        var newGame = new Button(TexturesManager.ButtonBackground, position, "New game");
+        var newGame = new Button(TexturesManager.ButtonBackground, position, "New Game");
         newGame.OnClicked += NewGame;
 
         position.Y += buttonDistance;
-        var loadSave = new Button(TexturesManager.ButtonBackground, position, "Load save");
+        var loadSave = new Button(TexturesManager.ButtonBackground, position, "Load Game");
         loadSave.OnClicked += LoadSave;
 
         position.Y += buttonDistance;

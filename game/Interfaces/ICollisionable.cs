@@ -6,6 +6,7 @@ internal interface ICollisionable
 {
     public Rectangle Hitbox { get; }
     public Vector2 Position { get; }
+    public bool CanCollide { get; }
 
     public bool Collision(ICollisionable collisionable)
     {

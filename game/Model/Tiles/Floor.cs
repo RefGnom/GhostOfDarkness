@@ -22,6 +22,6 @@ internal class Floor : IDrawable
 
     public void Draw(SpriteBatch spriteBatch, float scale)
     {
-        spriteBatch.Draw(texture, position, null, Color.Gray, 0, Vector2.Zero, 0.5f, SpriteEffects.None, Layers.Tiles);
+        spriteBatch.Draw(texture, position, null, Color.Gray, 0, Vector2.Zero, 0.5f, SpriteEffects.None, Layers.Floor);
     }
 }

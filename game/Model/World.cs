@@ -41,4 +41,9 @@ internal class World
         }
         CurrentRoom = rooms["Education room"];
     }
+
+    public void Update(float deltaTime, Creature player)
+    {
+        CurrentRoom.Update(deltaTime, player);
+    }
 }
