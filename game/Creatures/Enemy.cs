@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using System.Linq;
 
 namespace game;
 
@@ -73,8 +74,11 @@ internal abstract class Enemy : Creature
         //// Работает некорректно
         //var movementVector = path.ToMovementVectors().First();
         //movementVector.Normalize();
-        //movementVector = CollisionDetecter.GetMovementVectorWithoutCollision(this, movementVector.X, movementVector.Y, Speed, deltaTime);
-        //Position += movementVector * Speed * deltaTime;
+
+        var movementVector = Direction;
+
+        movementVector = CollisionDetecter.GetMovementVectorWithoutCollision(this, movementVector.X, movementVector.Y, Speed, deltaTime);
+        Move(movementVector * Speed * deltaTime);
     }
 
     private void UpdateDirection(Creature target)

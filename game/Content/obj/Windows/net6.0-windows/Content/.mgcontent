@@ -8,7 +8,9 @@
     <File>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Fonts/TimesNewRoman.spritefont</File>
     <File>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Service/Door color.png</File>
     <File>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Service/Hallway floor color.png</File>
+    <File>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Service/Horizontal line.png</File>
     <File>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Service/Room floor color.png</File>
+    <File>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Service/Vertical line.png</File>
     <File>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Service/Wall color.png</File>
     <File>D:/Programming/C# Projects/GhostOfDarkness/game/Content/test.png</File>
     <File>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Textures/Creatures/Bullet.png</File>
@@ -53,6 +55,8 @@
     <File>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Textures/UI/Settings string.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

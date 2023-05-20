@@ -26,6 +26,8 @@ internal static class TexturesManager
     public static Texture2D SavesWindow { get; private set; }
     public static Texture2D PauseBackground { get; private set; }
     public static Texture2D Background { get; private set; }
+    public static Texture2D HorizontalLine { get; private set; }
+    public static Texture2D VerticalLine { get; private set; }
 
     #region TileColors
     public static Texture2D WallColor { get; private set; }
@@ -56,6 +58,8 @@ internal static class TexturesManager
         SavesWindow = Load("Textures\\UI\\Saves window");
         PauseBackground = Load("Textures\\UI\\Pause background");
         Background = Load("Textures\\UI\\Background");
+        HorizontalLine = Load("Service\\Horizontal line");
+        VerticalLine = Load("Service\\Vertical line");
         LoadTileColors();
         LoadRooms();
     }

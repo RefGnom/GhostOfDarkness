@@ -30,6 +30,13 @@ internal abstract class Creature : ICollisionable
 
     public abstract void TakeDamage(float damage);
 
+    public void Move(Vector2 movementVector)
+    {
+        GameManager.Instance.CollisionDetecter.Unregister(this);
+        Position += movementVector;
+        GameManager.Instance.CollisionDetecter.Register(this);
+    }
+
     public static void Create(Creature creature)
     {
         GameManager.Instance.CollisionDetecter.Register(creature);

@@ -43,7 +43,7 @@ internal class GameController : GameStatesController
             Save();
         }
 
-        if (KeyboardController.IsSingleKeyDown(Settings.SwitchScreen))
+        if (KeyboardController.IsSingleKeyDown(Settings.OnFullScreen))
         {
             view.SwitchScreenState();
         }
@@ -51,6 +51,11 @@ internal class GameController : GameStatesController
         if (KeyboardController.IsSingleKeyDown(Settings.SwitchPlayerCollision))
         {
             model.Player.IsCollide = !model.Player.IsCollide;
+        }
+
+        if (KeyboardController.IsSingleKeyDown(Settings.ShowOrHideQuadTree))
+        {
+            QuadTree.Show = !QuadTree.Show;
         }
 
         if (IsPlay)

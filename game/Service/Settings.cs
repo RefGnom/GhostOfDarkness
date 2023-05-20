@@ -14,11 +14,12 @@ internal static class Settings
     #endregion
 
     public static Keys OpenMenu = Keys.Escape;
-    public static Keys SwitchScreen = Keys.F12;
+    public static Keys OnFullScreen = Keys.F12;
 
     #region Debug mod
     public static Keys ShowOrHideHitboxes = Keys.B;
     public static Keys SwitchCameraFollow = Keys.F1;
     public static Keys SwitchPlayerCollision = Keys.F2;
+    public static Keys ShowOrHideQuadTree = Keys.F3;
     #endregion
 }

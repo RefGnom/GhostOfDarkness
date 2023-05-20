@@ -3,6 +3,13 @@ using System.Collections.Generic;
 
 namespace game;
 
+internal class Test : ICollisionable
+{
+    public Rectangle Hitbox => new(0, 0, 7000, 7000);
+    public Vector2 Position => Vector2.Zero;
+    public bool CanCollide => true;
+}
+
 internal class World
 {
     private static readonly Dictionary<string, Vector2> positions = new()
@@ -31,6 +38,7 @@ internal class World
     public World()
     {
         rooms = new();
+        GameManager.Instance.CollisionDetecter.CreateQuadTree(width, height);
         foreach (var (name, texture) in TexturesManager.Rooms)
         {
             var position = positions[name] * tileSize;

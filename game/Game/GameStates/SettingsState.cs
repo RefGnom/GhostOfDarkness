@@ -59,7 +59,7 @@ internal class SettingsState : GameState
         var background = new Sprite(TexturesManager.Background, Vector2.Zero, Layers.Background);
 
         var position = new Vector2(30, 30);
-        var string1 = CreateString(position, "On full screen", Settings.SwitchScreen.ToString());
+        var string1 = CreateString(position, "On full screen", Settings.OnFullScreen.ToString());
         position.Y += 60;
         var string2 = CreateString(position, "Open menu", Settings.OpenMenu.ToString());
         position.Y += 60;

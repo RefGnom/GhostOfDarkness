@@ -101,7 +101,7 @@ internal class Player : Creature
         if (movementVector != Vector2.Zero)
         {
             movementVector.Normalize();
-            Position += movementVector * Speed * deltaTime;
+            Move(movementVector * Speed * deltaTime);
             View.Idle();
         }
         else

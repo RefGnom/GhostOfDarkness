@@ -28,7 +28,8 @@ internal class Bullet : IDrawable, ICollisionable
 
     public void Draw(SpriteBatch spriteBatch, float scale)
     {
-        spriteBatch.Draw(TexturesManager.Bullet, Position, Color.Orange);
+        //Color.Orange
+        spriteBatch.Draw(TexturesManager.Bullet, Position, Color.Blue);
         if (Settings.ShowHitboxes)
             HitboxManager.DrawHitbox(spriteBatch, Position, HitboxManager.Bullet, Vector2.Zero);
     }

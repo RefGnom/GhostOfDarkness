@@ -51,6 +51,18 @@
 /processorParam:TextureFormat=Color
 /build:Service/Hallway floor color.png
 
+#begin Service/Horizontal line.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Service/Horizontal line.png
+
 #begin Service/Room floor color.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -62,6 +74,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Service/Room floor color.png
+
+#begin Service/Vertical line.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Service/Vertical line.png
 
 #begin Service/Wall color.png
 /importer:TextureImporter

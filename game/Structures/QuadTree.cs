@@ -1,55 +1,147 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace game;
 
-internal class QuadTree
+internal class QuadTree : IDrawable
 {
-    private static int countItems = 4;
+    private readonly static int threshold = 4;
 
     private readonly Rectangle boundary;
-    private List<Rectangle> items;
+    private readonly List<ICollisionable> items;
+    private readonly QuadTree[] nodes;
 
-    private QuadTree topRight;
-    private QuadTree topLeft;
-    private QuadTree downLeft;
-    private QuadTree downRight;
-    private bool isDivided;
+    public static bool Show { get; set; }
+
+    public int Count
+    { 
+        get
+        {
+            if (nodes[0] is null)
+                return items.Count;
+            return items.Count + nodes.Sum(x => x.Count);
+        }
+    }
 
     public QuadTree(Rectangle boundary)
     {
         this.boundary = boundary;
+        items = new();
+        nodes = new QuadTree[4];
     }
 
-    public void Insert(Rectangle item)
+    public void Insert(ICollisionable item)
     {
-        if (!item.Intersects(boundary))
+        var hitbox = item.Hitbox.Shift(item.Position);
+        if (!hitbox.Intersects(boundary))
             return;
-        if (items.Count < countItems)
+        if (items.Count < threshold)
         {
             items.Add(item);
             return;
         }
 
-        if (!isDivided)
+        if (nodes[0] is null)
             Subdivide();
 
-        topRight.Insert(item);
-        topLeft.Insert(item);
-        downLeft.Insert(item);
-        downRight.Insert(item);
+        for (int i = 0; i < nodes.Length; i++)
+        {
+            nodes[i].Insert(item);
+        }
     }
 
-    public void Subdivide()
+    internal void Remove(ICollisionable item)
+    {
+        var hitbox = item.Hitbox.Shift(item.Position);
+        if (!hitbox.Intersects(boundary) || items.Remove(item) || nodes[0] is null)
+            return;
+
+        for (int i = 0; i < nodes.Length; i++)
+        {
+            nodes[i].Remove(item);
+        }
+
+        if (nodes.All(x => x.Count == 0))
+        {
+            for (int i = 0; i < nodes.Length; i++)
+            {
+                nodes[i] = null;
+            }
+        }
+    }
+
+    public bool IsIntersectedWithItems(ICollisionable value, Vector2 movementVector)
+    {
+        return GetIntersectWithItems(value, movementVector) is not null;
+    }
+
+    public ICollisionable GetIntersectWithItems(ICollisionable value)
+    {
+        return GetIntersectWithItems(value, Vector2.Zero);
+    }
+
+    public ICollisionable GetIntersectWithItems(ICollisionable value, Vector2 movementVector)
+    {
+        var hitbox = value.Hitbox.Shift(value.Position + movementVector);
+        if (!hitbox.Intersects(boundary))
+            return null;
+
+        for (int i = 0; i < items.Count; i++)
+        {
+            if (value != items[i] && items[i].CanCollide && value.Collision(items[i], movementVector))
+                return items[i];
+        }
+        if (nodes[0] is not null)
+        {
+            for (int i = 0; i < nodes.Length; i++)
+            {
+                var intersect = nodes[i].GetIntersectWithItems(value, movementVector);
+                if (intersect is not null)
+                    return intersect;
+            }
+        }
+        return null;
+    }
+
+    private void Subdivide()
     {
         var quarter = boundary.Quarter();
-        topLeft = new(quarter);
+        nodes[0] = new(quarter);
         quarter.Offset(quarter.Width, 0);
-        topRight = new(quarter);
+        nodes[1] = new(quarter);
         quarter.Offset(0, quarter.Height);
-        downRight = new(quarter);
+        nodes[2] = new(quarter);
         quarter.Offset(-quarter.Width, 0);
-        downLeft = new(quarter);
-        isDivided = true;
+        nodes[3] = new(quarter);
+    }
+
+    public void Draw(SpriteBatch spriteBatch, float scale)
+    {
+        if (!Show)
+            return;
+        var vertical = TexturesManager.VerticalLine;
+        var horizontal = TexturesManager.HorizontalLine;
+        var position = boundary.Location.ToVector2();
+        var source = new Rectangle(0, 0, 3, boundary.Height);
+        spriteBatch.Draw(vertical, position, source, Color.White, 0, Vector2.Zero, 1, SpriteEffects.None, Layers.HUD);
+        source = new Rectangle(0, 0, boundary.Width, 3);
+        spriteBatch.Draw(horizontal, position, source, Color.White, 0, Vector2.Zero, 1, SpriteEffects.None, Layers.HUD);
+        position.X += boundary.Width;
+        source = new Rectangle(0, 0, 3, boundary.Height);
+        spriteBatch.Draw(vertical, position, source, Color.White, 0, Vector2.Zero, 1, SpriteEffects.None, Layers.HUD);
+        position.X -= boundary.Width;
+        position.Y += boundary.Height;
+        source = new Rectangle(0, 0, boundary.Width, 3);
+        spriteBatch.Draw(horizontal, position, source, Color.White, 0, Vector2.Zero, 1, SpriteEffects.None, Layers.HUD);
+
+        if (nodes[0] is not null)
+        {
+            for (int i = 0; i < nodes.Length; i++)
+            {
+                nodes[i].Draw(spriteBatch, scale);
+            }
+        }
     }
 }

@@ -1,52 +1,37 @@
 ﻿using Microsoft.Xna.Framework;
-using System.Collections.Generic;
 
 namespace game;
 
 internal class CollisionDetecter
 {
-    private readonly List<ICollisionable> objects = new();
+    private QuadTree quadTree;
+
+    public void CreateQuadTree(int width, int height)
+    {
+        if (quadTree is not null)
+            return;
+        quadTree = new(new Rectangle(0, 0, width, height));
+        GameManager.Instance.Drawer.Register(quadTree);
+    }
 
     public void Register(ICollisionable item)
     {
-        objects.Add(item);
+        quadTree.Insert(item);
     }
 
     public void Unregister(ICollisionable item)
     {
-        objects.Remove(item);
+        quadTree.Remove(item);
     }
 
     public ICollisionable CollisionWithbjects(ICollisionable item)
     {
-        foreach (var obj in objects)
-        {
-            if (obj == item)
-                continue;
-            if (!obj.CanCollide)
-                continue;
-            if (item.Collision(obj))
-            {
-                return obj;
-            }
-        }
-        return null;
+        return quadTree.GetIntersectWithItems(item);
     }
 
-    public bool CollisionWithbjects(ICollisionable item, Vector2 moveVector)
+    public bool CollisionWithbjects(ICollisionable item, Vector2 movementVector)
     {
-        foreach (var obj in objects)
-        {
-            if (obj == item)
-                continue;
-            if (!obj.CanCollide)
-                continue;
-            if (item.Collision(obj, moveVector))
-            {
-                return true;
-            }
-        }
-        return false;
+        return quadTree.IsIntersectedWithItems(item, movementVector);
     }
 
     public Vector2 GetMovementVectorWithoutCollision(ICollisionable item, float deltaX, float deltaY, float speed, float deltaTime)

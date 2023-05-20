@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework.Input;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
 
 namespace game;
@@ -9,11 +10,11 @@ internal class GameModel
 
     public World World { get; private set; }
     public Player Player { get; private set; }
-    
+
     public GameModel()
     {
         World = new();
-        //World.CurrentRoom.CreateEnemy(new MeleeEnemy(World.CurrentRoom.Center, 40));
+        World.CurrentRoom.CreateEnemy(new MeleeEnemy(World.CurrentRoom.Center + new Vector2(64, 64), 80));
         Player = new(World.CurrentRoom.Center, 230f, 100, 0.3f);
     }
 

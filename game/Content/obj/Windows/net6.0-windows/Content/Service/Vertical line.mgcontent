@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Textures/UI/Settings string.png</SourceFile>
-  <SourceTime>2023-05-20T12:55:58.7090621+03:00</SourceTime>
-  <DestFile>D:/Programming/C# Projects/GhostOfDarkness/game/Content/bin/Windows/Textures/UI/Settings string.xnb</DestFile>
-  <DestTime>2023-05-20T23:25:31.1668957+03:00</DestTime>
+  <SourceFile>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Service/Vertical line.png</SourceFile>
+  <SourceTime>2023-05-20T23:24:32.8942637+03:00</SourceTime>
+  <DestFile>D:/Programming/C# Projects/GhostOfDarkness/game/Content/bin/Windows/Content/Service/Vertical line.xnb</DestFile>
+  <DestTime>2023-05-20T23:34:03.5165449+03:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2022-07-26T14:44:56+03:00</ImporterTime>
   <Processor>TextureProcessor</Processor>
