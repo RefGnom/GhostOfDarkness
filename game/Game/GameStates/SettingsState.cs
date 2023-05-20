@@ -4,7 +4,7 @@ namespace game;
 
 internal class SettingsState : GameState
 {
-    private Sprite background;
+    private Sprite[] sprites;
 
     public SettingsState(IStateSwitcher stateSwitcher) : base(stateSwitcher)
     {
@@ -56,7 +56,31 @@ internal class SettingsState : GameState
 
     public override void Start(GameState previousState)
     {
-        background = new Sprite(TexturesManager.Background, Vector2.Zero, Layers.Background);
+        var background = new Sprite(TexturesManager.Background, Vector2.Zero, Layers.Background);
+
+        var position = new Vector2(30, 30);
+        var string1 = CreateString(position, "On full screen", Settings.SwitchScreen.ToString());
+        position.Y += 60;
+        var string2 = CreateString(position, "Open menu", Settings.OpenMenu.ToString());
+        position.Y += 60;
+        var string3 = CreateString(position, "Move Up", Settings.Up.ToString());
+        position.Y += 60;
+        var string4 = CreateString(position, "Move Down", Settings.Down.ToString());
+        position.Y += 60;
+        var string5 = CreateString(position, "Move Left", Settings.Left.ToString());
+        position.Y += 60;
+        var string6 = CreateString(position, "Move Right", Settings.Right.ToString());
+
+        sprites = new Sprite[]
+        {
+            background,
+            string1,
+            string2,
+            string3,
+            string4,
+            string5,
+            string6
+        };
 
         var save = new Button(TexturesManager.ButtonBackground, new Vector2(934, 960), "Save");
         save.OnClicked += Save;
@@ -82,13 +106,27 @@ internal class SettingsState : GameState
 
     public override void Draw()
     {
-        GameManager.Instance.Drawer.RegisterUI(background);
+        for (int i = 0; i < sprites.Length; i++)
+        {
+            GameManager.Instance.Drawer.RegisterUI(sprites[i]);
+        }
         RegisterButtons();
     }
 
     public override void Erase()
     {
-        GameManager.Instance.Drawer.UnregisterUI(background);
+        for (int i = 0; i < sprites.Length; i++)
+        {
+            GameManager.Instance.Drawer.UnregisterUI(sprites[i]);
+        }
         UnregisterButtons();
+    }
+
+    private static Sprite CreateString(Vector2 position, string name, string key)
+    {
+        var line = new Sprite(TexturesManager.SettingsString, position, Layers.UIBackground);
+        line.AddText(new Text(new Rectangle(position.ToPoint(), new Point(600, 60)), name, Align.Left, 10));
+        line.AddText(new Text(new Rectangle((int)position.X + 600, (int)position.Y, 200, 60), key, Align.Center, 0));
+        return line;
     }
 }

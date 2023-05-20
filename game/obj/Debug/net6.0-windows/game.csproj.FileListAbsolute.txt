@@ -93,3 +93,4 @@ D:\Programming\C# Projects\GhostOfDarkness\game\bin\Debug\net6.0-windows\Content
 D:\Programming\C# Projects\GhostOfDarkness\game\bin\Debug\net6.0-windows\Content\Service\Room floor color.xnb
 D:\Programming\C# Projects\GhostOfDarkness\game\bin\Debug\net6.0-windows\Content\Service\Wall color.xnb
 D:\Programming\C# Projects\GhostOfDarkness\game\bin\Debug\net6.0-windows\Content\Textures\Tiles\Opened door.xnb
+D:\Programming\C# Projects\GhostOfDarkness\game\bin\Debug\net6.0-windows\Content\Textures\UI\Settings string.xnb

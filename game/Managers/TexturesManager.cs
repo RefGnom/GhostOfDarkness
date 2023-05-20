@@ -21,6 +21,7 @@ internal static class TexturesManager
     public static Texture2D OpenedDoor { get; private set; }
     public static Texture2D Floor { get; private set; }
     public static Texture2D ButtonBackground { get; private set; }
+    public static Texture2D SettingsString { get; private set; }
     public static Texture2D FieldForText { get; private set; }
     public static Texture2D SavesWindow { get; private set; }
     public static Texture2D PauseBackground { get; private set; }
@@ -50,6 +51,7 @@ internal static class TexturesManager
         OpenedDoor = Load("Textures\\Tiles\\Opened door");
         Floor = Load("Textures\\Tiles\\Floors\\Metal");
         ButtonBackground = Load("Textures\\UI\\ButtonBackground");
+        SettingsString = Load("Textures\\UI\\Settings string");
         FieldForText = Load("Textures\\UI\\FieldForGameName");
         SavesWindow = Load("Textures\\UI\\Saves window");
         PauseBackground = Load("Textures\\UI\\Pause background");
