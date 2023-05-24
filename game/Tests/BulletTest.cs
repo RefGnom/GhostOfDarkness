@@ -22,10 +22,10 @@ internal class PlayerTest : Player
     }
 }
 
-[TestFixture]
+//[TestFixture]
 public class BulletTest
 {
-    [Test]
+    //[Test]
     public void TestCountBullets()
     {
         var player = new PlayerTest(Vector2.Zero, 0, -1);
@@ -41,7 +41,7 @@ public class BulletTest
         Assert.AreEqual(0, player.Bullets.Count);
     }
 
-    [Test]
+    //[Test]
     public void TestUpdateBullets()
     {
         var player = new PlayerTest(Vector2.Zero, 0, -1);

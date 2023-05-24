@@ -44,14 +44,14 @@ internal class InteractableDoor : IInteractable
         if (isOpen)
         {
             isOpen = false;
-            hint = "Close";
+            hint = "Open";
             first.Close();
             second.Close();
         }
         else
         {
             isOpen = true;
-            hint = "Open";
+            hint = "Close";
             first.Open();
             second.Open();
         }

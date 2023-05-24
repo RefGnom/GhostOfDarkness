@@ -14,7 +14,12 @@ internal class GameModel
     public GameModel()
     {
         World = new();
-        World.CurrentRoom.CreateEnemy(new MeleeEnemy(World.CurrentRoom.Center + new Vector2(64, 64), 80));
+        var x = 400;
+        for (int i = 0; i < 1; i++)
+        {
+            World.CurrentRoom.CreateEnemy(new MeleeEnemy(World.CurrentRoom.Center - new Vector2(x, 300), 80));
+            x -= 30;
+        }
         Player = new(World.CurrentRoom.Center, 230f, 100, 0.3f);
     }
 

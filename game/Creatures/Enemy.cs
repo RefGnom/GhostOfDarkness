@@ -1,5 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
-using System.Linq;
+using System;
 
 namespace game;
 
@@ -8,25 +8,26 @@ internal abstract class Enemy : Creature
     private bool isIdle;
     private bool hitboxDeleted;
     public new bool IsDead => View.CanDelete;
-    private CollisionDetecter CollisionDetecter => GameManager.Instance.CollisionDetecter;
+    private static CollisionDetecter CollisionDetecter => GameManager.Instance.CollisionDetecter;
+
+    public event Func<Creature, Creature, float, Vector2> GetMovementVector;
 
     public Enemy(EnemyView view, Vector2 position, float speed, float health, float damage, float attackDistance, float cooldown)
         : base(position, speed, health, damage, attackDistance, cooldown)
     {
         View = view;
-        view.PositionChanged += () => Position;
-        view.DirectionChanged += () => Direction;
     }
 
-    private void Attack(Creature target)
+    private bool TryAttack(Creature target)
     {
         var distance = Vector2.Distance(Position, target.Position);
         if (distance <= AttackDistance && currentColdown <= 0)
         {
             target.TakeDamage(Damage);
             currentColdown = cooldown;
-            View.Attack();
+            return true;
         }
+        return false;
     }
 
     public override void TakeDamage(float damage)
@@ -50,11 +51,11 @@ internal abstract class Enemy : Creature
             return;
         }
         UpdateDirection(target);
-        if (View.CanAttack)
-            Attack(target);
+        if (View.CanAttack && TryAttack(target))
+            View.Attack();
 
         if (View.CanMove)
-            MoveToPlayer(deltaTime, target);
+            isIdle = !TryMoveToPlayer(deltaTime, target);
 
         if (isIdle)
             View.Idle();
@@ -63,22 +64,16 @@ internal abstract class Enemy : Creature
         currentColdown -= deltaTime;
     }
 
-    protected virtual void MoveToPlayer(float deltaTime, Creature target)
+    protected virtual bool TryMoveToPlayer(float deltaTime, Creature target)
     {
-        //var path = PathFinder.GetPath(Position, target.Position, 20);
-        //if (path == null)
-        //{
-        //    isIdle = true;
-        //    return;
-        //}
-        //// Работает некорректно
-        //var movementVector = path.ToMovementVectors().First();
-        //movementVector.Normalize();
-
-        var movementVector = Direction;
-
+        var movementVector = GetMovementVector.Invoke(this, target, deltaTime);
+        if (movementVector == Vector2.Zero)
+            return false;
         movementVector = CollisionDetecter.GetMovementVectorWithoutCollision(this, movementVector.X, movementVector.Y, Speed, deltaTime);
+        if (movementVector == Vector2.Zero)
+            return false;
         Move(movementVector * Speed * deltaTime);
+        return true;
     }
 
     private void UpdateDirection(Creature target)

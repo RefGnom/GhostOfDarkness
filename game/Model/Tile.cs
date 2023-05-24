@@ -20,9 +20,9 @@ internal class Tile
         }
     }
 
-    public Tile(int x, int y, int size)
+    public Tile(Vector2 position, int size)
     {
-        Position = new Vector2(x, y);
+        Position = position;
         Size = size;
     }
 

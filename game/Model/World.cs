@@ -3,13 +3,6 @@ using System.Collections.Generic;
 
 namespace game;
 
-internal class Test : ICollisionable
-{
-    public Rectangle Hitbox => new(0, 0, 7000, 7000);
-    public Vector2 Position => Vector2.Zero;
-    public bool CanCollide => true;
-}
-
 internal class World
 {
     private static readonly Dictionary<string, Vector2> positions = new()
@@ -47,7 +40,7 @@ internal class World
             rooms[name] = room;
             GameManager.Instance.Drawer.Register(room);
         }
-        CurrentRoom = rooms["Education room"];
+        CurrentRoom = rooms["Boss room"];
     }
 
     public void Update(float deltaTime, Creature player)

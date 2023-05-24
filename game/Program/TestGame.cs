@@ -2,7 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
-namespace game;
+namespace game.Program;
 
 internal class TestGame : Game
 {

@@ -1,31 +1,31 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System;
 using System.Collections.Generic;
 
 namespace game;
 
 internal class EnemyView : CreatureView
 {
-    private Vector2 position;
-    private Vector2 direction;
+    protected float scaleFactor = 1;
+    private Enemy model;
 
     public int Radius => animator.Radius;
-
-    public event Func<Vector2> PositionChanged;
-    public event Func<Vector2> DirectionChanged;
 
     public EnemyView(Animator animator, Dictionary<string, int> animations) : base(animator, animations)
     {
     }
 
+    public void SetModel(Enemy model)
+    {
+        this.model = model;
+    }
+
     public override void Draw(SpriteBatch spriteBatch, float scale)
     {
-        position = PositionChanged.Invoke();
-        direction = DirectionChanged.Invoke();
-        var flip = direction.X < 0 ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
-        animator.Draw(position, spriteBatch, flip, Layers.Creatures, 1.5f);
+        var flip = model.Direction.X < 0 ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
+        animator.Draw(model.Position, spriteBatch, flip, Layers.Creatures, scaleFactor);
+        var origin = new Vector2(model.Hitbox.Width / 2, model.Hitbox.Height / 2);
         if (Settings.ShowHitboxes)
-            HitboxManager.DrawHitbox(spriteBatch, position, HitboxManager.MeleeEnemy, new Vector2(11, 11));
+            HitboxManager.DrawHitbox(spriteBatch, model.Position, model.Hitbox, origin);
     }
 }

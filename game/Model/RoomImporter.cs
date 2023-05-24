@@ -34,16 +34,20 @@ internal static class RoomImporter
         {
             for (int y = 0; y < texture.Height; y++)
             {
+                var localPosition = new Vector2(x, y) * tileSize;
                 if (colorToEntity.ContainsKey(data[x, y]))
                 {
                     var rotateDoor = false;
                     if (y > 0 && tiles[x, y - 1]?.Entity is not (null or Floor))
                         rotateDoor = true;
-                    var localPosition = new Vector2(x, y) * tileSize;
                     var entity = colorToEntity[data[x, y]](localPosition + position, rotateDoor);
                     if (entity is Door)
                         doors.Add(entity as Door);
                     tiles[x, y] = new Tile(entity, localPosition + position, tileSize);
+                }
+                else
+                {
+                    tiles[x, y] = new Tile(localPosition + position, tileSize);
                 }
 
             }

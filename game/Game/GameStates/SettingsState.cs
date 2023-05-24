@@ -58,18 +58,19 @@ internal class SettingsState : GameState
     {
         var background = new Sprite(TexturesManager.Background, Vector2.Zero, Layers.Background);
 
-        var position = new Vector2(30, 30);
-        var string1 = CreateString(position, "On full screen", Settings.OnFullScreen.ToString());
+        var position = new Vector2(1920 / 2 - TexturesManager.SettingsString.Width / 2, 30);
+        position = new Vector2(30, 30);
+        var string1 = CreateString(position, "Full screen", Settings.OnFullScreen.ToString());
+        position.Y += 60; 
+        var string2 = CreateString(position, "Menu", Settings.OpenMenu.ToString());
         position.Y += 60;
-        var string2 = CreateString(position, "Open menu", Settings.OpenMenu.ToString());
+        var string3 = CreateString(position, "Up", Settings.Up.ToString());
         position.Y += 60;
-        var string3 = CreateString(position, "Move Up", Settings.Up.ToString());
+        var string4 = CreateString(position, "Down", Settings.Down.ToString());
         position.Y += 60;
-        var string4 = CreateString(position, "Move Down", Settings.Down.ToString());
+        var string5 = CreateString(position, "Left", Settings.Left.ToString());
         position.Y += 60;
-        var string5 = CreateString(position, "Move Left", Settings.Left.ToString());
-        position.Y += 60;
-        var string6 = CreateString(position, "Move Right", Settings.Right.ToString());
+        var string6 = CreateString(position, "Right", Settings.Right.ToString());
 
         sprites = new Sprite[]
         {
@@ -125,8 +126,8 @@ internal class SettingsState : GameState
     private static Sprite CreateString(Vector2 position, string name, string key)
     {
         var line = new Sprite(TexturesManager.SettingsString, position, Layers.UIBackground);
-        line.AddText(new Text(new Rectangle(position.ToPoint(), new Point(600, 60)), name, Align.Left, 10));
-        line.AddText(new Text(new Rectangle((int)position.X + 600, (int)position.Y, 200, 60), key, Align.Center, 0));
+        line.AddText(new Text(new Rectangle(position.ToPoint(), new Point(300, 60)), name, Align.Left, 10));
+        line.AddText(new Text(new Rectangle((int)position.X + 300, (int)position.Y, 200, 60), key, Align.Center, 0));
         return line;
     }
 }

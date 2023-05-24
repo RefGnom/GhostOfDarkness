@@ -21,4 +21,10 @@ internal interface ICollisionable
         var hitbox2 = collisionable.Hitbox.Shift(collisionable.Position);
         return hitbox1.Intersects(hitbox2);
     }
+
+    public bool Collision(Rectangle hitbox)
+    {
+        var myHitbox = Hitbox.Shift(Position);
+        return myHitbox.Intersects(hitbox);
+    }
 }

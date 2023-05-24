@@ -18,6 +18,9 @@
     <PackageReference Include="NUnit3TestAdapter" Version="4.4.2" />
     <PackageReference Include="NUnitLite" Version="3.13.3" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="View\UI\" />
+  </ItemGroup>
   <Target Name="RestoreDotnetTools" BeforeTargets="Restore">
     <Message Text="Restoring dotnet tools" Importance="High" />
     <Exec Command="dotnet tool restore" />

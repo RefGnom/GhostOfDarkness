@@ -12,11 +12,11 @@ internal class Animator
     private readonly int[] countFramesInAnimations;
     private readonly int[] countFrames;
     private readonly int countDrawsForUpdateFrame;
-    private bool animationLooped;
+    private bool animationLooped = true;
 
     private int currentAnimation;
 
-    public int Radius => (frameHeight + frameWidth) / 4;
+    public int Radius => (frameHeight + frameWidth) / 4; // (width ** 2 + height ** 2) ** 0.5
 
     public Animator(Texture2D texture, int frameWidth, int frameHeight, int[] countFramesInAnimations, int countDrawsForUpdateFrame)
     {

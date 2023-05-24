@@ -13,7 +13,8 @@ internal class MeleeEnemyView : EnemyView
         ["dead"] = 4,
     };
 
-    public MeleeEnemyView() : base(AnimatorsCreator.GetAnimator("Melee Enemy"), animations)
+    public MeleeEnemyView(float scale) : base(AnimatorsCreator.GetAnimator("Melee Enemy"), animations)
     {
+        scaleFactor = scale;
     }
 }
