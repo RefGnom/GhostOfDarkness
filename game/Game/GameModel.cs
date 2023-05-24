@@ -15,12 +15,19 @@ internal class GameModel
     {
         World = new();
         var x = 400;
-        for (int i = 0; i < 1; i++)
+        var y = 320;
+        for (int j = 0; j < 4; j++)
         {
-            World.CurrentRoom.CreateEnemy(new MeleeEnemy(World.CurrentRoom.Center - new Vector2(x, 300), 80));
-            x -= 30;
+            for (int i = 0; i < 4; i++)
+            {
+                World.CurrentRoom.CreateEnemy(new MeleeEnemy(World.CurrentRoom.Center - new Vector2(x, y), 80));
+                x -= 30;
+            }
+            x = 400;
+            y -= 40;
         }
-        Player = new(World.CurrentRoom.Center, 230f, 100, 0.3f);
+        Player = new(World.CurrentRoom.Center, 230f, 100, 0.05f);
+        Player.Attack = MouseController.LeftButtonPressed;
     }
 
     public void Update(float deltaTime)

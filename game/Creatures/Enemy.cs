@@ -7,10 +7,13 @@ internal abstract class Enemy : Creature
 {
     private bool isIdle;
     private bool hitboxDeleted;
+    int countUpdates = 0;
+    private Rectangle playerLastPosition;
+
     public new bool IsDead => View.CanDelete;
     private static CollisionDetecter CollisionDetecter => GameManager.Instance.CollisionDetecter;
 
-    public event Func<Creature, Creature, float, Vector2> GetMovementVector;
+    public event Func<Creature, Rectangle, float, Vector2?> GetMovementVector;
 
     public Enemy(EnemyView view, Vector2 position, float speed, float health, float damage, float attackDistance, float cooldown)
         : base(position, speed, health, damage, attackDistance, cooldown)
@@ -41,6 +44,7 @@ internal abstract class Enemy : Creature
 
     public void Update(float deltaTime, Creature target)
     {
+        countUpdates++;
         View.Update(deltaTime);
         if (hitboxDeleted)
             return;
@@ -66,7 +70,25 @@ internal abstract class Enemy : Creature
 
     protected virtual bool TryMoveToPlayer(float deltaTime, Creature target)
     {
-        var movementVector = GetMovementVector.Invoke(this, target, deltaTime);
+        var distance = Vector2.Distance(Position, target.Position);
+        if (distance <= AttackDistance)
+            return false;
+        var foundMovementVector = GetMovementVector.Invoke(this, target.Hitbox.Shift(target.Position), deltaTime);
+        if (foundMovementVector is null)
+            foundMovementVector = GetMovementVector.Invoke(this, playerLastPosition, deltaTime);
+        else
+        {
+            if (countUpdates > 10)
+            {
+                countUpdates = 0;
+                playerLastPosition = target.Hitbox.Shift(target.Position);
+            }
+            Debug.Log(playerLastPosition.ToString());
+        }
+        if (foundMovementVector is null)
+            return false;
+
+        var movementVector = (Vector2)foundMovementVector;
         if (movementVector == Vector2.Zero)
             return false;
         movementVector = CollisionDetecter.GetMovementVectorWithoutCollision(this, movementVector.X, movementVector.Y, Speed, deltaTime);

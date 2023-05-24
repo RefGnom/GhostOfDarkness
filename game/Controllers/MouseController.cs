@@ -15,6 +15,11 @@ internal static class MouseController
 
     public static event Action LeftButtonOnClicked;
 
+    public static bool LeftButtonPressed()
+    {
+        return currentState.LeftButton == ButtonState.Pressed;
+    }
+
     public static bool LeftButtonClicked()
     {
         return currentState.LeftButton == ButtonState.Pressed

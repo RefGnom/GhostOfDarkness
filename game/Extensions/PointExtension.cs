@@ -6,23 +6,30 @@ namespace game;
 
 internal static class PointExtension
 {
-    public static IEnumerable<Point> GetNeighbors(this Point point)
+    public static IEnumerable<(Point, float)> GetNeighbors(this Point point)
     {
-        for (int deltaX = -1; deltaX <= 1; deltaX++)
+        for (int dx = -1; dx <= 1; dx++)
         {
-            for (int deltaY = -1; deltaY <= 1; deltaY++)
+            for (int dy = -1; dy <= 1; dy++)
             {
-                if (Math.Abs(deltaX + deltaY) == 1)
-                    yield return point + new Point(deltaX, deltaY);
+                if (dx == 0 && dy == 0)
+                    continue;
+                var neighbour = new Point(point.X + dx, point.Y + dy);
+                var cost = dx == 0 || dy == 0 ? 1 : MathF.Sqrt(2);
+                yield return (neighbour, cost);
             }
         }
-        for (int deltaX = -1; deltaX <= 1; deltaX++)
-        {
-            for (int deltaY = -1; deltaY <= 1; deltaY++)
-            {
-                if (deltaX != 0 && deltaY != 0)
-                    yield return point + new Point(deltaX, deltaY);
-            }
-        }
+    }
+
+    public static float CalculateDistanceByTiles(this Point start, Point end)
+    {
+        var distanceX = MathF.Abs(end.X - start.X);
+        var distanceY = MathF.Abs(end.Y - start.Y);
+        return distanceX + distanceY;
+    }
+
+    public static float CalculateDistanceByPixels(this Point start, Point end)
+    {
+        return Vector2.Distance(start.ToVector2(), end.ToVector2());
     }
 }

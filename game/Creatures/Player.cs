@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using System;
 using System.Collections.Generic;
 
 namespace game;
@@ -11,6 +12,7 @@ internal class Player : Creature
     public int DeltaX { get; set; }
     public int DeltaY { get; set; }
     public bool IsCollide { get; set; }
+    public Func<bool> Attack { get; set; }
 
     private static CollisionDetecter CollisionDetecter => GameManager.Instance.CollisionDetecter;
 
@@ -51,7 +53,7 @@ internal class Player : Creature
             return;
         }
         UpdateDirection();
-        if (View.CanAttack && MouseController.LeftButtonClicked())
+        if (View.CanAttack && Attack is not null && Attack.Invoke())
             Shoot();
         if (View.CanMove)
             Move(deltaTime);

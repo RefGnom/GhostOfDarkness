@@ -1,22 +1,26 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace game;
 
 internal class Room : IDrawable
 {
     private readonly Tile[,] tiles;
+    private readonly int tileSize;
     private readonly Vector2 position;
     private readonly Vector2 size;
     private readonly List<Enemy> enemies;
 
+    public Tile[,] Tiles => tiles;
+    public int TileSize => tileSize;
     public Vector2 Center => position + size / 2;
 
     public Room(Tile[,] tiles, Vector2 position, int tileSize)
     {
         this.tiles = tiles;
+        this.tileSize = tileSize;
         this.position = position;
         size = new Vector2(tiles.GetLength(0), tiles.GetLength(1)) * tileSize;
         enemies = new();
@@ -53,20 +57,69 @@ internal class Room : IDrawable
         enemies.Add(enemy);
     }
 
-    private Vector2 GetMovementVector(Creature instance, Creature target, float deltaTime)
+    public Point ConvertToCoordinatePoint(Point point, Func<float, int> round)
     {
-        var myHitbox = instance.Hitbox.Shift(instance.Position);
-        var targetHitbox = target.Hitbox.Shift(target.Position);
-        var path = PathFinder.GetMovementVector(tiles, myHitbox, targetHitbox, 20)?.ToList();
+        return ConvertToCoordinatePoint(point.ToVector2(), round);
+    }
+
+    public Point ConvertToCoordinatePoint(Vector2 vector, Func<float, int> round)
+    {
+        var result = (vector - position) / tileSize;
+        return new Point(round(result.X), round(result.Y));
+    }
+
+    public Point ConvertToCoordinatePoint(Rectangle rectanle, Func<float, int> round)
+    {
+        return ConvertToCoordinatePoint(rectanle.Center, round);
+    }
+
+    public bool IsPossiblePosition(Rectangle hitbox)
+    {
+        var (x1, y1) = ConvertToCoordinatePoint(hitbox.Location.ToVector2(), x => (int)x);
+        var (x2, y2) = ConvertToCoordinatePoint(new Vector2(hitbox.Right, hitbox.Bottom), x => (int)x);
+
+        return IsPossiblePosition(x1, y1)
+            && IsPossiblePosition(x1, y2)
+            && IsPossiblePosition(x2, y1)
+            && IsPossiblePosition(x2, y2);
+    }
+
+    public bool IsPossiblePosition(Point point)
+    {
+        return IsPossiblePosition(point.X, point.Y);
+    }
+
+    public bool IsPossiblePosition(int x, int y)
+    {
+        return InBounds(x, y) && tiles[x, y].Entity is not ICollisionable;
+    }
+
+    public bool InBounds(Point point)
+    {
+        return InBounds(point.X, point.Y);
+    }
+
+    public bool InBounds(int x, int y)
+    {
+        return x >= 0 && x < tiles.GetLength(0)
+            && y >= 0 && y < tiles.GetLength(1);
+    }
+
+    private Vector2? GetMovementVector(Creature instance, Rectangle target, float deltaTime)
+    {
+        var hitbox = instance.Hitbox.Shift(instance.Position);
+        var path = AStarRectangle.FindPath(this, hitbox, target, 20);
+
         if (path is null)
+            return null;
+
+        if (path.Count < 2)
             return Vector2.Zero;
-        if (path.Count >= 2)
-        {
-            var movementVector = path[^2].GetOffset(myHitbox);
-            movementVector.Normalize();
-            return movementVector;
-        }
-        return instance.Direction;
+
+        var offset = path[1].GetOffset(hitbox);
+        var movementVector = offset;
+        movementVector.Normalize();
+        return movementVector;
     }
 
     private void DeleteEnemy(int index)

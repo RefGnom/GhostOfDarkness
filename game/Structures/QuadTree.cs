@@ -134,16 +134,16 @@ internal class QuadTree : IDrawable
         var horizontal = TexturesManager.HorizontalLine;
         var position = boundary.Location.ToVector2();
         var source = new Rectangle(0, 0, 2, boundary.Height);
-        spriteBatch.Draw(vertical, position, source, Color.White, 0, new Vector2(1.5f, 0), 1, SpriteEffects.None, Layers.HUD);
+        spriteBatch.Draw(vertical, position, source, Color.White, 0, new Vector2(1.5f, 0), 1, SpriteEffects.None, Layers.HUDForeground);
         source = new Rectangle(0, 0, boundary.Width, 2);
-        spriteBatch.Draw(horizontal, position, source, Color.White, 0, new Vector2(0, 1.5f), 1, SpriteEffects.None, Layers.HUD);
+        spriteBatch.Draw(horizontal, position, source, Color.White, 0, new Vector2(0, 1.5f), 1, SpriteEffects.None, Layers.HUDForeground);
         position.X += boundary.Width;
         source = new Rectangle(0, 0, 2, boundary.Height);
-        spriteBatch.Draw(vertical, position, source, Color.White, 0, new Vector2(1.5f, 0), 1, SpriteEffects.None, Layers.HUD);
+        spriteBatch.Draw(vertical, position, source, Color.White, 0, new Vector2(1.5f, 0), 1, SpriteEffects.None, Layers.HUDForeground);
         position.X -= boundary.Width;
         position.Y += boundary.Height;
         source = new Rectangle(0, 0, boundary.Width, 2);
-        spriteBatch.Draw(horizontal, position, source, Color.White, 0, new Vector2(0, 1.5f), 1, SpriteEffects.None, Layers.HUD);
+        spriteBatch.Draw(horizontal, position, source, Color.White, 0, new Vector2(0, 1.5f), 1, SpriteEffects.None, Layers.HUDForeground);
 
         if (nodes[0] is not null)
         {

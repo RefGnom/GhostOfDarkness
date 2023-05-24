@@ -11,7 +11,8 @@ internal static class Layers
     public static readonly float UI = 0.10f;
     public static readonly float UIBackground = 0.15f;
     public static readonly float Background = 0.20f;
-    public static readonly float HUD = 0.25f;
+    public static readonly float HUDForeground = 0.24f;
+    public static readonly float HUDBackground = 0.25f;
     public static readonly float Creatures = 0.50f;
     public static readonly float Tiles = 0.60f;
     public static readonly float Floor = 0.61f;
