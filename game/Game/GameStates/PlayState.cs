@@ -2,7 +2,7 @@
 
 internal class PlayState : GameState
 {
-    public PlayState(IStateSwitcher stateSwitcher) : base(stateSwitcher)
+    public PlayState(IGameStateSwitcher stateSwitcher) : base(stateSwitcher)
     {
     }
 

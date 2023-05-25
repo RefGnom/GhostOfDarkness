@@ -26,6 +26,12 @@ internal class Room : IDrawable
         enemies = new();
     }
 
+    public void Delete()
+    {
+        while (enemies.Count > 0)
+            DeleteEnemy(0);
+    }
+
     public void Update(float deltaTime, Creature player)
     {
         for (int i = 0; i < enemies.Count; i++)
@@ -105,21 +111,21 @@ internal class Room : IDrawable
             && y >= 0 && y < tiles.GetLength(1);
     }
 
-    private Vector2? GetMovementVector(Creature instance, Rectangle target, float deltaTime)
+    private (Vector2, bool) GetMovementVector(Creature instance, Rectangle target, float deltaTime)
     {
         var hitbox = instance.Hitbox.Shift(instance.Position);
         var path = AStarRectangle.FindPath(this, hitbox, target, 20);
 
         if (path is null)
-            return null;
+            return (Vector2.Zero, false);
 
         if (path.Count < 2)
-            return Vector2.Zero;
+            return (Vector2.Zero, true);
 
         var offset = path[1].GetOffset(hitbox);
         var movementVector = offset;
         movementVector.Normalize();
-        return movementVector;
+        return (movementVector, true);
     }
 
     private void DeleteEnemy(int index)

@@ -6,7 +6,7 @@ internal class ConfirmationState : GameState
 {
     private Sprite background;
 
-    public ConfirmationState(IStateSwitcher stateSwitcher) : base(stateSwitcher)
+    public ConfirmationState(IGameStateSwitcher stateSwitcher) : base(stateSwitcher)
     {
     }
 

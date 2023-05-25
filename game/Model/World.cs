@@ -43,6 +43,14 @@ internal class World
         CurrentRoom = rooms["Boss room"];
     }
 
+    public void Delete()
+    {
+        foreach (var room in rooms.Values)
+        {
+            room.Delete();
+        }
+    }
+
     public void Update(float deltaTime, Creature player)
     {
         CurrentRoom.Update(deltaTime, player);

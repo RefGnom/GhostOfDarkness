@@ -50,8 +50,11 @@ internal class GameView : Game
 
         controller.Update(deltaTime);
 
-        Camera.Follow(model.Player.Position, WindowWidth, WindowHeight, deltaTime);
-        Camera.ChangeScale(MouseController.ScrollValue());
+        if (model.Started)
+        {
+            Camera.Follow(model.Player.Position, WindowWidth, WindowHeight, deltaTime);
+            Camera.ChangeScale(MouseController.ScrollValue());
+        }
 
         Debug.Update(WindowHeight);
         base.Update(gameTime);
@@ -61,8 +64,11 @@ internal class GameView : Game
     {
         GraphicsDevice.Clear(new Color(40, 32, 27, 255));
 
-        DrawLocation();
-        DrawHUD();
+        if (model.Started)
+        {
+            DrawLocation();
+            DrawHUD();
+        }
         DrawUI();
 
         base.Draw(gameTime);

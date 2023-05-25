@@ -30,7 +30,7 @@ internal class GameController : GameStatesController
         if (GameIsExit)
             view.CloseGame();
 
-        if (model.Player.IsDead)
+        if (model.Started && model.Player.IsDead)
             Dead();
 
         if (KeyboardController.IsSingleKeyDown(Keys.Escape))
@@ -38,7 +38,6 @@ internal class GameController : GameStatesController
 
         if (KeyboardController.IsSingleKeyDown(Keys.Enter))
         {
-            Restart();
             Confirm();
             Save();
         }
@@ -50,7 +49,8 @@ internal class GameController : GameStatesController
 
         if (KeyboardController.IsSingleKeyDown(Settings.SwitchPlayerCollision))
         {
-            model.Player.IsCollide = !model.Player.IsCollide;
+            if (model.Started)
+                model.Player.IsCollide = !model.Player.IsCollide;
         }
 
         if (KeyboardController.IsSingleKeyDown(Settings.ShowOrHideQuadTree))
@@ -62,6 +62,12 @@ internal class GameController : GameStatesController
             UpdateModel(deltaTime);
 
         IsPaused = !IsPlay;
+    }
+
+    public override void StartGame()
+    {
+        model.Delete();
+        model.Start();
     }
 
     private void UpdateModel(float deltaTime)

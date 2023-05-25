@@ -6,7 +6,7 @@ internal class MainMenuState : GameState
 {
     private Sprite background;
 
-    public MainMenuState(IStateSwitcher stateSwitcher) : base(stateSwitcher)
+    public MainMenuState(IGameStateSwitcher stateSwitcher) : base(stateSwitcher)
     {
     }
 

@@ -57,5 +57,6 @@ internal abstract class Creature : ICollisionable
     public static void DeleteFromLocation(Creature creature)
     {
         GameManager.Instance.Drawer.Unregister(creature.View);
+        GameManager.Instance.CollisionDetecter.Unregister(creature);
     }
 }

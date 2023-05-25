@@ -4,14 +4,14 @@ namespace game;
 
 internal abstract class GameState : IState
 {
-    protected readonly IStateSwitcher switcher;
+    protected readonly IGameStateSwitcher switcher;
     protected GameState previousState;
     protected List<Button> buttons;
     public bool IsConfirmed { get; protected set; }
     public bool GameIsExit { get; protected set; }
     public bool Saved { get; protected set; }
 
-    public GameState(IStateSwitcher stateSwitcher)
+    public GameState(IGameStateSwitcher stateSwitcher)
     {
         switcher = stateSwitcher;
     }

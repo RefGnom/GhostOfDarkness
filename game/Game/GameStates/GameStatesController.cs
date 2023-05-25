@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace game;
 
-internal class GameStatesController : IStateSwitcher
+internal class GameStatesController : IGameStateSwitcher
 {
     private GameState currentState;
     private readonly List<GameState> states;
@@ -24,7 +24,7 @@ internal class GameStatesController : IStateSwitcher
             new PlayState(this),
             new SettingsState(this)
         };
-        currentState = states[6];
+        currentState = states[0];
         currentState.Start(currentState);
     }
 
@@ -42,8 +42,6 @@ internal class GameStatesController : IStateSwitcher
 
     public void Dead() => currentState.Dead();
 
-    public void Restart() => currentState.Restart();
-
     public void Confirm() => currentState.Confirm();
 
     public void Save() => currentState.Save();
@@ -60,4 +58,6 @@ internal class GameStatesController : IStateSwitcher
         state.Start(currentState);
         currentState = (GameState)state;
     }
+
+    public virtual void StartGame() { }
 }

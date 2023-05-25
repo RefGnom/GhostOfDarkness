@@ -7,7 +7,7 @@ internal class CreateGameState : GameState
     private TextInput textInput;
     private Sprite background;
 
-    public CreateGameState(IStateSwitcher stateSwitcher) : base(stateSwitcher)
+    public CreateGameState(IGameStateSwitcher stateSwitcher) : base(stateSwitcher)
     {
     }
 
@@ -55,7 +55,7 @@ internal class CreateGameState : GameState
 
     private void CreateGame()
     {
-        // Создать новое сохранение
+        switcher.StartGame();
         Play();
     }
 

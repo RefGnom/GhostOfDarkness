@@ -6,7 +6,7 @@ internal class SettingsState : GameState
 {
     private Sprite[] sprites;
 
-    public SettingsState(IStateSwitcher stateSwitcher) : base(stateSwitcher)
+    public SettingsState(IGameStateSwitcher stateSwitcher) : base(stateSwitcher)
     {
     }
 

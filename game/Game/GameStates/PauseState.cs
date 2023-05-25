@@ -6,7 +6,7 @@ internal class PauseState : GameState
 {
     private Sprite background;
 
-    public PauseState(IStateSwitcher stateSwitcher) : base(stateSwitcher)
+    public PauseState(IGameStateSwitcher stateSwitcher) : base(stateSwitcher)
     {
     }
 

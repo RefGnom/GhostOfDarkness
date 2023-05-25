@@ -7,7 +7,7 @@ internal class LoadSaveState : GameState
     private Sprite savesStorage;
     private Sprite background;
 
-    public LoadSaveState(IStateSwitcher stateSwitcher) : base(stateSwitcher)
+    public LoadSaveState(IGameStateSwitcher stateSwitcher) : base(stateSwitcher)
     {
     }
 

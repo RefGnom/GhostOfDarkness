@@ -6,7 +6,7 @@ internal class PlayerDeadState : GameState
 {
     private Sprite background;
 
-    public PlayerDeadState(IStateSwitcher stateSwitcher) : base(stateSwitcher)
+    public PlayerDeadState(IGameStateSwitcher stateSwitcher) : base(stateSwitcher)
     {
     }
 
@@ -45,6 +45,7 @@ internal class PlayerDeadState : GameState
 
     public override void Restart()
     {
+        switcher.StartGame();
         switcher.SwitchState<PlayState>();
     }
 
