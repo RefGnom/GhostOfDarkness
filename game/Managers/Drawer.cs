@@ -5,9 +5,9 @@ namespace game;
 
 internal class Drawer
 {
-    private List<IDrawable> drawables = new();
-    private List<IDrawable> UIdrawables = new();
-    private List<IDrawable> HUDdrawables = new();
+    private readonly List<IDrawable> drawables = new();
+    private readonly List<IDrawable> UIdrawables = new();
+    private readonly List<IDrawable> HUDdrawables = new();
 
     public void Register(IDrawable drawable)
     {

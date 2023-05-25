@@ -2,5 +2,5 @@
 
 internal interface IGameStateSwitcher : IStateSwitcher
 {
-    void StartGame();
+    public void StartGame();
 }

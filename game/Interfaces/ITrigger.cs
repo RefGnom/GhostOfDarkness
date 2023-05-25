@@ -1,6 +1,12 @@
-﻿namespace game;
+﻿using Microsoft.Xna.Framework;
+
+namespace game;
 
 internal interface ITrigger
 {
-    bool IsTriggered(ICollisionable collisionable);
+    public Rectangle Hitbox { get; }
+
+    public bool Triggered(ICollisionable collisionable);
+
+    public bool Triggered(Vector2 position);
 }

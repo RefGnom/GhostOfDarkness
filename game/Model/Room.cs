@@ -13,6 +13,9 @@ internal class Room : IDrawable
     private readonly Vector2 size;
     private readonly List<Enemy> enemies;
 
+    public string Name { get; set; }
+    public ITrigger InputTrigger { get; set; }
+    public ITrigger OutputTrigger { get; set; }
     public Tile[,] Tiles => tiles;
     public int TileSize => tileSize;
     public Vector2 Center => position + size / 2;

@@ -18,15 +18,17 @@ internal class Door : IDrawable, ICollisionable
     public Vector2 Center => Position + origin * scaleFactor;
     public Rectangle Hitbox => HitboxManager.Wall;
     public bool CanCollide { get; private set; }
+    public bool Vertical { get; private set; }
 
-    public Door(Vector2 position, bool isVertical = false)
+    public Door(Vector2 position, bool vertical = false)
     {
         closedTexture = TexturesManager.Door;
         openedTexture = TexturesManager.OpenedDoor;
         floor = new Floor(position);
         origin = new Vector2(closedTexture.Width / 2, closedTexture.Height / 2);
-        Position = position;
-        if (isVertical)
+            Position = position;
+            Vertical = vertical;
+        if (vertical)
             rotation = (float)Math.PI / 2;
         Close();
     }

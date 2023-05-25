@@ -16,4 +16,9 @@ internal class GameManager
         CollisionDetecter = new();
         Camera = new(true);
     }
+
+    public static void Delete()
+    {
+        instance = null;
+    }
 }
