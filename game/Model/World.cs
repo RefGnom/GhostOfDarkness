@@ -45,7 +45,7 @@ internal class World
 
     public void Generate()
     {
-
+        
     }
 
     public void Delete()
