@@ -1,5 +1,4 @@
-﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Input;
+﻿using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
 
 namespace game;
@@ -19,18 +18,7 @@ internal class GameModel
     public void Start()
     {
         World = new();
-        var x = 400;
-        var y = 320;
-        for (int j = 0; j < 2; j++)
-        {
-            for (int i = 0; i < 2; i++)
-            {
-                World.CurrentRoom.CreateEnemy(new MeleeEnemy(World.CurrentRoom.Center - new Vector2(x, y), 80));
-                x -= 30;
-            }
-            x = 400;
-            y -= 40;
-        }
+        World.Generate();
         Player = new(World.CurrentRoom.Center, 230f, 100, 0.1f);
         Player.Attack = MouseController.LeftButtonPressed;
         Started = true;

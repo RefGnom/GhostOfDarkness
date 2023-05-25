@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace game;
 
-internal class AStarRectangle
+internal static class AStarRectangle
 {
     public static List<Rectangle> FindPath(Room room, Rectangle start, Rectangle end, float maxCost)
     {
@@ -22,7 +22,7 @@ internal class AStarRectangle
             var node = forOpen.Dequeue();
             var value = node.Value;
             if (node.TotalCost > maxCost)
-                continue;
+                return null;
             foreach (var (neighbour, cost) in value.GetNeighbors(room.TileSize))
             {
                 var roomPoint = room.ConvertToCoordinatePoint(neighbour, x => (int)x);

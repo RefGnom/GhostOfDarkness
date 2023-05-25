@@ -40,7 +40,12 @@ internal class World
             rooms[name] = room;
             GameManager.Instance.Drawer.Register(room);
         }
-        CurrentRoom = rooms["Boss room"];
+        CurrentRoom = rooms["Education room"];
+    }
+
+    public void Generate()
+    {
+
     }
 
     public void Delete()
