@@ -46,7 +46,10 @@ internal class World
 
     public void Generate()
     {
-        
+        foreach (var room in rooms.Values)
+        {
+            room.Generate(1);
+        }
     }
 
     public void Delete()

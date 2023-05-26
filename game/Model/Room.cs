@@ -29,6 +29,26 @@ internal class Room : IDrawable
         enemies = new();
     }
 
+    public void Generate(int difficulty)
+    {
+        var enemiesCount = difficulty * 5;
+        var enemyHealh = 100 + difficulty * 10;
+        var enemyDamage = 10 + difficulty * 5;
+        var width = tiles.GetLength(0);
+        var height = tiles.GetLength(1);
+        var random = new Random();
+        while (enemies.Count < enemiesCount)
+        {
+            var x = random.Next(width);
+            var y = random.Next(height);
+            var tile = tiles[x, y];
+            var enemy = new MeleeEnemy(tile.Position + new Vector2(TileSize, TileSize) / 2, 60, enemyHealh, enemyDamage);
+            if (!IsPossiblePosition(enemy.Hitbox.Shift(enemy.Position)))
+                continue;
+            CreateEnemy(enemy);
+        }
+    }
+
     public void Delete()
     {
         while (enemies.Count > 0)
@@ -100,7 +120,7 @@ internal class Room : IDrawable
 
     public bool IsPossiblePosition(int x, int y)
     {
-        return InBounds(x, y) && tiles[x, y].Entity is not ICollisionable;
+        return InBounds(x, y) && tiles[x, y].Entity is not ICollisionable and not null;
     }
 
     public bool InBounds(Point point)

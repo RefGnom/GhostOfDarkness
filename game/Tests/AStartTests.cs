@@ -17,6 +17,7 @@ internal class AStartTests
             for (int j = 0; j < height; j++)
             {
                 tiles[i, j] = new Tile(new Vector2(size * i, size * j), size);
+                tiles[i, j].SetFloor();
             }
         }
         return new Room(tiles, Vector2.Zero, size);

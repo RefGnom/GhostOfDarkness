@@ -16,7 +16,7 @@ internal class Player : Creature
 
     private static CollisionDetecter CollisionDetecter => GameManager.Instance.CollisionDetecter;
 
-    public Player(Vector2 position, float speed, float health, float cooldown) : base(position, speed, health, 20, 100, cooldown)
+    public Player(Vector2 position, float speed, float health, float damage, float cooldown) : base(position, speed, health, damage, 100, cooldown)
     {
         View = new PlayerView(this);
         Bullets = new();
@@ -35,8 +35,8 @@ internal class Player : Creature
     {
         if (currentColdown <= 0)
         {
-            // 20?? (Чтобы пули вылетали вне хитбокса)
-            var bullet = new Bullet(Position + Direction * 20, Direction);
+            // 25?? (Чтобы пули вылетали вне хитбокса)
+            var bullet = new Bullet(Position + Direction * 25, Direction);
             Bullets.Add(bullet);
             GameManager.Instance.Drawer.Register(bullet);
             currentColdown = cooldown;
