@@ -16,6 +16,7 @@ internal class Room : IDrawable
     public string Name { get; set; }
     public ITrigger InputTrigger { get; set; }
     public ITrigger OutputTrigger { get; set; }
+    public bool Active { get; set; }
     public Tile[,] Tiles => tiles;
     public int TileSize => tileSize;
     public Vector2 Center => position + size / 2;
@@ -134,21 +135,21 @@ internal class Room : IDrawable
             && y >= 0 && y < tiles.GetLength(1);
     }
 
-    private (Vector2, bool) GetMovementVector(Creature instance, Rectangle target, float deltaTime)
+    private Vector2 GetMovementVector(Creature instance, Rectangle target, float deltaTime)
     {
+        if (!Active)
+            return Vector2.Zero;
+
         var hitbox = instance.Hitbox.Shift(instance.Position);
         var path = AStarRectangle.FindPath(this, hitbox, target, 20);
 
-        if (path is null)
-            return (Vector2.Zero, false);
-
-        if (path.Count < 2)
-            return (Vector2.Zero, true);
+        if (path is null || path.Count < 2)
+            return Vector2.Zero;
 
         var offset = path[1].GetOffset(hitbox);
         var movementVector = offset;
         movementVector.Normalize();
-        return (movementVector, true);
+        return movementVector;
     }
 
     private void DeleteEnemy(int index)

@@ -7,13 +7,11 @@ internal abstract class Enemy : Creature
 {
     private bool isIdle;
     private bool hitboxDeleted;
-    int countUpdates = 0;
-    private Rectangle playerLastPosition;
 
     public new bool IsDead => View.CanDelete;
     private static CollisionDetecter CollisionDetecter => GameManager.Instance.CollisionDetecter;
 
-    public event Func<Creature, Rectangle, float, (Vector2, bool)> GetMovementVector;
+    public event Func<Creature, Rectangle, float, Vector2> GetMovementVector;
 
     public Enemy(EnemyView view, Vector2 position, float speed, float health, float damage, float attackDistance, float cooldown)
         : base(position, speed, health, damage, attackDistance, cooldown)
@@ -44,7 +42,6 @@ internal abstract class Enemy : Creature
 
     public void Update(float deltaTime, Creature target)
     {
-        countUpdates++;
         View.Update(deltaTime);
         if (hitboxDeleted)
             return;
@@ -73,18 +70,7 @@ internal abstract class Enemy : Creature
         var distance = Vector2.Distance(Position, target.Position);
         if (distance <= AttackDistance)
             return false;
-        var (movementVector, found) = GetMovementVector.Invoke(this, target.Hitbox.Shift(target.Position), deltaTime);
-        if (!found)
-            (movementVector, _) = GetMovementVector.Invoke(this, playerLastPosition, deltaTime);
-        else
-        {
-            if (countUpdates > 10)
-            {
-                countUpdates = 0;
-                playerLastPosition = target.Hitbox.Shift(target.Position);
-            }
-        }
-
+        var movementVector = GetMovementVector.Invoke(this, target.Hitbox.Shift(target.Position), deltaTime);
         if (movementVector == Vector2.Zero)
             return false;
         movementVector = CollisionDetecter.GetMovementVectorWithoutCollision(this, movementVector.X, movementVector.Y, Speed, deltaTime);

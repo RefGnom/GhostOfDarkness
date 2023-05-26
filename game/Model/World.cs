@@ -24,7 +24,8 @@ internal class World
     private static readonly int tileSize = 32;
     private readonly int width = 64 * 149;
     private readonly int height = 64 * 114;
-    private readonly Dictionary<string, Room> rooms;
+    private readonly List<Room> rooms;
+    private readonly int hallwayIndex;
 
     public Room CurrentRoom { get; private set; }
 
@@ -32,30 +33,38 @@ internal class World
     {
         rooms = new();
         GameManager.Instance.CollisionDetecter.CreateQuadTree(width, height);
-        foreach (var (name, texture) in TexturesManager.Rooms)
+        for (int i = 0; i < TexturesManager.Rooms.Count; i++)
         {
+            var (name, texture) = TexturesManager.Rooms[i];
             var info = roomInfo[name];
             var position = info.Item1 * tileSize;
             var room = RoomImporter.Import(texture, tileSize, position, info.Item2);
             room.Name = name;
-            rooms[name] = room;
+            rooms.Add(room);
             GameManager.Instance.Drawer.Register(room);
+            if (name == "Hallway")
+                hallwayIndex = i;
+            if (name == "Education room")
+            {
+                CurrentRoom = room;
+                CurrentRoom.Active = true;
+            }
         }
-        CurrentRoom = rooms["Education room"];
     }
 
     public void Generate()
     {
-        foreach (var room in rooms.Values)
+        foreach (var room in rooms)
         {
-            room.Generate(1);
+            if (room.Name != "Education room" && room.Name != "Hallway")
+                room.Generate(1);
         }
     }
 
     public void Delete()
     {
         GameManager.Delete();
-        foreach (var room in rooms.Values)
+        foreach (var room in rooms)
         {
             room.Delete();
         }
@@ -63,25 +72,39 @@ internal class World
 
     public void Update(float deltaTime, Creature player)
     {
-        //Debug.Log(CurrentRoom.Name);
-        CurrentRoom.Update(deltaTime, player);
+        UpdateRooms(deltaTime, player);
         if (CurrentRoom.OutputTrigger is not null && CurrentRoom.OutputTrigger.Triggered(player))
         {
-            CurrentRoom = rooms["Hallway"];
+            SetCurrentRoom(rooms[hallwayIndex]);
         }
         var (currentRoom, _) = GetCurrentRoom(player);
         if (currentRoom is not null)
         {
-            CurrentRoom = currentRoom;
+            SetCurrentRoom(currentRoom);
+        }
+    }
+
+    private void SetCurrentRoom(Room room)
+    {
+        CurrentRoom.Active = false;
+        CurrentRoom = room;
+        CurrentRoom.Active = true;
+    }
+
+    private void UpdateRooms(float deltaTime, Creature player)
+    {
+        foreach (var room in rooms)
+        {
+            room.Update(deltaTime, player);
         }
     }
 
     private (Room, string) GetCurrentRoom(Creature player)
     {
-        foreach (var (name, room) in rooms)
+        foreach (var room in rooms)
         {
             if (room.InputTrigger is not null && room.InputTrigger.Triggered(player))
-                return (room, name);
+                return (room, room.Name);
         }
         return (null, null);
     }
