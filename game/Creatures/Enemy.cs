@@ -35,9 +35,9 @@ internal abstract class Enemy : Creature
     {
         Health -= damage;
         if (Health > 0)
-            View.TakeDamage();
+            View.SetStateTakeDamage();
         else
-            View.Kill();
+            View.SetStateDead();
     }
 
     public void Update(float deltaTime, Creature target)
@@ -53,15 +53,15 @@ internal abstract class Enemy : Creature
         }
         UpdateDirection(target);
         if (View.CanAttack && TryAttack(target))
-            View.Attack();
+            View.SetStateAttack();
 
         if (View.CanMove)
             isIdle = !TryMoveToPlayer(deltaTime, target);
 
         if (isIdle)
-            View.Idle();
+            View.SetStateIdle();
         else
-            View.Run();
+            View.SetStateRun();
         currentColdown -= deltaTime;
     }
 

@@ -63,11 +63,11 @@ internal class World
 
     public void Delete()
     {
-        GameManager.Delete();
         foreach (var room in rooms)
         {
             room.Delete();
         }
+        GameManager.Delete();
     }
 
     public void Update(float deltaTime, Creature player)

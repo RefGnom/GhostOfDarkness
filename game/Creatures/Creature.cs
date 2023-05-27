@@ -12,7 +12,7 @@ internal abstract class Creature : ICollisionable
     public float Speed { get; protected set; }
     public Rectangle Hitbox { get; protected set; }
     public bool CanCollide => true;
-    public CreatureView View { get; protected set; }
+    public CreatureStatesController View { get; protected set; }
     public bool IsDead { get; protected set; }
 
     protected readonly float cooldown;

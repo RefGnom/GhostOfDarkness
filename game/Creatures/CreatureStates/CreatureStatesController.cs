@@ -1,35 +1,26 @@
-﻿using System;
+﻿using Microsoft.Xna.Framework.Graphics;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace game;
 
-internal class CreatureStatesController : IStateSwitcher
+internal abstract class CreatureStatesController : IStateSwitcher, IDrawable
 {
     private CreatureState currentState;
-    private readonly List<CreatureState> states;
-
-    protected Animator animator;
+    private List<CreatureState> states;
 
     public bool CanAttack => currentState.CanAttack;
     public bool CanMove => currentState.CanMove;
     public bool Killed => currentState.Killed;
     public bool CanDelete => currentState.CanDelete;
 
-    public CreatureStatesController(Animator animator, Dictionary<string, int> animations)
+    protected void SetStates(List<CreatureState> states)
     {
-        this.animator = animator;
-
-        states = new List<CreatureState>()
-        {
-            new IdleState(this, animator, animations),
-            new RunState(this, animator, animations),
-            new FightState(this, animator, animations),
-            new AttackState(this, animator, animations),
-            new TakeDamageState(this, animator, animations),
-            new DeadState(this, animator, animations),
-        };
-        currentState = states[0];
+        this.states = states;
+        currentState = states.FirstOrDefault(s => s is IdleState);
+        if (currentState is null)
+            throw new ArgumentException("expected idle state but was null");
     }
 
     public void SwitchState<T>() where T : IState
@@ -45,17 +36,22 @@ internal class CreatureStatesController : IStateSwitcher
         currentState = (CreatureState)state;
     }
 
-    public void UpdateState(float deltaTime) => currentState.Update(deltaTime);
+    public virtual void Update(float deltaTime)
+    {
+        currentState.Update(deltaTime);
+    }
 
     public Type GetStateType() => currentState.GetType();
 
-    protected void SetStateIdle() => currentState.Idle();
+    public void SetStateIdle() => currentState.Idle();
 
-    protected void SetStateRun() => currentState.Run();
+    public void SetStateRun() => currentState.Run();
 
-    protected void SetStateAttack() => currentState.Attack();
+    public void SetStateAttack() => currentState.Attack();
 
-    protected void SetStateTakeDamage() => currentState.TakeDamage();
+    public void SetStateTakeDamage() => currentState.TakeDamage();
 
-    protected void SetStateDead() => currentState.Kill();
+    public void SetStateDead() => currentState.Kill();
+
+    public abstract void Draw(SpriteBatch spriteBatch, float scale);
 }

@@ -1,13 +1,8 @@
-﻿using System.Collections.Generic;
-
-namespace game;
+﻿namespace game;
 
 internal class DeadState : CreatureState
 {
-    private float leftTime;
-
-    public DeadState(IStateSwitcher stateSwitcher, Animator animator, Dictionary<string, int> animations)
-        : base(stateSwitcher, animator, animations)
+    public DeadState(IStateSwitcher stateSwitcher) : base(stateSwitcher)
     {
         CanAttack = false;
         CanMove = false;
@@ -28,8 +23,7 @@ internal class DeadState : CreatureState
     public override void Start(IState previousState)
     {
         Killed = true;
-        Animator.SetAnimation(animations["dead"], false);
-        leftTime = Animator.GetAnimationTime(animations["dead"]) * 20;
+        timeLeft = OnStarted.Invoke();
     }
 
     public override void Stop()
@@ -38,8 +32,8 @@ internal class DeadState : CreatureState
 
     public override void Update(float deltaTime)
     {
-        leftTime -= deltaTime;
-        if (leftTime <= 0)
+        timeLeft -= deltaTime;
+        if (timeLeft <= 0)
             CanDelete = true;
     }
 

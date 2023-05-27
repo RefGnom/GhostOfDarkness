@@ -40,7 +40,7 @@ internal class Player : Creature
             Bullets.Add(bullet);
             GameManager.Instance.Drawer.Register(bullet);
             currentColdown = cooldown;
-            View.Attack();
+            View.SetStateAttack();
         }
     }
 
@@ -104,11 +104,11 @@ internal class Player : Creature
         {
             movementVector.Normalize();
             Move(movementVector * Speed * deltaTime);
-            View.Idle();
+            View.SetStateIdle();
         }
         else
         {
-            View.Idle();
+            View.SetStateIdle();
         }
     }
 
@@ -117,8 +117,8 @@ internal class Player : Creature
         Health -= damage;
         healthBar.SetHealth(Health);
         if (Health > 0)
-            View.TakeDamage();
+            View.SetStateTakeDamage();
         else
-            View.Kill();
+            View.SetStateDead();
     }
 }

@@ -1,4 +1,3 @@
 Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
-"D:/Programming/C# Projects/GhostOfDarkness/game/Content/Service/Horizontal line.png","D:/Programming/C# Projects/GhostOfDarkness/game/Content/bin/Windows/Service/Horizontal line.xnb","TextureProcessor","Texture2DContent",152,15445,0,5313303
-"D:/Programming/C# Projects/GhostOfDarkness/game/Content/Service/Vertical line.png","D:/Programming/C# Projects/GhostOfDarkness/game/Content/bin/Windows/Service/Vertical line.xnb","TextureProcessor","Texture2DContent",159,8725,0,0064895
-"D:/Programming/C# Projects/GhostOfDarkness/game/Content/Textures/UI/Settings string.png","D:/Programming/C# Projects/GhostOfDarkness/game/Content/bin/Windows/Textures/UI/Settings string.xnb","TextureProcessor","Texture2DContent",576,198981,0,0248519
+"D:/Programming/C# Projects/GhostOfDarkness/game/Content/Textures/Creatures/Boss.png","D:/Programming/C# Projects/GhostOfDarkness/game/Content/bin/Windows/Textures/Creatures/Boss.xnb","TextureProcessor","Texture2DContent",564557,16320085,1,2851092
+"D:/Programming/C# Projects/GhostOfDarkness/game/Content/Textures/UI/Settings string.png","D:/Programming/C# Projects/GhostOfDarkness/game/Content/bin/Windows/Textures/UI/Settings string.xnb","TextureProcessor","Texture2DContent",500,124581,0,0234883

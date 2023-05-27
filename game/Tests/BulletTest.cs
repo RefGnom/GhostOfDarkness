@@ -16,7 +16,7 @@ internal class PlayerTest : Player
         base.Shoot();
     }
 
-    public void Update(float deltaTime)
+    public new void Update(float deltaTime)
     {
         UpdateBullets(deltaTime);
     }

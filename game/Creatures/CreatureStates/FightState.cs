@@ -1,14 +1,10 @@
-﻿using System.Collections.Generic;
-
-namespace game;
+﻿namespace game;
 
 internal class FightState : CreatureState
 {
-    private readonly float activeTime = 3;
     private float leftTime;
 
-    public FightState(IStateSwitcher stateSwitcher, Animator animator, Dictionary<string, int> animations)
-        : base(stateSwitcher, animator, animations)
+    public FightState(IStateSwitcher stateSwitcher) : base(stateSwitcher)
     {
         CanMove = true;
         CanAttack = true;
@@ -31,8 +27,7 @@ internal class FightState : CreatureState
 
     public override void Start(IState previousState)
     {
-        Animator.SetAnimation(animations["idle"]);
-        leftTime = activeTime;
+        leftTime =  OnStarted.Invoke();
     }
 
     public override void Stop()

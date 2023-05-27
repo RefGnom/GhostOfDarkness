@@ -1,13 +1,8 @@
-﻿using System.Collections.Generic;
-
-namespace game;
+﻿namespace game;
 
 internal class TakeDamageState : CreatureState
 {
-    private float leftTime;
-
-    public TakeDamageState(IStateSwitcher stateSwitcher, Animator animator, Dictionary<string, int> animations)
-        : base(stateSwitcher, animator, animations)
+    public TakeDamageState(IStateSwitcher stateSwitcher) : base(stateSwitcher)
     {
         CanAttack = false;
         CanMove = false;
@@ -20,8 +15,7 @@ internal class TakeDamageState : CreatureState
 
     public override void Start(IState previousState)
     {
-        Animator.SetAnimation(animations["take damage"]);
-        leftTime = Animator.GetAnimationTime(animations["take damage"]);
+        timeLeft = OnStarted.Invoke();
     }
 
     public override void Stop()
@@ -30,8 +24,8 @@ internal class TakeDamageState : CreatureState
 
     public override void Update(float deltaTime)
     {
-        leftTime -= deltaTime;
-        if (leftTime <= 0)
+        timeLeft -= deltaTime;
+        if (timeLeft <= 0)
         {
             switcher.SwitchState<FightState>();
         }

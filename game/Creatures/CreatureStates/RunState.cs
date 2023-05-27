@@ -1,10 +1,8 @@
-﻿using System.Collections.Generic;
-
-namespace game;
+﻿namespace game;
 
 internal class RunState : CreatureState
 {
-    public RunState(IStateSwitcher stateSwitcher, Animator animator, Dictionary<string, int> animations) : base(stateSwitcher, animator, animations)
+    public RunState(IStateSwitcher stateSwitcher) : base(stateSwitcher)
     {
         CanMove = true;
         CanAttack = true;
@@ -17,7 +15,7 @@ internal class RunState : CreatureState
 
     public override void Start(IState previousState)
     {
-        Animator.SetAnimation(animations["run"]);
+        timeLeft = OnStarted.Invoke();
     }
 
     public override void Stop()

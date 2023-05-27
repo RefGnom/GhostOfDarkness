@@ -1,23 +1,22 @@
-﻿using System.Collections.Generic;
+﻿using System;
 
 namespace game;
 
 internal abstract class CreatureState : IState
 {
+    protected float timeLeft;
     protected readonly IStateSwitcher switcher;
-    public readonly Animator Animator;
-    protected readonly Dictionary<string, int> animations;
 
     public bool CanAttack { get; protected set; }
     public bool CanMove { get; protected set; }
     public bool Killed { get; protected set; }
     public bool CanDelete { get; protected set; }
 
-    public CreatureState(IStateSwitcher stateSwitcher, Animator animator, Dictionary<string, int> animations)
+    public Func<float> OnStarted;
+
+    public CreatureState(IStateSwitcher stateSwitcher)
     {
         switcher = stateSwitcher;
-        Animator = animator;
-        this.animations = animations;
     }
 
     public abstract void Start(IState previousState);

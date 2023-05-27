@@ -96,3 +96,4 @@ D:\Programming\C# Projects\GhostOfDarkness\game\bin\Debug\net6.0-windows\Content
 D:\Programming\C# Projects\GhostOfDarkness\game\bin\Debug\net6.0-windows\Content\Textures\UI\Settings string.xnb
 D:\Programming\C# Projects\GhostOfDarkness\game\bin\Debug\net6.0-windows\Content\Service\Horizontal line.xnb
 D:\Programming\C# Projects\GhostOfDarkness\game\bin\Debug\net6.0-windows\Content\Service\Vertical line.xnb
+D:\Programming\C# Projects\GhostOfDarkness\game\bin\Debug\net6.0-windows\Content\Textures\Creatures\Boss.xnb

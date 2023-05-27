@@ -19,7 +19,7 @@ internal class GameModel
     {
         World = new();
         World.Generate();
-        Player = new(World.CurrentRoom.Center, 230f, 100, 1000, 0.1f);
+        Player = new(World.CurrentRoom.Center, 230f, 100, 20, 0.1f);
         Player.Attack = MouseController.LeftButtonPressed;
         Started = true;
     }
