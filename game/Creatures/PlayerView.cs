@@ -73,10 +73,7 @@ internal class PlayerView : CreatureStatesController
 
     public override void Update(float deltaTime)
     {
-        var angle = -Math.Atan(model.Direction.X / model.Direction.Y);
-        if (model.Direction.Y > 0)
-            angle += Math.PI;
-        rotation = (float)angle;
+        rotation = model.Direction.ToAngle();
         base.Update(deltaTime);
     }
 
