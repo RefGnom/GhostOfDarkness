@@ -58,6 +58,10 @@ internal class World
         {
             if (room.Name != "Education room" && room.Name != "Hallway")
                 room.Generate(1);
+            if (room.Name == "Boss room")
+            {
+                room.CreateEnemy(new Boss(room.Center));
+            }
         }
     }
 

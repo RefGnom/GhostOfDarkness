@@ -21,14 +21,15 @@ internal static class FloatExtension
     {
         foreach (var (value, direction) in directions)
         {
-            if (angle.InBounds(value - MathF.PI / 8, value + MathF.PI / 8))
+            if (angle.InBounds(value, MathF.PI / 8)
+                || angle.InBounds(value + 2 * MathF.PI, MathF.PI / 8))
                 return direction;
         }
         return null;
     }
 
-    public static bool InBounds(this float value, float minBound, float maxBound)
+    public static bool InBounds(this float value, float target, float delta)
     {
-        return minBound <= value && value < maxBound;
+        return target - delta <= value && value < target + delta;
     }
 }

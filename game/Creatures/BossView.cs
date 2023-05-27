@@ -10,62 +10,67 @@ internal class BossView : EnemyView
     private static readonly Dictionary<string, int> animations = new()
     {
         ["death"] = 0,
-        ["Attack-R"] = 1,
-        ["Attack-T"] = 2,
-        ["Attack-TR"] = 3,
-        ["Attack-TL"] = 4,
-        ["Attack-D"] = 5,
-        ["Attack-DR"] = 6,
-        ["Attack-DL"] = 7,
-        ["Attack-L"] = 8,
-        ["Idle-R"] = 9,
-        ["Idle-T"] = 10,
-        ["Idle-TL"] = 11,
-        ["Idle-TR"] = 12,
-        ["Idle-D"] = 13,
-        ["Idle-DR"] = 14,
-        ["Idle-DL"] = 15,
-        ["Idle-L"] = 16,
+        ["attack-E"] = 1,
+        ["attack-N"] = 2,
+        ["attack-NE"] = 3,
+        ["attack-NW"] = 4,
+        ["attack-S"] = 5,
+        ["attack-SE"] = 6,
+        ["attack-SW"] = 7,
+        ["attack-W"] = 8,
+        ["idle-E"] = 9,
+        ["idle-N"] = 10,
+        ["idle-NW"] = 11,
+        ["idle-NE"] = 12,
+        ["idle-S"] = 13,
+        ["idle-SE"] = 14,
+        ["idle-SW"] = 15,
+        ["idle-W"] = 16,
     };
 
-    public BossView()
+    public void CreateStates()
     {
-        SetStates(CreateStates());
+        SetStates(GetStates());
     }
 
-    public List<CreatureState> CreateStates()
+    private List<CreatureState> GetStates()
     {
         var idle = new IdleState(this);
         idle.OnStarted = () =>
         {
-            animator.SetAnimation(animations["idle"]);
-            return animator.GetAnimationTime(animations["idle"]);
+            var direction = model.Direction.ToAngle().ToCardinalDirection();
+            animator.SetAnimation(animations[$"idle-{direction}"]);
+            return animator.GetAnimationTime(animations[$"idle-{direction}"]);
         };
         var run = new RunState(this);
         run.OnStarted = () =>
         {
-            animator.SetAnimation(animations["run"]);
-            return animator.GetAnimationTime(animations["run"]);
+            var direction = model.Direction.ToAngle().ToCardinalDirection();
+            animator.SetAnimation(animations[$"idle-{direction}"]);
+            return animator.GetAnimationTime(animations[$"idle-{direction}"]);
         };
         var fight = new FightState(this);
         fight.OnStarted = idle.OnStarted;
         var attack = new AttackState(this);
         attack.OnStarted = () =>
         {
-            animator.SetAnimation(animations["attack"]);
-            return animator.GetAnimationTime(animations["attack"]);
+            var direction = model.Direction.ToAngle().ToCardinalDirection();
+            animator.SetAnimation(animations[$"attack-{direction}"]);
+            return animator.GetAnimationTime(animations[$"attack-{direction}"]) / 2;
         };
         var takeDamage = new TakeDamageState(this);
         takeDamage.OnStarted = () =>
         {
-            animator.SetAnimation(animations["take damage"]);
-            return animator.GetAnimationTime(animations["take damage"]);
+            var direction = model.Direction.ToAngle().ToCardinalDirection();
+            animator.SetAnimation(animations[$"idle-{direction}"]);
+            return animator.GetAnimationTime(animations[$"idle-{direction}"]) * 0.1f;
         };
         var dead = new DeadState(this);
         dead.OnStarted = () =>
         {
-            animator.SetAnimation(animations["dead"], false);
-            return animator.GetAnimationTime(animations["dead"]) * 20;
+            var direction = model.Direction.ToAngle().ToCardinalDirection();
+            animator.SetAnimation(animations["death"], false);
+            return animator.GetAnimationTime(animations["death"]) * 20;
         };
 
         return new List<CreatureState>()

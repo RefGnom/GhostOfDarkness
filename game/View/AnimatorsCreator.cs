@@ -9,7 +9,7 @@ internal static class AnimatorsCreator
     {
         ["Melee Enemy"] = () => new(TexturesManager.MeleeEnemy, 32, 32, new int[] { 5, 8, 7, 3, 7 }, 5),
         ["Player"] = () => new(TexturesManager.Player, 26, 38, new int[] { 1 }, 1),
-        ["Boss"] = () => new(TexturesManager.Boss, 100, 100, new int[] { 24, 24, 24, 24, 24, 24, 24, 24, 24, 12, 12, 12, 12, 12, 12, 12, 12 }, 1),
+        ["Boss"] = () => new(TexturesManager.Boss, 100, 100, new int[] { 24, 24, 24, 24, 24, 24, 24, 24, 24, 12, 12, 12, 12, 12, 12, 12, 12 }, 3),
     };
 
     public static Animator GetAnimator(string spriteName)

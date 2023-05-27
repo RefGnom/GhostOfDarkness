@@ -6,10 +6,10 @@ internal abstract class Creature : ICollisionable
 {
     public Vector2 Position { get; protected set; }
     public Vector2 Direction { get; protected set; }
-    public float Damage { get; protected set; }
-    public float Health { get; protected set; }
+    public float Damage { get; set; }
+    public float Health { get; set; }
     public float AttackDistance { get; protected set; }
-    public float Speed { get; protected set; }
+    public float Speed { get; set; }
     public Rectangle Hitbox { get; protected set; }
     public bool CanCollide => true;
     public CreatureStatesController View { get; protected set; }
