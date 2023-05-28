@@ -29,6 +29,7 @@ internal class TakeDamageState : CreatureState
         {
             switcher.SwitchState<FightState>();
         }
+        OnUpdate?.Invoke();
     }
 
     public override void Kill()

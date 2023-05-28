@@ -21,6 +21,7 @@ internal abstract class CreatureStatesController : IStateSwitcher, IDrawable
         currentState = states.FirstOrDefault(s => s is IdleState);
         if (currentState is null)
             throw new ArgumentException("expected idle state but was null");
+        currentState.Start(null);
     }
 
     public void SwitchState<T>() where T : IState

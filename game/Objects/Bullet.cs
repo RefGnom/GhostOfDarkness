@@ -5,9 +5,9 @@ namespace game;
 
 internal class Bullet : IDrawable, ICollisionable
 {
-    private Vector2 direction;
-    private float speed = 800;
-    private float lifetime = 1.2f;
+    private readonly Vector2 direction;
+    private readonly float speed = 800;
+    private float lifetime = 1.4f;
 
     public Vector2 Position { get; private set; }
     public Rectangle Hitbox => HitboxManager.Bullet;

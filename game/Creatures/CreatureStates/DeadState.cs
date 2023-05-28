@@ -35,6 +35,7 @@ internal class DeadState : CreatureState
         timeLeft -= deltaTime;
         if (timeLeft <= 0)
             CanDelete = true;
+        OnUpdate?.Invoke();
     }
 
     public override void Kill()

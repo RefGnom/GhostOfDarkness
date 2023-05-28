@@ -35,8 +35,8 @@ internal class Player : Creature
     {
         if (currentColdown <= 0)
         {
-            // 25?? (Чтобы пули вылетали вне хитбокса)
-            var bullet = new Bullet(Position + Direction * 25, Direction);
+            // 30?? (Чтобы пули вылетали вне хитбокса)
+            var bullet = new Bullet(Position + Direction * 30, Direction);
             Bullets.Add(bullet);
             GameManager.Instance.Drawer.Register(bullet);
             currentColdown = cooldown;

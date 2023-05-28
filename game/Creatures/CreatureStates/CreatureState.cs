@@ -13,6 +13,7 @@ internal abstract class CreatureState : IState
     public bool CanDelete { get; protected set; }
 
     public Func<float> OnStarted;
+    public Func<float> OnUpdate;
 
     public CreatureState(IStateSwitcher stateSwitcher)
     {

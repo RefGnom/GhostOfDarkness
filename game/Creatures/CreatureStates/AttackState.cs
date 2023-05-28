@@ -36,6 +36,7 @@ internal class AttackState : CreatureState
         timeLeft -= deltaTime;
         if (timeLeft <= 0)
             switcher.SwitchState<FightState>();
+        OnUpdate?.Invoke();
     }
 
     public override void Kill()

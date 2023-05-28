@@ -11,16 +11,12 @@ internal class GameModel
     public Player Player { get; private set; }
     public bool Started { get; private set; }
 
-    public GameModel()
-    {
-    }
-
     public void Start()
     {
         World = new();
-        World.Generate();
-        Player = new(World.CurrentRoom.Center, 530f, 100, 20, 0.4f);
-        Player.Attack = MouseController.LeftButtonClicked;
+        World.Generate(2);
+        Player = new(World.CurrentRoom.Center, 230f, 100, 25, 0.2f);
+        Player.Attack = MouseController.LeftButtonPressed;
         Started = true;
     }
 

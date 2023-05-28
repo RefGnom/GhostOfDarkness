@@ -34,6 +34,7 @@ internal class IdleState : CreatureState
 
     public override void Update(float deltaTime)
     {
+        OnUpdate?.Invoke();
     }
 
     public override void Kill()

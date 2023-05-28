@@ -24,6 +24,7 @@ internal class RunState : CreatureState
 
     public override void Update(float deltaTime)
     {
+        OnUpdate?.Invoke();
     }
 
     public override void Run()

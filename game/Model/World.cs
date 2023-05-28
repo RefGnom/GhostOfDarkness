@@ -52,12 +52,12 @@ internal class World
         }
     }
 
-    public void Generate()
+    public void Generate(int difficulty)
     {
         foreach (var room in rooms)
         {
             if (room.Name != "Education room" && room.Name != "Hallway")
-                room.Generate(1);
+                room.Generate(difficulty);
             if (room.Name == "Boss room")
             {
                 room.CreateEnemy(new Boss(room.Center));

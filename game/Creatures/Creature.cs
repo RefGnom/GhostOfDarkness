@@ -21,6 +21,7 @@ internal abstract class Creature : ICollisionable
     public Creature(Vector2 position, float speed, float health, float damage, float attackDistance, float cooldown)
     {
         Position = position;
+        Direction = new Vector2(-1, 0.0000001f);
         Speed = speed;
         Health = health;
         Damage = damage;

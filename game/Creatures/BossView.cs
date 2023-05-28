@@ -42,15 +42,13 @@ internal class BossView : EnemyView
             animator.SetAnimation(animations[$"idle-{direction}"]);
             return animator.GetAnimationTime(animations[$"idle-{direction}"]);
         };
+        idle.OnUpdate = idle.OnStarted;
         var run = new RunState(this);
-        run.OnStarted = () =>
-        {
-            var direction = model.Direction.ToAngle().ToCardinalDirection();
-            animator.SetAnimation(animations[$"idle-{direction}"]);
-            return animator.GetAnimationTime(animations[$"idle-{direction}"]);
-        };
+        run.OnStarted = idle.OnStarted;
+        run.OnUpdate = run.OnStarted;
         var fight = new FightState(this);
         fight.OnStarted = idle.OnStarted;
+        fight.OnUpdate = idle.OnUpdate;
         var attack = new AttackState(this);
         attack.OnStarted = () =>
         {
@@ -58,13 +56,15 @@ internal class BossView : EnemyView
             animator.SetAnimation(animations[$"attack-{direction}"]);
             return animator.GetAnimationTime(animations[$"attack-{direction}"]) / 2;
         };
+        attack.OnUpdate = attack.OnStarted;
         var takeDamage = new TakeDamageState(this);
         takeDamage.OnStarted = () =>
         {
             var direction = model.Direction.ToAngle().ToCardinalDirection();
             animator.SetAnimation(animations[$"idle-{direction}"]);
-            return animator.GetAnimationTime(animations[$"idle-{direction}"]) * 0.1f;
+            return animator.GetAnimationTime(animations[$"idle-{direction}"]) * 0.2f;
         };
+        takeDamage.OnUpdate = takeDamage.OnStarted;
         var dead = new DeadState(this);
         dead.OnStarted = () =>
         {
