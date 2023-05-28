@@ -7,8 +7,6 @@ namespace game;
 
 internal class QuadTree : IDrawable
 {
-    private static int checkCount; // for tests
-    private static int depth; // for tests
     private readonly static int threshold = 4;
 
     private readonly Rectangle boundary;
@@ -16,6 +14,7 @@ internal class QuadTree : IDrawable
     private readonly QuadTree[] nodes;
 
     public static bool Show { get; set; }
+    public bool Divided => nodes[0] is not null;
 
     public int Count
     { 
@@ -74,30 +73,31 @@ internal class QuadTree : IDrawable
         }
     }
 
+    public bool IsIntersectedWithItems(ICollisionable value)
+    {
+        return GetIntersectWithItems(value, Vector2.Zero) is not null;
+    }
+
     public bool IsIntersectedWithItems(ICollisionable value, Vector2 movementVector)
     {
-        checkCount = 0;
-        depth = 0;
         return GetIntersectWithItems(value, movementVector) is not null;
     }
 
     public ICollisionable GetIntersectWithItems(ICollisionable value)
     {
-        checkCount = 0;
-        depth = 0;
         return GetIntersectWithItems(value, Vector2.Zero);
     }
 
     public ICollisionable GetIntersectWithItems(ICollisionable value, Vector2 movementVector)
     {
-        depth++;
+        if (!value.CanCollide)
+            return null;
         var hitbox = value.Hitbox.Shift(value.Position + movementVector);
         if (!hitbox.Intersects(boundary))
             return null;
 
         for (int i = 0; i < items.Count; i++)
         {
-            checkCount++;
             if (value != items[i] && items[i].CanCollide && value.Collision(items[i], movementVector))
                 return items[i];
         }
@@ -110,7 +110,6 @@ internal class QuadTree : IDrawable
                     return intersect;
             }
         }
-        //Debug.Log($"{value} count: {checkCount}  depth: {depth}");
         return null;
     }
 
