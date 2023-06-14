@@ -129,8 +129,8 @@ internal class QuadTree : IDrawable
     {
         if (!Show)
             return;
-        var vertical = TexturesManager.VerticalLine;
-        var horizontal = TexturesManager.HorizontalLine;
+        var vertical = Textures.VerticalLine;
+        var horizontal = Textures.HorizontalLine;
         var position = boundary.Location.ToVector2();
         var source = new Rectangle(0, 0, 2, boundary.Height);
         spriteBatch.Draw(vertical, position, source, Color.White, 0, new Vector2(1.5f, 0), 1, SpriteEffects.None, Layers.HUDForeground);

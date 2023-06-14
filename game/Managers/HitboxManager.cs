@@ -13,6 +13,6 @@ internal static class HitboxManager
 
     public static void DrawHitbox(SpriteBatch spriteBatch, Vector2 position, Rectangle hitbox, Vector2 origin)
     {
-        spriteBatch.Draw(TexturesManager.Hitbox, position, hitbox, Color.White, 0, origin, 1, SpriteEffects.None, 0);
+        spriteBatch.Draw(Textures.Hitbox, position, hitbox, Color.White, 0, origin, 1, SpriteEffects.None, 0);
     }
 }

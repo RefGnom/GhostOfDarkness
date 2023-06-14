@@ -16,7 +16,7 @@ internal class Wall : IDrawable, ICollisionable
 
     public void Draw(SpriteBatch spriteBatch, float scale)
     {
-        spriteBatch.Draw(TexturesManager.Wall, Position, null, Color.White, 0, Vector2.Zero, 0.5f, SpriteEffects.None, Layers.Tiles);
+        spriteBatch.Draw(Textures.Wall, Position, null, Color.White, 0, Vector2.Zero, 0.5f, SpriteEffects.None, Layers.Tiles);
         if (Settings.ShowHitboxes)
             HitboxManager.DrawHitbox(spriteBatch, Position, HitboxManager.Wall, Vector2.Zero);
     }

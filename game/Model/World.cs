@@ -33,9 +33,9 @@ internal class World
     {
         rooms = new();
         GameManager.Instance.CollisionDetecter.CreateQuadTree(width, height);
-        for (int i = 0; i < TexturesManager.Rooms.Count; i++)
+        for (int i = 0; i < Textures.Rooms.Count; i++)
         {
-            var (name, texture) = TexturesManager.Rooms[i];
+            var (name, texture) = Textures.Rooms[i];
             var info = roomInfo[name];
             var position = info.Item1 * tileSize;
             var room = RoomImporter.Import(texture, tileSize, position, info.Item2);
@@ -45,10 +45,7 @@ internal class World
             if (name == "Hallway")
                 hallwayIndex = i;
             if (name == "Education room")
-            {
-                CurrentRoom = room;
-                CurrentRoom.Active = true;
-            }
+                SetCurrentRoom(room);
         }
     }
 
@@ -90,8 +87,17 @@ internal class World
 
     private void SetCurrentRoom(Room room)
     {
-        CurrentRoom.Active = false;
+        if (CurrentRoom == room)
+            return;
+        if (CurrentRoom is not null)
+            CurrentRoom.Active = false;
         CurrentRoom = room;
+        if (room.Name == "Hallway" || room.Name == "Education room")
+            SongsManager.StartPlaylist(Sounds.HallwaySongs);
+        else if (room.Name == "Boss room")
+            SongsManager.StartPlaylist(Sounds.BossSongs);
+        else
+            SongsManager.StartPlaylist(Sounds.RoomSongs);
         CurrentRoom.Active = true;
     }
 

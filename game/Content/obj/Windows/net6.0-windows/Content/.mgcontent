@@ -13,6 +13,15 @@
     <File>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Service/Room floor color.png</File>
     <File>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Service/Vertical line.png</File>
     <File>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Service/Wall color.png</File>
+    <File>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Sounds/BeastOfTheArena.mp3</File>
+    <File>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Sounds/CultistBase.mp3</File>
+    <File>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Sounds/DemonicCorruption.mp3</File>
+    <File>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Sounds/FortressOfDoom-ChadMossholder.mp3</File>
+    <File>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Sounds/InfiltrateTheCult.mp3</File>
+    <File>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Sounds/PhobosSpace.mp3</File>
+    <File>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Sounds/TheBaronOfHell.mp3</File>
+    <File>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Sounds/TheOnlyThingTheyFearIsYou.mp3</File>
+    <File>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Sounds/TheSuperGoreNest.mp3</File>
     <File>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Textures/Creatures/Boss.png</File>
     <File>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Textures/Creatures/Bullet.png</File>
     <File>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Textures/Creatures/Hitbox.png</File>
@@ -56,6 +65,15 @@
     <File>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Textures/UI/Settings string.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

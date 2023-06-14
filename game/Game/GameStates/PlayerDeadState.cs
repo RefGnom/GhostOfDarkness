@@ -55,13 +55,13 @@ internal class PlayerDeadState : GameState
 
     public override void Start(GameState previousState)
     {
-        background = new Sprite(TexturesManager.PauseBackground, new Vector2(564, 312), Layers.UIBackground);
+        background = new Sprite(Textures.PauseBackground, new Vector2(564, 312), Layers.UIBackground);
 
         var position = new Vector2(736, 430);
-        var restart = new Button(TexturesManager.ButtonBackground, position, "Restart");
+        var restart = new Button(Textures.ButtonBackground, position, "Restart");
         restart.OnClicked += Restart;
         position.Y += 140;
-        var mainMenu = new Button(TexturesManager.ButtonBackground, position, "To Main Menu");
+        var mainMenu = new Button(Textures.ButtonBackground, position, "To Main Menu");
         mainMenu.OnClicked += Exit;
 
         buttons = new()

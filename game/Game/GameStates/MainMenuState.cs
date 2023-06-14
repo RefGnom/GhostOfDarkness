@@ -59,23 +59,23 @@ internal class MainMenuState : GameState
         if (previousState.IsConfirmed)
             GameIsExit = true;
 
-        background = new Sprite(TexturesManager.Background, Vector2.Zero, Layers.Background);
+        background = new Sprite(Textures.Background, Vector2.Zero, Layers.Background);
 
         var buttonDistance = 150;
         var position = new Vector2(160, 275);
-        var newGame = new Button(TexturesManager.ButtonBackground, position, "New Game");
+        var newGame = new Button(Textures.ButtonBackground, position, "New Game");
         newGame.OnClicked += NewGame;
 
         position.Y += buttonDistance;
-        var loadSave = new Button(TexturesManager.ButtonBackground, position, "Load Game");
+        var loadSave = new Button(Textures.ButtonBackground, position, "Load Game");
         loadSave.OnClicked += LoadSave;
 
         position.Y += buttonDistance;
-        var settings = new Button(TexturesManager.ButtonBackground, position, "Settings");
+        var settings = new Button(Textures.ButtonBackground, position, "Settings");
         settings.OnClicked += OpenSettings;
 
         position.Y += buttonDistance;
-        var exit = new Button(TexturesManager.ButtonBackground, position, "Exit");
+        var exit = new Button(Textures.ButtonBackground, position, "Exit");
         exit.OnClicked += Exit;
 
         buttons = new()

@@ -6,8 +6,8 @@ internal class Camera
 {
     private readonly float maxScale = 1.4f;
     private readonly float minScale = 0.8f;
-    private float scale = 1f;
-    private float scaleStepSize = 0.05f;
+    private float scale;
+    private readonly float scaleStepSize = 0.05f;
     private int screenWidth;
     private int screenHeight;
 
@@ -18,6 +18,7 @@ internal class Camera
     {
         Transform = Matrix.Identity;
         FollowPlayer = followPlayer;
+        scale = maxScale;
     }
 
     public void Follow(Vector2 playerPosition, int width, int height, float deltaTime)

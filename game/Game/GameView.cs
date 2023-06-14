@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Media;
 using System;
 
 namespace game;
@@ -47,15 +48,16 @@ internal class GameView : Game
     protected override void LoadContent()
     {
         spriteBatch = new SpriteBatch(GraphicsDevice);
-        TexturesManager.Load(Content);
-        FontsManager.Load(Content);
+        Textures.Load(Content);
+        Fonts.Load(Content);
+        Sounds.Load(Content);
     }
 
     protected override void Update(GameTime gameTime)
     {
         var deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
         fps.Update(gameTime);
-
+        SongsManager.Update();
         controller.Update(deltaTime);
 
         if (model.Started)

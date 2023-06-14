@@ -24,7 +24,7 @@ internal class TestGame : Game
     protected override void LoadContent()
     {
         spriteBatch = new SpriteBatch(GraphicsDevice);
-        TexturesManager.Load(Content);
+        Textures.Load(Content);
     }
 
     protected override void Update(GameTime gameTime)
@@ -43,7 +43,7 @@ internal class TestGame : Game
         var height = 38;
         var origin = new Vector2(width / 2, 0);
         var position = new Vector2(0, 0);
-        spriteBatch.Draw(TexturesManager.Player, position, null, Color.White, 0, origin, 1, SpriteEffects.None, 0);
+        spriteBatch.Draw(Textures.Player, position, null, Color.White, 0, origin, 1, SpriteEffects.None, 0);
 
         spriteBatch.End();
         base.Draw(gameTime);

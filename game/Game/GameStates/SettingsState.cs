@@ -56,9 +56,9 @@ internal class SettingsState : GameState
 
     public override void Start(GameState previousState)
     {
-        var background = new Sprite(TexturesManager.Background, Vector2.Zero, Layers.Background);
+        var background = new Sprite(Textures.Background, Vector2.Zero, Layers.Background);
 
-        var position = new Vector2(1920 / 2 - TexturesManager.SettingsString.Width / 2, 30);
+        var position = new Vector2(1920 / 2 - Textures.SettingsString.Width / 2, 30);
         position = new Vector2(30, 30);
         var string1 = CreateString(position, "Full screen", Settings.OnFullScreen.ToString());
         position.Y += 60; 
@@ -83,10 +83,10 @@ internal class SettingsState : GameState
             string6
         };
 
-        var save = new Button(TexturesManager.ButtonBackground, new Vector2(934, 960), "Save");
+        var save = new Button(Textures.ButtonBackground, new Vector2(934, 960), "Save");
         save.OnClicked += Save;
 
-        var exit = new Button(TexturesManager.ButtonBackground, new Vector2(1432, 960), "Exit");
+        var exit = new Button(Textures.ButtonBackground, new Vector2(1432, 960), "Exit");
         exit.OnClicked += Exit;
 
         buttons = new()
@@ -125,7 +125,7 @@ internal class SettingsState : GameState
 
     private static Sprite CreateString(Vector2 position, string name, string key)
     {
-        var line = new Sprite(TexturesManager.SettingsString, position, Layers.UIBackground);
+        var line = new Sprite(Textures.SettingsString, position, Layers.UIBackground);
         line.AddText(new Text(new Rectangle(position.ToPoint(), new Point(300, 60)), name, Align.Left, 10));
         line.AddText(new Text(new Rectangle((int)position.X + 300, (int)position.Y, 200, 60), key, Align.Center, 0));
         return line;

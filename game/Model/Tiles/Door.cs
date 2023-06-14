@@ -22,8 +22,8 @@ internal class Door : IDrawable, ICollisionable
 
     public Door(Vector2 position, bool vertical = false)
     {
-        closedTexture = TexturesManager.Door;
-        openedTexture = TexturesManager.OpenedDoor;
+        closedTexture = Textures.Door;
+        openedTexture = Textures.OpenedDoor;
         floor = new Floor(position);
         origin = new Vector2(closedTexture.Width / 2, closedTexture.Height / 2);
             Position = position;

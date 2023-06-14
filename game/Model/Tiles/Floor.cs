@@ -11,13 +11,13 @@ internal class Floor : IDrawable
     public Floor(Vector2 position)
     {
         this.position = position;
-        texture = TexturesManager.Floor;
+        texture = Textures.Floor;
     }
 
     public Floor(Vector2 position, string name)
     {
         this.position = position;
-        texture = TexturesManager.GetFloorTexture(name);
+        texture = Textures.GetFloorTexture(name);
     }
 
     public void Draw(SpriteBatch spriteBatch, float scale)

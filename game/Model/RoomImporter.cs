@@ -11,10 +11,10 @@ internal static class RoomImporter
 
     static RoomImporter()
     {
-        var wall = GetColorValue(TexturesManager.WallColor);
-        var door = GetColorValue(TexturesManager.DoorColor);
-        var roomFloor = GetColorValue(TexturesManager.RoomFloorColor);
-        var hallwayFloor = GetColorValue(TexturesManager.HallwayFloorColor);
+        var wall = GetColorValue(Textures.WallColor);
+        var door = GetColorValue(Textures.DoorColor);
+        var roomFloor = GetColorValue(Textures.RoomFloorColor);
+        var hallwayFloor = GetColorValue(Textures.HallwayFloorColor);
 
         colorToEntity = new()
         {

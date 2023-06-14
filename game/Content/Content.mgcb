@@ -106,6 +106,60 @@
 /processorParam:TextureFormat=Color
 /build:Service/Wall color.png
 
+#begin Sounds/BeastOfTheArena.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:Sounds/BeastOfTheArena.mp3
+
+#begin Sounds/CultistBase.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:Sounds/CultistBase.mp3
+
+#begin Sounds/DemonicCorruption.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:Sounds/DemonicCorruption.mp3
+
+#begin Sounds/FortressOfDoom-ChadMossholder.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:Sounds/FortressOfDoom-ChadMossholder.mp3
+
+#begin Sounds/InfiltrateTheCult.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:Sounds/InfiltrateTheCult.mp3
+
+#begin Sounds/PhobosSpace.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:Sounds/PhobosSpace.mp3
+
+#begin Sounds/TheBaronOfHell.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:Sounds/TheBaronOfHell.mp3
+
+#begin Sounds/TheOnlyThingTheyFearIsYou.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:Sounds/TheOnlyThingTheyFearIsYou.mp3
+
+#begin Sounds/TheSuperGoreNest.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:Sounds/TheSuperGoreNest.mp3
+
 #begin Textures/Creatures/Boss.png
 /importer:TextureImporter
 /processor:TextureProcessor

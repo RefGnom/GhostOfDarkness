@@ -50,10 +50,12 @@ internal class PlayState : GameState
 
     public override void Start(GameState previousState)
     {
+        SongsManager.Resume();
     }
 
     public override void Stop()
     {
+        SongsManager.Pause();
     }
 
     public override void Draw()

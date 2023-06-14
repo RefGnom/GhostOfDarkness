@@ -11,7 +11,7 @@ internal class TextInput : IDrawable
     private readonly Vector2 position;
     private readonly StringBuilder text;
 
-    private SpriteFont Font => FontsManager.TimesNewRoman;
+    private SpriteFont Font => Fonts.TimesNewRoman;
     public string Text => text.ToString();
 
     public TextInput(Texture2D background, Vector2 position)

@@ -34,6 +34,6 @@ internal class Fps : IDrawable
     public void Draw(SpriteBatch spriteBatch, float scale)
     {
         if (Settings.ShowFPS)
-            spriteBatch.DrawString(FontsManager.Debug, msg, new Vector2(5, 5), Color.White, 0, Vector2.Zero, 1, SpriteEffects.None, Layers.Text);
+            spriteBatch.DrawString(Fonts.Debug, msg, new Vector2(5, 5), Color.White, 0, Vector2.Zero, 1, SpriteEffects.None, Layers.Text);
     }
 }

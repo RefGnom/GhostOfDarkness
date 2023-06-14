@@ -55,13 +55,13 @@ internal class ConfirmationState : GameState
 
     public override void Start(GameState previousState)
     {
-        background = new Sprite(TexturesManager.PauseBackground, new Vector2(564, 312), Layers.ConfirmationWindowBackground);
+        background = new Sprite(Textures.PauseBackground, new Vector2(564, 312), Layers.ConfirmationWindowBackground);
 
         var position = new Vector2(736, 430);
-        var confirm = new Button(TexturesManager.ButtonBackground, position, "Confirm", Layers.ConfirmationWindowUI, Layers.ConfirmationWindowText);
+        var confirm = new Button(Textures.ButtonBackground, position, "Confirm", Layers.ConfirmationWindowUI, Layers.ConfirmationWindowText);
         confirm.OnClicked += Confirm;
         position.Y += 140;
-        var cancel = new Button(TexturesManager.ButtonBackground, position, "Cancel", Layers.ConfirmationWindowUI, Layers.ConfirmationWindowText);
+        var cancel = new Button(Textures.ButtonBackground, position, "Cancel", Layers.ConfirmationWindowUI, Layers.ConfirmationWindowText);
         cancel.OnClicked += Back;
 
         buttons = new()

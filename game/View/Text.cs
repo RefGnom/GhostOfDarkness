@@ -17,7 +17,7 @@ internal class Text : IDrawable
         this.bounds = bounds;
         this.align = align;
         this.indent = indent;
-        font = FontsManager.TimesNewRoman;
+        font = Fonts.TimesNewRoman;
         SetText(text);
     }
 

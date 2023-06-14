@@ -61,15 +61,15 @@ internal class CreateGameState : GameState
 
     public override void Start(GameState previousState)
     {
-        background = new Sprite(TexturesManager.Background, Vector2.Zero, Layers.Background);
+        background = new Sprite(Textures.Background, Vector2.Zero, Layers.Background);
 
-        var back = new Button(TexturesManager.ButtonBackground, new Vector2(1432, 960), "Back");
+        var back = new Button(Textures.ButtonBackground, new Vector2(1432, 960), "Back");
         back.OnClicked += Back;
 
-        var create = new Button(TexturesManager.ButtonBackground, new Vector2(380, 600), "Create");
+        var create = new Button(Textures.ButtonBackground, new Vector2(380, 600), "Create");
         create.OnClicked += CreateGame;
 
-        textInput = new TextInput(TexturesManager.FieldForText, new Vector2(380, 466));
+        textInput = new TextInput(Textures.FieldForText, new Vector2(380, 466));
 
         buttons = new()
         {

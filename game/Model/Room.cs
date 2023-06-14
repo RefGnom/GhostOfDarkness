@@ -43,7 +43,7 @@ internal class Room : IDrawable
             var x = random.Next(width);
             var y = random.Next(height);
             var tile = tiles[x, y];
-            var enemy = new MeleeEnemy(tile.Position + new Vector2(TileSize, TileSize) / 2, 60, enemyHealh, enemyDamage);
+            var enemy = new MeleeEnemy(tile.Position + new Vector2(TileSize, TileSize) / 2, 120, enemyHealh, enemyDamage);
             if (!IsPossiblePosition(enemy.Hitbox.Shift(enemy.Position)))
                 continue;
             CreateEnemy(enemy);

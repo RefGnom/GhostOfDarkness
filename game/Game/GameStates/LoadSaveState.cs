@@ -56,14 +56,14 @@ internal class LoadSaveState : GameState
 
     public override void Start(GameState previousState)
     {
-        savesStorage = new Sprite(TexturesManager.SavesWindow, new Vector2(40, 70), Layers.UIBackground);
-        background = new Sprite(TexturesManager.Background, Vector2.Zero, Layers.Background);
+        savesStorage = new Sprite(Textures.SavesWindow, new Vector2(40, 70), Layers.UIBackground);
+        background = new Sprite(Textures.Background, Vector2.Zero, Layers.Background);
 
-        var load = new Button(TexturesManager.ButtonBackground, new Vector2(40, 960), "Load");
+        var load = new Button(Textures.ButtonBackground, new Vector2(40, 960), "Load");
         load.OnClicked += Play;
-        var createNew = new Button(TexturesManager.ButtonBackground, new Vector2(538, 960), "Create New Game");
+        var createNew = new Button(Textures.ButtonBackground, new Vector2(538, 960), "Create New Game");
         createNew.OnClicked += NewGame;
-        var back = new Button(TexturesManager.ButtonBackground, new Vector2(1432, 960), "Back");
+        var back = new Button(Textures.ButtonBackground, new Vector2(1432, 960), "Back");
         back.OnClicked += Back;
 
         buttons = new()

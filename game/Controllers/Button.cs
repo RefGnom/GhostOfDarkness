@@ -47,10 +47,10 @@ internal class Button : IDrawable
     {
         this.scale = scale;
         var position = this.position * scale;
-        spriteBatch.Draw(TexturesManager.ButtonBackground, position, null, Color.White, 0, Vector2.Zero, scale, SpriteEffects.None, buttonLayer);
-        var textSize = FontsManager.TimesNewRoman.MeasureString(text);
+        spriteBatch.Draw(Textures.ButtonBackground, position, null, Color.White, 0, Vector2.Zero, scale, SpriteEffects.None, buttonLayer);
+        var textSize = Fonts.TimesNewRoman.MeasureString(text);
         var textPosition = position + new Vector2(texture.Width / 2 - textSize.X / 2, texture.Height / 2 - textSize.Y / 2) * scale;
-        spriteBatch.DrawString(FontsManager.TimesNewRoman, text, textPosition, Color.White, 0, Vector2.Zero, scale, SpriteEffects.None, textLayer);
+        spriteBatch.DrawString(Fonts.TimesNewRoman, text, textPosition, Color.White, 0, Vector2.Zero, scale, SpriteEffects.None, textLayer);
     }
 
     private bool InBounds(Vector2 mousePosition)
