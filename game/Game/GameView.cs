@@ -10,6 +10,7 @@ internal class GameView : Game
 
     private GameModel model;
     private GameController controller;
+    private Fps fps;
 
     private readonly GraphicsDeviceManager graphics;
     private SpriteBatch spriteBatch;
@@ -25,6 +26,10 @@ internal class GameView : Game
         graphics = new GraphicsDeviceManager(this);
         Content.RootDirectory = "Content";
         IsMouseVisible = true;
+        TargetElapsedTime = TimeSpan.FromSeconds(1d / 60d);
+        IsFixedTimeStep = false;
+        graphics.SynchronizeWithVerticalRetrace = true;
+        graphics.ApplyChanges();
     }
 
     protected override void Initialize()
@@ -33,6 +38,7 @@ internal class GameView : Game
         SetSizeScreen(1280, 720);
         model = new();
         controller = new(model, this);
+        fps = new(0.3f);
         Debug.Initialize(WindowHeight);
         KeyboardController.GameWindow = Window;
         base.Initialize();
@@ -48,6 +54,7 @@ internal class GameView : Game
     protected override void Update(GameTime gameTime)
     {
         var deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
+        fps.Update(gameTime);
 
         controller.Update(deltaTime);
 

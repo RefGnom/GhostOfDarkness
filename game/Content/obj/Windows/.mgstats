@@ -1,3 +1,2 @@
 Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
-"D:/Programming/C# Projects/GhostOfDarkness/game/Content/Textures/Creatures/Boss.png","D:/Programming/C# Projects/GhostOfDarkness/game/Content/bin/Windows/Textures/Creatures/Boss.xnb","TextureProcessor","Texture2DContent",564557,16320085,1,2851092
-"D:/Programming/C# Projects/GhostOfDarkness/game/Content/Textures/UI/Settings string.png","D:/Programming/C# Projects/GhostOfDarkness/game/Content/bin/Windows/Textures/UI/Settings string.xnb","TextureProcessor","Texture2DContent",500,124581,0,0234883
+"D:/Programming/C# Projects/GhostOfDarkness/game/Content/Fonts/Debug.spritefont","D:/Programming/C# Projects/GhostOfDarkness/game/Content/bin/Windows/Fonts/Debug.xnb","FontDescriptionProcessor","SpriteFontContent",2068,21535,0,2760963

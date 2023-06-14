@@ -5,6 +5,7 @@ namespace game;
 internal static class Settings
 {
     public static bool ShowHitboxes;
+    public static bool ShowFPS;
 
     #region Controls
     public static Keys Up = Keys.W;
@@ -21,5 +22,6 @@ internal static class Settings
     public static Keys SwitchCameraFollow = Keys.F1;
     public static Keys SwitchPlayerCollision = Keys.F2;
     public static Keys ShowOrHideQuadTree = Keys.F3;
+    public static Keys ShowOrHideFps = Keys.F4;
     #endregion
 }

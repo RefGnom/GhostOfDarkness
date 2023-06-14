@@ -5,6 +5,7 @@
   <Config />
   <SourceFiles>
     <File>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Fonts/Arial.spritefont</File>
+    <File>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Fonts/Debug.spritefont</File>
     <File>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Fonts/TimesNewRoman.spritefont</File>
     <File>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Service/Door color.png</File>
     <File>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Service/Hallway floor color.png</File>
@@ -12,7 +13,6 @@
     <File>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Service/Room floor color.png</File>
     <File>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Service/Vertical line.png</File>
     <File>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Service/Wall color.png</File>
-    <File>D:/Programming/C# Projects/GhostOfDarkness/game/Content/test.png</File>
     <File>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Textures/Creatures/Boss.png</File>
     <File>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Textures/Creatures/Bullet.png</File>
     <File>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Textures/Creatures/Hitbox.png</File>

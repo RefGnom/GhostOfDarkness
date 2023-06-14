@@ -58,6 +58,11 @@ internal class GameController : GameStatesController
             QuadTree.Show = !QuadTree.Show;
         }
 
+        if (KeyboardController.IsSingleKeyDown(Settings.ShowOrHideFps))
+        {
+            Settings.ShowFPS = !Settings.ShowFPS;
+        }
+
         if (IsPlay)
             UpdateModel(deltaTime);
 
