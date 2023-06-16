@@ -18,8 +18,9 @@ internal static class Debug
         topPosition = new Vector2(10, windowHeight - 10);
     }
 
-    public static void Log(string message)
+    public static void Log(object obj)
     {
+        var message = obj.ToString();
         messages.Add((message, drawsCount));
 
         if (messages.Count > maxLogCount)
@@ -55,7 +56,7 @@ internal static class Debug
                 topPosition.Y += offset.Y;
                 continue;
             }
-            spriteBatch.DrawString(Fonts.Arial, message, currentPosition, Color.Black, 0, Vector2.Zero, 1, SpriteEffects.None, Layers.Text);
+            spriteBatch.DrawString(Fonts.Debug, message, currentPosition, Color.Black, 0, Vector2.Zero, 1, SpriteEffects.None, Layers.Text);
             currentPosition.Y += offset.Y;
         }
     }

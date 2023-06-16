@@ -61,20 +61,21 @@ internal class SettingsState : GameState
 
         var position = new Vector2(1920 / 2 - Textures.SettingsString.Width / 2, 30);
         position = new Vector2(30, 30);
+        var height = 60;
         var string1 = CreateString(position, "Full screen", Settings.OnFullScreen);
-        position.Y += 60; 
+        position.Y += height; 
         var string2 = CreateString(position, "Menu", Settings.OpenMenu);
-        position.Y += 60;
+        position.Y += height;
         var string3 = CreateString(position, "Up", Settings.Up);
-        position.Y += 60;
+        position.Y += height;
         var string4 = CreateString(position, "Down", Settings.Down);
-        position.Y += 60;
+        position.Y += height;
         var string5 = CreateString(position, "Left", Settings.Left);
-        position.Y += 60;
+        position.Y += height;
         var string6 = CreateString(position, "Right", Settings.Right);
-        position.Y += 60;
+        position.Y += height;
         var string7 = CreateString(position, "Turn up music volume", Settings.TurnUpMusicVolume);
-        position.Y += 60;
+        position.Y += height;
         var string8 = CreateString(position, "Turn down music volume", Settings.TurnDownMusicVolume);
 
         sprites = new Sprite[]
@@ -134,8 +135,8 @@ internal class SettingsState : GameState
     {
         var widthName = 500;
         var line = new Sprite(Textures.SettingsString, position, Layers.UIBackground);
-        line.AddText(new Text(new Rectangle(position.ToPoint(), new Point(widthName, 60)), name, Align.Left, 10));
-        line.AddText(new Text(new Rectangle((int)position.X + widthName, (int)position.Y, 250, 60), key.ToString(), Align.Center, 0));
+        line.AddText(new Text(new Rectangle(position.ToPoint(), new Point(widthName, Textures.SettingsString.Height)), name, Align.Left, 10));
+        line.AddText(new Text(new Rectangle((int)position.X + widthName, (int)position.Y, 250, Textures.SettingsString.Height), key.ToString(), Align.Center, 0));
         return line;
     }
 }

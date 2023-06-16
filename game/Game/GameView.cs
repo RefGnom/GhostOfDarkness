@@ -42,6 +42,7 @@ internal class GameView : Game
         fps = new(0.3f);
         Debug.Initialize(WindowHeight);
         KeyboardController.GameWindow = Window;
+        MediaPlayer.Volume = 0.3f;
         base.Initialize();
     }
 

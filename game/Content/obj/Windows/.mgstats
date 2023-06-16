@@ -1,2 +1,4 @@
 Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
-"D:/Programming/C# Projects/GhostOfDarkness/game/Content/Textures/UI/Settings string.png","D:/Programming/C# Projects/GhostOfDarkness/game/Content/bin/Windows/Textures/UI/Settings string.xnb","TextureProcessor","Texture2DContent",566,186581,0,1638344
+"D:/Programming/C# Projects/GhostOfDarkness/game/Content/Fonts/Arial.spritefont","D:/Programming/C# Projects/GhostOfDarkness/game/Content/bin/Windows/Fonts/Arial.xnb","FontDescriptionProcessor","SpriteFontContent",2161,41277,0,3773453
+"D:/Programming/C# Projects/GhostOfDarkness/game/Content/Fonts/Debug.spritefont","D:/Programming/C# Projects/GhostOfDarkness/game/Content/bin/Windows/Fonts/Debug.xnb","FontDescriptionProcessor","SpriteFontContent",2133,41277,0,1610783
+"D:/Programming/C# Projects/GhostOfDarkness/game/Content/Fonts/TimesNewRoman.spritefont","D:/Programming/C# Projects/GhostOfDarkness/game/Content/bin/Windows/Fonts/TimesNewRoman.xnb","FontDescriptionProcessor","SpriteFontContent",2136,139581,0,0852429

@@ -45,7 +45,10 @@ internal class World
             if (name == "Hallway")
                 hallwayIndex = i;
             if (name == "Education room")
+            {
                 SetCurrentRoom(room);
+                EducationRoomUI.Create(position);
+            }
         }
     }
 
