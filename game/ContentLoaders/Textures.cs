@@ -14,7 +14,6 @@ internal static class Textures
     public static Texture2D Bullet { get; private set; }
     public static Texture2D MeleeEnemy { get; private set; }
     public static Texture2D Boss { get; private set; }
-    public static Texture2D PauseMenu { get; private set; }
     public static Texture2D HealthBarForeground { get; private set; }
     public static Texture2D HealthBarBackground { get; private set; }
     public static Texture2D Wall { get; private set; }
@@ -47,7 +46,6 @@ internal static class Textures
         Bullet = Load("Textures\\Creatures\\Bullet");
         MeleeEnemy = Load("Textures\\Creatures\\Melee Enemy");
         Boss = Load("Textures\\Creatures\\Boss");
-        PauseMenu = Load("Textures\\UI\\Pause Menu");
         HealthBarForeground = Load("Textures\\HUD\\HealthBarForeground");
         HealthBarBackground = Load("Textures\\HUD\\HealthBarBackground");
         Wall = Load("Textures\\Tiles\\Wall");

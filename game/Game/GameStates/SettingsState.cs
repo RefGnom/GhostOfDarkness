@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Input;
 
 namespace game;
 
@@ -60,17 +61,21 @@ internal class SettingsState : GameState
 
         var position = new Vector2(1920 / 2 - Textures.SettingsString.Width / 2, 30);
         position = new Vector2(30, 30);
-        var string1 = CreateString(position, "Full screen", Settings.OnFullScreen.ToString());
+        var string1 = CreateString(position, "Full screen", Settings.OnFullScreen);
         position.Y += 60; 
-        var string2 = CreateString(position, "Menu", Settings.OpenMenu.ToString());
+        var string2 = CreateString(position, "Menu", Settings.OpenMenu);
         position.Y += 60;
-        var string3 = CreateString(position, "Up", Settings.Up.ToString());
+        var string3 = CreateString(position, "Up", Settings.Up);
         position.Y += 60;
-        var string4 = CreateString(position, "Down", Settings.Down.ToString());
+        var string4 = CreateString(position, "Down", Settings.Down);
         position.Y += 60;
-        var string5 = CreateString(position, "Left", Settings.Left.ToString());
+        var string5 = CreateString(position, "Left", Settings.Left);
         position.Y += 60;
-        var string6 = CreateString(position, "Right", Settings.Right.ToString());
+        var string6 = CreateString(position, "Right", Settings.Right);
+        position.Y += 60;
+        var string7 = CreateString(position, "Turn up music volume", Settings.TurnUpMusicVolume);
+        position.Y += 60;
+        var string8 = CreateString(position, "Turn down music volume", Settings.TurnDownMusicVolume);
 
         sprites = new Sprite[]
         {
@@ -80,7 +85,9 @@ internal class SettingsState : GameState
             string3,
             string4,
             string5,
-            string6
+            string6,
+            string7,
+            string8,
         };
 
         var save = new Button(Textures.ButtonBackground, new Vector2(934, 960), "Save");
@@ -123,11 +130,12 @@ internal class SettingsState : GameState
         UnregisterButtons();
     }
 
-    private static Sprite CreateString(Vector2 position, string name, string key)
+    private static Sprite CreateString(Vector2 position, string name, Keys key)
     {
+        var widthName = 500;
         var line = new Sprite(Textures.SettingsString, position, Layers.UIBackground);
-        line.AddText(new Text(new Rectangle(position.ToPoint(), new Point(300, 60)), name, Align.Left, 10));
-        line.AddText(new Text(new Rectangle((int)position.X + 300, (int)position.Y, 200, 60), key, Align.Center, 0));
+        line.AddText(new Text(new Rectangle(position.ToPoint(), new Point(widthName, 60)), name, Align.Left, 10));
+        line.AddText(new Text(new Rectangle((int)position.X + widthName, (int)position.Y, 250, 60), key.ToString(), Align.Center, 0));
         return line;
     }
 }

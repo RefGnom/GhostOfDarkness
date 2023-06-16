@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <SourceFile>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Textures/UI/Settings string.png</SourceFile>
-  <SourceTime>2023-05-21T14:57:33.6217945+03:00</SourceTime>
+  <SourceTime>2023-06-16T20:26:21.0009468+05:00</SourceTime>
   <DestFile>D:/Programming/C# Projects/GhostOfDarkness/game/Content/bin/Windows/Content/Textures/UI/Settings string.xnb</DestFile>
-  <DestTime>2023-05-21T14:58:00.8662577+03:00</DestTime>
+  <DestTime>2023-06-16T20:27:24.2798462+05:00</DestTime>
   <Importer>TextureImporter</Importer>
-  <ImporterTime>2022-07-26T14:44:56+03:00</ImporterTime>
+  <ImporterTime>2022-07-26T16:44:56+05:00</ImporterTime>
   <Processor>TextureProcessor</Processor>
-  <ProcessorTime>2022-07-26T14:44:56+03:00</ProcessorTime>
+  <ProcessorTime>2022-07-26T16:44:56+05:00</ProcessorTime>
   <Parameters>
     <Key>ColorKeyColor</Key>
     <Value>255,0,255,255</Value>
