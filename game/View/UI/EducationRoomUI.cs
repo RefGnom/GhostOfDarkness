@@ -21,6 +21,6 @@ internal class EducationRoomUI : IDrawable
 
     public void Draw(SpriteBatch spriteBatch, float scale)
     {
-        spriteBatch.Draw(Textures.EducationUI, position, null, Color.White, 0, Vector2.Zero, 1, SpriteEffects.None, Layers.UIBackground);
+        spriteBatch.Draw(Textures.EducationUI, position, null, Color.White, 0, Vector2.Zero, 1, SpriteEffects.None, Layers.StaticUI);
     }
 }

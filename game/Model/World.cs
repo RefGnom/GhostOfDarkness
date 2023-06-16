@@ -48,6 +48,9 @@ internal class World
             {
                 SetCurrentRoom(room);
                 EducationRoomUI.Create(position);
+                var note = new Note(position + new Vector2(32, 208), "Тут должна быть предыстория", Vector2.One);
+                GameModel.AddInteractable(note);
+                GameManager.Instance.Drawer.RegisterHUD(note);
             }
         }
     }

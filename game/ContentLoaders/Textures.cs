@@ -17,6 +17,7 @@ internal static class Textures
     public static Texture2D HealthBarForeground { get; private set; }
     public static Texture2D HealthBarBackground { get; private set; }
     public static Texture2D EducationUI { get; private set; }
+    public static Texture2D Paper { get; private set; }
     public static Texture2D Wall { get; private set; }
     public static Texture2D Door { get; private set; }
     public static Texture2D OpenedDoor { get; private set; }
@@ -50,6 +51,7 @@ internal static class Textures
         HealthBarForeground = Load("Textures\\HUD\\HealthBarForeground");
         HealthBarBackground = Load("Textures\\HUD\\HealthBarBackground");
         EducationUI = Load("Textures\\UI\\EducationUI");
+        Paper = Load("Textures\\UI\\Paper");
         Wall = Load("Textures\\Tiles\\Wall");
         Door = Load("Textures\\Tiles\\Door");
         OpenedDoor = Load("Textures\\Tiles\\Opened door");

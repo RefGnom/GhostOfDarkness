@@ -16,8 +16,9 @@ internal class GameView : Game
     private readonly GraphicsDeviceManager graphics;
     private SpriteBatch spriteBatch;
 
-    public int WindowWidth => graphics.PreferredBackBufferWidth;
-    public int WindowHeight => graphics.PreferredBackBufferHeight;
+    public static int WindowWidth { get; private set; }
+    public static int WindowHeight { get; private set; }
+    public static Vector2 Center => new(WindowWidth / 2, WindowHeight / 2);
     public float Scale => WindowWidth / maxWindowWidth;
 
     private static Camera Camera => GameManager.Instance.Camera;
@@ -57,6 +58,8 @@ internal class GameView : Game
     protected override void Update(GameTime gameTime)
     {
         var deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
+        WindowWidth = graphics.PreferredBackBufferWidth;
+        WindowHeight = graphics.PreferredBackBufferHeight;
         fps.Update(gameTime);
         SongsManager.Update();
         controller.Update(deltaTime);

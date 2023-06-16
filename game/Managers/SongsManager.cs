@@ -33,8 +33,11 @@ internal static class SongsManager
 
     public static void Resume()
     {
-        isPlayed = true;
-        MediaPlayer.Resume();
+        if (MediaPlayer.State == MediaState.Paused)
+        {
+            isPlayed = true;
+            MediaPlayer.Resume();
+        }
     }
 
     public static void Stop()
