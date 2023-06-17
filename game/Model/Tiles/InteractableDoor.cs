@@ -7,7 +7,7 @@ internal class InteractableDoor : IInteractable
     private readonly Door first;
     private readonly Door second;
     private readonly float maxInteractionDistance = 50;
-    private readonly float minInteractionDistance = 30;
+    private readonly float minInteractionDistance = 25;
     private float currentInteractionCooldown;
     private string hint = "Open";
     private bool hintShown;

@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using System;
 
 namespace game;
 
@@ -13,8 +14,11 @@ internal abstract class Creature : ICollisionable
     public Rectangle Hitbox { get; protected set; }
     public bool CanCollide => true;
     public CreatureStatesController View { get; protected set; }
-    public bool IsDead { get; protected set; }
+    public bool IsDead => Health <= 0;
+    public bool CanDelete { get; protected set; }
+    public string Tag { get; set; }
 
+    private readonly float maxHealth;
     protected readonly float cooldown;
     protected float currentColdown;
 
@@ -24,9 +28,18 @@ internal abstract class Creature : ICollisionable
         Direction = new Vector2(-1, 0.0000001f);
         Speed = speed;
         Health = health;
+        maxHealth = health;
         Damage = damage;
         AttackDistance = attackDistance;
         this.cooldown = cooldown;
+    }
+
+    public void Heal(int percent)
+    {
+        if (percent > 100 || percent < 0)
+            throw new ArgumentException("percent it should be between 0 and 100");
+        var takenDamage = maxHealth - Health;
+        Health += takenDamage / 100 * percent;
     }
 
     public abstract void TakeDamage(float damage);

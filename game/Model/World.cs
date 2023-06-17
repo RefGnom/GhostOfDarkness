@@ -28,6 +28,7 @@ internal class World
     private readonly int hallwayIndex;
 
     public Room CurrentRoom { get; private set; }
+    public bool BossIsDead { get; private set; }
 
     public World()
     {
@@ -63,7 +64,9 @@ internal class World
                 room.Generate(difficulty);
             if (room.Name == "Boss room")
             {
-                room.CreateEnemy(new Boss(room.Center));
+                var boss = new Boss(room.Center);
+                boss.Tag = "Boss";
+                room.CreateEnemy(boss);
             }
         }
     }
@@ -113,6 +116,8 @@ internal class World
         {
             room.Update(deltaTime, player);
         }
+        if (CurrentRoom.BossIsDead)
+            BossIsDead = true;
     }
 
     private (Room, string) GetCurrentRoom(Creature player)

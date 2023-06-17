@@ -8,7 +8,7 @@ internal abstract class Enemy : Creature
     private bool isIdle;
     private bool hitboxDeleted;
 
-    public new bool IsDead => View.CanDelete;
+    public new bool CanDelete => View.CanDelete;
     private static CollisionDetecter CollisionDetecter => GameManager.Instance.CollisionDetecter;
 
     public event Func<Creature, Rectangle, float, Vector2> GetMovementVector;
@@ -37,7 +37,9 @@ internal abstract class Enemy : Creature
         if (Health > 0)
             View.SetStateTakeDamage();
         else
+        {
             View.SetStateDead();
+        }
     }
 
     public void Update(float deltaTime, Creature target)

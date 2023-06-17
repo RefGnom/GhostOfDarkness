@@ -31,7 +31,25 @@ internal class Player : Creature
         Position = position;
     }
 
-    protected void Shoot()
+    public void Update(float deltaTime)
+    {
+        if (View.Killed)
+        {
+            Delete(this);
+            return;
+        }
+        UpdateDirection();
+        if (View.CanAttack && Attack is not null && Attack.Invoke())
+            Shoot();
+        if (View.CanMove)
+            Move(deltaTime);
+        UpdateBullets(deltaTime);
+        currentColdown -= deltaTime;
+        healthBar.SetHealth(Health);
+        View.Update(deltaTime);
+    }
+
+    private void Shoot()
     {
         if (currentColdown <= 0)
         {
@@ -44,26 +62,8 @@ internal class Player : Creature
         }
     }
 
-    public void Update(float deltaTime)
-    {
-        if (View.Killed)
-        {
-            IsDead = true;
-            Delete(this);
-            return;
-        }
-        UpdateDirection();
-        if (View.CanAttack && Attack is not null && Attack.Invoke())
-            Shoot();
-        if (View.CanMove)
-            Move(deltaTime);
-        UpdateBullets(deltaTime);
-        currentColdown -= deltaTime;
-        View.Update(deltaTime);
-    }
-
     // Переместить в класс Gun
-    protected void UpdateBullets(float deltaTime)
+    private void UpdateBullets(float deltaTime)
     {
         for (int i = 0; i < Bullets.Count; i++)
         {

@@ -54,7 +54,7 @@ internal class DialogManager : IDrawable
         if (enabledDialog)
         {
             message.Draw(spriteBatch, scale);
-            var hintPosition = new Vector2(1400, 940);
+            var hintPosition = new Vector2(1800, 1000);
             spriteBatch.Draw(Textures.DialogHelpUI, hintPosition * scale, null, Color.White, 0, Vector2.Zero, scale, SpriteEffects.None, Layers.HUDBackground);
         }
     }

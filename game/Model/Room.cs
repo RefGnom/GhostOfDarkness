@@ -17,6 +17,8 @@ internal class Room : IDrawable
     public ITrigger InputTrigger { get; set; }
     public ITrigger OutputTrigger { get; set; }
     public bool Active { get; set; }
+    public bool Cleared { get; private set; }
+    public bool BossIsDead { get; private set; }
     public Tile[,] Tiles => tiles;
     public int TileSize => tileSize;
     public Vector2 Center => position + size / 2;
@@ -58,14 +60,27 @@ internal class Room : IDrawable
 
     public void Update(float deltaTime, Creature player)
     {
+        var enemiesCount = enemies.Count;
         for (int i = 0; i < enemies.Count; i++)
         {
             enemies[i].Update(deltaTime, player);
             if (enemies[i].IsDead)
             {
-                DeleteEnemy(i);
-                i--;
+                enemiesCount--;
+                if (enemies[i].Tag == "Boss")
+                    BossIsDead = true;
+                if (enemies[i].CanDelete)
+                {
+                    DeleteEnemy(i);
+                    i--;
+                }
             }
+        }
+        if (enemiesCount == 0)
+        {
+            if (!Cleared)
+                player.Heal(50);
+            Cleared = true;
         }
     }
 

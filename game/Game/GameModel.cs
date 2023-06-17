@@ -11,6 +11,7 @@ internal class GameModel
     public World World { get; private set; }
     public Player Player { get; private set; }
     public bool Started { get; private set; }
+    public bool BossIsDead { get; private set; }
 
     public void Start()
     {
@@ -38,6 +39,12 @@ internal class GameModel
         World.Update(deltaTime, Player);
         Player.Update(deltaTime);
         UpdateInteractables(deltaTime);
+        if (World.BossIsDead)
+        {
+            if (!BossIsDead)
+                GameManager.Instance.DialogManager.Enable(Story.GetFinalDialog());
+            BossIsDead = true;
+        }
     }
 
     public static void AddInteractable(IInteractable interactable)
