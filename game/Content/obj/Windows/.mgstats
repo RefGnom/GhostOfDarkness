@@ -1,2 +1,3 @@
 Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
-"D:/Programming/C# Projects/GhostOfDarkness/game/Content/Textures/UI/Dialog helper.png","D:/Programming/C# Projects/GhostOfDarkness/game/Content/bin/Windows/Textures/UI/Dialog helper.xnb","TextureProcessor","Texture2DContent",757,13609,0,1651672
+"D:/Programming/C# Projects/GhostOfDarkness/game/Content/Sounds/AlienWarfare.mp3","D:/Programming/C# Projects/GhostOfDarkness/game/Content/bin/Windows/Sounds/AlienWarfare.xnb","SongProcessor","SongContent",760271,130,2,4631622
+"D:/Programming/C# Projects/GhostOfDarkness/game/Content/Textures/UI/EducationUI.png","D:/Programming/C# Projects/GhostOfDarkness/game/Content/bin/Windows/Textures/UI/EducationUI.xnb","TextureProcessor","Texture2DContent",4749,442453,0,2286252

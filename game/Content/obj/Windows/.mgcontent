@@ -15,6 +15,7 @@
     <File>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Service/Room floor color.png</File>
     <File>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Service/Vertical line.png</File>
     <File>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Service/Wall color.png</File>
+    <File>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Sounds/AlienWarfare.mp3</File>
     <File>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Sounds/BeastOfTheArena.mp3</File>
     <File>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Sounds/CultistBase.mp3</File>
     <File>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Sounds/DemonicCorruption.mp3</File>
@@ -69,6 +70,7 @@
     <File>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Textures/UI/Settings string.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

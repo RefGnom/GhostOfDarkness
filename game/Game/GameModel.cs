@@ -1,5 +1,5 @@
-﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Input;
+﻿using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Media;
 using System.Collections.Generic;
 
 namespace game;
@@ -42,7 +42,7 @@ internal class GameModel
         if (World.BossIsDead)
         {
             if (!BossIsDead)
-                GameManager.Instance.DialogManager.Enable(Story.GetFinalDialog());
+                StartFinalEvents();
             BossIsDead = true;
         }
     }
@@ -63,5 +63,12 @@ internal class GameModel
             }
             item.Update(deltaTime);
         }
+    }
+
+    private static void StartFinalEvents()
+    {
+        GameManager.Instance.DialogManager.Enable(Story.GetFinalDialog());
+        SongsManager.Stop();
+        MediaPlayer.Play(Sounds.VictorySong);
     }
 }

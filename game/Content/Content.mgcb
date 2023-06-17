@@ -120,6 +120,12 @@
 /processorParam:TextureFormat=Color
 /build:Service/Wall color.png
 
+#begin Sounds/AlienWarfare.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:Sounds/AlienWarfare.mp3
+
 #begin Sounds/BeastOfTheArena.mp3
 /importer:Mp3Importer
 /processor:SongProcessor

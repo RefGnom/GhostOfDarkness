@@ -38,7 +38,7 @@ internal static class Story
         message = message.Next;
         message.OnNext = () =>
         {
-            Debug.Log("Запускается музыка");
+            // Действия в конце игры
         };
         return parent;
     }

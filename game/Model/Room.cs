@@ -22,6 +22,7 @@ internal class Room : IDrawable
     public Tile[,] Tiles => tiles;
     public int TileSize => tileSize;
     public Vector2 Center => position + size / 2;
+    public event Action<Creature> OnCleared;
 
     public Room(Tile[,] tiles, Vector2 position, int tileSize)
     {
@@ -61,6 +62,8 @@ internal class Room : IDrawable
     public void Update(float deltaTime, Creature player)
     {
         var enemiesCount = enemies.Count;
+        if (enemiesCount == 0)
+            return;
         for (int i = 0; i < enemies.Count; i++)
         {
             enemies[i].Update(deltaTime, player);
@@ -79,7 +82,7 @@ internal class Room : IDrawable
         if (enemiesCount == 0)
         {
             if (!Cleared)
-                player.Heal(50);
+                OnCleared?.Invoke(player);
             Cleared = true;
         }
     }

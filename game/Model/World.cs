@@ -28,6 +28,8 @@ internal class World
     private readonly int hallwayIndex;
 
     public Room CurrentRoom { get; private set; }
+    public Boss Boss { get; private set; }
+    public Player Player { get; set; }
     public bool BossIsDead { get; private set; }
 
     public World()
@@ -40,6 +42,7 @@ internal class World
             var info = roomInfo[name];
             var position = info.Item1 * tileSize;
             var room = RoomImporter.Import(texture, tileSize, position, info.Item2);
+            room.OnCleared += RoomOnCleared;
             room.Name = name;
             rooms.Add(room);
             GameManager.Instance.Drawer.Register(room);
@@ -64,9 +67,9 @@ internal class World
                 room.Generate(difficulty);
             if (room.Name == "Boss room")
             {
-                var boss = new Boss(room.Center);
-                boss.Tag = "Boss";
-                room.CreateEnemy(boss);
+                Boss = new Boss(room.Center);
+                Boss.Tag = "Boss";
+                room.CreateEnemy(Boss);
             }
         }
     }
@@ -92,6 +95,14 @@ internal class World
         {
             SetCurrentRoom(currentRoom);
         }
+    }
+
+    private void RoomOnCleared(Creature player)
+    {
+        player.Heal(50);
+        Boss.Health -= 200;
+        Boss.Damage -= 10;
+        Boss.Speed -= 10;
     }
 
     private void SetCurrentRoom(Room room)

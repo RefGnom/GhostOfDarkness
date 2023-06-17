@@ -12,6 +12,7 @@ internal static class Sounds
     public static LoopedUnorderedQueue<Song> HallwaySongs => hallwaySongs.Shuffle();
     public static LoopedUnorderedQueue<Song> RoomSongs => roomSongs.Shuffle();
     public static LoopedUnorderedQueue<Song> BossSongs => bossSongs.Shuffle();
+    public static Song VictorySong { get; private set; }
 
     public static void Load(ContentManager content)
     {
@@ -33,5 +34,6 @@ internal static class Sounds
             content.Load<Song>("Sounds\\TheOnlyThingTheyFearIsYou"),
             content.Load<Song>("Sounds\\TheSuperGoreNest")
         );
+        VictorySong = content.Load<Song>("Sounds\\AlienWarfare");
     }
 }
