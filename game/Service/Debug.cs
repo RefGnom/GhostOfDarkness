@@ -29,7 +29,7 @@ internal static class Debug
         }
         else
         {
-            var offset = Fonts.Arial.MeasureString(message);
+            var offset = Fonts.Debug.MeasureString(message);
             topPosition.Y -= offset.Y;
         }
     }
@@ -47,7 +47,7 @@ internal static class Debug
         for (var i = 0; i < messages.Count; i++)
         {
             var (message, drawsCount) = messages[i];
-            var offset = Fonts.Arial.MeasureString(message);
+            var offset = Fonts.Debug.MeasureString(message);
             messages[i] = (message, drawsCount - 1);
             if (drawsCount < 0)
             {

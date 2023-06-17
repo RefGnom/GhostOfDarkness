@@ -6,7 +6,7 @@ namespace game;
 internal static class HintManager
 {
     private static string currentMessage = null;
-    private static readonly SpriteFont font = Fonts.TimesNewRoman;
+    private static readonly SpriteFont font = Fonts.Buttons;
 
     public static void Show(string message)
     {

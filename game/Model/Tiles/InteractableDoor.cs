@@ -6,7 +6,8 @@ internal class InteractableDoor : IInteractable
 {
     private readonly Door first;
     private readonly Door second;
-    private readonly float interactionDistance = 50;
+    private readonly float maxInteractionDistance = 50;
+    private readonly float minInteractionDistance = 30;
     private float currentInteractionCooldown;
     private string hint = "Open";
     private bool hintShown;
@@ -25,7 +26,9 @@ internal class InteractableDoor : IInteractable
     public bool CanInteract(Vector2 target)
     {
         var distance = Vector2.Distance(Position, target);
-        if (distance <= interactionDistance && currentInteractionCooldown <= 0)
+        if (distance <= maxInteractionDistance
+            && distance >= minInteractionDistance
+            && currentInteractionCooldown <= 0)
         {
             HintManager.Show(hint + " door - E");
             hintShown = true;

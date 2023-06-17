@@ -7,7 +7,7 @@ internal class Note : IDrawable, IInteractable
 {
     private string text;
     private Vector2 backgroundScale;
-    private readonly float interactionDistance = 60;
+    private readonly float interactionDistance = 40;
     private bool hintShown;
     private bool isOpen;
 
@@ -35,7 +35,7 @@ internal class Note : IDrawable, IInteractable
             var texture = Textures.Paper;
             var origin = new Vector2(texture.Width / 2, texture.Height / 2) * backgroundScale;
             var topLeft = GameView.Center - origin;
-            spriteBatch.DrawString(Fonts.Arial, text, topLeft + new Vector2(70, 50), Color.Black, 0, Vector2.Zero, 1, SpriteEffects.None, Layers.Text);
+            spriteBatch.DrawString(Fonts.Common12, text, topLeft + new Vector2(70, 50), Color.Black, 0, Vector2.Zero, 1, SpriteEffects.None, Layers.Text);
             spriteBatch.Draw(texture, GameView.Center, null, Color.White, 0, origin, backgroundScale, SpriteEffects.None, Layers.UIBackground);
         }
     }

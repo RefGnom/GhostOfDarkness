@@ -60,6 +60,7 @@ internal class GameView : Game
         var deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
         WindowWidth = graphics.PreferredBackBufferWidth;
         WindowHeight = graphics.PreferredBackBufferHeight;
+        GameManager.Instance.Update();
         fps.Update(gameTime);
         SongsManager.Update();
         controller.Update(deltaTime);

@@ -30,6 +30,7 @@ internal static class Textures
     public static Texture2D Background { get; private set; }
     public static Texture2D HorizontalLine { get; private set; }
     public static Texture2D VerticalLine { get; private set; }
+    public static Texture2D DialogHelpUI { get; private set; }
 
     #region TileColors
     public static Texture2D WallColor { get; private set; }
@@ -64,6 +65,7 @@ internal static class Textures
         Background = Load("Textures\\UI\\Background");
         HorizontalLine = Load("Service\\Horizontal line");
         VerticalLine = Load("Service\\Vertical line");
+        DialogHelpUI = Load("Textures\\UI\\Dialog helper");
         LoadTileColors();
         LoadRooms();
     }

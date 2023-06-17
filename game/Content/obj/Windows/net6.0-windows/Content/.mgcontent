@@ -4,9 +4,11 @@
   <Platform>Windows</Platform>
   <Config />
   <SourceFiles>
-    <File>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Fonts/Arial.spritefont</File>
+    <File>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Fonts/Buttons.spritefont</File>
+    <File>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Fonts/Common12.spritefont</File>
+    <File>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Fonts/Common16.spritefont</File>
+    <File>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Fonts/Common18.spritefont</File>
     <File>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Fonts/Debug.spritefont</File>
-    <File>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Fonts/TimesNewRoman.spritefont</File>
     <File>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Service/Door color.png</File>
     <File>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Service/Hallway floor color.png</File>
     <File>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Service/Horizontal line.png</File>
@@ -58,6 +60,7 @@
     <File>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Textures/Tiles/Wall.png</File>
     <File>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Textures/UI/Background.png</File>
     <File>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Textures/UI/ButtonBackground.png</File>
+    <File>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Textures/UI/Dialog helper.png</File>
     <File>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Textures/UI/EducationUI.png</File>
     <File>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Textures/UI/FieldForGameName.png</File>
     <File>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Textures/UI/paper.png</File>
@@ -66,6 +69,9 @@
     <File>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Textures/UI/Settings string.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

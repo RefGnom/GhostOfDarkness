@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Fonts/TimesNewRoman.spritefont</SourceFile>
-  <SourceTime>2023-06-16T23:22:27.6199281+05:00</SourceTime>
-  <DestFile>D:/Programming/C# Projects/GhostOfDarkness/game/Content/bin/Windows/Fonts/TimesNewRoman.xnb</DestFile>
-  <DestTime>2023-06-17T01:31:24.4722968+05:00</DestTime>
+  <SourceFile>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Fonts/Common18.spritefont</SourceFile>
+  <SourceTime>2023-06-17T14:45:34.8974136+05:00</SourceTime>
+  <DestFile>D:/Programming/C# Projects/GhostOfDarkness/game/Content/bin/Windows/Content/Fonts/Common18.xnb</DestFile>
+  <DestTime>2023-06-17T14:46:25.36243+05:00</DestTime>
   <Importer>FontDescriptionImporter</Importer>
   <ImporterTime>2022-07-26T16:44:56+05:00</ImporterTime>
   <Processor>FontDescriptionProcessor</Processor>

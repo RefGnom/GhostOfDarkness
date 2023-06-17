@@ -37,6 +37,12 @@ internal class GameController : GameStatesController
         if (KeyboardController.IsSingleKeyDown(Keys.Escape))
             Back();
 
+        //var keys = KeyboardController.GetPressedKeys();
+        //foreach (var key in keys)
+        //{
+        //    Debug.Log($"{key} {keys.Length}");
+        //}
+
         if (KeyboardController.IsSingleKeyDown(Keys.Enter))
         {
             Confirm();
@@ -79,6 +85,7 @@ internal class GameController : GameStatesController
     {
         model.Delete();
         model.Start();
+        GameManager.Instance.DialogManager.Enable(Story.GetPrologue());
     }
 
     private void UpdateModel(float deltaTime)

@@ -10,20 +10,28 @@ internal class Text : IDrawable
     private readonly Align align;
     private readonly int indent;
     private Vector2 position;
-    private readonly SpriteFont font;
+    private SpriteFont font;
 
-    public Text(Rectangle bounds, string text, Align align, int indent)
+    public SpriteFont Font {
+        get => font;
+        set
+        {
+            font = value;
+            SetText(text);
+        }
+    }
+
+    public Text(Rectangle bounds, string text, Align align, int indent, SpriteFont font)
     {
         this.bounds = bounds;
         this.align = align;
         this.indent = indent;
-        font = Fonts.TimesNewRoman;
-        SetText(text);
+        this.text = text;
+        Font = font;
     }
 
     public void SetText(string text)
     {
-        this.text = text;
         var size = font.MeasureString(text);
         position = bounds.Location.ToVector2();
         position.Y += (bounds.Height - size.Y) / 2;

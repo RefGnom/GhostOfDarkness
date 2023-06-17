@@ -15,6 +15,16 @@ internal static class KeyboardController
         return currentState.IsKeyDown(key) && (!previousState.IsKeyDown(key) || !single);
     }
 
+    public static bool IsCombinationKeysDown(params Keys[] keys)
+    {
+        for (int i = 0; i < keys.Length; i++)
+        {
+            if (!IsKeyDown(keys[i], false))
+                return false;
+        }
+        return true;
+    }
+
     public static bool IsSingleKeyDown(Keys key)
     {
         return currentState.IsKeyDown(key) && !previousState.IsKeyDown(key);
