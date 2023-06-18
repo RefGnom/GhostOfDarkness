@@ -30,6 +30,13 @@ internal class Message : IDrawable
         this.getOnNextFromChoice = getOnNextFromChoice;
     }
 
+    public Message(string text, List<Message> choices, bool getNextFromChoice = true, bool getOnNextFromChoice = true)
+        : this(text, getNextFromChoice, getOnNextFromChoice)
+    {
+        Choices = choices;
+        TurnOnChoice(currentChoiceIndex);
+    }
+
     private Rectangle GetBounds(int numberChoice)
     {
         if (numberChoice == 0)
@@ -42,13 +49,6 @@ internal class Message : IDrawable
             top -= height;
         }
         throw new Exception();
-    }
-
-    public Message(string text, List<Message> choices, bool getNextFromChoice = true, bool getOnNextFromChoice = true)
-        : this(text, getNextFromChoice, getOnNextFromChoice)
-    {
-        Choices = choices;
-        TurnOnChoice(currentChoiceIndex);
     }
 
     public void MoveNextChoice()
