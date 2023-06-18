@@ -26,6 +26,7 @@ internal class World
     private readonly int height = 64 * 114;
     private readonly List<Room> rooms;
     private readonly int hallwayIndex;
+    private bool difficultySelected;
 
     public Room CurrentRoom { get; private set; }
     public Boss Boss { get; private set; }
@@ -67,11 +68,23 @@ internal class World
                 room.Generate(difficulty);
             if (room.Name == "Boss room")
             {
-                Boss = new Boss(room.Center);
+                var speed = 400 + 20 * difficulty;
+                var health = 2500 + 300 * difficulty;
+                var damage = 100 + 10 * difficulty;
+                Boss = new Boss(room.Center, speed, health, damage);
                 Boss.Tag = "Boss";
                 room.CreateEnemy(Boss);
             }
         }
+    }
+
+    public void Regenerate(int difficulty)
+    {
+        foreach (var room in rooms)
+        {
+            room.Delete();
+        }
+        Generate(difficulty);
     }
 
     public void Delete()
@@ -88,13 +101,25 @@ internal class World
         UpdateRooms(deltaTime, player);
         if (CurrentRoom.OutputTrigger is not null && CurrentRoom.OutputTrigger.Triggered(player))
         {
+            if (!difficultySelected && CurrentRoom.Name == "Education room")
+                SelectDifficulty();
             SetCurrentRoom(rooms[hallwayIndex]);
         }
-        var (currentRoom, _) = GetCurrentRoom(player);
+        var currentRoom = GetCurrentRoom(player);
         if (currentRoom is not null)
         {
             SetCurrentRoom(currentRoom);
         }
+    }
+
+    private void SelectDifficulty()
+    {
+        GameManager.Instance.DialogManager.Enable(Story.GetChoiceDifficulty(
+            () => Regenerate(1),
+            () => Regenerate(2),
+            () => Regenerate(3),
+            () => Regenerate(4)));
+        difficultySelected = true;
     }
 
     private void RoomOnCleared(Creature player)
@@ -131,13 +156,13 @@ internal class World
             BossIsDead = true;
     }
 
-    private (Room, string) GetCurrentRoom(Creature player)
+    private Room GetCurrentRoom(Creature player)
     {
         foreach (var room in rooms)
         {
             if (room.InputTrigger is not null && room.InputTrigger.Triggered(player))
-                return (room, room.Name);
+                return room;
         }
-        return (null, null);
+        return null;
     }
 }

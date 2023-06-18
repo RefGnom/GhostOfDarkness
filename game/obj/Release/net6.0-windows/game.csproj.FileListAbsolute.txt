@@ -1,0 +1,125 @@
+D:\Programming\C# Projects\GhostOfDarkness\game\bin\Release\net6.0-windows\Content\Arial16.xnb
+D:\Programming\C# Projects\GhostOfDarkness\game\bin\Release\net6.0-windows\Content\Fonts\Arial16.xnb
+D:\Programming\C# Projects\GhostOfDarkness\game\bin\Release\net6.0-windows\Content\Fonts\Buttons.xnb
+D:\Programming\C# Projects\GhostOfDarkness\game\bin\Release\net6.0-windows\Content\Fonts\Common12.xnb
+D:\Programming\C# Projects\GhostOfDarkness\game\bin\Release\net6.0-windows\Content\Fonts\Common14.xnb
+D:\Programming\C# Projects\GhostOfDarkness\game\bin\Release\net6.0-windows\Content\Fonts\Common15.xnb
+D:\Programming\C# Projects\GhostOfDarkness\game\bin\Release\net6.0-windows\Content\Fonts\Common16.xnb
+D:\Programming\C# Projects\GhostOfDarkness\game\bin\Release\net6.0-windows\Content\Fonts\Common18.xnb
+D:\Programming\C# Projects\GhostOfDarkness\game\bin\Release\net6.0-windows\Content\Fonts\Debug.xnb
+D:\Programming\C# Projects\GhostOfDarkness\game\bin\Release\net6.0-windows\Content\Service\Door color.xnb
+D:\Programming\C# Projects\GhostOfDarkness\game\bin\Release\net6.0-windows\Content\Service\Hallway floor color.xnb
+D:\Programming\C# Projects\GhostOfDarkness\game\bin\Release\net6.0-windows\Content\Service\Horizontal line.xnb
+D:\Programming\C# Projects\GhostOfDarkness\game\bin\Release\net6.0-windows\Content\Service\Room floor color.xnb
+D:\Programming\C# Projects\GhostOfDarkness\game\bin\Release\net6.0-windows\Content\Service\Vertical line.xnb
+D:\Programming\C# Projects\GhostOfDarkness\game\bin\Release\net6.0-windows\Content\Service\Wall color.xnb
+D:\Programming\C# Projects\GhostOfDarkness\game\bin\Release\net6.0-windows\Content\Sounds\AlienWarfare.wma
+D:\Programming\C# Projects\GhostOfDarkness\game\bin\Release\net6.0-windows\Content\Sounds\AlienWarfare.xnb
+D:\Programming\C# Projects\GhostOfDarkness\game\bin\Release\net6.0-windows\Content\Sounds\BeastOfTheArena.wma
+D:\Programming\C# Projects\GhostOfDarkness\game\bin\Release\net6.0-windows\Content\Sounds\BeastOfTheArena.xnb
+D:\Programming\C# Projects\GhostOfDarkness\game\bin\Release\net6.0-windows\Content\Sounds\CultistBase.wma
+D:\Programming\C# Projects\GhostOfDarkness\game\bin\Release\net6.0-windows\Content\Sounds\CultistBase.xnb
+D:\Programming\C# Projects\GhostOfDarkness\game\bin\Release\net6.0-windows\Content\Sounds\DemonicCorruption.wma
+D:\Programming\C# Projects\GhostOfDarkness\game\bin\Release\net6.0-windows\Content\Sounds\DemonicCorruption.xnb
+D:\Programming\C# Projects\GhostOfDarkness\game\bin\Release\net6.0-windows\Content\Sounds\FortressOfDoom-ChadMossholder.wma
+D:\Programming\C# Projects\GhostOfDarkness\game\bin\Release\net6.0-windows\Content\Sounds\FortressOfDoom-ChadMossholder.xnb
+D:\Programming\C# Projects\GhostOfDarkness\game\bin\Release\net6.0-windows\Content\Sounds\InfiltrateTheCult.wma
+D:\Programming\C# Projects\GhostOfDarkness\game\bin\Release\net6.0-windows\Content\Sounds\InfiltrateTheCult.xnb
+D:\Programming\C# Projects\GhostOfDarkness\game\bin\Release\net6.0-windows\Content\Sounds\PhobosSpace.wma
+D:\Programming\C# Projects\GhostOfDarkness\game\bin\Release\net6.0-windows\Content\Sounds\PhobosSpace.xnb
+D:\Programming\C# Projects\GhostOfDarkness\game\bin\Release\net6.0-windows\Content\Sounds\TheBaronOfHell.wma
+D:\Programming\C# Projects\GhostOfDarkness\game\bin\Release\net6.0-windows\Content\Sounds\TheBaronOfHell.xnb
+D:\Programming\C# Projects\GhostOfDarkness\game\bin\Release\net6.0-windows\Content\Sounds\TheOnlyThingTheyFearIsYou.wma
+D:\Programming\C# Projects\GhostOfDarkness\game\bin\Release\net6.0-windows\Content\Sounds\TheOnlyThingTheyFearIsYou.xnb
+D:\Programming\C# Projects\GhostOfDarkness\game\bin\Release\net6.0-windows\Content\Sounds\TheSuperGoreNest.wma
+D:\Programming\C# Projects\GhostOfDarkness\game\bin\Release\net6.0-windows\Content\Sounds\TheSuperGoreNest.xnb
+D:\Programming\C# Projects\GhostOfDarkness\game\bin\Release\net6.0-windows\Content\Textures\Creatures\Boss.xnb
+D:\Programming\C# Projects\GhostOfDarkness\game\bin\Release\net6.0-windows\Content\Textures\Creatures\Bullet.xnb
+D:\Programming\C# Projects\GhostOfDarkness\game\bin\Release\net6.0-windows\Content\Textures\Creatures\Hitbox.xnb
+D:\Programming\C# Projects\GhostOfDarkness\game\bin\Release\net6.0-windows\Content\Textures\Creatures\Melee Enemy.xnb
+D:\Programming\C# Projects\GhostOfDarkness\game\bin\Release\net6.0-windows\Content\Textures\Creatures\Player.xnb
+D:\Programming\C# Projects\GhostOfDarkness\game\bin\Release\net6.0-windows\Content\Textures\HUD\HealthBarBackground.xnb
+D:\Programming\C# Projects\GhostOfDarkness\game\bin\Release\net6.0-windows\Content\Textures\HUD\HealthBarForeground.xnb
+D:\Programming\C# Projects\GhostOfDarkness\game\bin\Release\net6.0-windows\Content\Textures\Rooms\Boss room.xnb
+D:\Programming\C# Projects\GhostOfDarkness\game\bin\Release\net6.0-windows\Content\Textures\Rooms\Education room.xnb
+D:\Programming\C# Projects\GhostOfDarkness\game\bin\Release\net6.0-windows\Content\Textures\Rooms\Hallway.xnb
+D:\Programming\C# Projects\GhostOfDarkness\game\bin\Release\net6.0-windows\Content\Textures\Rooms\Room1.xnb
+D:\Programming\C# Projects\GhostOfDarkness\game\bin\Release\net6.0-windows\Content\Textures\Rooms\Room2.xnb
+D:\Programming\C# Projects\GhostOfDarkness\game\bin\Release\net6.0-windows\Content\Textures\Rooms\Room3.xnb
+D:\Programming\C# Projects\GhostOfDarkness\game\bin\Release\net6.0-windows\Content\Textures\Rooms\Room4.xnb
+D:\Programming\C# Projects\GhostOfDarkness\game\bin\Release\net6.0-windows\Content\Textures\Rooms\Room5.xnb
+D:\Programming\C# Projects\GhostOfDarkness\game\bin\Release\net6.0-windows\Content\Textures\Rooms\Room6.xnb
+D:\Programming\C# Projects\GhostOfDarkness\game\bin\Release\net6.0-windows\Content\Textures\Rooms\Room7.xnb
+D:\Programming\C# Projects\GhostOfDarkness\game\bin\Release\net6.0-windows\Content\Textures\Rooms\Room8.xnb
+D:\Programming\C# Projects\GhostOfDarkness\game\bin\Release\net6.0-windows\Content\Textures\Rooms\Room9.xnb
+D:\Programming\C# Projects\GhostOfDarkness\game\bin\Release\net6.0-windows\Content\Textures\Tiles\Door.xnb
+D:\Programming\C# Projects\GhostOfDarkness\game\bin\Release\net6.0-windows\Content\Textures\Tiles\Floors\Dirt1.xnb
+D:\Programming\C# Projects\GhostOfDarkness\game\bin\Release\net6.0-windows\Content\Textures\Tiles\Floors\Dirt2.xnb
+D:\Programming\C# Projects\GhostOfDarkness\game\bin\Release\net6.0-windows\Content\Textures\Tiles\Floors\Grass.xnb
+D:\Programming\C# Projects\GhostOfDarkness\game\bin\Release\net6.0-windows\Content\Textures\Tiles\Floors\Ice1.xnb
+D:\Programming\C# Projects\GhostOfDarkness\game\bin\Release\net6.0-windows\Content\Textures\Tiles\Floors\Metal.xnb
+D:\Programming\C# Projects\GhostOfDarkness\game\bin\Release\net6.0-windows\Content\Textures\Tiles\Floors\Sand1.xnb
+D:\Programming\C# Projects\GhostOfDarkness\game\bin\Release\net6.0-windows\Content\Textures\Tiles\Floors\Sand2.xnb
+D:\Programming\C# Projects\GhostOfDarkness\game\bin\Release\net6.0-windows\Content\Textures\Tiles\Floors\Stone1.xnb
+D:\Programming\C# Projects\GhostOfDarkness\game\bin\Release\net6.0-windows\Content\Textures\Tiles\Floors\Stone2.xnb
+D:\Programming\C# Projects\GhostOfDarkness\game\bin\Release\net6.0-windows\Content\Textures\Tiles\Floors\Stone3.xnb
+D:\Programming\C# Projects\GhostOfDarkness\game\bin\Release\net6.0-windows\Content\Textures\Tiles\Floors\Wooden1.xnb
+D:\Programming\C# Projects\GhostOfDarkness\game\bin\Release\net6.0-windows\Content\Textures\Tiles\Floors\Wooden2.xnb
+D:\Programming\C# Projects\GhostOfDarkness\game\bin\Release\net6.0-windows\Content\Textures\Tiles\Opened door.xnb
+D:\Programming\C# Projects\GhostOfDarkness\game\bin\Release\net6.0-windows\Content\Textures\Tiles\Wall.xnb
+D:\Programming\C# Projects\GhostOfDarkness\game\bin\Release\net6.0-windows\Content\Textures\UI\Background.xnb
+D:\Programming\C# Projects\GhostOfDarkness\game\bin\Release\net6.0-windows\Content\Textures\UI\ButtonBackground.xnb
+D:\Programming\C# Projects\GhostOfDarkness\game\bin\Release\net6.0-windows\Content\Textures\UI\Dialog helper.xnb
+D:\Programming\C# Projects\GhostOfDarkness\game\bin\Release\net6.0-windows\Content\Textures\UI\EducationUI.xnb
+D:\Programming\C# Projects\GhostOfDarkness\game\bin\Release\net6.0-windows\Content\Textures\UI\FieldForGameName.xnb
+D:\Programming\C# Projects\GhostOfDarkness\game\bin\Release\net6.0-windows\Content\Textures\UI\HealthBarBackground.xnb
+D:\Programming\C# Projects\GhostOfDarkness\game\bin\Release\net6.0-windows\Content\Textures\UI\HealthBarForeground.xnb
+D:\Programming\C# Projects\GhostOfDarkness\game\bin\Release\net6.0-windows\Content\Textures\UI\paper.xnb
+D:\Programming\C# Projects\GhostOfDarkness\game\bin\Release\net6.0-windows\Content\Textures\UI\Pause background.xnb
+D:\Programming\C# Projects\GhostOfDarkness\game\bin\Release\net6.0-windows\Content\Textures\UI\Saves window.xnb
+D:\Programming\C# Projects\GhostOfDarkness\game\bin\Release\net6.0-windows\Content\Textures\UI\Settings string.xnb
+D:\Programming\C# Projects\GhostOfDarkness\game\bin\Release\net6.0-windows\NUnit3.TestAdapter.dll
+D:\Programming\C# Projects\GhostOfDarkness\game\bin\Release\net6.0-windows\NUnit3.TestAdapter.pdb
+D:\Programming\C# Projects\GhostOfDarkness\game\bin\Release\net6.0-windows\nunit.engine.dll
+D:\Programming\C# Projects\GhostOfDarkness\game\bin\Release\net6.0-windows\nunit.engine.api.dll
+D:\Programming\C# Projects\GhostOfDarkness\game\bin\Release\net6.0-windows\nunit.engine.core.dll
+D:\Programming\C# Projects\GhostOfDarkness\game\bin\Release\net6.0-windows\testcentric.engine.metadata.dll
+D:\Programming\C# Projects\GhostOfDarkness\game\bin\Release\net6.0-windows\game.exe
+D:\Programming\C# Projects\GhostOfDarkness\game\bin\Release\net6.0-windows\game.deps.json
+D:\Programming\C# Projects\GhostOfDarkness\game\bin\Release\net6.0-windows\game.runtimeconfig.json
+D:\Programming\C# Projects\GhostOfDarkness\game\bin\Release\net6.0-windows\game.dll
+D:\Programming\C# Projects\GhostOfDarkness\game\bin\Release\net6.0-windows\game.pdb
+D:\Programming\C# Projects\GhostOfDarkness\game\bin\Release\net6.0-windows\Microsoft.CodeAnalysis.dll
+D:\Programming\C# Projects\GhostOfDarkness\game\bin\Release\net6.0-windows\Microsoft.CodeAnalysis.CSharp.dll
+D:\Programming\C# Projects\GhostOfDarkness\game\bin\Release\net6.0-windows\Microsoft.CodeAnalysis.VisualBasic.dll
+D:\Programming\C# Projects\GhostOfDarkness\game\bin\Release\net6.0-windows\MonoGame.Framework.dll
+D:\Programming\C# Projects\GhostOfDarkness\game\bin\Release\net6.0-windows\nunit.framework.dll
+D:\Programming\C# Projects\GhostOfDarkness\game\bin\Release\net6.0-windows\nunitlite.dll
+D:\Programming\C# Projects\GhostOfDarkness\game\bin\Release\net6.0-windows\SharpDX.dll
+D:\Programming\C# Projects\GhostOfDarkness\game\bin\Release\net6.0-windows\SharpDX.Direct2D1.dll
+D:\Programming\C# Projects\GhostOfDarkness\game\bin\Release\net6.0-windows\SharpDX.Direct3D11.dll
+D:\Programming\C# Projects\GhostOfDarkness\game\bin\Release\net6.0-windows\SharpDX.Direct3D9.dll
+D:\Programming\C# Projects\GhostOfDarkness\game\bin\Release\net6.0-windows\SharpDX.DXGI.dll
+D:\Programming\C# Projects\GhostOfDarkness\game\bin\Release\net6.0-windows\SharpDX.Mathematics.dll
+D:\Programming\C# Projects\GhostOfDarkness\game\bin\Release\net6.0-windows\SharpDX.MediaFoundation.dll
+D:\Programming\C# Projects\GhostOfDarkness\game\bin\Release\net6.0-windows\SharpDX.XAudio2.dll
+D:\Programming\C# Projects\GhostOfDarkness\game\bin\Release\net6.0-windows\SharpDX.XInput.dll
+D:\Programming\C# Projects\GhostOfDarkness\game\bin\Release\net6.0-windows\runtimes\debian-x64\native\libuv.so
+D:\Programming\C# Projects\GhostOfDarkness\game\bin\Release\net6.0-windows\runtimes\fedora-x64\native\libuv.so
+D:\Programming\C# Projects\GhostOfDarkness\game\bin\Release\net6.0-windows\runtimes\opensuse-x64\native\libuv.so
+D:\Programming\C# Projects\GhostOfDarkness\game\bin\Release\net6.0-windows\runtimes\osx\native\libuv.dylib
+D:\Programming\C# Projects\GhostOfDarkness\game\bin\Release\net6.0-windows\runtimes\rhel-x64\native\libuv.so
+D:\Programming\C# Projects\GhostOfDarkness\game\bin\Release\net6.0-windows\runtimes\win7-arm\native\libuv.dll
+D:\Programming\C# Projects\GhostOfDarkness\game\bin\Release\net6.0-windows\runtimes\win7-x64\native\libuv.dll
+D:\Programming\C# Projects\GhostOfDarkness\game\bin\Release\net6.0-windows\runtimes\win7-x86\native\libuv.dll
+D:\Programming\C# Projects\GhostOfDarkness\game\obj\Release\net6.0-windows\game.csproj.AssemblyReference.cache
+D:\Programming\C# Projects\GhostOfDarkness\game\obj\Release\net6.0-windows\game.GeneratedMSBuildEditorConfig.editorconfig
+D:\Programming\C# Projects\GhostOfDarkness\game\obj\Release\net6.0-windows\game.AssemblyInfoInputs.cache
+D:\Programming\C# Projects\GhostOfDarkness\game\obj\Release\net6.0-windows\game.AssemblyInfo.cs
+D:\Programming\C# Projects\GhostOfDarkness\game\obj\Release\net6.0-windows\game.csproj.CoreCompileInputs.cache
+D:\Programming\C# Projects\GhostOfDarkness\game\obj\Release\net6.0-windows\game.csproj.CopyComplete
+D:\Programming\C# Projects\GhostOfDarkness\game\obj\Release\net6.0-windows\game.dll
+D:\Programming\C# Projects\GhostOfDarkness\game\obj\Release\net6.0-windows\refint\game.dll
+D:\Programming\C# Projects\GhostOfDarkness\game\obj\Release\net6.0-windows\game.pdb
+D:\Programming\C# Projects\GhostOfDarkness\game\obj\Release\net6.0-windows\game.genruntimeconfig.cache
+D:\Programming\C# Projects\GhostOfDarkness\game\obj\Release\net6.0-windows\ref\game.dll

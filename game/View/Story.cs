@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace game;
 
@@ -21,6 +22,34 @@ internal static class Story
         message.Next = new Message("Я сделаю всё,чтобы вернуть свою любимую Эбигейл");
         message = message.Next;
         message.Next = new Message("Что это за записка на стене?..");
+        return parent;
+    }
+
+    public static Message GetChoiceDifficulty(Action easy, Action medium, Action hard, Action impossible)
+    {
+        var parent = new Message("Здесь действительно очень мрачно");
+        var message = parent;
+        message.Next = new Message("Ничего,страху меня не взять");
+        message = message.Next;
+        message.Next = new Message("*Выберете уровень сложности", new List<Message>()
+        {
+            new Message("Легко", numberChoice: 4)
+            {
+                OnNext = easy
+            },
+            new Message("Средне", numberChoice: 3)
+            {
+                OnNext = medium
+            },
+            new Message("Сложно", numberChoice: 2)
+            {
+                OnNext = hard
+            },
+            new Message("Dark Souls", numberChoice: 1)
+            {
+                OnNext = impossible
+            },
+        });
         return parent;
     }
 
