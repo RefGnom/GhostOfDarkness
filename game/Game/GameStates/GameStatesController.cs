@@ -1,9 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using Microsoft.Xna.Framework.Graphics;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace game;
 
-internal class GameStatesController : IGameStateSwitcher
+internal class GameStatesController : IGameStateSwitcher, IDrawable, IComponent
 {
     private GameState currentState;
     private readonly List<GameState> states;
@@ -60,4 +61,14 @@ internal class GameStatesController : IGameStateSwitcher
     }
 
     public virtual void StartGame() { }
+
+    public virtual void Draw(SpriteBatch spriteBatch, float scale)
+    {
+        currentState.Draw(spriteBatch, scale);
+    }
+
+    public virtual void Update(float deltaTime)
+    {
+        currentState.Update(deltaTime);
+    }
 }

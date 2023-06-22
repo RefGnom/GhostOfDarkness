@@ -11,41 +11,9 @@ internal class PlayState : GameState
         switcher.SwitchState<PauseState>();
     }
 
-    public override void Confirm()
-    {
-    }
-
-    public override void LoadSave()
-    {
-    }
-
-    public override void Exit()
-    {
-    }
-
-    public override void NewGame()
-    {
-    }
-
-    public override void OpenSettings()
-    {
-    }
-
-    public override void Play()
-    {
-    }
-
     public override void Dead()
     {
         switcher.SwitchState<PlayerDeadState>();
-    }
-
-    public override void Restart()
-    {
-    }
-
-    public override void Save()
-    {
     }
 
     public override void Start(GameState previousState)
@@ -56,13 +24,5 @@ internal class PlayState : GameState
     public override void Stop()
     {
         SongsManager.Pause();
-    }
-
-    public override void Draw()
-    {
-    }
-
-    public override void Erase()
-    {
     }
 }

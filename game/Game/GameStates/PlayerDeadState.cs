@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace game;
 
@@ -10,47 +11,15 @@ internal class PlayerDeadState : GameState
     {
     }
 
-    public override void Back()
-    {
-    }
-
-    public override void Confirm()
-    {
-    }
-
-    public override void LoadSave()
-    {
-    }
-
     public override void Exit()
     {
         switcher.SwitchState<MainMenuState>();
-    }
-
-    public override void NewGame()
-    {
-    }
-
-    public override void OpenSettings()
-    {
-    }
-
-    public override void Play()
-    {
-    }
-
-    public override void Dead()
-    {
     }
 
     public override void Restart()
     {
         switcher.StartGame();
         switcher.SwitchState<PlayState>();
-    }
-
-    public override void Save()
-    {
     }
 
     public override void Start(GameState previousState)
@@ -70,25 +39,17 @@ internal class PlayerDeadState : GameState
             restart
         };
 
-        Draw();
         MouseController.LeftButtonOnClicked += ClickedButtons;
     }
 
     public override void Stop()
     {
-        Erase();
         MouseController.LeftButtonOnClicked -= ClickedButtons;
     }
 
-    public override void Draw()
+    public override void Draw(SpriteBatch spriteBatch, float scale)
     {
-        GameManager.Instance.Drawer.RegisterUI(background);
-        RegisterButtons();
-    }
-
-    public override void Erase()
-    {
-        GameManager.Instance.Drawer.UnregisterUI(background);
-        UnregisterButtons();
+        background.Draw(spriteBatch, scale);
+        base.Draw(spriteBatch, scale);
     }
 }

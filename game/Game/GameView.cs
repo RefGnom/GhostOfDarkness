@@ -128,6 +128,7 @@ internal class GameView : Game
     private void DrawUI()
     {
         spriteBatch.Begin(sortMode: SpriteSortMode.BackToFront);
+        controller.Draw(spriteBatch, Scale);
         Debug.DrawMessages(spriteBatch);
         GameManager.Instance.Drawer.DrawUI(spriteBatch, Scale);
         spriteBatch.End();

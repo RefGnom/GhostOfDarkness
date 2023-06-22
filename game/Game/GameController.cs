@@ -23,7 +23,7 @@ internal class GameController : GameStatesController
         RegisterKeys();
     }
 
-    public void Update(float deltaTime)
+    public override void Update(float deltaTime)
     {
         KeyboardController.Update();
         MouseController.Update();
@@ -79,6 +79,7 @@ internal class GameController : GameStatesController
             UpdateModel(deltaTime);
 
         IsPaused = !IsPlay;
+        base.Update(deltaTime);
     }
 
     public override void StartGame()

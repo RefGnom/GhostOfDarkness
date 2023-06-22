@@ -1,8 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using Microsoft.Xna.Framework.Graphics;
+using System.Collections.Generic;
 
 namespace game;
 
-internal abstract class GameState : IState
+internal abstract class GameState : IState, IDrawable, IComponent
 {
     protected readonly IGameStateSwitcher switcher;
     protected GameState previousState;
@@ -23,49 +24,40 @@ internal abstract class GameState : IState
         Start(state);
     }
 
-    public abstract void Start(GameState previousState);
+    public virtual void Update(float deltaTime) { }
 
-    public abstract void Draw();
-
-    public abstract void Erase();
-
-    public abstract void Stop();
-
-    public abstract void Back();
-
-    public abstract void NewGame();
-
-    public abstract void LoadSave();
-
-    public abstract void OpenSettings();
-
-    public abstract void Exit();
-
-    public abstract void Play();
-
-    public abstract void Dead();
-
-    public abstract void Restart();
-
-    public abstract void Confirm();
-
-    public abstract void Save();
-
-    protected void RegisterButtons()
+    public virtual void Draw(SpriteBatch spriteBatch, float scale)
     {
-        for (int i = 0; i < buttons.Count; i++)
+        if (buttons is not null)
         {
-            GameManager.Instance.Drawer.RegisterUI(buttons[i]);
+            for (int i = 0; i < buttons.Count; i++)
+                buttons[i].Draw(spriteBatch, scale);
         }
     }
 
-    protected void UnregisterButtons()
-    {
-        for (int i = 0; i < buttons.Count; i++)
-        {
-            GameManager.Instance.Drawer.UnregisterUI(buttons[i]);
-        }
-    }
+    public virtual void Start(GameState previousState) { }
+
+    public virtual void Stop() { }
+
+    public virtual void Back() { }
+
+    public virtual void NewGame() { }
+
+    public virtual void LoadSave() { }
+
+    public virtual void OpenSettings() { }
+
+    public virtual void Exit() { }
+
+    public virtual void Play() { }
+
+    public virtual void Dead() { }
+
+    public virtual void Restart() { }
+
+    public virtual void Confirm() { }
+
+    public virtual void Save() { }
 
     protected void ClickedButtons()
     {

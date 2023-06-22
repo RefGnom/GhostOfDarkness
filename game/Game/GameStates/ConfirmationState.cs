@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace game;
 
@@ -21,38 +22,6 @@ internal class ConfirmationState : GameState
         switcher.SwitchState(previousState);
     }
 
-    public override void LoadSave()
-    {
-    }
-
-    public override void Exit()
-    {
-    }
-
-    public override void NewGame()
-    {
-    }
-
-    public override void OpenSettings()
-    {
-    }
-
-    public override void Play()
-    {
-    }
-
-    public override void Dead()
-    {
-    }
-
-    public override void Restart()
-    {
-    }
-
-    public override void Save()
-    {
-    }
-
     public override void Start(GameState previousState)
     {
         background = new Sprite(Textures.PauseBackground, new Vector2(564, 312), Layers.ConfirmationWindowBackground);
@@ -70,27 +39,23 @@ internal class ConfirmationState : GameState
             cancel
         };
 
-        Draw();
         MouseController.LeftButtonOnClicked += ClickedButtons;
     }
 
     public override void Stop()
     {
-        Erase();
         MouseController.LeftButtonOnClicked -= ClickedButtons;
     }
 
-    public override void Draw()
+    public override void Update(float deltaTime)
     {
-        previousState.Draw();
-        GameManager.Instance.Drawer.RegisterUI(background);
-        RegisterButtons();
+        previousState.Update(deltaTime);
     }
 
-    public override void Erase()
+    public override void Draw(SpriteBatch spriteBatch, float scale)
     {
-        previousState.Erase();
-        GameManager.Instance.Drawer.UnregisterUI(background);
-        UnregisterButtons();
+        background.Draw(spriteBatch, scale);
+        previousState.Draw(spriteBatch, scale);
+        base.Draw(spriteBatch, scale);
     }
 }

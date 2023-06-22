@@ -1,11 +1,12 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
 namespace game;
 
 internal class SettingsState : GameState
 {
-    private Sprite[] sprites;
+    private Sprite[] options;
 
     public SettingsState(IGameStateSwitcher stateSwitcher) : base(stateSwitcher)
     {
@@ -16,37 +17,9 @@ internal class SettingsState : GameState
         switcher.SwitchState(previousState);
     }
 
-    public override void Confirm()
-    {
-    }
-
-    public override void LoadSave()
-    {
-    }
-
     public override void Exit()
     {
         switcher.SwitchState(previousState);
-    }
-
-    public override void NewGame()
-    {
-    }
-
-    public override void OpenSettings()
-    {
-    }
-
-    public override void Play()
-    {
-    }
-
-    public override void Dead()
-    {
-    }
-
-    public override void Restart()
-    {
     }
 
     public override void Save()
@@ -78,7 +51,7 @@ internal class SettingsState : GameState
         position.Y += height;
         var string8 = CreateString(position, "Turn down music volume", Settings.TurnDownMusicVolume);
 
-        sprites = new Sprite[]
+        options = new Sprite[]
         {
             background,
             string1,
@@ -103,32 +76,12 @@ internal class SettingsState : GameState
             exit
         };
 
-        Draw();
         MouseController.LeftButtonOnClicked += ClickedButtons;
     }
 
     public override void Stop()
     {
-        Erase();
         MouseController.LeftButtonOnClicked -= ClickedButtons;
-    }
-
-    public override void Draw()
-    {
-        for (int i = 0; i < sprites.Length; i++)
-        {
-            GameManager.Instance.Drawer.RegisterUI(sprites[i]);
-        }
-        RegisterButtons();
-    }
-
-    public override void Erase()
-    {
-        for (int i = 0; i < sprites.Length; i++)
-        {
-            GameManager.Instance.Drawer.UnregisterUI(sprites[i]);
-        }
-        UnregisterButtons();
     }
 
     private static Sprite CreateString(Vector2 position, string name, Keys key)
@@ -138,5 +91,14 @@ internal class SettingsState : GameState
         line.AddText(new Text(new Rectangle(position.ToPoint(), new Point(widthName, Textures.SettingsString.Height)), name, Align.Left, 10, Fonts.Buttons));
         line.AddText(new Text(new Rectangle((int)position.X + widthName, (int)position.Y, 250, Textures.SettingsString.Height), key.ToString(), Align.Center, 0, Fonts.Buttons));
         return line;
+    }
+
+    public override void Draw(SpriteBatch spriteBatch, float scale)
+    {
+        for (int i = 0; i < options.Length; i++)
+        {
+            options[i].Draw(spriteBatch, scale);
+        }
+        base.Draw(spriteBatch, scale);
     }
 }
