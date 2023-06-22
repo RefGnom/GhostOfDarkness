@@ -32,6 +32,12 @@ internal static class Textures
     public static Texture2D VerticalLine { get; private set; }
     public static Texture2D DialogHelpUI { get; private set; }
 
+    #region ProgressBar
+    public static Texture2D ProgressBarBackground { get; private set; }
+    public static Texture2D ProgressBarForeground { get; private set; }
+    public static Texture2D ProgressBarValue { get; private set; }
+    #endregion
+
     #region TileColors
     public static Texture2D WallColor { get; private set; }
     public static Texture2D DoorColor { get; private set; }
@@ -66,6 +72,9 @@ internal static class Textures
         HorizontalLine = Load("Service\\Horizontal line");
         VerticalLine = Load("Service\\Vertical line");
         DialogHelpUI = Load("Textures\\UI\\Dialog helper");
+        ProgressBarBackground = Load("Textures\\UI\\ProgressBar\\ProgressBarBackground");
+        ProgressBarForeground = Load("Textures\\UI\\ProgressBar\\ProgressBarForeground");
+        ProgressBarValue = Load("Textures\\UI\\ProgressBar\\ProgressBarValue");
         LoadTileColors();
         LoadRooms();
     }

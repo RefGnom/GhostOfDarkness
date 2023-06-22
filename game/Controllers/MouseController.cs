@@ -26,6 +26,12 @@ internal static class MouseController
             && previousState.LeftButton == ButtonState.Released;
     }
 
+    public static bool LeftButtonUnclicked()
+    {
+        return currentState.LeftButton == ButtonState.Released
+            && previousState.LeftButton == ButtonState.Pressed;
+    }
+
     public static bool RightButtonClicked()
     {
         return currentState.RightButton == ButtonState.Pressed

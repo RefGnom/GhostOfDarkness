@@ -672,6 +672,42 @@
 /processorParam:TextureFormat=Color
 /build:Textures/UI/Pause background.png
 
+#begin Textures/UI/ProgressBar/ProgressBarBackground.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Textures/UI/ProgressBar/ProgressBarBackground.png
+
+#begin Textures/UI/ProgressBar/ProgressBarForeground.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Textures/UI/ProgressBar/ProgressBarForeground.png
+
+#begin Textures/UI/ProgressBar/ProgressBarValue.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Textures/UI/ProgressBar/ProgressBarValue.png
+
 #begin Textures/UI/Saves window.png
 /importer:TextureImporter
 /processor:TextureProcessor

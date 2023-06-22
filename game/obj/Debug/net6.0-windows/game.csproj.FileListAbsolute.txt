@@ -123,3 +123,6 @@ D:\Programming\C# Projects\GhostOfDarkness\game\bin\Debug\net6.0-windows\Content
 D:\Programming\C# Projects\GhostOfDarkness\game\bin\Debug\net6.0-windows\Content\Textures\UI\Dialog helper.xnb
 D:\Programming\C# Projects\GhostOfDarkness\game\bin\Debug\net6.0-windows\Content\Sounds\AlienWarfare.wma
 D:\Programming\C# Projects\GhostOfDarkness\game\bin\Debug\net6.0-windows\Content\Sounds\AlienWarfare.xnb
+D:\Programming\C# Projects\GhostOfDarkness\game\bin\Debug\net6.0-windows\Content\Textures\UI\ProgressBar\ProgressBarBackground.xnb
+D:\Programming\C# Projects\GhostOfDarkness\game\bin\Debug\net6.0-windows\Content\Textures\UI\ProgressBar\ProgressBarForeground.xnb
+D:\Programming\C# Projects\GhostOfDarkness\game\bin\Debug\net6.0-windows\Content\Textures\UI\ProgressBar\ProgressBarValue.xnb
