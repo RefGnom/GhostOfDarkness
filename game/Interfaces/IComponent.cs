@@ -1,6 +1,6 @@
 ﻿namespace game;
 
-internal interface IComponent
+internal interface IComponent : IDrawable, IUpdateable
 {
-    void Update(float deltaTime);
+
 }

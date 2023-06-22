@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace game;
 
-internal abstract class GameState : IState, IDrawable, IComponent
+internal abstract class GameState : IState, IDrawable, IUpdateable
 {
     protected readonly IGameStateSwitcher switcher;
     protected GameState previousState;

@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace game;
 
-internal class GameStatesController : IGameStateSwitcher, IDrawable, IComponent
+internal class GameStatesController : IGameStateSwitcher, IDrawable, IUpdateable
 {
     private GameState currentState;
     private readonly List<GameState> states;
