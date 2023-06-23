@@ -48,11 +48,6 @@ internal class GameController : GameStatesController
             Save();
         }
 
-        if (KeyboardController.IsSingleKeyDown(Settings.OnFullScreen))
-        {
-            view.SwitchScreenState();
-        }
-
         if (KeyboardController.IsSingleKeyDown(Settings.SwitchPlayerCollision))
         {
             if (model.Started)

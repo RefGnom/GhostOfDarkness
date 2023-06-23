@@ -22,9 +22,9 @@ internal class Switcher : IComponent, IEnumerable<string>
         leftArrowPosition = position;
         rightArrowPosition = position.Shift(360, 0);
         backgroundPosition = position.Shift(50, 0);
-        leftArrow = new Button(Textures.SwitcherLeftArrow, leftArrowPosition, "");
+        leftArrow = new Button(Textures.SwitcherLeftArrow, leftArrowPosition, "", Color.Black);
         leftArrow.OnClicked += Back;
-        rightArrow = new Button(Textures.SwitcherRightArrow, rightArrowPosition, "");
+        rightArrow = new Button(Textures.SwitcherRightArrow, rightArrowPosition, "", Color.Black);
         rightArrow.OnClicked += Next;
         background = new Sprite(Textures.SwitcherBackground, backgroundPosition, Layers.UIBackground);
         options = new();
@@ -50,10 +50,13 @@ internal class Switcher : IComponent, IEnumerable<string>
         }
     }
 
+    public void Start()
+    {
+        options[currentOption].SetActive(true);
+    }
+
     public void Update(float deltaTime)
     {
-        if (!options[currentOption].Active)
-            options[currentOption].SetActive(true);
         leftArrow.Update(deltaTime);
         rightArrow.Update(deltaTime);
     }

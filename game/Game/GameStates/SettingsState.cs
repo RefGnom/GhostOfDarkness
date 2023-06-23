@@ -14,9 +14,6 @@ internal class SettingsState : GameState
         var position = new Vector2(1920 / 2 - Textures.SettingsString.Width / 2, 30);
         position = new Vector2(30, 30);
         var height = 60;
-        drawables.Add(CreateString(position, "Full screen", Settings.OnFullScreen));
-
-        position.Y += height;
         drawables.Add(CreateString(position, "Menu", Settings.OpenMenu));
 
         position.Y += height;
@@ -31,8 +28,34 @@ internal class SettingsState : GameState
         position.Y += height;
         drawables.Add(CreateString(position, "Right", Settings.Right));
 
+
+
         var textWidth = 280;
-        position = new Vector2(1200, 40);
+        position = new Vector2(1200, 30);
+        var displayMode = new Switcher(position)
+        {
+            { "Оконный режим", () => Settings.SetDisplayMode(false) },
+            { "На весь экран", () => Settings.SetDisplayMode(true) },
+        };
+        displayMode.Start();
+        var displayModeText = new Text(new Rectangle((int)position.X - textWidth, (int)position.Y - 12, textWidth, height), "Режим отображения", Align.Left, 0, Fonts.Common16);
+        components.Add(displayMode);
+        drawables.Add(displayModeText);
+
+        position.Y += height;
+        var resolution = new Switcher(position)
+        {
+            { "1280x720", () => Settings.SetSizeScreen(1280, 720) },
+            { "1920x1080", () => Settings.SetSizeScreen(1920, 1080) },
+            { "2560x1440", () => Settings.SetSizeScreen(2560, 1440) },
+            { "3840x2160", () => Settings.SetSizeScreen(3840, 2160) },
+        };
+        resolution.Start();
+        var resolutionText = new Text(new Rectangle((int)position.X - textWidth, (int)position.Y - 12, textWidth, height), "Разрешение", Align.Left, 0, Fonts.Common16);
+        components.Add(resolution);
+        drawables.Add(resolutionText);
+
+        position = new Vector2(1200, 300);
         var musicVolume = new ProgressBar(0, 1, position, 6);
         musicVolume.ValueOnChanged += (value) => MediaPlayer.Volume = value;
         musicVolume.SetValue(0.3f);

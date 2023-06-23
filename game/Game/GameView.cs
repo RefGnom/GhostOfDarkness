@@ -26,6 +26,7 @@ internal class GameView : Game
     public GameView()
     {
         graphics = new GraphicsDeviceManager(this);
+        Settings.SetGraphics(graphics);
         Content.RootDirectory = "Content";
         IsMouseVisible = true;
         TargetElapsedTime = TimeSpan.FromSeconds(1d / 60d);
@@ -37,7 +38,6 @@ internal class GameView : Game
     protected override void Initialize()
     {
         LoadContent();
-        SetSizeScreen(1280, 720);
         model = new();
         controller = new(model, this);
         fps = new(0.3f);
@@ -90,32 +90,6 @@ internal class GameView : Game
     }
 
     public void CloseGame() => Exit();
-
-    #region ScreenSize
-    public void SwitchScreenState()
-    {
-        if (graphics.IsFullScreen)
-            SetSizeScreen(1280, 720);
-        else
-            OnFullScreen();
-    }
-
-    private void SetSizeScreen(int width, int height)
-    {
-        graphics.PreferredBackBufferWidth = width;
-        graphics.PreferredBackBufferHeight = height;
-        graphics.IsFullScreen = false;
-        graphics.ApplyChanges();
-    }
-
-    private void OnFullScreen()
-    {
-        graphics.PreferredBackBufferWidth = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width;
-        graphics.PreferredBackBufferHeight = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height;
-        graphics.IsFullScreen = true;
-        graphics.ApplyChanges();
-    }
-    #endregion
 
     #region Draw
     private void DrawLocation()
