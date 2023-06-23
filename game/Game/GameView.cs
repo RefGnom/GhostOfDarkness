@@ -7,8 +7,6 @@ namespace game;
 
 internal class GameView : Game
 {
-    private readonly float maxWindowWidth = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width;
-
     private GameModel model;
     private GameController controller;
     private Fps fps;
@@ -19,7 +17,7 @@ internal class GameView : Game
     public static int WindowWidth { get; private set; }
     public static int WindowHeight { get; private set; }
     public static Vector2 Center => new(WindowWidth / 2, WindowHeight / 2);
-    public float Scale => WindowWidth / maxWindowWidth;
+    public static float Scale => WindowWidth / 1920f;
 
     private static Camera Camera => GameManager.Instance.Camera;
 
