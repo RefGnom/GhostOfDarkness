@@ -66,7 +66,7 @@ internal class Button : IComponent
         this.scale = scale;
         var position = this.position * scale;
         var color = Selected ? selectedColor : Color.White;
-        spriteBatch.Draw(Textures.ButtonBackground, position, null, color, 0, Vector2.Zero, scale, SpriteEffects.None, buttonLayer);
+        spriteBatch.Draw(texture, position, null, color, 0, Vector2.Zero, scale, SpriteEffects.None, buttonLayer);
         var textSize = Fonts.Buttons.MeasureString(text);
         var textPosition = position + new Vector2(texture.Width / 2 - textSize.X / 2, texture.Height / 2 - textSize.Y / 2) * scale;
         spriteBatch.DrawString(Fonts.Buttons, text, textPosition, Color.White, 0, Vector2.Zero, scale, SpriteEffects.None, textLayer);

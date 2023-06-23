@@ -126,3 +126,6 @@ D:\Programming\C# Projects\GhostOfDarkness\game\bin\Debug\net6.0-windows\Content
 D:\Programming\C# Projects\GhostOfDarkness\game\bin\Debug\net6.0-windows\Content\Textures\UI\ProgressBar\ProgressBarBackground.xnb
 D:\Programming\C# Projects\GhostOfDarkness\game\bin\Debug\net6.0-windows\Content\Textures\UI\ProgressBar\ProgressBarForeground.xnb
 D:\Programming\C# Projects\GhostOfDarkness\game\bin\Debug\net6.0-windows\Content\Textures\UI\ProgressBar\ProgressBarValue.xnb
+D:\Programming\C# Projects\GhostOfDarkness\game\bin\Debug\net6.0-windows\Content\Textures\UI\Switcher\Background.xnb
+D:\Programming\C# Projects\GhostOfDarkness\game\bin\Debug\net6.0-windows\Content\Textures\UI\Switcher\LeftArrow.xnb
+D:\Programming\C# Projects\GhostOfDarkness\game\bin\Debug\net6.0-windows\Content\Textures\UI\Switcher\RightArrow.xnb

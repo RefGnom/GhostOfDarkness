@@ -71,8 +71,14 @@
     <File>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Textures/UI/ProgressBar/ProgressBarValue.png</File>
     <File>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Textures/UI/Saves window.png</File>
     <File>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Textures/UI/Settings string.png</File>
+    <File>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Textures/UI/Switcher/Background.png</File>
+    <File>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Textures/UI/Switcher/LeftArrow.png</File>
+    <File>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Textures/UI/Switcher/RightArrow.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

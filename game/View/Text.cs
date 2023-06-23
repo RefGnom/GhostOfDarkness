@@ -6,18 +6,18 @@ namespace game;
 internal class Text : IDrawable
 {
     private readonly Rectangle bounds;
-    private string text;
     private readonly Align align;
     private readonly int indent;
     private Vector2 position;
     private SpriteFont font;
 
+    public string Value { get; private set; }
     public SpriteFont Font {
         get => font;
         set
         {
             font = value;
-            SetText(text);
+            SetText(Value);
         }
     }
 
@@ -26,7 +26,7 @@ internal class Text : IDrawable
         this.bounds = bounds;
         this.align = align;
         this.indent = indent;
-        this.text = text;
+        Value = text;
         Font = font;
     }
 
@@ -46,6 +46,6 @@ internal class Text : IDrawable
 
     public void Draw(SpriteBatch spriteBatch, float scale)
     {
-        spriteBatch.DrawString(font, text, position * scale, Color.White, 0, Vector2.Zero, scale, SpriteEffects.None, Layers.Text);
+        spriteBatch.DrawString(font, Value, position * scale, Color.White, 0, Vector2.Zero, scale, SpriteEffects.None, Layers.Text);
     }
 }

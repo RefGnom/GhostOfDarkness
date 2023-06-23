@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <SourceFile>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Textures/UI/ProgressBar/ProgressBarForeground.png</SourceFile>
-  <SourceTime>2023-06-22T13:47:13.4044577+05:00</SourceTime>
+  <SourceTime>2023-06-23T22:00:52.8804546+05:00</SourceTime>
   <DestFile>D:/Programming/C# Projects/GhostOfDarkness/game/Content/bin/Windows/Textures/UI/ProgressBar/ProgressBarForeground.xnb</DestFile>
-  <DestTime>2023-06-22T13:48:07.4237067+05:00</DestTime>
+  <DestTime>2023-06-23T23:22:14.6681702+05:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2022-07-26T16:44:56+05:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

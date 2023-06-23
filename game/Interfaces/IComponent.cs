@@ -1,6 +1,6 @@
 ﻿namespace game;
 
-internal interface IComponent : IDrawable, IUpdateable
+internal interface IComponent : IUpdateable, IDrawable
 {
 
 }

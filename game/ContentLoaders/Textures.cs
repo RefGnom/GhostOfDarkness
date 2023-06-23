@@ -38,6 +38,12 @@ internal static class Textures
     public static Texture2D ProgressBarValue { get; private set; }
     #endregion
 
+    #region Switcher
+    public static Texture2D SwitcherLeftArrow { get; private set; }
+    public static Texture2D SwitcherRightArrow { get; private set; }
+    public static Texture2D SwitcherBackground { get; private set; }
+    #endregion
+
     #region TileColors
     public static Texture2D WallColor { get; private set; }
     public static Texture2D DoorColor { get; private set; }
@@ -75,6 +81,9 @@ internal static class Textures
         ProgressBarBackground = Load("Textures\\UI\\ProgressBar\\ProgressBarBackground");
         ProgressBarForeground = Load("Textures\\UI\\ProgressBar\\ProgressBarForeground");
         ProgressBarValue = Load("Textures\\UI\\ProgressBar\\ProgressBarValue");
+        SwitcherLeftArrow = Load("Textures\\UI\\Switcher\\LeftArrow");
+        SwitcherRightArrow = Load("Textures\\UI\\Switcher\\RightArrow");
+        SwitcherBackground = Load("Textures\\UI\\Switcher\\Background");
         LoadTileColors();
         LoadRooms();
     }
