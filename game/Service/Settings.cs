@@ -18,8 +18,6 @@ internal static class Settings
     #region Game controls
     public static Keys OpenMenu => Keys.Escape;
     public static Keys OnFullScreen => Keys.F12;
-    public static Keys TurnUpMusicVolume => Keys.OemPlus;
-    public static Keys TurnDownMusicVolume => Keys.OemMinus;
     #endregion
 
     #region Debug mod

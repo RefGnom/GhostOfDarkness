@@ -31,12 +31,6 @@ internal class SettingsState : GameState
         position.Y += height;
         drawables.Add(CreateString(position, "Right", Settings.Right));
 
-        position.Y += height;
-        drawables.Add(CreateString(position, "Turn up music volume", Settings.TurnUpMusicVolume));
-
-        position.Y += height;
-        drawables.Add(CreateString(position, "Turn down music volume", Settings.TurnDownMusicVolume));
-
         var textWidth = 280;
         position = new Vector2(1200, 40);
         var musicVolume = new ProgressBar(0, 1, position, 6);

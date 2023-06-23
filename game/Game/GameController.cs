@@ -1,5 +1,4 @@
 ﻿using Microsoft.Xna.Framework.Input;
-using Microsoft.Xna.Framework.Media;
 using System;
 using System.Collections.Generic;
 
@@ -69,11 +68,6 @@ internal class GameController : GameStatesController
         {
             Settings.ShowFPS = !Settings.ShowFPS;
         }
-
-        if (KeyboardController.IsKeyDown(Settings.TurnDownMusicVolume, false))
-            MediaPlayer.Volume -= Settings.MusicVolumeStep;
-        if (KeyboardController.IsKeyDown(Settings.TurnUpMusicVolume, false))
-            MediaPlayer.Volume += Settings.MusicVolumeStep;
 
         if (IsPlay)
             UpdateModel(deltaTime);
