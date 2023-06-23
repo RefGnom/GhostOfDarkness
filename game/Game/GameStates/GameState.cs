@@ -7,7 +7,10 @@ internal abstract class GameState : IState, IDrawable, IUpdateable
 {
     protected readonly IGameStateSwitcher switcher;
     protected GameState previousState;
-    protected List<Button> buttons;
+    protected List<IComponent> components;
+    protected List<IDrawable> drawables;
+    protected List<IUpdateable> updateables;
+
     public bool IsConfirmed { get; protected set; }
     public bool GameIsExit { get; protected set; }
     public bool Saved { get; protected set; }
@@ -15,6 +18,9 @@ internal abstract class GameState : IState, IDrawable, IUpdateable
     public GameState(IGameStateSwitcher stateSwitcher)
     {
         switcher = stateSwitcher;
+        components = new();
+        drawables = new();
+        updateables = new();
     }
 
     public void Start(IState previousState)
@@ -24,14 +30,27 @@ internal abstract class GameState : IState, IDrawable, IUpdateable
         Start(state);
     }
 
-    public virtual void Update(float deltaTime) { }
+    public virtual void Update(float deltaTime)
+    {
+        for (int i = 0; i < components.Count; i++)
+        {
+            components[i].Update(deltaTime);
+        }
+        for (int i = 0; i < updateables.Count; i++)
+        {
+            updateables[i].Update(deltaTime);
+        }
+    }
 
     public virtual void Draw(SpriteBatch spriteBatch, float scale)
     {
-        if (buttons is not null)
+        for (int i = 0; i < components.Count; i++)
         {
-            for (int i = 0; i < buttons.Count; i++)
-                buttons[i].Draw(spriteBatch, scale);
+            components[i].Draw(spriteBatch, scale);
+        }
+        for (int i = 0; i < drawables.Count; i++)
+        {
+            drawables[i].Draw(spriteBatch, scale);
         }
     }
 
@@ -58,12 +77,4 @@ internal abstract class GameState : IState, IDrawable, IUpdateable
     public virtual void Confirm() { }
 
     public virtual void Save() { }
-
-    protected void ClickedButtons()
-    {
-        for (int i = 0; i < buttons.Count; i++)
-        {
-            buttons[i].Clicked();
-        }
-    }
 }

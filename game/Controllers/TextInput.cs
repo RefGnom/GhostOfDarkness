@@ -19,10 +19,14 @@ internal class TextInput : IDrawable
         this.background = background;
         this.position = position;
         text = new();
+    }
+
+    public void Enable()
+    {
         KeyboardController.GameWindow.TextInput += InputText;
     }
 
-    public void Delete()
+    public void Disable()
     {
         KeyboardController.GameWindow.TextInput -= InputText;
     }
@@ -44,6 +48,8 @@ internal class TextInput : IDrawable
     {
         return symbol >= 'a' && symbol <= 'z'
             || symbol >= 'A' && symbol <= 'Z'
+            || symbol >= 'а' && symbol <= 'я'
+            || symbol >= 'А' && symbol <= 'Я'
             || symbol == ' '
             || symbol >= '0' && symbol <= '9';
     }

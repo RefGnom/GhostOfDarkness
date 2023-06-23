@@ -4,14 +4,17 @@ using System;
 
 namespace game;
 
-internal class Button : IDrawable
+internal class Button : IComponent
 {
     private readonly Texture2D texture;
     private readonly Vector2 position;
     private readonly string text;
-    private float scale;
+    private readonly Color selectedColor;
     private readonly float buttonLayer;
     private readonly float textLayer;
+    private float scale;
+
+    public bool Selected { get; set; }
 
     public event Action OnClicked;
 
@@ -22,32 +25,48 @@ internal class Button : IDrawable
         this.text = text;
         buttonLayer = Layers.UI;
         textLayer = Layers.Text;
+        selectedColor = Color.LightGray;
     }
 
-    public Button(Texture2D texture, Vector2 position, string text, float buttonLayer, float textLayer)
+    public Button(Texture2D texture, Vector2 position, string text, Color selectedColor) : this(texture, position, text)
     {
-        this.texture = texture;
-        this.position = position;
-        this.text = text;
+        this.selectedColor = selectedColor;
+    }
+
+    public Button(Texture2D texture, Vector2 position, string text, float buttonLayer, float textLayer, Color selectedColor) : this(texture, position, text, selectedColor)
+    {
         this.buttonLayer = buttonLayer;
         this.textLayer = textLayer;
     }
 
-    public bool Clicked()
+    public Button(Texture2D texture, Vector2 position, string text, float buttonLayer, float textLayer) : this(texture, position, text)
     {
-        if (MouseController.LeftButtonClicked() && InBounds(MouseController.WindowPosition))
+        this.buttonLayer = buttonLayer;
+        this.textLayer = textLayer;
+    }
+
+    public void Update(float deltaTime)
+    {
+        if (InBounds(MouseController.WindowPosition))
         {
-            OnClicked?.Invoke();
-            return true;
+            Selected = true;
+            if (MouseController.LeftButtonClicked())
+            {
+                OnClicked?.Invoke();
+            }
         }
-        return false;
+        else
+        {
+            Selected = false;
+        }
     }
 
     public void Draw(SpriteBatch spriteBatch, float scale)
     {
         this.scale = scale;
         var position = this.position * scale;
-        spriteBatch.Draw(Textures.ButtonBackground, position, null, Color.White, 0, Vector2.Zero, scale, SpriteEffects.None, buttonLayer);
+        var color = Selected ? selectedColor : Color.White;
+        spriteBatch.Draw(Textures.ButtonBackground, position, null, color, 0, Vector2.Zero, scale, SpriteEffects.None, buttonLayer);
         var textSize = Fonts.Buttons.MeasureString(text);
         var textPosition = position + new Vector2(texture.Width / 2 - textSize.X / 2, texture.Height / 2 - textSize.Y / 2) * scale;
         spriteBatch.DrawString(Fonts.Buttons, text, textPosition, Color.White, 0, Vector2.Zero, scale, SpriteEffects.None, textLayer);
