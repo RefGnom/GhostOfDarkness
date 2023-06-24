@@ -2,11 +2,17 @@
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
+using System;
 
 namespace game;
 
 internal class SettingsState : GameState
 {
+    private Action musicVolumeAction;
+    private Action soundsVolumeAction;
+    private Action displayModeAction;
+    private Action resolutionAction;
+
     public SettingsState(IGameStateSwitcher stateSwitcher) : base(stateSwitcher)
     {
         drawables.Add(new Sprite(Textures.Background, Vector2.Zero, Layers.Background));
@@ -28,14 +34,12 @@ internal class SettingsState : GameState
         position.Y += height;
         drawables.Add(CreateString(position, "Right", Settings.Right));
 
-
-
         var textWidth = 280;
         position = new Vector2(1200, 30);
         var displayMode = new Switcher(position)
         {
-            { "Оконный режим", () => Settings.SetDisplayMode(false) },
-            { "На весь экран", () => Settings.SetDisplayMode(true) },
+            { "Оконный режим", () => displayModeAction = () => Settings.SetDisplayMode(false) },
+            { "На весь экран", () => displayModeAction = () => Settings.SetDisplayMode(true) },
         };
         displayMode.Start();
         var displayModeText = new Text(new Rectangle((int)position.X - textWidth, (int)position.Y - 12, textWidth, height), "Режим отображения", Align.Left, 0, Fonts.Common16);
@@ -45,10 +49,10 @@ internal class SettingsState : GameState
         position.Y += height;
         var resolution = new Switcher(position)
         {
-            { "1280x720", () => Settings.SetSizeScreen(1280, 720) },
-            { "1920x1080", () => Settings.SetSizeScreen(1920, 1080) },
-            { "2560x1440", () => Settings.SetSizeScreen(2560, 1440) },
-            { "3840x2160", () => Settings.SetSizeScreen(3840, 2160) },
+            { "1280x720", () => resolutionAction = () => Settings.SetSizeScreen(1280, 720) },
+            { "1920x1080", () => resolutionAction = () => Settings.SetSizeScreen(1920, 1080) },
+            { "2560x1440", () => resolutionAction = () => Settings.SetSizeScreen(2560, 1440) },
+            { "3840x2160", () => resolutionAction = () => Settings.SetSizeScreen(3840, 2160) },
         };
         resolution.Start();
         var resolutionText = new Text(new Rectangle((int)position.X - textWidth, (int)position.Y - 12, textWidth, height), "Разрешение", Align.Left, 0, Fonts.Common16);
@@ -57,7 +61,7 @@ internal class SettingsState : GameState
 
         position = new Vector2(1200, 300);
         var musicVolume = new ProgressBar(0, 1, position, 6);
-        musicVolume.ValueOnChanged += (value) => MediaPlayer.Volume = value;
+        musicVolume.ValueOnChanged += (value) => musicVolumeAction = () => MediaPlayer.Volume = value;
         musicVolume.SetValue(0.3f);
         var musicVolumeText = new Text(new Rectangle((int)position.X - textWidth, (int)position.Y - 16, textWidth, height), "Громкость музыки", Align.Left, 0, Fonts.Common16);
         components.Add(musicVolume);
@@ -65,7 +69,7 @@ internal class SettingsState : GameState
 
         position.Y += height;
         var soundVolume = new ProgressBar(0, 1, position, 6);
-        soundVolume.ValueOnChanged += (value) => SoundEffect.MasterVolume = value;
+        soundVolume.ValueOnChanged += (value) => soundsVolumeAction = () => SoundEffect.MasterVolume = value;
         soundVolume.SetValue(0.3f);
         var soundVolumeText = new Text(new Rectangle((int)position.X - textWidth, (int)position.Y - 16, textWidth, height), "Громкость звуков", Align.Left, 0, Fonts.Common16);
         components.Add(soundVolume);
@@ -78,6 +82,8 @@ internal class SettingsState : GameState
         var exit = new Button(Textures.ButtonBackground, new Vector2(1432, 960), "Exit");
         exit.OnClicked += Exit;
         components.Add(exit);
+
+        SaveSettins();
     }
 
     public override void Back()
@@ -92,16 +98,20 @@ internal class SettingsState : GameState
 
     public override void Save()
     {
+        SaveSettins();
         Saved = true;
-        switcher.SwitchState(previousState);
     }
 
-    public override void Start(GameState previousState)
+    private void SaveSettins()
     {
-    }
-
-    public override void Stop()
-    {
+        musicVolumeAction?.Invoke();
+        musicVolumeAction = null;
+        soundsVolumeAction?.Invoke();
+        soundsVolumeAction = null;
+        resolutionAction?.Invoke();
+        resolutionAction = null;
+        displayModeAction?.Invoke();
+        displayModeAction = null;
     }
 
     private static Sprite CreateString(Vector2 position, string name, Keys key)
