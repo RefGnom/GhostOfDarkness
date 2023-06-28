@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Programming\\C# Projects\\GhostOfDarkness\\GhostOfDarkness\\Game\\Game.csproj": {}
+    "D:\\Programming\\C# Projects\\GhostOfDarkness\\GhostOfDarkness\\MapEditor\\MapEditor.csproj": {}
   },
   "projects": {
-    "D:\\Programming\\C# Projects\\GhostOfDarkness\\GhostOfDarkness\\Game\\Game.csproj": {
+    "D:\\Programming\\C# Projects\\GhostOfDarkness\\GhostOfDarkness\\MapEditor\\MapEditor.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Programming\\C# Projects\\GhostOfDarkness\\GhostOfDarkness\\Game\\Game.csproj",
-        "projectName": "Game",
-        "projectPath": "D:\\Programming\\C# Projects\\GhostOfDarkness\\GhostOfDarkness\\Game\\Game.csproj",
+        "projectUniqueName": "D:\\Programming\\C# Projects\\GhostOfDarkness\\GhostOfDarkness\\MapEditor\\MapEditor.csproj",
+        "projectName": "MapEditor",
+        "projectPath": "D:\\Programming\\C# Projects\\GhostOfDarkness\\GhostOfDarkness\\MapEditor\\MapEditor.csproj",
         "packagesPath": "C:\\Users\\vepr\\.nuget\\packages\\",
-        "outputPath": "D:\\Programming\\C# Projects\\GhostOfDarkness\\GhostOfDarkness\\Game\\obj\\",
+        "outputPath": "D:\\Programming\\C# Projects\\GhostOfDarkness\\GhostOfDarkness\\MapEditor\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\vepr\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -43,24 +43,6 @@
       "frameworks": {
         "net6.0-windows7.0": {
           "targetAlias": "net6.0-windows",
-          "dependencies": {
-            "MonoGame.Content.Builder.Task": {
-              "target": "Package",
-              "version": "[3.8.1.303, )"
-            },
-            "MonoGame.Framework.WindowsDX": {
-              "target": "Package",
-              "version": "[3.8.1.303, )"
-            },
-            "NUnit": {
-              "target": "Package",
-              "version": "[3.13.3, )"
-            },
-            "NUnitLite": {
-              "target": "Package",
-              "version": "[3.13.3, )"
-            }
-          },
           "imports": [
             "net461",
             "net462",

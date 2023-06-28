@@ -2360,6 +2360,16 @@
         "runtime": {
           "lib/netstandard1.3/System.Xml.XPath.XDocument.dll": {}
         }
+      },
+      "MapLibrary/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "compile": {
+          "bin/placeholder/MapLibrary.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/MapLibrary.dll": {}
+        }
       }
     }
   },
@@ -7315,10 +7325,16 @@
         "system.xml.xpath.xdocument.4.0.1.nupkg.sha512",
         "system.xml.xpath.xdocument.nuspec"
       ]
+    },
+    "MapLibrary/1.0.0": {
+      "type": "project",
+      "path": "../MapLibrary/MapLibrary.csproj",
+      "msbuildProject": "../MapLibrary/MapLibrary.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net6.0-windows7.0": [
+      "MapLibrary >= 1.0.0",
       "MonoGame.Content.Builder.Task >= 3.8.1.303",
       "MonoGame.Framework.WindowsDX >= 3.8.1.303",
       "NUnit >= 3.13.3",
@@ -7351,7 +7367,11 @@
       "frameworks": {
         "net6.0-windows7.0": {
           "targetAlias": "net6.0-windows",
-          "projectReferences": {}
+          "projectReferences": {
+            "D:\\Programming\\C# Projects\\GhostOfDarkness\\GhostOfDarkness\\MapLibrary\\MapLibrary.csproj": {
+              "projectPath": "D:\\Programming\\C# Projects\\GhostOfDarkness\\GhostOfDarkness\\MapLibrary\\MapLibrary.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
