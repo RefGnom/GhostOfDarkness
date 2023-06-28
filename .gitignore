@@ -1,0 +1,42 @@
+#Visual Studio files
+*.pidb
+*.userprefs
+*.[Oo]bj
+*.exe
+*.pdb
+*.user
+*.aps
+*.pch
+*.vspscc
+*.vssscc
+*_i.c
+*_p.c
+*.ncb
+*.suo
+*.tlb
+*.tlh
+*.bak
+*.[Cc]ache
+*.ilk
+*.log
+*.lib
+*.sbr
+*.sdf
+ipch/
+[Gg]game/[Oo]bj/
+[Gg]game/[Bb]in
+[Gg]game/[Dd]ebug*/
+[Gg]game/[Rr]elease*/
+Ankh.NoLoad
+
+#Project files
+[Gg]game/[Bb]uild/
+
+#Subversion files
+.svn
+
+# Office Temp Files
+~$*
+
+*.cachefile
+*.dll

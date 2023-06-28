@@ -11,7 +11,7 @@
         "projectName": "game",
         "projectPath": "D:\\Programming\\C# Projects\\GhostOfDarkness\\game\\game.csproj",
         "packagesPath": "C:\\Users\\vepr\\.nuget\\packages\\",
-        "outputPath": "D:\\Programming\\C# Projects\\GhostOfDarkness\\game\\obj\\",
+        "outputPath": "D:\\Programming\\C# Projects\\GhostOfDarkness\\Game\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\vepr\\AppData\\Roaming\\NuGet\\NuGet.Config",
