@@ -23,10 +23,17 @@
 *.sbr
 *.sdf
 ipch/
+
 GhostOfDarkness/[Gg]game/[Oo]bj/
 GhostOfDarkness/[Gg]game/[Bb]in
 GhostOfDarkness/[Gg]game/[Dd]ebug*/
 GhostOfDarkness/[Gg]game/[Rr]elease*/
+
+GhostOfDarkness/[Mm]apEditor/[Oo]bj/
+GhostOfDarkness/[Mm]apEditor/[Bb]in
+GhostOfDarkness/[Mm]apEditor/[Dd]ebug*/
+GhostOfDarkness/[Mm]apEditor/[Rr]elease*/
+
 Ankh.NoLoad
 
 #Project files
