@@ -23,14 +23,14 @@
 *.sbr
 *.sdf
 ipch/
-[Gg]game/[Oo]bj/
-[Gg]game/[Bb]in
-[Gg]game/[Dd]ebug*/
-[Gg]game/[Rr]elease*/
+GhostOfDarkness/[Gg]game/[Oo]bj/
+GhostOfDarkness/[Gg]game/[Bb]in
+GhostOfDarkness/[Gg]game/[Dd]ebug*/
+GhostOfDarkness/[Gg]game/[Rr]elease*/
 Ankh.NoLoad
 
 #Project files
-[Gg]game/[Bb]uild/
+GhostOfDarkness/[Gg]game/[Bb]uild/
 
 #Subversion files
 .svn

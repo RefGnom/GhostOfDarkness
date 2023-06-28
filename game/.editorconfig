@@ -1,4 +1,0 @@
-﻿[*.{cs,vb}]
-
-# IDE0060: Удалите неиспользуемый параметр
-dotnet_code_quality_unused_parameters = all
