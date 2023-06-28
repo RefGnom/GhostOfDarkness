@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Sounds/DemonicCorruption.mp3</SourceFile>
+  <SourceFile>D:/Programming/C# Projects/GhostOfDarkness/Game/Content/Sounds/DemonicCorruption.mp3</SourceFile>
   <SourceTime>2023-06-14T15:56:48.0765227+05:00</SourceTime>
-  <DestFile>D:/Programming/C# Projects/GhostOfDarkness/game/Content/bin/Windows/Content/Sounds/DemonicCorruption.xnb</DestFile>
-  <DestTime>2023-06-29T00:24:14.9323911+05:00</DestTime>
+  <DestFile>D:/Programming/C# Projects/GhostOfDarkness/Game/Content/bin/Windows/Content/Sounds/DemonicCorruption.xnb</DestFile>
+  <DestTime>2023-06-29T00:43:17.1921654+05:00</DestTime>
   <Importer>Mp3Importer</Importer>
   <ImporterTime>2022-07-26T16:44:56+05:00</ImporterTime>
   <Processor>SongProcessor</Processor>
@@ -15,6 +15,6 @@
   <Dependencies />
   <BuildAsset />
   <BuildOutput>
-    <string>D:/Programming/C# Projects/GhostOfDarkness/game/Content/bin/Windows/Content/Sounds/DemonicCorruption.wma</string>
+    <string>D:/Programming/C# Projects/GhostOfDarkness/Game/Content/bin/Windows/Content/Sounds/DemonicCorruption.wma</string>
   </BuildOutput>
 </PipelineBuildEvent>
