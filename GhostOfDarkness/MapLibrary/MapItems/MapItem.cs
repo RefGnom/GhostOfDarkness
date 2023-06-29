@@ -1,6 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 
-namespace MapLibrary;
+namespace Core;
 
 public abstract class MapItem
 {

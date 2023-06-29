@@ -28,8 +28,8 @@
           "net6.0-windows7.0": {
             "targetAlias": "net6.0-windows",
             "projectReferences": {
-              "D:\\Programming\\C# Projects\\GhostOfDarkness\\GhostOfDarkness\\MapLibrary\\MapLibrary.csproj": {
-                "projectPath": "D:\\Programming\\C# Projects\\GhostOfDarkness\\GhostOfDarkness\\MapLibrary\\MapLibrary.csproj"
+              "D:\\Programming\\C# Projects\\GhostOfDarkness\\GhostOfDarkness\\MapLibrary\\Core.csproj": {
+                "projectPath": "D:\\Programming\\C# Projects\\GhostOfDarkness\\GhostOfDarkness\\MapLibrary\\Core.csproj"
               }
             }
           }
@@ -88,12 +88,12 @@
         }
       }
     },
-    "D:\\Programming\\C# Projects\\GhostOfDarkness\\GhostOfDarkness\\MapLibrary\\MapLibrary.csproj": {
+    "D:\\Programming\\C# Projects\\GhostOfDarkness\\GhostOfDarkness\\MapLibrary\\Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Programming\\C# Projects\\GhostOfDarkness\\GhostOfDarkness\\MapLibrary\\MapLibrary.csproj",
-        "projectName": "MapLibrary",
-        "projectPath": "D:\\Programming\\C# Projects\\GhostOfDarkness\\GhostOfDarkness\\MapLibrary\\MapLibrary.csproj",
+        "projectUniqueName": "D:\\Programming\\C# Projects\\GhostOfDarkness\\GhostOfDarkness\\MapLibrary\\Core.csproj",
+        "projectName": "Core",
+        "projectPath": "D:\\Programming\\C# Projects\\GhostOfDarkness\\GhostOfDarkness\\MapLibrary\\Core.csproj",
         "packagesPath": "C:\\Users\\vepr\\.nuget\\packages\\",
         "outputPath": "D:\\Programming\\C# Projects\\GhostOfDarkness\\GhostOfDarkness\\MapLibrary\\obj\\",
         "projectStyle": "PackageReference",

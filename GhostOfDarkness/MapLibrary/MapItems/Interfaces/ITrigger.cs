@@ -1,4 +1,4 @@
-﻿namespace MapLibrary;
+﻿namespace Core;
 
 public interface ITrigger
 {

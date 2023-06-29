@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
-namespace MapLibrary;
+namespace Core;
 
 public class MapSerializer
 {

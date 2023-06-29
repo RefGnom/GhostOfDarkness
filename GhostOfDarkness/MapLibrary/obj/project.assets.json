@@ -129,9 +129,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Programming\\C# Projects\\GhostOfDarkness\\GhostOfDarkness\\MapLibrary\\MapLibrary.csproj",
-      "projectName": "MapLibrary",
-      "projectPath": "D:\\Programming\\C# Projects\\GhostOfDarkness\\GhostOfDarkness\\MapLibrary\\MapLibrary.csproj",
+      "projectUniqueName": "D:\\Programming\\C# Projects\\GhostOfDarkness\\GhostOfDarkness\\MapLibrary\\Core.csproj",
+      "projectName": "Core",
+      "projectPath": "D:\\Programming\\C# Projects\\GhostOfDarkness\\GhostOfDarkness\\MapLibrary\\Core.csproj",
       "packagesPath": "C:\\Users\\vepr\\.nuget\\packages\\",
       "outputPath": "D:\\Programming\\C# Projects\\GhostOfDarkness\\GhostOfDarkness\\MapLibrary\\obj\\",
       "projectStyle": "PackageReference",
