@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>D:/Programming/C# Projects/GhostOfDarkness/game/Content/Textures/Tiles/Floors/Grass.png</SourceFile>
+  <SourceFile>D:/Programming/C# Projects/GhostOfDarkness/GhostOfDarkness/Game/Content/Textures/Tiles/Floors/Grass.png</SourceFile>
   <SourceTime>2023-05-17T22:52:27.14825+05:00</SourceTime>
-  <DestFile>D:/Programming/C# Projects/GhostOfDarkness/game/Content/bin/Windows/Textures/Tiles/Floors/Grass.xnb</DestFile>
-  <DestTime>2023-06-17T13:43:09.3763519+05:00</DestTime>
+  <DestFile>D:/Programming/C# Projects/GhostOfDarkness/GhostOfDarkness/Game/Content/bin/Windows/Textures/Tiles/Floors/Grass.xnb</DestFile>
+  <DestTime>2023-06-29T21:25:10.9843171+05:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2022-07-26T16:44:56+05:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

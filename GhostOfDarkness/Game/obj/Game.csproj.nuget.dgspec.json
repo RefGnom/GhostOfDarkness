@@ -48,7 +48,7 @@
               "target": "Package",
               "version": "[3.8.1.303, )"
             },
-            "MonoGame.Framework.WindowsDX": {
+            "MonoGame.Framework.DesktopGL": {
               "target": "Package",
               "version": "[3.8.1.303, )"
             },
