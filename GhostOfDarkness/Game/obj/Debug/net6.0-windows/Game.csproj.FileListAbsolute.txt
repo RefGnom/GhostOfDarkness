@@ -96,8 +96,6 @@ D:\Programming\C# Projects\GhostOfDarkness\GhostOfDarkness\Game\bin\Debug\net6.0
 D:\Programming\C# Projects\GhostOfDarkness\GhostOfDarkness\Game\bin\Debug\net6.0-windows\runtimes\win-x64\native\soft_oal.dll
 D:\Programming\C# Projects\GhostOfDarkness\GhostOfDarkness\Game\bin\Debug\net6.0-windows\runtimes\win-x86\native\SDL2.dll
 D:\Programming\C# Projects\GhostOfDarkness\GhostOfDarkness\Game\bin\Debug\net6.0-windows\runtimes\win-x86\native\soft_oal.dll
-D:\Programming\C# Projects\GhostOfDarkness\GhostOfDarkness\Game\bin\Debug\net6.0-windows\MapLibrary.dll
-D:\Programming\C# Projects\GhostOfDarkness\GhostOfDarkness\Game\bin\Debug\net6.0-windows\MapLibrary.pdb
 D:\Programming\C# Projects\GhostOfDarkness\GhostOfDarkness\Game\bin\Debug\net6.0-windows\Content\Sounds\AlienWarfare.ogg
 D:\Programming\C# Projects\GhostOfDarkness\GhostOfDarkness\Game\bin\Debug\net6.0-windows\Content\Sounds\BeastOfTheArena.ogg
 D:\Programming\C# Projects\GhostOfDarkness\GhostOfDarkness\Game\bin\Debug\net6.0-windows\Content\Sounds\CultistBase.ogg
@@ -108,3 +106,5 @@ D:\Programming\C# Projects\GhostOfDarkness\GhostOfDarkness\Game\bin\Debug\net6.0
 D:\Programming\C# Projects\GhostOfDarkness\GhostOfDarkness\Game\bin\Debug\net6.0-windows\Content\Sounds\TheBaronOfHell.ogg
 D:\Programming\C# Projects\GhostOfDarkness\GhostOfDarkness\Game\bin\Debug\net6.0-windows\Content\Sounds\TheOnlyThingTheyFearIsYou.ogg
 D:\Programming\C# Projects\GhostOfDarkness\GhostOfDarkness\Game\bin\Debug\net6.0-windows\Content\Sounds\TheSuperGoreNest.ogg
+D:\Programming\C# Projects\GhostOfDarkness\GhostOfDarkness\Game\bin\Debug\net6.0-windows\Core.dll
+D:\Programming\C# Projects\GhostOfDarkness\GhostOfDarkness\Game\bin\Debug\net6.0-windows\Core.pdb
