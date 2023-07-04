@@ -28,7 +28,7 @@ public class View : Form
         var menu = new MenuControl();
         menu.OnCreateFile += () =>
         {
-            map = new(32, 10, 10);
+            map = new(32, 10);
             mapDriwer.Visible = true;
         };
         menu.OnOpenFile += (map) =>

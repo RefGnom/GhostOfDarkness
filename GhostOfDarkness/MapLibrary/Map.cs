@@ -6,10 +6,30 @@ namespace Core;
 public class Map
 {
     [JsonProperty]
-    private readonly MapItem[,] items;
+    private MapItem[,] items;
+    [JsonProperty]
+    private Vector2 sizeInTiles;
+    [JsonIgnore]
+    public readonly int TileSize = 32;
 
-    public Vector2 Size { get; init; }
-    public int TileSize { get; init; }
+    [JsonIgnore]
+    public Vector2 SizeInTiles {
+        get => sizeInTiles;
+        set
+        {
+            if (value.X < 0 || value.Y < 0)
+                throw new ArgumentException("Size cannot be a negative value");
+            var newItems = new MapItem[(int)value.X, (int)value.Y];
+            for (int i = 0; i < sizeInTiles.X; i++)
+                for (int j = 0; j < sizeInTiles.Y; j++)
+                    newItems[i, j] = items[i, j];
+            items = newItems;
+            sizeInTiles = value;
+            Size = value * TileSize;
+        }
+    }
+
+    public Vector2 Size { get; private set; }
 
     public MapItem this[int x, int y]
     {
@@ -17,10 +37,9 @@ public class Map
         set => items[x, y] = value;
     }
 
-    public Map(int widthInTiles, int heightInTiles, int tileSize)
+    public Map(int widthInTiles, int heightInTiles)
     {
         items = new MapItem[widthInTiles, heightInTiles];
-        Size = new Vector2(widthInTiles, heightInTiles) * tileSize;
-        TileSize = tileSize;
+        Size = new Vector2(widthInTiles, heightInTiles) * TileSize;
     }
 }
