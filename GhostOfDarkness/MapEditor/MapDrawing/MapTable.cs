@@ -19,14 +19,25 @@ internal class MapTable : TableLayoutPanel
                 LayoutUpdate(map);
                 map.SizeChanged += () => LayoutUpdate(map);
             }
+            MapChanged?.Invoke(map);
         }
     }
+
+    public event Action<Map?>? MapChanged;
 
     public MapTable()
     {
         Visible = false;
         BackColor = Color.FromArgb(40, 32, 27);
         CellBorderStyle = TableLayoutPanelCellBorderStyle.None;
+    }
+
+    public void SwitchGridStyle()
+    {
+        if (CellBorderStyle == TableLayoutPanelCellBorderStyle.None)
+            CellBorderStyle = TableLayoutPanelCellBorderStyle.Single;
+        else
+            CellBorderStyle = TableLayoutPanelCellBorderStyle.None;
     }
 
     private void LayoutUpdate(Map map)

@@ -7,6 +7,7 @@ internal class MapPanel : Panel
 
     public MapPanel()
     {
+        BorderStyle = BorderStyle.FixedSingle;
         Table.MouseDown += TableMouseDown;
         Table.MouseMove += TableMouseMove;
         Controls.Add(Table);

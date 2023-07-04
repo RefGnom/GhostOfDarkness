@@ -3,6 +3,7 @@ namespace MapEditor;
 public class View : Form
 {
     private readonly MapPanel mapPanel = new();
+    private readonly MenuControl menu = new();
 
     public static bool SpacePressed { get; private set; }
 
@@ -27,21 +28,22 @@ public class View : Form
         SizeChanged += FormSizeChanged;
 
         #region menu
-        var menu = new MenuControl();
-        menu.OnCreateFile += () =>
+        Controls.Add(menu);
+        menu.File.OnCreateFile += () =>
         {
             mapPanel.Table.Map = new(70, 50);
         };
-        menu.OnOpenFile += (map) =>
+        menu.File.OnOpenFile += (map) =>
         {
             mapPanel.Table.Map = map;
         };
-        menu.OnSaveFile += () => mapPanel.Table.Map;
-        Controls.Add(menu.Menu);
+        menu.File.OnSaveFile += () => mapPanel.Table.Map;
+        menu.Tools.GridOnSwitch += mapPanel.Table.SwitchGridStyle;
         #endregion
+
         #region mapPanel
-        mapPanel.BorderStyle = BorderStyle.FixedSingle;
         Controls.Add(mapPanel);
+        mapPanel.Table.MapChanged += (map) => menu.Tools.SetSwitchGridEnabled(map is not null);
         #endregion
 
         FormSizeChanged(this, new EventArgs());
