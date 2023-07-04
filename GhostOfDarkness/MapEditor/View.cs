@@ -1,73 +1,59 @@
+using Core;
+
 namespace MapEditor;
 
 public class View : Form
 {
-    private MenuStrip menu = new();
+    private Map? map;
+    private readonly Panel mapDriwer = new();
 
     public View()
     {
         InitializeComponent();
-        InitializeWindow();
-        InitializeMenu();
+        Initialize();
     }
 
     private void InitializeComponent()
     {
     }
 
-    private void InitializeWindow()
+    private void Initialize()
     {
         ClientSize = new Size(1280, 720);
-        Name = "MapEditor";
-    }
+        FormBorderStyle = FormBorderStyle.FixedSingle;
+        Text = "MapEditor";
+        SizeChanged += FormSizeChanged;
 
-    private void InitializeMenu()
-    {
         #region menu
-        var file = new ToolStripMenuItem()
+        var menu = new MenuControl();
+        menu.OnCreateFile += () =>
         {
-            Text = "Файл",
+            map = new(32, 10, 10);
+            mapDriwer.Visible = true;
         };
-        var create = new ToolStripMenuItem()
+        menu.OnOpenFile += (map) =>
         {
-            Text = "Создать",
+            this.map = map;
+            mapDriwer.Visible = true;
         };
-        create.Click += CreateFile;
-        file.DropDownItems.Add(create);
-        var open = new ToolStripMenuItem()
-        {
-            Text = "Открыть",
-        };
-        open.Click += OpenFile;
-        file.DropDownItems.Add(open);
-        menu.Items.Add(file);
-
-        menu.Renderer = new ToolStripProfessionalRenderer(new MenuColorTable());
-        MainMenuStrip = menu;
-        foreach (ToolStripMenuItem item in menu.Items)
-        {
-            SetTextColor(item);
-        }
-        Controls.Add(menu);
+        menu.OnSaveFile += () => map;
+        Controls.Add(menu.Menu);
         #endregion
+
+        #region mapDriwer
+        mapDriwer.BackColor = Color.FromArgb(40, 32, 27);
+        mapDriwer.Visible = false;
+        Controls.Add(mapDriwer);
+        #endregion
+
+        FormSizeChanged(this, new EventArgs());
     }
 
-    private void SetTextColor(ToolStripMenuItem item)
+    private void FormSizeChanged(object? sender, EventArgs e)
     {
-        item.ForeColor = MenuColorTable.Text;
-        foreach (ToolStripMenuItem it in item.DropDownItems)
-        {
-            SetTextColor(it);
-        }
-    }
-
-    private void CreateFile(object? sender, EventArgs e)
-    {
-
-    }
-
-    private void OpenFile(object? sender, EventArgs e)
-    {
-
+        var menuHeight = 24;
+        var percent = 0.8;
+        mapDriwer.Location = new Point(0, menuHeight);
+        mapDriwer.Size = new Size((int)(Width * percent), Height - menuHeight);
     }
 }
