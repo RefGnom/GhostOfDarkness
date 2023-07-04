@@ -405,8 +405,8 @@
     },
     "Core/1.0.0": {
       "type": "project",
-      "path": "../MapLibrary/Core.csproj",
-      "msbuildProject": "../MapLibrary/Core.csproj"
+      "path": "../Core/Core.csproj",
+      "msbuildProject": "../Core/Core.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -446,8 +446,8 @@
         "net6.0-windows7.0": {
           "targetAlias": "net6.0-windows",
           "projectReferences": {
-            "D:\\Programming\\C# Projects\\GhostOfDarkness\\GhostOfDarkness\\MapLibrary\\Core.csproj": {
-              "projectPath": "D:\\Programming\\C# Projects\\GhostOfDarkness\\GhostOfDarkness\\MapLibrary\\Core.csproj"
+            "D:\\Programming\\C# Projects\\GhostOfDarkness\\GhostOfDarkness\\Core\\Core.csproj": {
+              "projectPath": "D:\\Programming\\C# Projects\\GhostOfDarkness\\GhostOfDarkness\\Core\\Core.csproj"
             }
           }
         }

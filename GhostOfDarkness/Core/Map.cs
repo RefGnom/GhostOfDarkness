@@ -20,8 +20,10 @@ public class Map
             if (value.X < 0 || value.Y < 0)
                 throw new ArgumentException("Size cannot be a negative value");
             var newItems = new MapItem[(int)value.X, (int)value.Y];
-            for (int i = 0; i < sizeInTiles.X; i++)
-                for (int j = 0; j < sizeInTiles.Y; j++)
+            var width = (int)Math.Min(sizeInTiles.X, value.X);
+            var height = (int)Math.Min(sizeInTiles.Y, value.Y);
+            for (int i = 0; i < width; i++)
+                for (int j = 0; j < height; j++)
                     newItems[i, j] = items[i, j];
             items = newItems;
             sizeInTiles = value;

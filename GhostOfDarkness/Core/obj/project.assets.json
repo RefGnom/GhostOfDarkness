@@ -129,11 +129,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Programming\\C# Projects\\GhostOfDarkness\\GhostOfDarkness\\MapLibrary\\Core.csproj",
+      "projectUniqueName": "D:\\Programming\\C# Projects\\GhostOfDarkness\\GhostOfDarkness\\Core\\Core.csproj",
       "projectName": "Core",
-      "projectPath": "D:\\Programming\\C# Projects\\GhostOfDarkness\\GhostOfDarkness\\MapLibrary\\Core.csproj",
+      "projectPath": "D:\\Programming\\C# Projects\\GhostOfDarkness\\GhostOfDarkness\\Core\\Core.csproj",
       "packagesPath": "C:\\Users\\vepr\\.nuget\\packages\\",
-      "outputPath": "D:\\Programming\\C# Projects\\GhostOfDarkness\\GhostOfDarkness\\MapLibrary\\obj\\",
+      "outputPath": "D:\\Programming\\C# Projects\\GhostOfDarkness\\GhostOfDarkness\\Core\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\vepr\\AppData\\Roaming\\NuGet\\NuGet.Config",

@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Game", "Game\Game.csproj", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MapEditor", "MapEditor\MapEditor.csproj", "{B6F79161-1B8D-4276-A58A-EB48D3FD5851}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core", "MapLibrary\Core.csproj", "{7E23FEF7-8E4D-46A1-9BD5-0BC5613FD736}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core", "Core\Core.csproj", "{6F8C1900-3EC1-480B-A939-0B5EAF545E1D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +23,10 @@ Global
 		{B6F79161-1B8D-4276-A58A-EB48D3FD5851}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B6F79161-1B8D-4276-A58A-EB48D3FD5851}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B6F79161-1B8D-4276-A58A-EB48D3FD5851}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7E23FEF7-8E4D-46A1-9BD5-0BC5613FD736}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7E23FEF7-8E4D-46A1-9BD5-0BC5613FD736}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7E23FEF7-8E4D-46A1-9BD5-0BC5613FD736}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7E23FEF7-8E4D-46A1-9BD5-0BC5613FD736}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6F8C1900-3EC1-480B-A939-0B5EAF545E1D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F8C1900-3EC1-480B-A939-0B5EAF545E1D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F8C1900-3EC1-480B-A939-0B5EAF545E1D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F8C1900-3EC1-480B-A939-0B5EAF545E1D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,9 +1,8 @@
 ﻿using Microsoft.Xna.Framework;
-using System;
 
-namespace game;
+namespace Core;
 
-internal static class Vector2Extension
+public static class Vector2Extension
 {
     /// <summary>
     /// </summary>

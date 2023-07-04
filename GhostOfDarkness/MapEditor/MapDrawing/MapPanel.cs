@@ -11,6 +11,7 @@ internal class MapPanel : Panel
         Table.MouseDown += TableMouseDown;
         Table.MouseMove += TableMouseMove;
         Controls.Add(Table);
+        Table.MapChanged += (map) => Table.Location = new Point(0, 0);
     }
 
     private void TableMouseDown(object? sender, MouseEventArgs e)
@@ -40,7 +41,7 @@ internal class MapPanel : Panel
 
     private Point GetNewLocation(int deltaX, int deltaY)
     {
-        var boundWidth = 400;
+        var boundWidth = 200;
         var newX = Table.Left;
         var newY = Table.Top;
         if (tableTop + deltaY < Bottom - boundWidth
