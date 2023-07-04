@@ -5,7 +5,7 @@ namespace Core;
 
 public class Map
 {
-    [JsonProperty]
+    [JsonProperty(Order = 1)]
     private MapItem[,] items;
     [JsonProperty]
     private Vector2 sizeInTiles;
@@ -26,10 +26,13 @@ public class Map
             items = newItems;
             sizeInTiles = value;
             Size = value * TileSize;
+            SizeChanged?.Invoke();
         }
     }
 
     public Vector2 Size { get; private set; }
+
+    public event Action? SizeChanged;
 
     public MapItem this[int x, int y]
     {
@@ -40,6 +43,7 @@ public class Map
     public Map(int widthInTiles, int heightInTiles)
     {
         items = new MapItem[widthInTiles, heightInTiles];
-        Size = new Vector2(widthInTiles, heightInTiles) * TileSize;
+        sizeInTiles = new Vector2(widthInTiles, heightInTiles);
+        Size = sizeInTiles * TileSize;
     }
 }

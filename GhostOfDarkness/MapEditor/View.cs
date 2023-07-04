@@ -1,20 +1,22 @@
-using Core;
-
 namespace MapEditor;
 
 public class View : Form
 {
-    private Map? map;
-    private readonly Panel mapDriwer = new();
+    private readonly MapPanel mapPanel = new();
+
+    public static bool SpacePressed { get; private set; }
 
     public View()
     {
         InitializeComponent();
         Initialize();
+        KeyDown += (s, e) => SpacePressed = e.KeyCode == Keys.Space;
+        KeyUp += (s, e) => SpacePressed = SpacePressed && e.KeyCode != Keys.Space;
     }
 
     private void InitializeComponent()
     {
+        DoubleBuffered = true;
     }
 
     private void Initialize()
@@ -28,22 +30,18 @@ public class View : Form
         var menu = new MenuControl();
         menu.OnCreateFile += () =>
         {
-            map = new(32, 10);
-            mapDriwer.Visible = true;
+            mapPanel.Table.Map = new(70, 50);
         };
         menu.OnOpenFile += (map) =>
         {
-            this.map = map;
-            mapDriwer.Visible = true;
+            mapPanel.Table.Map = map;
         };
-        menu.OnSaveFile += () => map;
+        menu.OnSaveFile += () => mapPanel.Table.Map;
         Controls.Add(menu.Menu);
         #endregion
-
-        #region mapDriwer
-        mapDriwer.BackColor = Color.FromArgb(40, 32, 27);
-        mapDriwer.Visible = false;
-        Controls.Add(mapDriwer);
+        #region mapPanel
+        mapPanel.BorderStyle = BorderStyle.FixedSingle;
+        Controls.Add(mapPanel);
         #endregion
 
         FormSizeChanged(this, new EventArgs());
@@ -53,7 +51,7 @@ public class View : Form
     {
         var menuHeight = 24;
         var percent = 0.8;
-        mapDriwer.Location = new Point(0, menuHeight);
-        mapDriwer.Size = new Size((int)(Width * percent), Height - menuHeight);
+        mapPanel.Location = new Point(0, menuHeight);
+        mapPanel.Size = new Size((int)(Width * percent), Height - menuHeight);
     }
 }
