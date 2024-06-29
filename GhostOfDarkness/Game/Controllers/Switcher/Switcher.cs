@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using Core;
+using Core.Extensions;
 using game;
 using Game.View;
 using Microsoft.Xna.Framework;

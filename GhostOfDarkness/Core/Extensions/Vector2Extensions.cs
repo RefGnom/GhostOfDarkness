@@ -1,8 +1,8 @@
 ﻿using Microsoft.Xna.Framework;
 
-namespace Core;
+namespace Core.Extensions;
 
-public static class Vector2Extension
+public static class Vector2Extensions
 {
     /// <summary>
     /// </summary>
@@ -12,14 +12,17 @@ public static class Vector2Extension
         var (x, y) = direction;
         var angle = -MathF.Atan(x / y);
         if (y >= 0)
+        {
             angle += MathF.PI;
+        }
+
         if (angle < 0)
+        {
             angle += 2 * MathF.PI;
+        }
+
         return angle;
     }
 
-    public static Vector2 Shift(this Vector2 vector, float dx, float dy)
-    {
-        return new Vector2(vector.X + dx, vector.Y + dy);
-    }
+    public static Vector2 Shift(this Vector2 vector, float dx, float dy) => new Vector2(vector.X + dx, vector.Y + dy);
 }

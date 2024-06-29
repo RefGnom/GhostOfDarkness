@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using Core;
+using Core.Extensions;
 using game;
 using Microsoft.Xna.Framework.Graphics;
 
