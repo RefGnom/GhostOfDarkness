@@ -1,5 +1,4 @@
-﻿using System.Transactions;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
 namespace Core.Saves;
@@ -26,8 +25,6 @@ public class SaveHandler : ISaveHandler
 
     public void Create(Save save, string saveName)
     {
-        using var transactionScope = new TransactionScope();
-
         var savePath = GetSavePath(saveName);
         var saveJson = JsonConvert.SerializeObject(save, settings);
         File.WriteAllText(savePath, saveJson);
@@ -35,14 +32,10 @@ public class SaveHandler : ISaveHandler
         var saveInfoPath = GetSaveInfoPath(saveName);
         var saveInfoJson = JsonConvert.SerializeObject(save.Info, settings);
         File.WriteAllText(saveInfoPath, saveInfoJson);
-
-        transactionScope.Complete();
     }
 
     public Save Get(string saveName)
     {
-        using var transactionScope = new TransactionScope();
-
         var savePath = GetSavePath(saveName);
         var saveJson = File.ReadAllText(savePath);
         var save = JsonConvert.DeserializeObject<Save>(saveJson, settings)!;
@@ -50,8 +43,6 @@ public class SaveHandler : ISaveHandler
         var saveInfoPath = GetSaveInfoPath(saveName);
         var saveInfoJson = File.ReadAllText(saveInfoPath);
         var saveInfo = JsonConvert.DeserializeObject<SaveInfo>(saveInfoJson, settings)!;
-
-        transactionScope.Complete();
 
         save.Info = saveInfo;
         return save;
@@ -68,15 +59,11 @@ public class SaveHandler : ISaveHandler
 
     public void Delete(string saveName)
     {
-        using var transactionScope = new TransactionScope();
-
         var savePath = GetSavePath(saveName);
         File.Delete(savePath);
 
         var saveInfoPath = GetSaveInfoPath(saveName);
         File.Delete(saveInfoPath);
-
-        transactionScope.Complete();
     }
 
     private static string GetSavePath(string saveName)
