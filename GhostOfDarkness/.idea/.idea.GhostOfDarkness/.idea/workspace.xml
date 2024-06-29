@@ -8,137 +8,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cc48264e-bd25-4ed8-ba6b-7f177311d6be" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Core/Map.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Map.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Core/obj/Core.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/Core/obj/Core.csproj.nuget.dgspec.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Core/obj/Core.csproj.nuget.g.props" beforeDir="false" afterPath="$PROJECT_DIR$/Core/obj/Core.csproj.nuget.g.props" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Core/obj/Debug/net6.0/Core.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Core/obj/Debug/net6.0/Core.AssemblyInfo.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Core/obj/Debug/net6.0/Core.GeneratedMSBuildEditorConfig.editorconfig" beforeDir="false" afterPath="$PROJECT_DIR$/Core/obj/Debug/net6.0/Core.GeneratedMSBuildEditorConfig.editorconfig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Core/obj/Debug/net6.0/Core.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Core/obj/Debug/net6.0/Core.csproj.FileListAbsolute.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Core/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/Core/obj/project.assets.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game/Algorithms/AStarPoint.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Algorithms/AStarPoint.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game/Algorithms/AStarRectangle.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Algorithms/AStarRectangle.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game/Algorithms/PathFinder.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Algorithms/PathFinder.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game/Content/bin/DesktopGL/Content/Sounds/AlienWarfare.ogg" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Content/bin/DesktopGL/Content/Sounds/AlienWarfare.ogg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game/Content/bin/DesktopGL/Content/Sounds/BeastOfTheArena.ogg" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Content/bin/DesktopGL/Content/Sounds/BeastOfTheArena.ogg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game/Content/bin/DesktopGL/Content/Sounds/CultistBase.ogg" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Content/bin/DesktopGL/Content/Sounds/CultistBase.ogg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game/Content/bin/DesktopGL/Content/Sounds/DemonicCorruption.ogg" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Content/bin/DesktopGL/Content/Sounds/DemonicCorruption.ogg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game/Content/bin/DesktopGL/Content/Sounds/FortressOfDoom-ChadMossholder.ogg" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Content/bin/DesktopGL/Content/Sounds/FortressOfDoom-ChadMossholder.ogg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game/Content/bin/DesktopGL/Content/Sounds/InfiltrateTheCult.ogg" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Content/bin/DesktopGL/Content/Sounds/InfiltrateTheCult.ogg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game/Content/bin/DesktopGL/Content/Sounds/PhobosSpace.ogg" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Content/bin/DesktopGL/Content/Sounds/PhobosSpace.ogg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game/Content/bin/DesktopGL/Content/Sounds/TheBaronOfHell.ogg" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Content/bin/DesktopGL/Content/Sounds/TheBaronOfHell.ogg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game/Content/bin/DesktopGL/Content/Sounds/TheOnlyThingTheyFearIsYou.ogg" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Content/bin/DesktopGL/Content/Sounds/TheOnlyThingTheyFearIsYou.ogg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game/Content/bin/DesktopGL/Content/Sounds/TheSuperGoreNest.ogg" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Content/bin/DesktopGL/Content/Sounds/TheSuperGoreNest.ogg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game/Content/obj/DesktopGL/net6.0-windows/Content/.mgcontent" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Content/obj/DesktopGL/net6.0-windows/Content/.mgcontent" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game/Content/obj/DesktopGL/net6.0-windows/Content/.mgstats" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Content/obj/DesktopGL/net6.0-windows/Content/.mgstats" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game/Content/obj/DesktopGL/net6.0-windows/Content/Fonts/Buttons.mgcontent" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Content/obj/DesktopGL/net6.0-windows/Content/Fonts/Buttons.mgcontent" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game/Content/obj/DesktopGL/net6.0-windows/Content/Fonts/Common12.mgcontent" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Content/obj/DesktopGL/net6.0-windows/Content/Fonts/Common12.mgcontent" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game/Content/obj/DesktopGL/net6.0-windows/Content/Fonts/Common16.mgcontent" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Content/obj/DesktopGL/net6.0-windows/Content/Fonts/Common16.mgcontent" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game/Content/obj/DesktopGL/net6.0-windows/Content/Fonts/Common18.mgcontent" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Content/obj/DesktopGL/net6.0-windows/Content/Fonts/Common18.mgcontent" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game/Content/obj/DesktopGL/net6.0-windows/Content/Fonts/Debug.mgcontent" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Content/obj/DesktopGL/net6.0-windows/Content/Fonts/Debug.mgcontent" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game/Content/obj/DesktopGL/net6.0-windows/Content/Service/Door color.mgcontent" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Content/obj/DesktopGL/net6.0-windows/Content/Service/Door color.mgcontent" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game/Content/obj/DesktopGL/net6.0-windows/Content/Service/Hallway floor color.mgcontent" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Content/obj/DesktopGL/net6.0-windows/Content/Service/Hallway floor color.mgcontent" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game/Content/obj/DesktopGL/net6.0-windows/Content/Service/Horizontal line.mgcontent" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Content/obj/DesktopGL/net6.0-windows/Content/Service/Horizontal line.mgcontent" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game/Content/obj/DesktopGL/net6.0-windows/Content/Service/Room floor color.mgcontent" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Content/obj/DesktopGL/net6.0-windows/Content/Service/Room floor color.mgcontent" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game/Content/obj/DesktopGL/net6.0-windows/Content/Service/Vertical line.mgcontent" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Content/obj/DesktopGL/net6.0-windows/Content/Service/Vertical line.mgcontent" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game/Content/obj/DesktopGL/net6.0-windows/Content/Service/Wall color.mgcontent" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Content/obj/DesktopGL/net6.0-windows/Content/Service/Wall color.mgcontent" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game/Content/obj/DesktopGL/net6.0-windows/Content/Sounds/AlienWarfare.mgcontent" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Content/obj/DesktopGL/net6.0-windows/Content/Sounds/AlienWarfare.mgcontent" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game/Content/obj/DesktopGL/net6.0-windows/Content/Sounds/BeastOfTheArena.mgcontent" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Content/obj/DesktopGL/net6.0-windows/Content/Sounds/BeastOfTheArena.mgcontent" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game/Content/obj/DesktopGL/net6.0-windows/Content/Sounds/CultistBase.mgcontent" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Content/obj/DesktopGL/net6.0-windows/Content/Sounds/CultistBase.mgcontent" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game/Content/obj/DesktopGL/net6.0-windows/Content/Sounds/DemonicCorruption.mgcontent" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Content/obj/DesktopGL/net6.0-windows/Content/Sounds/DemonicCorruption.mgcontent" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game/Content/obj/DesktopGL/net6.0-windows/Content/Sounds/FortressOfDoom-ChadMossholder.mgcontent" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Content/obj/DesktopGL/net6.0-windows/Content/Sounds/FortressOfDoom-ChadMossholder.mgcontent" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game/Content/obj/DesktopGL/net6.0-windows/Content/Sounds/InfiltrateTheCult.mgcontent" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Content/obj/DesktopGL/net6.0-windows/Content/Sounds/InfiltrateTheCult.mgcontent" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game/Content/obj/DesktopGL/net6.0-windows/Content/Sounds/PhobosSpace.mgcontent" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Content/obj/DesktopGL/net6.0-windows/Content/Sounds/PhobosSpace.mgcontent" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game/Content/obj/DesktopGL/net6.0-windows/Content/Sounds/TheBaronOfHell.mgcontent" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Content/obj/DesktopGL/net6.0-windows/Content/Sounds/TheBaronOfHell.mgcontent" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game/Content/obj/DesktopGL/net6.0-windows/Content/Sounds/TheOnlyThingTheyFearIsYou.mgcontent" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Content/obj/DesktopGL/net6.0-windows/Content/Sounds/TheOnlyThingTheyFearIsYou.mgcontent" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game/Content/obj/DesktopGL/net6.0-windows/Content/Sounds/TheSuperGoreNest.mgcontent" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Content/obj/DesktopGL/net6.0-windows/Content/Sounds/TheSuperGoreNest.mgcontent" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game/Content/obj/DesktopGL/net6.0-windows/Content/Textures/Creatures/Boss.mgcontent" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Content/obj/DesktopGL/net6.0-windows/Content/Textures/Creatures/Boss.mgcontent" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game/Content/obj/DesktopGL/net6.0-windows/Content/Textures/Creatures/Bullet.mgcontent" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Content/obj/DesktopGL/net6.0-windows/Content/Textures/Creatures/Bullet.mgcontent" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game/Content/obj/DesktopGL/net6.0-windows/Content/Textures/Creatures/Hitbox.mgcontent" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Content/obj/DesktopGL/net6.0-windows/Content/Textures/Creatures/Hitbox.mgcontent" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game/Content/obj/DesktopGL/net6.0-windows/Content/Textures/Creatures/Melee Enemy.mgcontent" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Content/obj/DesktopGL/net6.0-windows/Content/Textures/Creatures/Melee Enemy.mgcontent" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game/Content/obj/DesktopGL/net6.0-windows/Content/Textures/Creatures/Player.mgcontent" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Content/obj/DesktopGL/net6.0-windows/Content/Textures/Creatures/Player.mgcontent" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game/Content/obj/DesktopGL/net6.0-windows/Content/Textures/HUD/HealthBarBackground.mgcontent" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Content/obj/DesktopGL/net6.0-windows/Content/Textures/HUD/HealthBarBackground.mgcontent" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game/Content/obj/DesktopGL/net6.0-windows/Content/Textures/HUD/HealthBarForeground.mgcontent" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Content/obj/DesktopGL/net6.0-windows/Content/Textures/HUD/HealthBarForeground.mgcontent" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game/Content/obj/DesktopGL/net6.0-windows/Content/Textures/Rooms/Boss room.mgcontent" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Content/obj/DesktopGL/net6.0-windows/Content/Textures/Rooms/Boss room.mgcontent" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game/Content/obj/DesktopGL/net6.0-windows/Content/Textures/Rooms/Education room.mgcontent" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Content/obj/DesktopGL/net6.0-windows/Content/Textures/Rooms/Education room.mgcontent" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game/Content/obj/DesktopGL/net6.0-windows/Content/Textures/Rooms/Hallway.mgcontent" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Content/obj/DesktopGL/net6.0-windows/Content/Textures/Rooms/Hallway.mgcontent" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game/Content/obj/DesktopGL/net6.0-windows/Content/Textures/Rooms/Room1.mgcontent" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Content/obj/DesktopGL/net6.0-windows/Content/Textures/Rooms/Room1.mgcontent" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game/Content/obj/DesktopGL/net6.0-windows/Content/Textures/Rooms/Room2.mgcontent" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Content/obj/DesktopGL/net6.0-windows/Content/Textures/Rooms/Room2.mgcontent" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game/Content/obj/DesktopGL/net6.0-windows/Content/Textures/Rooms/Room3.mgcontent" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Content/obj/DesktopGL/net6.0-windows/Content/Textures/Rooms/Room3.mgcontent" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game/Content/obj/DesktopGL/net6.0-windows/Content/Textures/Rooms/Room4.mgcontent" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Content/obj/DesktopGL/net6.0-windows/Content/Textures/Rooms/Room4.mgcontent" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game/Content/obj/DesktopGL/net6.0-windows/Content/Textures/Rooms/Room5.mgcontent" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Content/obj/DesktopGL/net6.0-windows/Content/Textures/Rooms/Room5.mgcontent" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game/Content/obj/DesktopGL/net6.0-windows/Content/Textures/Rooms/Room6.mgcontent" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Content/obj/DesktopGL/net6.0-windows/Content/Textures/Rooms/Room6.mgcontent" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game/Content/obj/DesktopGL/net6.0-windows/Content/Textures/Rooms/Room7.mgcontent" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Content/obj/DesktopGL/net6.0-windows/Content/Textures/Rooms/Room7.mgcontent" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game/Content/obj/DesktopGL/net6.0-windows/Content/Textures/Rooms/Room8.mgcontent" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Content/obj/DesktopGL/net6.0-windows/Content/Textures/Rooms/Room8.mgcontent" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game/Content/obj/DesktopGL/net6.0-windows/Content/Textures/Rooms/Room9.mgcontent" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Content/obj/DesktopGL/net6.0-windows/Content/Textures/Rooms/Room9.mgcontent" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game/Content/obj/DesktopGL/net6.0-windows/Content/Textures/Tiles/Door.mgcontent" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Content/obj/DesktopGL/net6.0-windows/Content/Textures/Tiles/Door.mgcontent" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game/Content/obj/DesktopGL/net6.0-windows/Content/Textures/Tiles/Floors/Dirt1.mgcontent" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Content/obj/DesktopGL/net6.0-windows/Content/Textures/Tiles/Floors/Dirt1.mgcontent" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game/Content/obj/DesktopGL/net6.0-windows/Content/Textures/Tiles/Floors/Dirt2.mgcontent" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Content/obj/DesktopGL/net6.0-windows/Content/Textures/Tiles/Floors/Dirt2.mgcontent" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game/Content/obj/DesktopGL/net6.0-windows/Content/Textures/Tiles/Floors/Grass.mgcontent" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Content/obj/DesktopGL/net6.0-windows/Content/Textures/Tiles/Floors/Grass.mgcontent" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game/Content/obj/DesktopGL/net6.0-windows/Content/Textures/Tiles/Floors/Ice1.mgcontent" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Content/obj/DesktopGL/net6.0-windows/Content/Textures/Tiles/Floors/Ice1.mgcontent" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game/Content/obj/DesktopGL/net6.0-windows/Content/Textures/Tiles/Floors/Metal.mgcontent" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Content/obj/DesktopGL/net6.0-windows/Content/Textures/Tiles/Floors/Metal.mgcontent" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game/Content/obj/DesktopGL/net6.0-windows/Content/Textures/Tiles/Floors/Sand1.mgcontent" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Content/obj/DesktopGL/net6.0-windows/Content/Textures/Tiles/Floors/Sand1.mgcontent" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game/Content/obj/DesktopGL/net6.0-windows/Content/Textures/Tiles/Floors/Sand2.mgcontent" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Content/obj/DesktopGL/net6.0-windows/Content/Textures/Tiles/Floors/Sand2.mgcontent" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game/Content/obj/DesktopGL/net6.0-windows/Content/Textures/Tiles/Floors/Stone1.mgcontent" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Content/obj/DesktopGL/net6.0-windows/Content/Textures/Tiles/Floors/Stone1.mgcontent" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game/Content/obj/DesktopGL/net6.0-windows/Content/Textures/Tiles/Floors/Stone2.mgcontent" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Content/obj/DesktopGL/net6.0-windows/Content/Textures/Tiles/Floors/Stone2.mgcontent" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game/Content/obj/DesktopGL/net6.0-windows/Content/Textures/Tiles/Floors/Stone3.mgcontent" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Content/obj/DesktopGL/net6.0-windows/Content/Textures/Tiles/Floors/Stone3.mgcontent" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game/Content/obj/DesktopGL/net6.0-windows/Content/Textures/Tiles/Floors/Wooden1.mgcontent" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Content/obj/DesktopGL/net6.0-windows/Content/Textures/Tiles/Floors/Wooden1.mgcontent" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game/Content/obj/DesktopGL/net6.0-windows/Content/Textures/Tiles/Floors/Wooden2.mgcontent" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Content/obj/DesktopGL/net6.0-windows/Content/Textures/Tiles/Floors/Wooden2.mgcontent" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game/Content/obj/DesktopGL/net6.0-windows/Content/Textures/Tiles/Opened door.mgcontent" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Content/obj/DesktopGL/net6.0-windows/Content/Textures/Tiles/Opened door.mgcontent" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game/Content/obj/DesktopGL/net6.0-windows/Content/Textures/Tiles/Wall.mgcontent" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Content/obj/DesktopGL/net6.0-windows/Content/Textures/Tiles/Wall.mgcontent" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game/Content/obj/DesktopGL/net6.0-windows/Content/Textures/UI/Background.mgcontent" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Content/obj/DesktopGL/net6.0-windows/Content/Textures/UI/Background.mgcontent" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game/Content/obj/DesktopGL/net6.0-windows/Content/Textures/UI/ButtonBackground.mgcontent" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Content/obj/DesktopGL/net6.0-windows/Content/Textures/UI/ButtonBackground.mgcontent" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game/Content/obj/DesktopGL/net6.0-windows/Content/Textures/UI/Dialog helper.mgcontent" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Content/obj/DesktopGL/net6.0-windows/Content/Textures/UI/Dialog helper.mgcontent" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game/Content/obj/DesktopGL/net6.0-windows/Content/Textures/UI/EducationUI.mgcontent" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Content/obj/DesktopGL/net6.0-windows/Content/Textures/UI/EducationUI.mgcontent" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game/Content/obj/DesktopGL/net6.0-windows/Content/Textures/UI/FieldForGameName.mgcontent" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Content/obj/DesktopGL/net6.0-windows/Content/Textures/UI/FieldForGameName.mgcontent" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game/Content/obj/DesktopGL/net6.0-windows/Content/Textures/UI/Pause background.mgcontent" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Content/obj/DesktopGL/net6.0-windows/Content/Textures/UI/Pause background.mgcontent" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game/Content/obj/DesktopGL/net6.0-windows/Content/Textures/UI/ProgressBar/ProgressBarBackground.mgcontent" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Content/obj/DesktopGL/net6.0-windows/Content/Textures/UI/ProgressBar/ProgressBarBackground.mgcontent" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game/Content/obj/DesktopGL/net6.0-windows/Content/Textures/UI/ProgressBar/ProgressBarForeground.mgcontent" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Content/obj/DesktopGL/net6.0-windows/Content/Textures/UI/ProgressBar/ProgressBarForeground.mgcontent" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game/Content/obj/DesktopGL/net6.0-windows/Content/Textures/UI/ProgressBar/ProgressBarValue.mgcontent" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Content/obj/DesktopGL/net6.0-windows/Content/Textures/UI/ProgressBar/ProgressBarValue.mgcontent" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game/Content/obj/DesktopGL/net6.0-windows/Content/Textures/UI/Saves window.mgcontent" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Content/obj/DesktopGL/net6.0-windows/Content/Textures/UI/Saves window.mgcontent" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game/Content/obj/DesktopGL/net6.0-windows/Content/Textures/UI/Settings string.mgcontent" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Content/obj/DesktopGL/net6.0-windows/Content/Textures/UI/Settings string.mgcontent" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game/Content/obj/DesktopGL/net6.0-windows/Content/Textures/UI/Switcher/Background.mgcontent" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Content/obj/DesktopGL/net6.0-windows/Content/Textures/UI/Switcher/Background.mgcontent" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game/Content/obj/DesktopGL/net6.0-windows/Content/Textures/UI/Switcher/LeftArrow.mgcontent" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Content/obj/DesktopGL/net6.0-windows/Content/Textures/UI/Switcher/LeftArrow.mgcontent" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game/Content/obj/DesktopGL/net6.0-windows/Content/Textures/UI/Switcher/RightArrow.mgcontent" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Content/obj/DesktopGL/net6.0-windows/Content/Textures/UI/Switcher/RightArrow.mgcontent" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game/Content/obj/DesktopGL/net6.0-windows/Content/Textures/UI/paper.mgcontent" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Content/obj/DesktopGL/net6.0-windows/Content/Textures/UI/paper.mgcontent" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game/Controllers/KeyboardController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Controllers/KeyboardController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game/Controllers/Switcher/Switcher.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Controllers/Switcher/Switcher.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game/Controllers/TextInput.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Controllers/TextInput.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game/Creatures/Boss.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Creatures/Boss.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game/Creatures/BossView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Creatures/BossView.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game/Creatures/Player.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Creatures/Player.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game/Creatures/PlayerView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Creatures/PlayerView.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game/Extensions/PointExtension.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Extensions/PointExtension.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game/Extensions/RectangleExtension.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Extensions/RectangleExtension.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game/Extensions/Texture2DExtension.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Extensions/Texture2DExtension.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game/Game/GameController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Game/GameController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game/Game/GameModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Game/GameModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game/Game/GameStates/ConfirmationState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Game/GameStates/ConfirmationState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game/Game/GameStates/CreateGameState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Game/GameStates/CreateGameState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game/Game/GameStates/GameState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Game/GameStates/GameState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game/Game/GameStates/GameStatesController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Game/GameStates/GameStatesController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game/Game/GameStates/LoadSaveState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Game/GameStates/LoadSaveState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game/Game/GameStates/MainMenuState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Game/GameStates/MainMenuState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game/Game/GameStates/PauseState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Game/GameStates/PauseState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game/Game/GameStates/PlayState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Game/GameStates/PlayState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game/Game/GameStates/PlayerDeadState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Game/GameStates/PlayerDeadState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game/Game/GameStates/SettingsState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Game/GameStates/SettingsState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game/Game/GameView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Game/GameView.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game/Managers/DialogManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Managers/DialogManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game/Managers/HintManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Managers/HintManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game/Model/Room.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Model/Room.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game/Model/RoomImporter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Model/RoomImporter.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game/Model/Tiles/InteractableDoor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Model/Tiles/InteractableDoor.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game/Model/World.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Model/World.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game/Program/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Program/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game/Tests/AStartTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Game/Tests/AStartTests.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game/View/UI/Note.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Game/View/UI/Note.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game/obj/Debug/net6.0-windows/Game.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Game/obj/Debug/net6.0-windows/Game.AssemblyInfo.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game/obj/Debug/net6.0-windows/Game.GeneratedMSBuildEditorConfig.editorconfig" beforeDir="false" afterPath="$PROJECT_DIR$/Game/obj/Debug/net6.0-windows/Game.GeneratedMSBuildEditorConfig.editorconfig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game/obj/Game.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/Game/obj/Game.csproj.nuget.dgspec.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game/obj/Game.csproj.nuget.g.props" beforeDir="false" afterPath="$PROJECT_DIR$/Game/obj/Game.csproj.nuget.g.props" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/Game/obj/project.assets.json" afterDir="false" />
-    </list>
+    <list default="true" id="cc48264e-bd25-4ed8-ba6b-7f177311d6be" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -158,7 +28,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    ".NET Project.Game.executor": "Debug",
+    ".NET Project.Game.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "main",
     "node.js.detected.package.eslint": "true",
@@ -176,7 +46,7 @@
     ]
   }
 }]]></component>
-  <component name="RunManager" selected=".NET Project.Game">
+  <component name="RunManager" selected=".NET Project.MapEditor">
     <configuration name="Game" type="DotNetProject" factoryName=".NET Project">
       <option name="EXE_PATH" value="" />
       <option name="PROGRAM_PARAMETERS" value="" />
@@ -222,7 +92,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1719660898104</updated>
-      <workItem from="1719660901729" duration="461000" />
+      <workItem from="1719660901729" duration="798000" />
     </task>
     <servers />
   </component>

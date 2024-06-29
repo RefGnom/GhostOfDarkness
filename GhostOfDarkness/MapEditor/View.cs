@@ -1,4 +1,5 @@
 using MapEditor.Inspector;
+using MapEditor.MapDrawing;
 using Microsoft.Xna.Framework;
 
 namespace MapEditor;
@@ -16,8 +17,8 @@ public class View : Form
         InitializeComponent();
         Initialize();
         FormSizeChanged(this, new EventArgs());
-        KeyDown += (s, e) => SpacePressed = e.KeyCode == Keys.Space;
-        KeyUp += (s, e) => SpacePressed = SpacePressed && e.KeyCode != Keys.Space;
+        KeyDown += (_, e) => SpacePressed = e.KeyCode == Keys.Space;
+        KeyUp += (_, e) => SpacePressed = SpacePressed && e.KeyCode != Keys.Space;
     }
 
     private void InitializeComponent()
@@ -29,7 +30,7 @@ public class View : Form
         ClientSize = new Size(1280, 720);
         FormBorderStyle = FormBorderStyle.FixedSingle;
         DoubleBuffered = true;
-        Text = "MapEditor";
+        Text = @"MapEditor";
         SizeChanged += FormSizeChanged;
 
         #region menu
@@ -57,7 +58,7 @@ public class View : Form
             {
                 inspector.Clear();
                 var property = new MapProperties((int)(Width * 0.25));
-                property.GotFocus += (s, e) => ActiveControl = null;
+                property.GotFocus += (_, _) => ActiveControl = null;
                 var size = mapPanel.Table.Map.SizeInTiles;
                 property.WidthValue = size.X.ToString();
                 property.HeightValue = size.Y.ToString();
