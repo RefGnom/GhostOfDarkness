@@ -1,4 +1,6 @@
-﻿using game;
+﻿using Core.Extensions;
+using Core.Saves;
+using game;
 using Game.Controllers;
 using Game.Interfaces;
 using Game.View;
@@ -9,10 +11,19 @@ namespace Game.Game.GameStates;
 
 internal class CreateGameState : GameState
 {
+    private readonly ISaveHandler saveHandler;
+    private readonly ISaveProvider saveProvider;
     private readonly TextInput textInput;
 
-    public CreateGameState(IGameStateSwitcher stateSwitcher) : base(stateSwitcher)
+    public CreateGameState(
+        IGameStateSwitcher stateSwitcher,
+        ISaveHandler saveHandler,
+        ISaveProvider saveProvider
+    ) : base(stateSwitcher)
     {
+        this.saveHandler = saveHandler;
+        this.saveProvider = saveProvider;
+
         Drawables.Add(new Sprite(Textures.Background, Vector2.Zero, Layers.Background));
 
         var back = new Button(Textures.ButtonBackground, new Vector2(1432, 960), "Back");
@@ -38,6 +49,15 @@ internal class CreateGameState : GameState
 
     private void CreateGame()
     {
+        if (textInput.Text.IsNullOrEmpty())
+        {
+            // todo: Нельзя создавать сохранение с пустым названием
+            return;
+        }
+
+        var save = saveProvider.CreateDefaultSave(textInput.Text);
+        saveHandler.Create(save, textInput.Text);
+
         Switcher.StartGame();
         Play();
     }

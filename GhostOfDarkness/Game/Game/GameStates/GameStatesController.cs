@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
 using System.Linq;
+using Core.Saves;
 using Game.Game.GameStates;
 using Game.Interfaces;
 
@@ -21,7 +22,7 @@ internal class GameStatesController : IGameStateSwitcher, IDrawable, IUpdateable
             new MainMenuState(this),
             new LoadSaveState(this),
             new ConfirmationState(this),
-            new CreateGameState(this),
+            new CreateGameState(this, new SaveHandler(), new SaveProvider()),
             new PauseState(this),
             new PlayerDeadState(this),
             new PlayState(this),
