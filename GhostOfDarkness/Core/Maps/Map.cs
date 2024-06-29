@@ -1,7 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Newtonsoft.Json;
 
-namespace Core;
+namespace Core.Maps;
 
 public class Map
 {

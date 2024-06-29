@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
-namespace Core;
+namespace Core.Maps;
 
 public class MapSerializer
 {
@@ -9,21 +9,23 @@ public class MapSerializer
 
     public MapSerializer()
     {
-        settings = new JsonSerializerSettings();
-        settings.Formatting = Formatting.Indented;
-        settings.TypeNameHandling = TypeNameHandling.Auto;
+        settings = new JsonSerializerSettings
+        {
+            Formatting = Formatting.Indented,
+            TypeNameHandling = TypeNameHandling.Auto
+        };
         settings.Converters.Add(new BinaryConverter());
     }
 
-    public void Serialize(Map map, string path)
+    public void Serialize(Maps.Map map, string path)
     {
         var json = JsonConvert.SerializeObject(map, settings);
         File.WriteAllText(path, json);
     }
 
-    public Map Deserialize(string path)
+    public Maps.Map Deserialize(string path)
     {
         var json = File.ReadAllText(path);
-        return JsonConvert.DeserializeObject<Map>(json, settings)!;
+        return JsonConvert.DeserializeObject<Maps.Map>(json, settings)!;
     }
 }

@@ -1,4 +1,4 @@
-﻿using Core;
+﻿using Core.Maps;
 
 namespace MapEditor.MapDrawing;
 
