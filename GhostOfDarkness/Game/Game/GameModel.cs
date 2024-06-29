@@ -1,6 +1,9 @@
 ﻿using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 using System.Collections.Generic;
+using Game.Controllers;
+using Game.Creatures;
+using Game.Model;
 
 namespace game;
 

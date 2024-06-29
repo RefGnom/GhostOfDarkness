@@ -1,7 +1,8 @@
-﻿using Microsoft.Xna.Framework;
+﻿using System.Linq;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 
-namespace game;
+namespace Game.Controllers;
 
 internal static class KeyboardController
 {
@@ -10,30 +11,16 @@ internal static class KeyboardController
 
     public static GameWindow GameWindow { get; set; }
 
-    public static bool IsKeyDown(Keys key, bool single = true)
-    {
-        return currentState.IsKeyDown(key) && (!previousState.IsKeyDown(key) || !single);
-    }
+    public static bool IsKeyDown(Keys key, bool single = true) => currentState.IsKeyDown(key) && (!previousState.IsKeyDown(key) || !single);
 
     public static bool IsCombinationKeysDown(params Keys[] keys)
     {
-        for (int i = 0; i < keys.Length; i++)
-        {
-            if (!IsKeyDown(keys[i], false))
-                return false;
-        }
-        return true;
+        return keys.All(key => IsKeyDown(key, false));
     }
 
-    public static bool IsSingleKeyDown(Keys key)
-    {
-        return currentState.IsKeyDown(key) && !previousState.IsKeyDown(key);
-    }
+    public static bool IsSingleKeyDown(Keys key) => currentState.IsKeyDown(key) && !previousState.IsKeyDown(key);
 
-    public static bool IsSingleKeyUp(Keys key)
-    {
-        return currentState.IsKeyUp(key) && !previousState.IsKeyUp(key);
-    }
+    public static bool IsSingleKeyUp(Keys key) => currentState.IsKeyUp(key) && !previousState.IsKeyUp(key);
 
     public static Keys[] GetPressedKeys() => currentState.GetPressedKeys();
 

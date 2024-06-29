@@ -18,21 +18,24 @@ public class Map
         set
         {
             if (value.X < 0 || value.Y < 0)
+            {
                 throw new ArgumentException("Size cannot be a negative value");
+            }
+
             var newItems = new MapItem[(int)value.X, (int)value.Y];
             var width = (int)Math.Min(sizeInTiles.X, value.X);
             var height = (int)Math.Min(sizeInTiles.Y, value.Y);
-            for (int i = 0; i < width; i++)
-                for (int j = 0; j < height; j++)
-                    newItems[i, j] = items[i, j];
+            for (var i = 0; i < width; i++)
+                for (var j = 0; j < height; j++)
+            {
+                newItems[i, j] = items[i, j];
+            }
+
             items = newItems;
             sizeInTiles = value;
-            Size = value * TileSize;
             SizeChanged?.Invoke();
         }
     }
-
-    public Vector2 Size { get; private set; }
 
     public event Action? SizeChanged;
 
@@ -46,6 +49,5 @@ public class Map
     {
         items = new MapItem[widthInTiles, heightInTiles];
         sizeInTiles = new Vector2(widthInTiles, heightInTiles);
-        Size = sizeInTiles * TileSize;
     }
 }

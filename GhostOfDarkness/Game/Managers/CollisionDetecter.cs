@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Game.Structures;
+using Microsoft.Xna.Framework;
 
 namespace game;
 

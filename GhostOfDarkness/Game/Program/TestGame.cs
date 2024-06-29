@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework.Input;
 
 namespace game.Program;
 
-internal class TestGame : Game
+internal class TestGame : Microsoft.Xna.Framework.Game
 {
     private GraphicsDeviceManager graphics;
     private SpriteBatch spriteBatch;
@@ -16,11 +16,6 @@ internal class TestGame : Game
         IsMouseVisible = true;
     }
 
-    protected override void Initialize()
-    {
-        base.Initialize();
-    }
-
     protected override void LoadContent()
     {
         spriteBatch = new SpriteBatch(GraphicsDevice);
@@ -30,7 +25,9 @@ internal class TestGame : Game
     protected override void Update(GameTime gameTime)
     {
         if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
+        {
             Exit();
+        }
 
         base.Update(gameTime);
     }
@@ -40,7 +37,6 @@ internal class TestGame : Game
         GraphicsDevice.Clear(Color.CornflowerBlue);
         spriteBatch.Begin();
         var width = 26;
-        var height = 38;
         var origin = new Vector2(width / 2, 0);
         var position = new Vector2(0, 0);
         spriteBatch.Draw(Textures.Player, position, null, Color.White, 0, origin, 1, SpriteEffects.None, 0);

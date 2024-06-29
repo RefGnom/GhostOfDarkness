@@ -1,3 +1,4 @@
+using MapEditor.Inspector;
 using Microsoft.Xna.Framework;
 
 namespace MapEditor;

@@ -1,10 +1,14 @@
-﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Core;
+using game;
+using Game.View;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using IComponent = game.IComponent;
 
-namespace game;
+namespace Game.Controllers.Switcher;
 
 internal class Switcher : IComponent, IEnumerable<string>
 {
@@ -40,7 +44,7 @@ internal class Switcher : IComponent, IEnumerable<string>
 
     public void Remove(string value)
     {
-        for (int i = 0; i < options.Count; i++)
+        for (var i = 0; i < options.Count; i++)
         {
             if (value == options[i].Value)
             {
@@ -88,7 +92,7 @@ internal class Switcher : IComponent, IEnumerable<string>
 
     public IEnumerator<string> GetEnumerator()
     {
-        for (int i = 0; i < options.Count; i++)
+        for (var i = 0; i < options.Count; i++)
         {
             yield return options[i].Value;
         }

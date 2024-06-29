@@ -3,6 +3,9 @@ using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 using System;
+using Game.Controllers.Switcher;
+using Game.Game.GameStates;
+using Game.View;
 
 namespace game;
 
@@ -15,24 +18,24 @@ internal class SettingsState : GameState
 
     public SettingsState(IGameStateSwitcher stateSwitcher) : base(stateSwitcher)
     {
-        drawables.Add(new Sprite(Textures.Background, Vector2.Zero, Layers.Background));
+        Drawables.Add(new Sprite(Textures.Background, Vector2.Zero, Layers.Background));
 
         var position = new Vector2(1920 / 2 - Textures.SettingsString.Width / 2, 30);
         position = new Vector2(30, 30);
         var height = 60;
-        drawables.Add(CreateString(position, "Menu", Settings.OpenMenu));
+        Drawables.Add(CreateString(position, "Menu", Settings.OpenMenu));
 
         position.Y += height;
-        drawables.Add(CreateString(position, "Up", Settings.Up));
+        Drawables.Add(CreateString(position, "Up", Settings.Up));
 
         position.Y += height;
-        drawables.Add(CreateString(position, "Down", Settings.Down));
+        Drawables.Add(CreateString(position, "Down", Settings.Down));
 
         position.Y += height;
-        drawables.Add(CreateString(position, "Left", Settings.Left));
+        Drawables.Add(CreateString(position, "Left", Settings.Left));
 
         position.Y += height;
-        drawables.Add(CreateString(position, "Right", Settings.Right));
+        Drawables.Add(CreateString(position, "Right", Settings.Right));
 
         var textWidth = 280;
         position = new Vector2(1200, 30);
@@ -43,8 +46,8 @@ internal class SettingsState : GameState
         };
         displayMode.Start();
         var displayModeText = new Text(new Rectangle((int)position.X - textWidth, (int)position.Y - 12, textWidth, height), "Режим отображения", Align.Left, 0, Fonts.Common16);
-        components.Add(displayMode);
-        drawables.Add(displayModeText);
+        Components.Add(displayMode);
+        Drawables.Add(displayModeText);
 
         position.Y += height;
         var resolution = new Switcher(position)
@@ -56,50 +59,49 @@ internal class SettingsState : GameState
         };
         resolution.Start();
         var resolutionText = new Text(new Rectangle((int)position.X - textWidth, (int)position.Y - 12, textWidth, height), "Разрешение", Align.Left, 0, Fonts.Common16);
-        components.Add(resolution);
-        drawables.Add(resolutionText);
+        Components.Add(resolution);
+        Drawables.Add(resolutionText);
 
         position = new Vector2(1200, 300);
         var musicVolume = new ProgressBar(0, 1, position, 6);
         musicVolume.ValueOnChanged += (value) => musicVolumeAction = () => MediaPlayer.Volume = value;
         musicVolume.SetValue(0.3f);
         var musicVolumeText = new Text(new Rectangle((int)position.X - textWidth, (int)position.Y - 16, textWidth, height), "Громкость музыки", Align.Left, 0, Fonts.Common16);
-        components.Add(musicVolume);
-        drawables.Add(musicVolumeText);
+        Components.Add(musicVolume);
+        Drawables.Add(musicVolumeText);
 
         position.Y += height;
         var soundVolume = new ProgressBar(0, 1, position, 6);
         soundVolume.ValueOnChanged += (value) => soundsVolumeAction = () => SoundEffect.MasterVolume = value;
         soundVolume.SetValue(0.3f);
         var soundVolumeText = new Text(new Rectangle((int)position.X - textWidth, (int)position.Y - 16, textWidth, height), "Громкость звуков", Align.Left, 0, Fonts.Common16);
-        components.Add(soundVolume);
-        drawables.Add(soundVolumeText);
+        Components.Add(soundVolume);
+        Drawables.Add(soundVolumeText);
 
         var save = new Button(Textures.ButtonBackground, new Vector2(934, 960), "Save");
         save.OnClicked += Save;
-        components.Add(save);
+        Components.Add(save);
 
         var exit = new Button(Textures.ButtonBackground, new Vector2(1432, 960), "Exit");
         exit.OnClicked += Exit;
-        components.Add(exit);
+        Components.Add(exit);
 
         SaveSettins();
     }
 
     public override void Back()
     {
-        switcher.SwitchState(previousState);
+        Switcher.SwitchState(PreviousState);
     }
 
     public override void Exit()
     {
-        switcher.SwitchState(previousState);
+        Switcher.SwitchState(PreviousState);
     }
 
     public override void Save()
     {
         SaveSettins();
-        Saved = true;
     }
 
     private void SaveSettins()

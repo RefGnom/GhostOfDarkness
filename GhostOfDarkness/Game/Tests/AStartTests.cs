@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using NUnit.Framework;
 using System.Collections.Generic;
+using Game.Model;
 
 namespace game.Tests;
 
@@ -12,9 +13,9 @@ internal class AStartTests
     private static Room CreateRoom(int width, int height)
     {
         var tiles = new Tile[width, height];
-        for (int i = 0; i < width; i++)
+        for (var i = 0; i < width; i++)
         {
-            for (int j = 0; j < height; j++)
+            for (var j = 0; j < height; j++)
             {
                 tiles[i, j] = new Tile(new Vector2(size * i, size * j), size);
                 tiles[i, j].SetFloor();
@@ -55,7 +56,7 @@ internal class AStartTests
         var size = 10;
         var room = CreateRoom(size, size);
         var expected = new List<Point>();
-        for (int i = 0; i < size; i++)
+        for (var i = 0; i < size; i++)
             expected.Add(new Point(i, i));
         var actual = AStarPoint.FindPath(room, new Point(0, 0), new Point(size - 1, size - 1));
         TestPath(expected, actual);
@@ -73,7 +74,7 @@ internal class AStartTests
     {
         Assert.IsNotNull(actual);
         Assert.AreEqual(expected.Count, actual.Count);
-        for (int i = 0; i < expected.Count; i++)
+        for (var i = 0; i < expected.Count; i++)
         {
             Assert.AreEqual(expected[i], actual[i]);
         }

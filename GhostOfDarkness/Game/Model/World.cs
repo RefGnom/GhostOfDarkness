@@ -1,11 +1,13 @@
-﻿using Microsoft.Xna.Framework;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using game;
+using Game.Creatures;
+using Microsoft.Xna.Framework;
 
-namespace game;
+namespace Game.Model;
 
 internal class World
 {
-    private static readonly Dictionary<string, (Vector2, bool)> roomInfo = new()
+    private static readonly Dictionary<string, (Vector2, bool)> roomInfo = new Dictionary<string, (Vector2, bool)>
     {
         ["Boss room"] = (new Vector2(113, 43), true),
         ["Education room"] = (new Vector2(4, 57), false),
@@ -29,7 +31,7 @@ internal class World
     private bool difficultySelected;
 
     public Room CurrentRoom { get; private set; }
-    public Boss Boss { get; private set; }
+    private Boss Boss { get; set; }
     public Player Player { get; set; }
     public bool BossIsDead { get; private set; }
 
@@ -37,7 +39,7 @@ internal class World
     {
         rooms = new();
         GameManager.Instance.CollisionDetecter.CreateQuadTree(width, height);
-        for (int i = 0; i < Textures.Rooms.Count; i++)
+        for (var i = 0; i < Textures.Rooms.Count; i++)
         {
             var (name, texture) = Textures.Rooms[i];
             var info = roomInfo[name];
@@ -48,7 +50,10 @@ internal class World
             rooms.Add(room);
             GameManager.Instance.Drawer.Register(room);
             if (name == "Hallway")
+            {
                 hallwayIndex = i;
+            }
+
             if (name == "Education room")
             {
                 SetCurrentRoom(room);
@@ -65,7 +70,10 @@ internal class World
         foreach (var room in rooms)
         {
             if (room.Name != "Education room" && room.Name != "Hallway")
+            {
                 room.Generate(difficulty);
+            }
+
             if (room.Name == "Boss room")
             {
                 var speed = 400 + 20 * difficulty;
@@ -102,7 +110,10 @@ internal class World
         if (CurrentRoom.OutputTrigger is not null && CurrentRoom.OutputTrigger.Triggered(player))
         {
             if (!difficultySelected && CurrentRoom.Name == "Education room")
+            {
                 SelectDifficulty();
+            }
+
             SetCurrentRoom(rooms[hallwayIndex]);
         }
         var currentRoom = GetCurrentRoom(player);
@@ -133,16 +144,29 @@ internal class World
     private void SetCurrentRoom(Room room)
     {
         if (CurrentRoom == room)
+        {
             return;
+        }
+
         if (CurrentRoom is not null)
+        {
             CurrentRoom.Active = false;
+        }
+
         CurrentRoom = room;
         if (room.Name == "Hallway" || room.Name == "Education room")
+        {
             SongsManager.StartPlaylist(Sounds.HallwaySongs);
+        }
         else if (room.Name == "Boss room")
+        {
             SongsManager.StartPlaylist(Sounds.BossSongs);
+        }
         else
+        {
             SongsManager.StartPlaylist(Sounds.RoomSongs);
+        }
+
         CurrentRoom.Active = true;
     }
 
@@ -153,7 +177,9 @@ internal class World
             room.Update(deltaTime, player);
         }
         if (CurrentRoom.BossIsDead)
+        {
             BossIsDead = true;
+        }
     }
 
     private Room GetCurrentRoom(Creature player)
@@ -161,7 +187,9 @@ internal class World
         foreach (var room in rooms)
         {
             if (room.InputTrigger is not null && room.InputTrigger.Triggered(player))
+            {
                 return room;
+            }
         }
         return null;
     }

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>D:/Programming/C# Projects/GhostOfDarkness/GhostOfDarkness/Game/Content/Sounds/AlienWarfare.mp3</SourceFile>
-  <SourceTime>2023-06-17T20:27:04.147536+05:00</SourceTime>
-  <DestFile>D:/Programming/C# Projects/GhostOfDarkness/GhostOfDarkness/Game/Content/bin/DesktopGL/Content/Sounds/AlienWarfare.xnb</DestFile>
-  <DestTime>2023-06-29T21:25:22.4923405+05:00</DestTime>
+  <SourceFile>D:/Programming/Projects/GhostOfDarkness/GhostOfDarkness/Game/Content/Sounds/AlienWarfare.mp3</SourceFile>
+  <SourceTime>2024-06-29T16:32:48.4901733+05:00</SourceTime>
+  <DestFile>D:/Programming/Projects/GhostOfDarkness/GhostOfDarkness/Game/Content/bin/DesktopGL/Content/Sounds/AlienWarfare.xnb</DestFile>
+  <DestTime>2024-06-29T16:41:54.6793077+05:00</DestTime>
   <Importer>Mp3Importer</Importer>
   <ImporterTime>2022-07-26T16:44:56+05:00</ImporterTime>
   <Processor>SongProcessor</Processor>
@@ -15,6 +15,6 @@
   <Dependencies />
   <BuildAsset />
   <BuildOutput>
-    <string>D:/Programming/C# Projects/GhostOfDarkness/GhostOfDarkness/Game/Content/bin/DesktopGL/Content/Sounds/AlienWarfare.ogg</string>
+    <string>D:/Programming/Projects/GhostOfDarkness/GhostOfDarkness/Game/Content/bin/DesktopGL/Content/Sounds/AlienWarfare.ogg</string>
   </BuildOutput>
 </PipelineBuildEvent>

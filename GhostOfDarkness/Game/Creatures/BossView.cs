@@ -1,8 +1,10 @@
-﻿using Microsoft.Xna.Framework;
+﻿using System.Collections.Generic;
+using Core;
+using game;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System.Collections.Generic;
 
-namespace game;
+namespace Game.Creatures;
 
 internal class BossView : EnemyView
 {
@@ -68,7 +70,7 @@ internal class BossView : EnemyView
         var dead = new DeadState(this);
         dead.OnStarted = () =>
         {
-            var direction = model.Direction.ToAngle().ToCardinalDirection();
+            model.Direction.ToAngle().ToCardinalDirection();
             animator.SetAnimation(animations["death"], false);
             return animator.GetAnimationTime(animations["death"]) * 20;
         };
@@ -89,6 +91,8 @@ internal class BossView : EnemyView
         animator.Draw(model.Position, spriteBatch, SpriteEffects.None, Layers.Creatures, scaleFactor);
         var origin = new Vector2(model.Hitbox.Width / 2, model.Hitbox.Height / 2);
         if (Settings.ShowHitboxes)
+        {
             HitboxManager.DrawHitbox(spriteBatch, model.Position, model.Hitbox, origin);
+        }
     }
 }

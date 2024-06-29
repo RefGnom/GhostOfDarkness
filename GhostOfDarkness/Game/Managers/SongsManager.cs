@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework.Media;
+﻿using Game.Objects;
+using Microsoft.Xna.Framework.Media;
 
 namespace game;
 

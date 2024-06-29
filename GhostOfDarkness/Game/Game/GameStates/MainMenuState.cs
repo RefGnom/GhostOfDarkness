@@ -1,4 +1,6 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Game.Game.GameStates;
+using Game.View;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace game;
@@ -12,53 +14,53 @@ internal class MainMenuState : GameState
 
     public MainMenuState(IGameStateSwitcher stateSwitcher) : base(stateSwitcher)
     {
-        drawables.Add(new Sprite(Textures.Background, Vector2.Zero, Layers.Background));
+        Drawables.Add(new Sprite(Textures.Background, Vector2.Zero, Layers.Background));
 
         var buttonDistance = 150;
         var position = new Vector2(160, 275);
         newGame = new Button(Textures.ButtonBackground, position, "New Game");
         newGame.OnClicked += NewGame;
-        components.Add(newGame);
+        Components.Add(newGame);
 
         position.Y += buttonDistance;
         loadSave = new Button(Textures.ButtonBackground, position, "Load Game");
         loadSave.OnClicked += LoadSave;
-        components.Add(loadSave);
+        Components.Add(loadSave);
 
         position.Y += buttonDistance;
         settings = new Button(Textures.ButtonBackground, position, "Settings");
         settings.OnClicked += OpenSettings;
-        components.Add(settings);
+        Components.Add(settings);
 
         position.Y += buttonDistance;
         exit = new Button(Textures.ButtonBackground, position, "Exit");
         exit.OnClicked += Exit;
-        components.Add(exit);
+        Components.Add(exit);
     }
 
     public override void Back()
     {
-        switcher.SwitchState<ConfirmationState>();
+        Switcher.SwitchState<ConfirmationState>();
     }
 
     public override void Exit()
     {
-        switcher.SwitchState<ConfirmationState>();
+        Switcher.SwitchState<ConfirmationState>();
     }
 
     public override void NewGame()
     {
-        switcher.SwitchState<CreateGameState>();
+        Switcher.SwitchState<CreateGameState>();
     }
 
     public override void LoadSave()
     {
-        switcher.SwitchState<LoadSaveState>();
+        Switcher.SwitchState<LoadSaveState>();
     }
 
     public override void OpenSettings()
     {
-        switcher.SwitchState<SettingsState>();
+        Switcher.SwitchState<SettingsState>();
     }
 
     public override void Start(GameState previousState)

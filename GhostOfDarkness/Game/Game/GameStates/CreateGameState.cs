@@ -1,4 +1,6 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Game.Game.GameStates;
+using Game.View;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace game;
@@ -9,32 +11,32 @@ internal class CreateGameState : GameState
 
     public CreateGameState(IGameStateSwitcher stateSwitcher) : base(stateSwitcher)
     {
-        drawables.Add(new Sprite(Textures.Background, Vector2.Zero, Layers.Background));
+        Drawables.Add(new Sprite(Textures.Background, Vector2.Zero, Layers.Background));
 
         var back = new Button(Textures.ButtonBackground, new Vector2(1432, 960), "Back");
         back.OnClicked += Back;
-        components.Add(back);
+        Components.Add(back);
 
         var create = new Button(Textures.ButtonBackground, new Vector2(380, 600), "Create");
         create.OnClicked += CreateGame;
-        components.Add(create);
+        Components.Add(create);
 
         textInput = new TextInput(Textures.FieldForText, new Vector2(380, 466));
     }
 
     public override void Back()
     {
-        switcher.SwitchState(previousState);
+        Switcher.SwitchState(PreviousState);
     }
 
     public override void Play()
     {
-        switcher.SwitchState<PlayState>();
+        Switcher.SwitchState<PlayState>();
     }
 
     private void CreateGame()
     {
-        switcher.StartGame();
+        Switcher.StartGame();
         Play();
     }
 

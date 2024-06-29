@@ -1,6 +1,9 @@
 ﻿using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
+using Game.Controllers;
+using Game.Game;
+using Game.Structures;
 
 namespace game;
 

@@ -1,13 +1,14 @@
-﻿using Microsoft.Xna.Framework.Graphics;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using Core;
+using game;
+using Microsoft.Xna.Framework.Graphics;
 
-namespace game;
+namespace Game.Creatures;
 
 internal class PlayerView : CreatureStatesController
 {
     private readonly Animator animator = AnimatorsCreator.GetAnimator("Player");
-    private static readonly Dictionary<string, int> animations = new()
+    private static readonly Dictionary<string, int> animations = new Dictionary<string, int>
     {
         ["idle"] = 0,
         ["run"] = 0,
@@ -25,39 +26,51 @@ internal class PlayerView : CreatureStatesController
         SetStates(CreateStates());
     }
 
-    public List<CreatureState> CreateStates()
+    private List<CreatureState> CreateStates()
     {
-        var idle = new IdleState(this);
-        idle.OnStarted = () =>
+        var idle = new IdleState(this)
         {
-            animator.SetAnimation(animations["idle"]);
-            return animator.GetAnimationTime(animations["idle"]);
+            OnStarted = () =>
+            {
+                animator.SetAnimation(animations["idle"]);
+                return animator.GetAnimationTime(animations["idle"]);
+            }
         };
-        var run = new RunState(this);
-        run.OnStarted = () =>
+        var run = new RunState(this)
         {
-            animator.SetAnimation(animations["run"]);
-            return animator.GetAnimationTime(animations["run"]);
+            OnStarted = () =>
+            {
+                animator.SetAnimation(animations["run"]);
+                return animator.GetAnimationTime(animations["run"]);
+            }
         };
-        var fight = new FightState(this);
-        fight.OnStarted = idle.OnStarted;
-        var attack = new AttackState(this);
-        attack.OnStarted = () =>
+        var fight = new FightState(this)
         {
-            animator.SetAnimation(animations["attack"]);
-            return animator.GetAnimationTime(animations["attack"]);
+            OnStarted = idle.OnStarted
         };
-        var takeDamage = new TakeDamageState(this);
-        takeDamage.OnStarted = () =>
+        var attack = new AttackState(this)
         {
-            animator.SetAnimation(animations["take damage"]);
-            return animator.GetAnimationTime(animations["take damage"]);
+            OnStarted = () =>
+            {
+                animator.SetAnimation(animations["attack"]);
+                return animator.GetAnimationTime(animations["attack"]);
+            }
         };
-        var dead = new DeadState(this);
-        dead.OnStarted = () =>
+        var takeDamage = new TakeDamageState(this)
         {
-            animator.SetAnimation(animations["dead"], false);
-            return animator.GetAnimationTime(animations["dead"]) * 20;
+            OnStarted = () =>
+            {
+                animator.SetAnimation(animations["take damage"]);
+                return animator.GetAnimationTime(animations["take damage"]);
+            }
+        };
+        var dead = new DeadState(this)
+        {
+            OnStarted = () =>
+            {
+                animator.SetAnimation(animations["dead"], false);
+                return animator.GetAnimationTime(animations["dead"]) * 20;
+            }
         };
 
         return new List<CreatureState>()
@@ -82,6 +95,8 @@ internal class PlayerView : CreatureStatesController
         var flip = SpriteEffects.None;
         animator.Draw(model.Position, spriteBatch, flip, rotation, Layers.Creatures, 1);
         if (Settings.ShowHitboxes)
+        {
             HitboxManager.DrawHitbox(spriteBatch, model.Position, HitboxManager.Player, animator.Origin);
+        }
     }
 }

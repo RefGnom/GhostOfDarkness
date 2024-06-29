@@ -1,11 +1,11 @@
-﻿using game;
+﻿using Game.Game;
 using NUnitLite;
 
 namespace game.Program;
 
-public class Program
+public static class Program
 {
-    static void Main(string[] args)
+    private static void Main(string[] args)
     {
         new AutoRun().Execute(args);
         var game = new GameView();

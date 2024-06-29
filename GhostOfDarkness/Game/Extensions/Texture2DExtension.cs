@@ -1,6 +1,6 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
 
-namespace game;
+namespace Game.Extensions;
 
 internal static class Texture2DExtension
 {
@@ -9,7 +9,7 @@ internal static class Texture2DExtension
         var result = new int[texture.Width, texture.Height];
         var data = new int[texture.Width * texture.Height];
         texture.GetData(data);
-        for (int i = 0; i < data.Length; i++)
+        for (var i = 0; i < data.Length; i++)
         {
             var x = i % texture.Width;
             var y = i / texture.Width;

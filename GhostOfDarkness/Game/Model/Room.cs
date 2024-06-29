@@ -1,9 +1,11 @@
-﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using game;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using IDrawable = game.IDrawable;
 
-namespace game;
+namespace Game.Model;
 
 internal class Room : IDrawable
 {
@@ -48,7 +50,10 @@ internal class Room : IDrawable
             var tile = tiles[x, y];
             var enemy = new MeleeEnemy(tile.Position + new Vector2(TileSize, TileSize) / 2, 120, enemyHealh, enemyDamage);
             if (!IsPossiblePosition(enemy.Hitbox.Shift(enemy.Position)))
+            {
                 continue;
+            }
+
             CreateEnemy(enemy);
         }
     }
@@ -56,22 +61,30 @@ internal class Room : IDrawable
     public void Delete()
     {
         while (enemies.Count > 0)
+        {
             DeleteEnemy(0);
+        }
     }
 
     public void Update(float deltaTime, Creature player)
     {
         var enemiesCount = enemies.Count;
         if (enemiesCount == 0)
+        {
             return;
-        for (int i = 0; i < enemies.Count; i++)
+        }
+
+        for (var i = 0; i < enemies.Count; i++)
         {
             enemies[i].Update(deltaTime, player);
             if (enemies[i].IsDead)
             {
                 enemiesCount--;
                 if (enemies[i].Tag == "Boss")
+                {
                     BossIsDead = true;
+                }
+
                 if (enemies[i].CanDelete)
                 {
                     DeleteEnemy(i);
@@ -79,19 +92,23 @@ internal class Room : IDrawable
                 }
             }
         }
+
         if (enemiesCount == 0)
         {
             if (!Cleared)
+            {
                 OnCleared?.Invoke(player);
+            }
+
             Cleared = true;
         }
     }
 
     public void Draw(SpriteBatch spriteBatch, float scale)
     {
-        for (int column = 0; column < tiles.GetLength(0); column++)
+        for (var column = 0; column < tiles.GetLength(0); column++)
         {
-            for (int row = 0; row < tiles.GetLength(1); row++)
+            for (var row = 0; row < tiles.GetLength(1); row++)
             {
                 tiles[column, row]?.Entity?.Draw(spriteBatch, scale);
             }
@@ -105,21 +122,15 @@ internal class Room : IDrawable
         enemies.Add(enemy);
     }
 
-    public Point ConvertToCoordinatePoint(Point point, Func<float, int> round)
-    {
-        return ConvertToCoordinatePoint(point.ToVector2(), round);
-    }
+    private Point ConvertToCoordinatePoint(Point point, Func<float, int> round) => ConvertToCoordinatePoint(point.ToVector2(), round);
 
-    public Point ConvertToCoordinatePoint(Vector2 vector, Func<float, int> round)
+    private Point ConvertToCoordinatePoint(Vector2 vector, Func<float, int> round)
     {
         var result = (vector - position) / tileSize;
         return new Point(round(result.X), round(result.Y));
     }
 
-    public Point ConvertToCoordinatePoint(Rectangle rectanle, Func<float, int> round)
-    {
-        return ConvertToCoordinatePoint(rectanle.Center, round);
-    }
+    public Point ConvertToCoordinatePoint(Rectangle rectanle, Func<float, int> round) => ConvertToCoordinatePoint(rectanle.Center, round);
 
     public bool IsPossiblePosition(Rectangle hitbox)
     {
@@ -127,42 +138,34 @@ internal class Room : IDrawable
         var (x2, y2) = ConvertToCoordinatePoint(new Vector2(hitbox.Right, hitbox.Bottom), x => (int)x);
 
         return IsPossiblePosition(x1, y1)
-            && IsPossiblePosition(x1, y2)
-            && IsPossiblePosition(x2, y1)
-            && IsPossiblePosition(x2, y2);
+               && IsPossiblePosition(x1, y2)
+               && IsPossiblePosition(x2, y1)
+               && IsPossiblePosition(x2, y2);
     }
 
-    public bool IsPossiblePosition(Point point)
-    {
-        return IsPossiblePosition(point.X, point.Y);
-    }
+    public bool IsPossiblePosition(Point point) => IsPossiblePosition(point.X, point.Y);
 
-    public bool IsPossiblePosition(int x, int y)
-    {
-        return InBounds(x, y) && tiles[x, y].Entity is not ICollisionable and not null;
-    }
+    private bool IsPossiblePosition(int x, int y) => InBounds(x, y) && tiles[x, y].Entity is not ICollisionable and not null;
 
-    public bool InBounds(Point point)
-    {
-        return InBounds(point.X, point.Y);
-    }
+    public bool InBounds(Point point) => InBounds(point.X, point.Y);
 
-    public bool InBounds(int x, int y)
-    {
-        return x >= 0 && x < tiles.GetLength(0)
-            && y >= 0 && y < tiles.GetLength(1);
-    }
+    private bool InBounds(int x, int y) => x >= 0 && x < tiles.GetLength(0)
+                                                  && y >= 0 && y < tiles.GetLength(1);
 
     private Vector2 GetMovementVector(Creature instance, Rectangle target, float deltaTime)
     {
         if (!Active)
+        {
             return Vector2.Zero;
+        }
 
         var hitbox = instance.Hitbox.Shift(instance.Position);
         var path = AStarRectangle.FindPath(this, hitbox, target, 20);
 
         if (path is null || path.Count < 2)
+        {
             return Vector2.Zero;
+        }
 
         var offset = path[1].GetOffset(hitbox);
         var movementVector = offset;

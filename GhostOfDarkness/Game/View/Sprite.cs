@@ -1,13 +1,15 @@
-﻿using Microsoft.Xna.Framework;
+﻿using System.Collections.Generic;
+using game;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System.Collections.Generic;
+using IDrawable = game.IDrawable;
 
-namespace game;
+namespace Game.View;
 
 internal class Sprite : IDrawable
 {
     private readonly Texture2D texture;
-    private Vector2 position;
+    private readonly Vector2 position;
     private readonly float layer;
     private readonly List<Text> texts;
     private readonly float scaleFactor;
@@ -24,9 +26,9 @@ internal class Sprite : IDrawable
     public void Draw(SpriteBatch spriteBatch, float scale)
     {
         spriteBatch.Draw(texture, position * scale, null, Color.White, 0, Vector2.Zero, scale * scaleFactor, SpriteEffects.None, layer);
-        for (int i = 0; i < texts.Count; i++)
+        foreach (var t in texts)
         {
-            texts[i].Draw(spriteBatch, scale);
+            t.Draw(spriteBatch, scale);
         }
     }
 

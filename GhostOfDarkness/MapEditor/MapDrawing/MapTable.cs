@@ -1,8 +1,8 @@
 ﻿using Core;
 
-namespace MapEditor;
+namespace MapEditor.MapDrawing;
 
-internal class MapTable : TableLayoutPanel
+internal sealed class MapTable : TableLayoutPanel
 {
     private Map? map;
 
@@ -35,9 +35,13 @@ internal class MapTable : TableLayoutPanel
     public void SwitchGridStyle()
     {
         if (CellBorderStyle == TableLayoutPanelCellBorderStyle.None)
+        {
             CellBorderStyle = TableLayoutPanelCellBorderStyle.Single;
+        }
         else
+        {
             CellBorderStyle = TableLayoutPanelCellBorderStyle.None;
+        }
     }
 
     private void LayoutUpdate(Map map)
@@ -46,9 +50,9 @@ internal class MapTable : TableLayoutPanel
         var height = (int)map.SizeInTiles.Y;
         ColumnCount = width;
         RowCount = height;
-        for (int i = 0; i < width; i++)
+        for (var i = 0; i < width; i++)
         {
-            for (int j = 0; j < height; j++)
+            for (var j = 0; j < height; j++)
             {
                 ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, map.TileSize));
                 RowStyles.Add(new RowStyle(SizeType.Absolute, map.TileSize));

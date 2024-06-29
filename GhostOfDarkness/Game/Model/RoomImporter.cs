@@ -1,9 +1,12 @@
-﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using game;
+using Game.Extensions;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using IDrawable = game.IDrawable;
 
-namespace game;
+namespace Game.Model;
 
 internal static class RoomImporter
 {
@@ -18,10 +21,10 @@ internal static class RoomImporter
 
         colorToEntity = new()
         {
-            [wall] = (position, rotate90) => new Wall(position),
+            [wall] = (position, _) => new Wall(position),
             [door] = (position, rotate90) => new Door(position, rotate90),
-            [roomFloor] = (position, rotate90) => new Floor(position),
-            [hallwayFloor] = (position, rotate90) => new Floor(position),
+            [roomFloor] = (position, _) => new Floor(position),
+            [hallwayFloor] = (position, _) => new Floor(position),
         };
     }
 
@@ -30,19 +33,21 @@ internal static class RoomImporter
         var tiles = new Tile[texture.Width, texture.Height];
         var data = texture.TransformToColorsArray();
         var doors = new List<Door>();
-        for (int x = 0; x < texture.Width; x++)
+        for (var x = 0; x < texture.Width; x++)
         {
-            for (int y = 0; y < texture.Height; y++)
+            for (var y = 0; y < texture.Height; y++)
             {
                 var localPosition = new Vector2(x, y) * tileSize;
                 if (colorToEntity.ContainsKey(data[x, y]))
                 {
-                    var rotateDoor = false;
-                    if (y > 0 && tiles[x, y - 1]?.Entity is not (null or Floor))
-                        rotateDoor = true;
+                    var rotateDoor = y > 0 && tiles[x, y - 1]?.Entity is not (null or Floor);
+
                     var entity = colorToEntity[data[x, y]](localPosition + position, rotateDoor);
-                    if (entity is Door)
-                        doors.Add(entity as Door);
+                    if (entity is Door door)
+                    {
+                        doors.Add(door);
+                    }
+
                     tiles[x, y] = new Tile(entity, localPosition + position, tileSize);
                 }
                 else

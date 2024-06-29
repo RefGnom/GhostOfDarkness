@@ -1,20 +1,21 @@
-﻿using Microsoft.Xna.Framework;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using game;
+using Microsoft.Xna.Framework;
 
-namespace game;
+namespace Game.Creatures;
 
 internal class Player : Creature
 {
     private readonly HealthBar healthBar;
 
-    public List<Bullet> Bullets { get; private set; }
+    private List<Bullet> Bullets { get; set; }
     public int DeltaX { get; set; }
     public int DeltaY { get; set; }
     public bool IsCollide { get; set; }
     public Func<bool> Attack { get; set; }
 
-    private static CollisionDetecter CollisionDetecter => GameManager.Instance.CollisionDetecter;
+    private static CollisionDetecter CollisionDetector => GameManager.Instance.CollisionDetecter;
 
     public Player(Vector2 position, float speed, float health, float damage, float cooldown) : base(position, speed, health, damage, 100, cooldown)
     {
@@ -40,9 +41,15 @@ internal class Player : Creature
         }
         UpdateDirection();
         if (View.CanAttack && Attack is not null && Attack.Invoke())
+        {
             Shoot();
+        }
+
         if (View.CanMove)
+        {
             Move(deltaTime);
+        }
+
         UpdateBullets(deltaTime);
         currentColdown -= deltaTime;
         healthBar.SetHealth(Health);
@@ -65,14 +72,13 @@ internal class Player : Creature
     // Переместить в класс Gun
     private void UpdateBullets(float deltaTime)
     {
-        for (int i = 0; i < Bullets.Count; i++)
+        for (var i = 0; i < Bullets.Count; i++)
         {
             Bullets[i].Update(deltaTime);
-            var obj = CollisionDetecter.CollisionWithbjects(Bullets[i]);
-            if (obj is Enemy)
+            var obj = CollisionDetector.CollisionWithbjects(Bullets[i]);
+            if (obj is Enemy enemy)
             {
-                var enemy = obj as Enemy;
-                enemy?.TakeDamage(Damage);
+                enemy.TakeDamage(Damage);
             }
             if (Bullets[i].IsDead || obj is not null)
             {
@@ -92,11 +98,8 @@ internal class Player : Creature
 
     private void Move(float deltaTime)
     {
-        Vector2 movementVector;
-        if (IsCollide)
-            movementVector = CollisionDetecter.GetMovementVectorWithoutCollision(this, DeltaX, DeltaY, Speed, deltaTime);
-        else
-            movementVector = new Vector2(DeltaX, DeltaY);
+        var movementVector = IsCollide ? CollisionDetector.GetMovementVectorWithoutCollision(this, DeltaX, DeltaY, Speed, deltaTime) : new Vector2(DeltaX, DeltaY);
+
         DeltaX = 0;
         DeltaY = 0;
 
@@ -117,8 +120,12 @@ internal class Player : Creature
         Health -= damage;
         healthBar.SetHealth(Health);
         if (Health > 0)
+        {
             View.SetStateTakeDamage();
+        }
         else
+        {
             View.SetStateDead();
+        }
     }
 }

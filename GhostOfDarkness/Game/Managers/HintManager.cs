@@ -1,11 +1,12 @@
-﻿using Microsoft.Xna.Framework;
+﻿using game;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace game;
+namespace Game.Managers;
 
 internal static class HintManager
 {
-    private static string currentMessage = null;
+    private static string currentMessage;
     private static readonly SpriteFont font = Fonts.Buttons;
 
     public static void Show(string message)
@@ -13,7 +14,7 @@ internal static class HintManager
         currentMessage = message;
     }
 
-    public static void Hide() 
+    public static void Hide()
     {
         currentMessage = null;
     }
@@ -21,7 +22,10 @@ internal static class HintManager
     public static void Draw(SpriteBatch spriteBatch, float scale)
     {
         if (currentMessage is null)
+        {
             return;
+        }
+
         var position = new Vector2(960, 1040);
         var origin = font.MeasureString(currentMessage) / 2;
         spriteBatch.DrawString(font, currentMessage, position * scale, Color.White, 0, origin, scale, SpriteEffects.None, Layers.Text);

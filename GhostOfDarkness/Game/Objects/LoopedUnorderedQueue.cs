@@ -1,5 +1,6 @@
 ﻿using System;
-namespace game;
+
+namespace Game.Objects;
 
 internal class LoopedUnorderedQueue<T>
 {
@@ -24,12 +25,12 @@ internal class LoopedUnorderedQueue<T>
 
     public LoopedUnorderedQueue<T> Shuffle()
     {
-        int n = items.Length;
+        var n = items.Length;
         var random = new Random();
         while (n > 1)
         {
             n--;
-            int k = random.Next(n + 1);
+            var k = random.Next(n + 1);
             (items[n], items[k]) = (items[k], items[n]);
         }
         return this;

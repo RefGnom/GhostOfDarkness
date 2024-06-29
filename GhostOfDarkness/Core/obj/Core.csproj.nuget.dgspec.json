@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Programming\\C# Projects\\GhostOfDarkness\\GhostOfDarkness\\Core\\Core.csproj": {}
+    "D:\\Programming\\Projects\\GhostOfDarkness\\GhostOfDarkness\\Core\\Core.csproj": {}
   },
   "projects": {
-    "D:\\Programming\\C# Projects\\GhostOfDarkness\\GhostOfDarkness\\Core\\Core.csproj": {
+    "D:\\Programming\\Projects\\GhostOfDarkness\\GhostOfDarkness\\Core\\Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Programming\\C# Projects\\GhostOfDarkness\\GhostOfDarkness\\Core\\Core.csproj",
+        "projectUniqueName": "D:\\Programming\\Projects\\GhostOfDarkness\\GhostOfDarkness\\Core\\Core.csproj",
         "projectName": "Core",
-        "projectPath": "D:\\Programming\\C# Projects\\GhostOfDarkness\\GhostOfDarkness\\Core\\Core.csproj",
-        "packagesPath": "C:\\Users\\vepr\\.nuget\\packages\\",
-        "outputPath": "D:\\Programming\\C# Projects\\GhostOfDarkness\\GhostOfDarkness\\Core\\obj\\",
+        "projectPath": "D:\\Programming\\Projects\\GhostOfDarkness\\GhostOfDarkness\\Core\\Core.csproj",
+        "packagesPath": "C:\\Users\\sgkto\\.nuget\\packages\\",
+        "outputPath": "D:\\Programming\\Projects\\GhostOfDarkness\\GhostOfDarkness\\Core\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\vepr\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\sgkto\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -65,7 +69,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.201\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.200\\RuntimeIdentifierGraph.json"
         }
       }
     }

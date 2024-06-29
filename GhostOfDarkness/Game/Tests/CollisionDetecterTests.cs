@@ -1,15 +1,17 @@
-﻿using Microsoft.Xna.Framework;
+﻿using System.Collections.Generic;
+using game;
+using Game.Structures;
+using Microsoft.Xna.Framework;
 using NUnit.Framework;
-using System.Collections.Generic;
 
-namespace game;
+namespace Game.Tests;
 
 [TestFixture]
 internal class CollisionDetecterTests
 {
     private class TestCreature : ICollisionable
     {
-        public Rectangle Hitbox => new(0, 0, 4, 4);
+        public Rectangle Hitbox => new Rectangle(0, 0, 4, 4);
         public Vector2 Position { get; init; }
         public bool CanCollide { get; init; }
 
@@ -27,13 +29,13 @@ internal class CollisionDetecterTests
         var boundary = new Rectangle(0, 0, 64, 64);
         var quadtree = new QuadTree(boundary);
         var collisionables = new List<TestCreature>();
-        for (int i = 0; i < count; i++)
+        for (var i = 0; i < count; i++)
         {
             var collisionable = new TestCreature(Vector2.Zero, true);
             quadtree.Insert(collisionable);
             collisionables.Add(collisionable);
         }
-        for (int i = 0; i < count; i++)
+        for (var i = 0; i < count; i++)
         {
             quadtree.Remove(collisionables[i]);
         }
@@ -47,13 +49,13 @@ internal class CollisionDetecterTests
         var boundary = new Rectangle(0, 0, 64, 64);
         var quadtree = new QuadTree(boundary);
         var collisionables = new List<TestCreature>();
-        for (int i = 0; i < count; i++)
+        for (var i = 0; i < count; i++)
         {
             var collisionable = new TestCreature(Vector2.Zero, true);
             quadtree.Insert(collisionable);
             collisionables.Add(collisionable);
         }
-        for (int i = 0; i < count; i++)
+        for (var i = 0; i < count; i++)
         {
             quadtree.Remove(collisionables[i]);
         }

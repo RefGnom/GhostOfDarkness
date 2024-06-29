@@ -1,15 +1,16 @@
-﻿using Microsoft.Xna.Framework.Graphics;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using game;
+using Microsoft.Xna.Framework.Graphics;
 
-namespace game;
+namespace Game.Game.GameStates;
 
 internal abstract class GameState : IState, IDrawable, IUpdateable
 {
-    protected readonly IGameStateSwitcher switcher;
-    protected GameState previousState;
-    protected List<IComponent> components;
-    protected List<IDrawable> drawables;
-    protected List<IUpdateable> updateables;
+    protected readonly IGameStateSwitcher Switcher;
+    protected GameState PreviousState;
+    protected readonly List<IComponent> Components;
+    protected readonly List<IDrawable> Drawables;
+    protected List<IUpdateable> updatables;
 
     public bool IsConfirmed { get; protected set; }
     public bool GameIsExit { get; protected set; }
@@ -17,40 +18,40 @@ internal abstract class GameState : IState, IDrawable, IUpdateable
 
     public GameState(IGameStateSwitcher stateSwitcher)
     {
-        switcher = stateSwitcher;
-        components = new();
-        drawables = new();
-        updateables = new();
+        Switcher = stateSwitcher;
+        Components = new();
+        Drawables = new();
+        updatables = new();
     }
 
     public void Start(IState previousState)
     {
         var state = (GameState)previousState;
-        this.previousState = state;
+        this.PreviousState = state;
         Start(state);
     }
 
     public virtual void Update(float deltaTime)
     {
-        for (int i = 0; i < components.Count; i++)
+        for (var i = 0; i < Components.Count; i++)
         {
-            components[i].Update(deltaTime);
+            Components[i].Update(deltaTime);
         }
-        for (int i = 0; i < updateables.Count; i++)
+        for (var i = 0; i < updatables.Count; i++)
         {
-            updateables[i].Update(deltaTime);
+            updatables[i].Update(deltaTime);
         }
     }
 
     public virtual void Draw(SpriteBatch spriteBatch, float scale)
     {
-        for (int i = 0; i < components.Count; i++)
+        for (var i = 0; i < Components.Count; i++)
         {
-            components[i].Draw(spriteBatch, scale);
+            Components[i].Draw(spriteBatch, scale);
         }
-        for (int i = 0; i < drawables.Count; i++)
+        for (var i = 0; i < Drawables.Count; i++)
         {
-            drawables[i].Draw(spriteBatch, scale);
+            Drawables[i].Draw(spriteBatch, scale);
         }
     }
 

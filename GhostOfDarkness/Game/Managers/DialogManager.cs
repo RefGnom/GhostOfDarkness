@@ -1,4 +1,6 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Game.Controllers;
+using Game.View;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 

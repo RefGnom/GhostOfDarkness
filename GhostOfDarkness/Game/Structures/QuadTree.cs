@@ -1,13 +1,15 @@
-﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
+using game;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using IDrawable = game.IDrawable;
 
-namespace game;
+namespace Game.Structures;
 
 internal class QuadTree : IDrawable
 {
-    private readonly static int threshold = 4;
+    private static readonly int threshold = 4;
 
     private readonly Rectangle boundary;
     private readonly List<ICollisionable> items;
@@ -17,11 +19,14 @@ internal class QuadTree : IDrawable
     public bool Divided => nodes[0] is not null;
 
     public int Count
-    { 
+    {
         get
         {
             if (nodes[0] is null)
+            {
                 return items.Count;
+            }
+
             return items.Count + nodes.Sum(x => x.Count);
         }
     }
@@ -37,7 +42,10 @@ internal class QuadTree : IDrawable
     {
         var hitbox = item.Hitbox.Shift(item.Position);
         if (!hitbox.Intersects(boundary))
+        {
             return;
+        }
+
         if (items.Count < threshold)
         {
             items.Add(item);
@@ -45,11 +53,13 @@ internal class QuadTree : IDrawable
         }
 
         if (nodes[0] is null)
-            Subdivide();
-
-        for (int i = 0; i < nodes.Length; i++)
         {
-            nodes[i].Insert(item);
+            Subdivide();
+        }
+
+        foreach (var t in nodes)
+        {
+            t.Insert(item);
         }
     }
 
@@ -57,57 +67,59 @@ internal class QuadTree : IDrawable
     {
         var hitbox = item.Hitbox.Shift(item.Position);
         if (!hitbox.Intersects(boundary) || items.Remove(item) || nodes[0] is null)
-            return;
-
-        for (int i = 0; i < nodes.Length; i++)
         {
-            nodes[i].Remove(item);
+            return;
+        }
+
+        foreach (var t in nodes)
+        {
+            t.Remove(item);
         }
 
         if (nodes.All(x => x.Count == 0))
         {
-            for (int i = 0; i < nodes.Length; i++)
+            for (var i = 0; i < nodes.Length; i++)
             {
                 nodes[i] = null;
             }
         }
     }
 
-    public bool IsIntersectedWithItems(ICollisionable value)
-    {
-        return GetIntersectWithItems(value, Vector2.Zero) is not null;
-    }
+    public bool IsIntersectedWithItems(ICollisionable value) => GetIntersectWithItems(value, Vector2.Zero) is not null;
 
-    public bool IsIntersectedWithItems(ICollisionable value, Vector2 movementVector)
-    {
-        return GetIntersectWithItems(value, movementVector) is not null;
-    }
+    public bool IsIntersectedWithItems(ICollisionable value, Vector2 movementVector) => GetIntersectWithItems(value, movementVector) is not null;
 
-    public ICollisionable GetIntersectWithItems(ICollisionable value)
-    {
-        return GetIntersectWithItems(value, Vector2.Zero);
-    }
+    public ICollisionable GetIntersectWithItems(ICollisionable value) => GetIntersectWithItems(value, Vector2.Zero);
 
-    public ICollisionable GetIntersectWithItems(ICollisionable value, Vector2 movementVector)
+    private ICollisionable GetIntersectWithItems(ICollisionable value, Vector2 movementVector)
     {
         if (!value.CanCollide)
+        {
             return null;
+        }
+
         var hitbox = value.Hitbox.Shift(value.Position + movementVector);
         if (!hitbox.Intersects(boundary))
-            return null;
-
-        for (int i = 0; i < items.Count; i++)
         {
-            if (value != items[i] && items[i].CanCollide && value.Collision(items[i], movementVector))
-                return items[i];
+            return null;
+        }
+
+        foreach (var t in items)
+        {
+            if (value != t && t.CanCollide && value.Collision(t, movementVector))
+            {
+                return t;
+            }
         }
         if (nodes[0] is not null)
         {
-            for (int i = 0; i < nodes.Length; i++)
+            foreach (var t in nodes)
             {
-                var intersect = nodes[i].GetIntersectWithItems(value, movementVector);
+                var intersect = t.GetIntersectWithItems(value, movementVector);
                 if (intersect is not null)
+                {
                     return intersect;
+                }
             }
         }
         return null;
@@ -128,7 +140,10 @@ internal class QuadTree : IDrawable
     public void Draw(SpriteBatch spriteBatch, float scale)
     {
         if (!Show)
+        {
             return;
+        }
+
         var vertical = Textures.VerticalLine;
         var horizontal = Textures.HorizontalLine;
         var position = boundary.Location.ToVector2();
@@ -146,9 +161,9 @@ internal class QuadTree : IDrawable
 
         if (nodes[0] is not null)
         {
-            for (int i = 0; i < nodes.Length; i++)
+            foreach (var t in nodes)
             {
-                nodes[i].Draw(spriteBatch, scale);
+                t.Draw(spriteBatch, scale);
             }
         }
     }

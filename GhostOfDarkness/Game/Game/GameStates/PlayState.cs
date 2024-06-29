@@ -1,4 +1,6 @@
-﻿namespace game;
+﻿using Game.Game.GameStates;
+
+namespace game;
 
 internal class PlayState : GameState
 {
@@ -8,12 +10,12 @@ internal class PlayState : GameState
 
     public override void Back()
     {
-        switcher.SwitchState<PauseState>();
+        Switcher.SwitchState<PauseState>();
     }
 
     public override void Dead()
     {
-        switcher.SwitchState<PlayerDeadState>();
+        Switcher.SwitchState<PlayerDeadState>();
     }
 
     public override void Start(GameState previousState)

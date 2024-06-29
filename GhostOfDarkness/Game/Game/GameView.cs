@@ -1,11 +1,14 @@
-﻿using Microsoft.Xna.Framework;
+﻿using System;
+using game;
+using Game.Controllers;
+using Game.Managers;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Media;
-using System;
 
-namespace game;
+namespace Game.Game;
 
-internal class GameView : Game
+internal class GameView : Microsoft.Xna.Framework.Game
 {
     private GameModel model;
     private GameController controller;
@@ -16,7 +19,7 @@ internal class GameView : Game
 
     public static int WindowWidth { get; private set; }
     public static int WindowHeight { get; private set; }
-    public static Vector2 Center => new(WindowWidth / 2, WindowHeight / 2);
+    public static Vector2 Center => new Vector2(WindowWidth / 2, WindowHeight / 2);
     public static float Scale => WindowWidth / 1920f;
 
     private static Camera Camera => GameManager.Instance.Camera;
@@ -80,9 +83,9 @@ internal class GameView : Game
         if (model.Started)
         {
             DrawLocation();
-            DrawHUD();
+            DrawHud();
         }
-        DrawUI();
+        DrawUi();
 
         base.Draw(gameTime);
     }
@@ -97,7 +100,7 @@ internal class GameView : Game
         spriteBatch.End();
     }
 
-    private void DrawUI()
+    private void DrawUi()
     {
         spriteBatch.Begin(sortMode: SpriteSortMode.BackToFront);
         controller.Draw(spriteBatch, Scale);
@@ -106,7 +109,7 @@ internal class GameView : Game
         spriteBatch.End();
     }
 
-    private void DrawHUD()
+    private void DrawHud()
     {
         spriteBatch.Begin(sortMode: SpriteSortMode.BackToFront);
         HintManager.Draw(spriteBatch, Scale);

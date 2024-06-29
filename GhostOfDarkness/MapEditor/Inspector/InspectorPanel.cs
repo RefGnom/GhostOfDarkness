@@ -1,8 +1,8 @@
-﻿namespace MapEditor;
+﻿namespace MapEditor.Inspector;
 
 internal class InspectorPanel : Panel
 {
-    private List<ItemProperties> itemsProperties = new();
+    private List<ItemProperties> itemsProperties = new List<ItemProperties>();
 
     public InspectorPanel()
     {
@@ -10,14 +10,20 @@ internal class InspectorPanel : Panel
         SizeChanged += InspectorSizeChanged;
     }
 
-    public void SetItemsProperies(List<ItemProperties> properties)
+    public void SetItemsProperties(List<ItemProperties> properties)
     {
-        for (int i = 0; i < itemsProperties.Count; i++)
-            Controls.Remove(itemsProperties[i]);
+        foreach (var t in itemsProperties)
+        {
+            Controls.Remove(t);
+        }
+
         itemsProperties = properties;
-        for (int i = 0; i < itemsProperties.Count; i++)
-            Controls.Add(itemsProperties[i]);
-        InspectorSizeChanged(this, new EventArgs());
+        foreach (var t in itemsProperties)
+        {
+            Controls.Add(t);
+        }
+
+        InspectorSizeChanged(this, EventArgs.Empty);
     }
 
     public void Clear()
@@ -34,7 +40,9 @@ internal class InspectorPanel : Panel
 
     private void InspectorSizeChanged(object? sender, EventArgs e)
     {
-        for (int i = 0; i < itemsProperties.Count; i++)
-            itemsProperties[i].Width = Width;
+        foreach (var t in itemsProperties)
+        {
+            t.Width = Width;
+        }
     }
 }
