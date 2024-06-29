@@ -20,7 +20,7 @@ internal class GameStatesController : IGameStateSwitcher, IDrawable, IUpdateable
         states = new List<GameState>()
         {
             new MainMenuState(this),
-            new LoadSaveState(this),
+            new LoadSaveState(this, new SaveHandler()),
             new ConfirmationState(this),
             new CreateGameState(this, new SaveHandler(), new SaveProvider()),
             new PauseState(this),

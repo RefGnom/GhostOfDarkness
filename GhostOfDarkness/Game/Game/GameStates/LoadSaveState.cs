@@ -1,15 +1,22 @@
-﻿using Game.Game.GameStates;
+﻿using Core.Saves;
+using game;
 using Game.Interfaces;
 using Game.View;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 
-namespace game;
+namespace Game.Game.GameStates;
 
 internal class LoadSaveState : GameState
 {
-    public LoadSaveState(IGameStateSwitcher stateSwitcher) : base(stateSwitcher)
+    private readonly ISaveHandler saveHandler;
+
+    public LoadSaveState(
+        IGameStateSwitcher stateSwitcher,
+        ISaveHandler saveHandler
+    ) : base(stateSwitcher)
     {
+        this.saveHandler = saveHandler;
+
         Drawables.Add(new Sprite(Textures.SavesWindow, new Vector2(40, 70), Layers.UIBackground));
         Drawables.Add(new Sprite(Textures.Background, Vector2.Zero, Layers.Background));
 
@@ -43,14 +50,23 @@ internal class LoadSaveState : GameState
 
     public override void Start(GameState previousState)
     {
+        var saveInfos = saveHandler.Select();
+        var deltaY = 0;
+        foreach (var saveInfo in saveInfos)
+        {
+            var text = new Text(
+                new Rectangle(new Point(40, 70 + deltaY), new Point(100, 16)),
+                $"{saveInfo.Name} time: {saveInfo.PlayTime}",
+                Align.Left,
+                0,
+                Fonts.Common16
+            );
+            Drawables.Add(text);
+            deltaY += 20;
+        }
     }
 
     public override void Stop()
     {
-    }
-
-    public override void Draw(SpriteBatch spriteBatch, float scale)
-    {
-        base.Draw(spriteBatch, scale);
     }
 }
