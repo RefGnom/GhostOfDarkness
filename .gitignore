@@ -47,3 +47,9 @@ GhostOfDarkness/[Gg]game/[Bb]uild/
 
 *.cachefile
 *.dll
+/GhostOfDarkness/.idea/.idea.GhostOfDarkness/.idea/workspace.xml
+/GhostOfDarkness/.idea/.idea.GhostOfDarkness/.idea/workspace.xml
+/GhostOfDarkness/.idea/.idea.GhostOfDarkness/.idea/workspace.xml
+/GhostOfDarkness/Game/bin/Debug/net6.0-windows/TestResult.xml
+/GhostOfDarkness/Game/obj/Debug/net6.0-windows/Game.AssemblyInfo.cs
+/GhostOfDarkness/Game/obj/Debug/net6.0-windows/Game.sourcelink.json
