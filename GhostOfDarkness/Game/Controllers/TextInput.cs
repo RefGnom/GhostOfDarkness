@@ -1,10 +1,11 @@
-﻿using Microsoft.Xna.Framework;
+﻿using System.Text;
+using game;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using System.Text;
-using Game.Controllers;
+using IDrawable = game.IDrawable;
 
-namespace game;
+namespace Game.Controllers;
 
 internal class TextInput : IDrawable
 {
@@ -12,14 +13,14 @@ internal class TextInput : IDrawable
     private readonly Vector2 position;
     private readonly StringBuilder text;
 
-    private SpriteFont Font => Fonts.Buttons;
+    private static SpriteFont Font => Fonts.Buttons;
     public string Text => text.ToString();
 
     public TextInput(Texture2D background, Vector2 position)
     {
         this.background = background;
         this.position = position;
-        text = new();
+        text = new StringBuilder();
     }
 
     public void Enable()
@@ -37,7 +38,9 @@ internal class TextInput : IDrawable
         if (e.Key == Keys.Back)
         {
             if (text.Length > 0)
+            {
                 text.Remove(text.Length - 1, 1);
+            }
         }
         else if (IsValid(e.Character) && IsHavePlace())
         {
@@ -45,15 +48,12 @@ internal class TextInput : IDrawable
         }
     }
 
-    private bool IsValid(char symbol)
-    {
-        return symbol >= 'a' && symbol <= 'z'
-            || symbol >= 'A' && symbol <= 'Z'
-            || symbol >= 'а' && symbol <= 'я'
-            || symbol >= 'А' && symbol <= 'Я'
-            || symbol == ' '
-            || symbol >= '0' && symbol <= '9';
-    }
+    private static bool IsValid(char symbol) => symbol >= 'a' && symbol <= 'z'
+                                                || symbol >= 'A' && symbol <= 'Z'
+                                                || symbol >= 'а' && symbol <= 'я'
+                                                || symbol >= 'А' && symbol <= 'Я'
+                                                || symbol == ' '
+                                                || symbol >= '0' && symbol <= '9';
 
     private bool IsHavePlace()
     {

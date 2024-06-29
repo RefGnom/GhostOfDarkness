@@ -5,6 +5,7 @@ using Microsoft.Xna.Framework.Media;
 using System;
 using Game.Controllers.Switcher;
 using Game.Game.GameStates;
+using Game.Interfaces;
 using Game.View;
 
 namespace game;

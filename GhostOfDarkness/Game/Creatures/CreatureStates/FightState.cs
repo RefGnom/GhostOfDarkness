@@ -1,4 +1,6 @@
-﻿namespace game;
+﻿using Game.Interfaces;
+
+namespace game;
 
 internal class FightState : CreatureState
 {

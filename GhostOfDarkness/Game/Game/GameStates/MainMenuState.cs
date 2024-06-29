@@ -1,9 +1,9 @@
-﻿using Game.Game.GameStates;
+﻿using game;
+using Game.Interfaces;
 using Game.View;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 
-namespace game;
+namespace Game.Game.GameStates;
 
 internal class MainMenuState : GameState
 {
@@ -16,7 +16,7 @@ internal class MainMenuState : GameState
     {
         Drawables.Add(new Sprite(Textures.Background, Vector2.Zero, Layers.Background));
 
-        var buttonDistance = 150;
+        const int buttonDistance = 150;
         var position = new Vector2(160, 275);
         newGame = new Button(Textures.ButtonBackground, position, "New Game");
         newGame.OnClicked += NewGame;
@@ -66,7 +66,9 @@ internal class MainMenuState : GameState
     public override void Start(GameState previousState)
     {
         if (previousState.IsConfirmed)
+        {
             GameIsExit = true;
+        }
     }
 
     public override void Stop()
@@ -75,10 +77,5 @@ internal class MainMenuState : GameState
         loadSave.Selected = false;
         settings.Selected = false;
         exit.Selected = false;
-    }
-
-    public override void Draw(SpriteBatch spriteBatch, float scale)
-    {
-        base.Draw(spriteBatch, scale);
     }
 }

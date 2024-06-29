@@ -24,10 +24,10 @@
 *.sdf
 ipch/
 
-GhostOfDarkness/[Gg]game/[Oo]bj/
-GhostOfDarkness/[Gg]game/[Bb]in
-GhostOfDarkness/[Gg]game/[Dd]ebug*/
-GhostOfDarkness/[Gg]game/[Rr]elease*/
+GhostOfDarkness/[Gg]ame/[Oo]bj/
+GhostOfDarkness/[Gg]ame/[Bb]in
+GhostOfDarkness/[Gg]ame/[Dd]ebug*/
+GhostOfDarkness/[Gg]ame/[Rr]elease*/
 
 GhostOfDarkness/[Mm]apEditor/[Oo]bj/
 GhostOfDarkness/[Mm]apEditor/[Bb]in
@@ -37,7 +37,7 @@ GhostOfDarkness/[Mm]apEditor/[Rr]elease*/
 Ankh.NoLoad
 
 #Project files
-GhostOfDarkness/[Gg]game/[Bb]uild/
+GhostOfDarkness/[Gg]ame/[Bb]uild/
 
 #Subversion files
 .svn
@@ -47,9 +47,4 @@ GhostOfDarkness/[Gg]game/[Bb]uild/
 
 *.cachefile
 *.dll
-/GhostOfDarkness/.idea/.idea.GhostOfDarkness/.idea/workspace.xml
-/GhostOfDarkness/.idea/.idea.GhostOfDarkness/.idea/workspace.xml
-/GhostOfDarkness/.idea/.idea.GhostOfDarkness/.idea/workspace.xml
-/GhostOfDarkness/Game/bin/Debug/net6.0-windows/TestResult.xml
-/GhostOfDarkness/Game/obj/Debug/net6.0-windows/Game.AssemblyInfo.cs
-/GhostOfDarkness/Game/obj/Debug/net6.0-windows/Game.sourcelink.json
+/GhostOfDarkness/.idea/

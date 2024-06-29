@@ -1,9 +1,11 @@
-﻿using Game.Game.GameStates;
+﻿using game;
+using Game.Controllers;
+using Game.Interfaces;
 using Game.View;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace game;
+namespace Game.Game.GameStates;
 
 internal class CreateGameState : GameState
 {

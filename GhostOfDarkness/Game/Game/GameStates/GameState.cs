@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using game;
+using Game.Interfaces;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace Game.Game.GameStates;
@@ -10,48 +11,50 @@ internal abstract class GameState : IState, IDrawable, IUpdateable
     protected GameState PreviousState;
     protected readonly List<IComponent> Components;
     protected readonly List<IDrawable> Drawables;
-    protected List<IUpdateable> updatables;
+    private readonly List<IUpdateable> updatables;
 
     public bool IsConfirmed { get; protected set; }
     public bool GameIsExit { get; protected set; }
     public bool Saved { get; protected set; }
 
-    public GameState(IGameStateSwitcher stateSwitcher)
+    protected GameState(IGameStateSwitcher stateSwitcher)
     {
         Switcher = stateSwitcher;
-        Components = new();
-        Drawables = new();
-        updatables = new();
+        Components = new List<IComponent>();
+        Drawables = new List<IDrawable>();
+        updatables = new List<IUpdateable>();
     }
 
     public void Start(IState previousState)
     {
         var state = (GameState)previousState;
-        this.PreviousState = state;
+        PreviousState = state;
         Start(state);
     }
 
     public virtual void Update(float deltaTime)
     {
-        for (var i = 0; i < Components.Count; i++)
+        foreach (var component in Components)
         {
-            Components[i].Update(deltaTime);
+            component.Update(deltaTime);
         }
-        for (var i = 0; i < updatables.Count; i++)
+
+        foreach (var updatable in updatables)
         {
-            updatables[i].Update(deltaTime);
+            updatable.Update(deltaTime);
         }
     }
 
     public virtual void Draw(SpriteBatch spriteBatch, float scale)
     {
-        for (var i = 0; i < Components.Count; i++)
+        foreach (var component in Components)
         {
-            Components[i].Draw(spriteBatch, scale);
+            component.Draw(spriteBatch, scale);
         }
-        for (var i = 0; i < Drawables.Count; i++)
+
+        foreach (var drawable in Drawables)
         {
-            Drawables[i].Draw(spriteBatch, scale);
+            drawable.Draw(spriteBatch, scale);
         }
     }
 
