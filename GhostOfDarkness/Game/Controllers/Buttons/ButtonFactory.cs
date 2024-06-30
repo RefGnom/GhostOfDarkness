@@ -51,7 +51,7 @@ public class ButtonFactory : IButtonFactory
     {
         const int indentX = 25;
         const int indentY = 20;
-        var button = new RadioButton(disabledTexture, enabledTexture, position);
+        var button = new RadioButton(disabledTexture, enabledTexture, position, Color.White, Color.White.WithColorDelta(190));
         var bounds = disabledTexture.Bounds.Shift(position);
         button.AddDrawable(new Text(bounds, saveInfo.Name, Fonts.Common16, Align.Left | Align.Up, indentX, indentY));
         button.AddDrawable(new Text(bounds, $"Difficulty {saveInfo.Difficulty}", Fonts.Common12, Align.Down | Align.Left, indentX, indentY));
