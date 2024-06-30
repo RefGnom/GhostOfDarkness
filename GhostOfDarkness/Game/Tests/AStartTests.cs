@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using NUnit.Framework;
 using System.Collections.Generic;
+using Game.Algorithms;
 using Game.Model;
 
 namespace game.Tests;

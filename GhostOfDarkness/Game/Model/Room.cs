@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using Core.Extensions;
 using game;
-using Game.Extensions;
+using Game.Algorithms;
+using Game.Creatures;
+using Game.Interfaces;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using IDrawable = game.IDrawable;

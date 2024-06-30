@@ -1,9 +1,10 @@
-﻿using Microsoft.Xna.Framework;
-using System.Collections.Generic;
-using Game.Extensions;
+﻿using System.Collections.Generic;
+using Core.Extensions;
 using Game.Model;
+using Game.Structures;
+using Microsoft.Xna.Framework;
 
-namespace game;
+namespace Game.Algorithms;
 
 internal static class PathFinder
 {
@@ -23,13 +24,21 @@ internal static class PathFinder
             foreach (var (nextPosition, cost) in currentPosition.GetNeighbors(room.TileSize))
             {
                 if (visited.Contains(nextPosition) || !room.IsPossiblePosition(nextPosition))
+                {
                     continue;
+                }
 
                 var nextPath = new Path<Rectangle>(nextPosition, currentPath);
                 if (Vector2.Distance(nextPosition.Center.ToVector2(), target.Center.ToVector2()) <= room.TileSize)
+                {
                     return nextPath;
+                }
+
                 if (nextPath.Length <= maxDistance)
+                {
                     paths.Enqueue(nextPath);
+                }
+
                 visited.Add(nextPosition);
             }
         }

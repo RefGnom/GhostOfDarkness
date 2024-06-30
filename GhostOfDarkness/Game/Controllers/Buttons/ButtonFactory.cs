@@ -1,6 +1,6 @@
-﻿using Game.ContentLoaders;
+﻿using Core.Extensions;
+using Game.ContentLoaders;
 using Game.Enums;
-using Game.Extensions;
 using Game.View;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;

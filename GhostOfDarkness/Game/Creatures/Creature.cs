@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using System;
+using Game.Interfaces;
 
 namespace game;
 
