@@ -26,6 +26,7 @@ internal static class Textures
     public static Texture2D SettingsString { get; private set; }
     public static Texture2D FieldForText { get; private set; }
     public static Texture2D SavesWindow { get; private set; }
+    public static Texture2D Save { get; private set; }
     public static Texture2D PauseBackground { get; private set; }
     public static Texture2D Background { get; private set; }
     public static Texture2D HorizontalLine { get; private set; }
@@ -73,6 +74,7 @@ internal static class Textures
         SettingsString = Load("Textures\\UI\\Settings string");
         FieldForText = Load("Textures\\UI\\FieldForGameName");
         SavesWindow = Load("Textures\\UI\\Saves window");
+        Save = Load("Textures\\UI\\Save");
         PauseBackground = Load("Textures\\UI\\Pause background");
         Background = Load("Textures\\UI\\Background");
         HorizontalLine = Load("Service\\Horizontal line");
