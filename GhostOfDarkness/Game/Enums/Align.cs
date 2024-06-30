@@ -1,6 +1,6 @@
-﻿namespace game;
+﻿namespace Game.Enums;
 
-internal enum Align
+public enum Align
 {
     Left,
     Center,

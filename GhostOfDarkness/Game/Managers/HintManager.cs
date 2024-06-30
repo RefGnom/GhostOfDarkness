@@ -1,4 +1,5 @@
 ﻿using game;
+using Game.ContentLoaders;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 

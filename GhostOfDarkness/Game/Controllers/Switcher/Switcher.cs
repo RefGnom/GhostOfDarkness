@@ -1,8 +1,12 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Core.Extensions;
 using game;
+using Game.ContentLoaders;
+using Game.Controllers.Buttons;
+using Game.Enums;
 using Game.View;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -12,8 +16,6 @@ namespace Game.Controllers.Switcher;
 
 internal class Switcher : IComponent, IEnumerable<string>
 {
-    private readonly Vector2 leftArrowPosition;
-    private readonly Vector2 rightArrowPosition;
     private readonly Vector2 backgroundPosition;
     private readonly Button leftArrow;
     private readonly Button rightArrow;
@@ -23,15 +25,13 @@ internal class Switcher : IComponent, IEnumerable<string>
 
     public Switcher(Vector2 position)
     {
-        leftArrowPosition = position;
-        rightArrowPosition = position.Shift(360, 0);
         backgroundPosition = position.Shift(50, 0);
-        leftArrow = new Button(Textures.SwitcherLeftArrow, leftArrowPosition, "", Color.Black);
+        leftArrow = new Button(Textures.SwitcherLeftArrow, position, Color.Black);
         leftArrow.OnClicked += Back;
-        rightArrow = new Button(Textures.SwitcherRightArrow, rightArrowPosition, "", Color.Black);
+        rightArrow = new Button(Textures.SwitcherRightArrow, position.Shift(360, 0), Color.Black);
         rightArrow.OnClicked += Next;
         background = new Sprite(Textures.SwitcherBackground, backgroundPosition, Layers.UIBackground);
-        options = new();
+        options = new List<SwitcherObject>();
     }
 
     public void Add(string value, Action onActivated = null, Action onDeactivated = null)
@@ -92,14 +92,8 @@ internal class Switcher : IComponent, IEnumerable<string>
 
     public IEnumerator<string> GetEnumerator()
     {
-        for (var i = 0; i < options.Count; i++)
-        {
-            yield return options[i].Value;
-        }
+        return options.Select(option => option.Value).GetEnumerator();
     }
 
-    IEnumerator IEnumerable.GetEnumerator()
-    {
-        return GetEnumerator();
-    }
+    IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
 }
