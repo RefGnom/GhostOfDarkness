@@ -1,4 +1,5 @@
-﻿using Game.Enums;
+﻿using System;
+using Game.Enums;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -16,5 +17,14 @@ public interface IButtonFactory
         float textLayer,
         Align align = Align.Center,
         int indent = 0
+    );
+
+    RadioButton CreateSaveButton(
+        Texture2D disabledTexture,
+        Texture2D enabledTexture,
+        Vector2 position,
+        string saveName,
+        int difficulty,
+        TimeSpan time
     );
 }
