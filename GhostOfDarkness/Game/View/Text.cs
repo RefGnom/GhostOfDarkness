@@ -1,7 +1,10 @@
-﻿using Microsoft.Xna.Framework;
+﻿using System;
+using game;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using IDrawable = game.IDrawable;
 
-namespace game;
+namespace Game.View;
 
 internal class Text : IDrawable
 {
@@ -36,12 +39,14 @@ internal class Text : IDrawable
         position = bounds.Location.ToVector2();
         position.Y += (bounds.Height - size.Y) / 2;
 
-        if (align == Align.Left)
-            position.X += indent;
-        if (align == Align.Center)
-            position.X += (bounds.Width - size.X) / 2;
-        if (align == Align.Right)
-            position.X += bounds.Width - size.X - indent;
+        var indentX = align switch
+        {
+            Align.Left => indent,
+            Align.Center => (bounds.Width - size.X) / 2,
+            Align.Right => bounds.Width - size.X - indent,
+            _ => throw new ArgumentOutOfRangeException($"Unknown align {align}")
+        };
+        position.X += indentX;
     }
 
     public void Draw(SpriteBatch spriteBatch, float scale)
