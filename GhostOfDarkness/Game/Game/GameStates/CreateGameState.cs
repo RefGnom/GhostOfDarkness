@@ -70,6 +70,7 @@ internal class CreateGameState : GameState
     public override void Stop()
     {
         textInput.Disable();
+        textInput.Clear();
     }
 
     public override void Draw(SpriteBatch spriteBatch, float scale)
