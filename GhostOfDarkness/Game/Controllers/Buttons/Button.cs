@@ -7,7 +7,6 @@ namespace Game.Controllers.Buttons;
 
 public class Button : BaseButton
 {
-    private readonly float buttonLayer;
     private readonly Texture2D texture;
     private readonly Color selectedColor;
 
@@ -24,7 +23,7 @@ public class Button : BaseButton
 
     public Button(Texture2D texture, Vector2 position, float buttonLayer) : this(texture, position)
     {
-        this.buttonLayer = buttonLayer;
+        Layer = buttonLayer;
     }
 
     protected override void DrawButton(SpriteBatch spriteBatch, float scale)
@@ -34,7 +33,7 @@ public class Button : BaseButton
         var color = Inactive
             ? defaultColor.WithAlpha(200).WithColorDelta(190)
             : Selected ? selectedColor : defaultColor;
-        spriteBatch.Draw(texture, position, null, color, 0, Vector2.Zero, scale, SpriteEffects.None, buttonLayer);
+        spriteBatch.Draw(texture, position, null, color, 0, Vector2.Zero, scale, SpriteEffects.None, Layer);
     }
 
     protected override Rectangle GetBounds() => texture.Bounds.Shift(Position);
