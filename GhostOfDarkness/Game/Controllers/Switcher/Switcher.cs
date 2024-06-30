@@ -36,7 +36,7 @@ internal class Switcher : IComponent, IEnumerable<string>
 
     public void Add(string value, Action onActivated = null, Action onDeactivated = null)
     {
-        var option = new SwitcherObject(new Rectangle((int)backgroundPosition.X, (int)backgroundPosition.Y, 300, 40), value, Align.Center, 0, Fonts.Common16);
+        var option = new SwitcherObject(new Rectangle((int)backgroundPosition.X, (int)backgroundPosition.Y, 300, 40), value, Align.Left | Align.Right, 0, Fonts.Common16);
         option.OnActivated += onActivated;
         option.OnDeactivated += onDeactivated;
         options.Add(option);

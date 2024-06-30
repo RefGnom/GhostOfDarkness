@@ -1,5 +1,5 @@
-﻿using System;
-using Core.Extensions;
+﻿using Core.Extensions;
+using Core.Saves;
 using Game.ContentLoaders;
 using Game.Enums;
 using Game.View;
@@ -10,7 +10,7 @@ namespace Game.Controllers.Buttons;
 
 public class ButtonFactory : IButtonFactory
 {
-    public Button CreateButtonWithText(Texture2D texture, Vector2 position, string text, Align align = Align.Center, int indent = 0)
+    public Button CreateButtonWithText(Texture2D texture, Vector2 position, string text, Align align = Align.Left | Align.Right, int indent = 0)
     {
         var button = new Button(texture, position);
         var bounds = texture.Bounds.Shift(position);
@@ -24,7 +24,7 @@ public class ButtonFactory : IButtonFactory
         string text,
         float buttonLayer,
         float textLayer,
-        Align align = Align.Center,
+        Align align = Align.Left | Align.Right,
         int indent = 0
     )
     {
@@ -38,13 +38,14 @@ public class ButtonFactory : IButtonFactory
         Texture2D disabledTexture,
         Texture2D enabledTexture,
         Vector2 position,
-        string saveName,
-        int difficulty,
-        TimeSpan time
+        SaveInfo saveInfo
     )
     {
         var button = new RadioButton(disabledTexture, enabledTexture, position);
-        //button.AddDrawable(new Text());
+        var bounds = disabledTexture.Bounds.Shift(position);
+        button.AddDrawable(new Text(bounds, saveInfo.Name, Align.Left | Align.Up, 0, Fonts.Common16));
+        button.AddDrawable(new Text(bounds, $"Difficulty {saveInfo.Difficulty}", Align.Down | Align.Left, 0, Fonts.Common12));
+        button.AddDrawable(new Text(bounds, $"Time {saveInfo.PlayTime}", Align.Down | Align.Right, 0, Fonts.Common12));
         return button;
     }
 }
