@@ -1,4 +1,5 @@
 ﻿using game;
+using Game.Controllers;
 using Game.Interfaces;
 using Game.View;
 using Microsoft.Xna.Framework;
