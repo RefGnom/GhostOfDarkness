@@ -60,7 +60,7 @@ internal class LoadSaveState : GameState
         var deltaY = 0;
         foreach (var saveInfo in saveInfos)
         {
-            var button = new SaveButton(Textures.ButtonBackground,
+            var button = new SaveButton(Textures.Save,
                 new Vector2(60, 90 + deltaY),
                 saveInfo.Name,
                 saveInfo.Difficulty.ToString(),
