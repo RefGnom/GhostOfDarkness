@@ -15,17 +15,22 @@ internal class SwitcherObject : Text
     public event Action OnActivated;
     public event Action OnDeactivated;
 
-    public SwitcherObject(Rectangle bounds, string text, Align align, int indent, SpriteFont font) : base(bounds, text, align, indent, font)
+    public SwitcherObject(Rectangle bounds, string text, Align align, int indentX, SpriteFont font) : base(bounds, text, font, align, indentX)
     {
-
     }
 
     public void SetActive(bool active)
     {
         if (active && !this.active)
+        {
             OnActivated?.Invoke();
+        }
+
         if (!active && this.active)
+        {
             OnDeactivated?.Invoke();
+        }
+
         this.active = active;
     }
 }

@@ -7,7 +7,7 @@ namespace Game.Controllers.Buttons;
 
 public interface IButtonFactory
 {
-    Button CreateButtonWithText(Texture2D texture, Vector2 position, string text, Align align = Align.Left | Align.Right, int indent = 0);
+    Button CreateButtonWithText(Texture2D texture, Vector2 position, string text, Align align = 0, int indentX = 0, int indentY = 0);
 
     Button CreateButtonWithText(
         Texture2D texture,
@@ -15,8 +15,9 @@ public interface IButtonFactory
         string text,
         float buttonLayer,
         float textLayer,
-        Align align = Align.Left | Align.Right,
-        int indent = 0
+        Align align = 0,
+        int indentX = 0,
+        int indentY = 0
     );
 
     RadioButton CreateSaveButton(Texture2D disabledTexture, Texture2D enabledTexture, Vector2 position, SaveInfo saveInfo);
