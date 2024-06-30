@@ -1,5 +1,6 @@
 ﻿using System;
 using game;
+using Game.Enums;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using IDrawable = game.IDrawable;
@@ -11,6 +12,7 @@ internal class Text : IDrawable
     private readonly Rectangle bounds;
     private readonly Align align;
     private readonly int indent;
+    private readonly float layer;
     private Vector2 position;
     private SpriteFont font;
 
@@ -24,13 +26,14 @@ internal class Text : IDrawable
         }
     }
 
-    public Text(Rectangle bounds, string text, Align align, int indent, SpriteFont font)
+    public Text(Rectangle bounds, string text, Align align, int indent, SpriteFont font, float? layer = null)
     {
         this.bounds = bounds;
         this.align = align;
         this.indent = indent;
         Value = text;
         Font = font;
+        this.layer = layer ?? Layers.Text;
     }
 
     public void SetText(string text)
@@ -51,6 +54,6 @@ internal class Text : IDrawable
 
     public void Draw(SpriteBatch spriteBatch, float scale)
     {
-        spriteBatch.DrawString(font, Value, position * scale, Color.White, 0, Vector2.Zero, scale, SpriteEffects.None, Layers.Text);
+        spriteBatch.DrawString(font, Value, position * scale, Color.White, 0, Vector2.Zero, scale, SpriteEffects.None, layer);
     }
 }
