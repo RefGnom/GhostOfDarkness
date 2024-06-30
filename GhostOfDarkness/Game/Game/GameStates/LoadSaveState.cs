@@ -33,7 +33,7 @@ internal class LoadSaveState : GameState
 
         loadButton = buttonFactory.CreateButtonWithText(Textures.ButtonBackground, new Vector2(40, 960), "Load");
         loadButton.OnClicked += Play;
-        loadButton.Active = false;
+        loadButton.Inactive = true;
         Components.Add(loadButton);
 
         var createNew = buttonFactory.CreateButtonWithText(Textures.ButtonBackground, new Vector2(538, 960), "Create New Game");
@@ -109,6 +109,6 @@ internal class LoadSaveState : GameState
     private void ChoiceSave(SaveInfo saveInfo)
     {
         selectedInfo = saveInfo;
-        loadButton.Active = true;
+        loadButton.Inactive = false;
     }
 }

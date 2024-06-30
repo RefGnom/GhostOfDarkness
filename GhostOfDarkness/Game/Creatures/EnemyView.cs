@@ -1,4 +1,6 @@
-﻿namespace game;
+﻿using Game.Creatures;
+
+namespace game;
 
 internal abstract class EnemyView : CreatureStatesController
 {

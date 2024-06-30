@@ -1,9 +1,10 @@
-﻿using Microsoft.Xna.Framework;
-using System.Collections.Generic;
-using Game.Extensions;
+﻿using System.Collections.Generic;
+using Core.Extensions;
+using game;
 using Game.Model;
+using Microsoft.Xna.Framework;
 
-namespace game;
+namespace Game.Algorithms;
 
 internal static class AStarPoint
 {
@@ -20,11 +21,16 @@ internal static class AStarPoint
             foreach (var (neighbour, cost) in node.Value.GetNeighbors())
             {
                 if (visited.Contains(neighbour) || !room.IsPossiblePosition(neighbour))
+                {
                     continue;
+                }
+
                 var nextNode = new PathNode<Point>(neighbour, cost, neighbour.CalculateDistanceByPixels(end), node);
 
                 if (neighbour == end)
+                {
                     return nextNode.GetPath();
+                }
 
                 forOpen.Enqueue(nextNode, nextNode.TotalCost);
                 visited.Add(neighbour);

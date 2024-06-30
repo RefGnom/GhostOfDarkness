@@ -1,8 +1,9 @@
-﻿using Microsoft.Xna.Framework;
-using System;
-using Game.Extensions;
+﻿using System;
+using Core.Extensions;
+using game;
+using Microsoft.Xna.Framework;
 
-namespace game;
+namespace Game.Creatures;
 
 internal abstract class Enemy : Creature
 {
@@ -36,7 +37,9 @@ internal abstract class Enemy : Creature
     {
         Health -= damage;
         if (Health > 0)
+        {
             View.SetStateTakeDamage();
+        }
         else
         {
             View.SetStateDead();
@@ -47,7 +50,10 @@ internal abstract class Enemy : Creature
     {
         View.Update(deltaTime);
         if (hitboxDeleted)
+        {
             return;
+        }
+
         if (View.Killed)
         {
             DeleteHitbox(this);
@@ -56,15 +62,24 @@ internal abstract class Enemy : Creature
         }
         UpdateDirection(target);
         if (View.CanAttack && TryAttack(target))
+        {
             View.SetStateAttack();
+        }
 
         if (View.CanMove)
+        {
             isIdle = !TryMoveToPlayer(deltaTime, target);
+        }
 
         if (isIdle)
+        {
             View.SetStateIdle();
+        }
         else
+        {
             View.SetStateRun();
+        }
+
         currentColdown -= deltaTime;
     }
 
@@ -72,13 +87,22 @@ internal abstract class Enemy : Creature
     {
         var distance = Vector2.Distance(Position, target.Position);
         if (distance <= AttackDistance)
+        {
             return false;
+        }
+
         var movementVector = GetMovementVector.Invoke(this, target.Hitbox.Shift(target.Position), deltaTime);
         if (movementVector == Vector2.Zero)
+        {
             return false;
+        }
+
         movementVector = CollisionDetecter.GetMovementVectorWithoutCollision(this, movementVector.X, movementVector.Y, Speed, deltaTime);
         if (movementVector == Vector2.Zero)
+        {
             return false;
+        }
+
         Move(movementVector * Speed * deltaTime);
         return true;
     }
