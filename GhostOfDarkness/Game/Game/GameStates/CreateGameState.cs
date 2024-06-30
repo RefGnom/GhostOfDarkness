@@ -2,6 +2,7 @@
 using Core.Saves;
 using game;
 using Game.Controllers;
+using Game.Controllers.Buttons;
 using Game.Interfaces;
 using Game.View;
 using Microsoft.Xna.Framework;
@@ -18,7 +19,8 @@ internal class CreateGameState : GameState
     public CreateGameState(
         IGameStateSwitcher stateSwitcher,
         ISaveHandler saveHandler,
-        ISaveProvider saveProvider
+        ISaveProvider saveProvider,
+        IButtonFactory buttonFactory
     ) : base(stateSwitcher)
     {
         this.saveHandler = saveHandler;
@@ -26,11 +28,11 @@ internal class CreateGameState : GameState
 
         Drawables.Add(new Sprite(Textures.Background, Vector2.Zero, Layers.Background));
 
-        var back = new Button(Textures.ButtonBackground, new Vector2(1432, 960), "Back");
+        var back = buttonFactory.CreateButtonWithText(Textures.ButtonBackground, new Vector2(1432, 960), "Back");
         back.OnClicked += Back;
         Components.Add(back);
 
-        var create = new Button(Textures.ButtonBackground, new Vector2(380, 600), "Create");
+        var create = buttonFactory.CreateButtonWithText(Textures.ButtonBackground, new Vector2(380, 600), "Create");
         create.OnClicked += CreateGame;
         Components.Add(create);
 

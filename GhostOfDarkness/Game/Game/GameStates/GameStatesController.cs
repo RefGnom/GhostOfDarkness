@@ -1,11 +1,12 @@
-﻿using Microsoft.Xna.Framework.Graphics;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using Core.Saves;
-using Game.Game.GameStates;
+using game;
+using Game.Controllers.Buttons;
 using Game.Interfaces;
+using Microsoft.Xna.Framework.Graphics;
 
-namespace game;
+namespace Game.Game.GameStates;
 
 internal class GameStatesController : IGameStateSwitcher, IDrawable, IUpdateable
 {
@@ -19,14 +20,14 @@ internal class GameStatesController : IGameStateSwitcher, IDrawable, IUpdateable
     {
         states = new List<GameState>()
         {
-            new MainMenuState(this),
-            new LoadSaveState(this, new SaveHandler()),
-            new ConfirmationState(this),
-            new CreateGameState(this, new SaveHandler(), new SaveProvider()),
-            new PauseState(this),
-            new PlayerDeadState(this),
+            new MainMenuState(this, new ButtonFactory()),
+            new LoadSaveState(this, new SaveHandler(), new ButtonFactory()),
+            new ConfirmationState(this, new ButtonFactory()),
+            new CreateGameState(this, new SaveHandler(), new SaveProvider(), new ButtonFactory()),
+            new PauseState(this, new ButtonFactory()),
+            new PlayerDeadState(this, new ButtonFactory()),
             new PlayState(this),
-            new SettingsState(this)
+            new SettingsState(this, new ButtonFactory())
         };
         currentState = states[0];
         currentState.Start(currentState);

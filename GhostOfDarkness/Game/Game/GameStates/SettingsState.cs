@@ -3,8 +3,10 @@ using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 using System;
-using Game.Controllers;
+using Game.ContentLoaders;
+using Game.Controllers.Buttons;
 using Game.Controllers.Switcher;
+using Game.Enums;
 using Game.Game.GameStates;
 using Game.Interfaces;
 using Game.View;
@@ -18,7 +20,7 @@ internal class SettingsState : GameState
     private Action displayModeAction;
     private Action resolutionAction;
 
-    public SettingsState(IGameStateSwitcher stateSwitcher) : base(stateSwitcher)
+    public SettingsState(IGameStateSwitcher stateSwitcher, IButtonFactory buttonFactory) : base(stateSwitcher)
     {
         Drawables.Add(new Sprite(Textures.Background, Vector2.Zero, Layers.Background));
 
@@ -80,11 +82,11 @@ internal class SettingsState : GameState
         Components.Add(soundVolume);
         Drawables.Add(soundVolumeText);
 
-        var save = new Button(Textures.ButtonBackground, new Vector2(934, 960), "Save");
+        var save = buttonFactory.CreateButtonWithText(Textures.ButtonBackground, new Vector2(934, 960), "Save");
         save.OnClicked += Save;
         Components.Add(save);
 
-        var exit = new Button(Textures.ButtonBackground, new Vector2(1432, 960), "Exit");
+        var exit = buttonFactory.CreateButtonWithText(Textures.ButtonBackground, new Vector2(1432, 960), "Exit");
         exit.OnClicked += Exit;
         Components.Add(exit);
 

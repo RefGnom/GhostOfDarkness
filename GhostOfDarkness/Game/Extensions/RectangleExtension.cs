@@ -1,9 +1,8 @@
-﻿using Microsoft.Xna.Framework;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using Game.Extensions;
+using Microsoft.Xna.Framework;
 
-namespace game;
+namespace Game.Extensions;
 
 internal static class RectangleExtension
 {

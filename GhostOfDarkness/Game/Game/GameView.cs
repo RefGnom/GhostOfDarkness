@@ -1,5 +1,6 @@
 ﻿using System;
 using game;
+using Game.ContentLoaders;
 using Game.Controllers;
 using Game.Managers;
 using Microsoft.Xna.Framework;

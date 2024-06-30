@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using game;
+using Game.ContentLoaders;
+using Game.Enums;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using IDrawable = game.IDrawable;
