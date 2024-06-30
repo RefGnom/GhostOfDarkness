@@ -1,19 +1,20 @@
 ﻿using System;
+using System.Collections.Generic;
 using Core.Extensions;
 using game;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using IDrawable = game.IDrawable;
 
-namespace Game.Controllers;
+namespace Game.Controllers.Buttons;
 
 public class Button : IComponent
 {
+    private readonly float buttonLayer;
+    private readonly List<IDrawable> drawables;
     protected readonly Texture2D Texture;
     protected readonly Vector2 Position;
-    private readonly string text;
     protected readonly Color SelectedColor;
-    protected readonly float ButtonLayer;
-    protected readonly float TextLayer;
     protected float Scale;
 
     public bool Selected { get; set; }
@@ -21,32 +22,33 @@ public class Button : IComponent
 
     public event Action OnClicked;
 
-    public Button(Texture2D texture, Vector2 position, string text)
+    public Button(Texture2D texture, Vector2 position)
     {
-        this.Texture = texture;
-        this.Position = position;
-        this.text = text;
-        ButtonLayer = Layers.UI;
-        TextLayer = Layers.Text;
+        Texture = texture;
+        Position = position;
+        buttonLayer = Layers.UI;
         SelectedColor = Color.LightGray;
+        drawables = new List<IDrawable>();
     }
 
-    public Button(Texture2D texture, Vector2 position, string text, Color selectedColor) : this(texture, position, text)
+    public Button(Texture2D texture, Vector2 position, Color selectedColor) : this(texture, position)
     {
-        this.SelectedColor = selectedColor;
+        SelectedColor = selectedColor;
     }
 
-    public Button(Texture2D texture, Vector2 position, string text, float buttonLayer, float textLayer, Color selectedColor) : this(texture, position, text,
-        selectedColor)
+    public Button(Texture2D texture, Vector2 position, float buttonLayer) : this(texture, position)
     {
-        this.ButtonLayer = buttonLayer;
-        this.TextLayer = textLayer;
+        this.buttonLayer = buttonLayer;
     }
 
-    public Button(Texture2D texture, Vector2 position, string text, float buttonLayer, float textLayer) : this(texture, position, text)
+    public Button(Texture2D texture, Vector2 position, float buttonLayer, Color selectedColor) : this(texture, position, selectedColor)
     {
-        this.ButtonLayer = buttonLayer;
-        this.TextLayer = textLayer;
+        this.buttonLayer = buttonLayer;
+    }
+
+    public void AddDrawable(IDrawable drawable)
+    {
+        drawables.Add(drawable);
     }
 
     public void Update(float deltaTime)
@@ -66,26 +68,17 @@ public class Button : IComponent
     public void Draw(SpriteBatch spriteBatch, float scale)
     {
         Scale = scale;
-        DrawTexture(spriteBatch, scale);
-        DrawText(spriteBatch, scale);
-    }
-
-    protected virtual void DrawTexture(SpriteBatch spriteBatch, float scale)
-    {
         var position = Position * scale;
         var defaultColor = Color.White;
         var color = Active
             ? Selected ? SelectedColor : defaultColor
             : defaultColor.WithAlpha(200).WithColorDelta(190);
-        spriteBatch.Draw(Texture, position, null, color, 0, Vector2.Zero, scale, SpriteEffects.None, ButtonLayer);
-    }
+        spriteBatch.Draw(Texture, position, null, color, 0, Vector2.Zero, scale, SpriteEffects.None, buttonLayer);
 
-    protected virtual void DrawText(SpriteBatch spriteBatch, float scale)
-    {
-        var position = Position * scale;
-        var textSize = Fonts.Buttons.MeasureString(text);
-        var textPosition = position + new Vector2(Texture.Width / 2 - textSize.X / 2, Texture.Height / 2 - textSize.Y / 2) * scale;
-        spriteBatch.DrawString(Fonts.Buttons, text, textPosition, Color.White, 0, Vector2.Zero, scale, SpriteEffects.None, TextLayer);
+        foreach (var drawable in drawables)
+        {
+            drawable.Draw(spriteBatch, scale);
+        }
     }
 
     private bool InBounds(Vector2 mousePosition)
