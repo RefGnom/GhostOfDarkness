@@ -33,6 +33,11 @@ internal class TextInput : IDrawable
         KeyboardController.GameWindow.TextInput -= InputText;
     }
 
+    public void Clear()
+    {
+        text.Clear();
+    }
+
     private void InputText(object sender, TextInputEventArgs e)
     {
         if (e.Key == Keys.Back)
