@@ -11,11 +11,9 @@ public class Button : BaseButton
     private readonly Texture2D texture;
     private readonly Color selectedColor;
 
-    public Button(Texture2D texture, Vector2 position)
+    public Button(Texture2D texture, Vector2 position) : base(position, Layers.UI)
     {
         this.texture = texture;
-        Position = position;
-        buttonLayer = Layers.UI;
         selectedColor = Color.LightGray;
     }
 

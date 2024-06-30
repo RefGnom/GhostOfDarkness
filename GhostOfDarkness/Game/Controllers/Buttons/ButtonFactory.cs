@@ -1,4 +1,5 @@
-﻿using Core.Extensions;
+﻿using System;
+using Core.Extensions;
 using Game.ContentLoaders;
 using Game.Enums;
 using Game.View;
@@ -30,6 +31,20 @@ public class ButtonFactory : IButtonFactory
         var button = new Button(texture, position, buttonLayer);
         var bounds = texture.Bounds.Shift(position);
         button.AddDrawable(new Text(bounds, text, align, indent, Fonts.Buttons, textLayer));
+        return button;
+    }
+
+    public RadioButton CreateSaveButton(
+        Texture2D disabledTexture,
+        Texture2D enabledTexture,
+        Vector2 position,
+        string saveName,
+        int difficulty,
+        TimeSpan time
+    )
+    {
+        var button = new RadioButton(disabledTexture, enabledTexture, position);
+        //button.AddDrawable(new Text());
         return button;
     }
 }

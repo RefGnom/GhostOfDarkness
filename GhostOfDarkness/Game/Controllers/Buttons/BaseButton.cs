@@ -13,11 +13,18 @@ public abstract class BaseButton : IComponent
     private readonly List<IDrawable> drawables = new List<IDrawable>();
     protected Vector2 Position;
     protected float Scale;
+    protected float Layer;
 
     public bool Selected { get; set; }
     public bool Inactive { get; set; }
 
     public event Action OnClicked;
+
+    protected BaseButton(Vector2 position, float layer)
+    {
+        Position = position;
+        Layer = layer;
+    }
 
     public void AddDrawable(IDrawable drawable)
     {
