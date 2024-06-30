@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Core.Saves;
 using game;
 using Game.Controllers;
@@ -11,8 +12,11 @@ namespace Game.Game.GameStates;
 
 internal class LoadSaveState : GameState
 {
+    private SaveInfo selectedInfo;
+    private readonly Button loadButton;
+
     private readonly ISaveHandler saveHandler;
-    private readonly List<IComponent> SaveComponents;
+    private readonly List<IComponent> saveComponents;
 
     public LoadSaveState(
         IGameStateSwitcher stateSwitcher,
@@ -24,10 +28,10 @@ internal class LoadSaveState : GameState
         Drawables.Add(new Sprite(Textures.SavesWindow, new Vector2(40, 70), Layers.UIBackground));
         Drawables.Add(new Sprite(Textures.Background, Vector2.Zero, Layers.Background));
 
-        var load = new Button(Textures.ButtonBackground, new Vector2(40, 960), "Load");
-        load.OnClicked += Play;
-        Components.Add(load);
-        load.Active = false;
+        loadButton = new Button(Textures.ButtonBackground, new Vector2(40, 960), "Load");
+        loadButton.OnClicked += Play;
+        loadButton.Active = false;
+        Components.Add(loadButton);
 
         var createNew = new Button(Textures.ButtonBackground, new Vector2(538, 960), "Create New Game");
         createNew.OnClicked += NewGame;
@@ -37,7 +41,7 @@ internal class LoadSaveState : GameState
         back.OnClicked += Back;
         Components.Add(back);
 
-        SaveComponents = new List<IComponent>();
+        saveComponents = new List<IComponent>();
     }
 
     public override void Back()
@@ -52,12 +56,13 @@ internal class LoadSaveState : GameState
 
     public override void Play()
     {
+        Console.WriteLine("Start save '{0}'", selectedInfo.Name);
         Switcher.SwitchState<PlayState>();
     }
 
     public override void Start(GameState previousState)
     {
-        SaveComponents.Clear();
+        saveComponents.Clear();
         var saveInfos = saveHandler.Select();
         var deltaY = 0;
         foreach (var saveInfo in saveInfos)
@@ -68,7 +73,8 @@ internal class LoadSaveState : GameState
                 saveInfo.Difficulty.ToString(),
                 saveInfo.PlayTime.ToString()
             );
-            SaveComponents.Add(button);
+            button.OnClicked += () => ChoiceSave(saveInfo);
+            saveComponents.Add(button);
             deltaY += 120;
         }
     }
@@ -81,7 +87,7 @@ internal class LoadSaveState : GameState
     {
         base.Draw(spriteBatch, scale);
 
-        foreach (var saveComponent in SaveComponents)
+        foreach (var saveComponent in saveComponents)
         {
             saveComponent.Draw(spriteBatch, scale);
         }
@@ -91,9 +97,15 @@ internal class LoadSaveState : GameState
     {
         base.Update(deltaTime);
 
-        foreach (var saveComponent in SaveComponents)
+        foreach (var saveComponent in saveComponents)
         {
             saveComponent.Update(deltaTime);
         }
+    }
+
+    private void ChoiceSave(SaveInfo saveInfo)
+    {
+        selectedInfo = saveInfo;
+        loadButton.Active = true;
     }
 }
