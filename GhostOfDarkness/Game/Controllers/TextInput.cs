@@ -13,7 +13,7 @@ internal class TextInput : IDrawable
     private readonly Vector2 position;
     private readonly StringBuilder text;
 
-    private static SpriteFont Font => Fonts.Buttons;
+    private static SpriteFont Font => Fonts.Common24;
     public string Text => text.ToString();
 
     public TextInput(Texture2D background, Vector2 position)

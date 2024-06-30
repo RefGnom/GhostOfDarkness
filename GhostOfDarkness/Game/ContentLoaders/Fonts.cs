@@ -12,6 +12,7 @@ internal static class Fonts
     public static SpriteFont Common14 { get; private set; }
     public static SpriteFont Common16 { get; private set; }
     public static SpriteFont Common18 { get; private set; }
+    public static SpriteFont Common24 { get; private set; }
 
     public static void Load(ContentManager content)
     {
@@ -22,5 +23,6 @@ internal static class Fonts
         Common14 = content.Load<SpriteFont>("Fonts\\Common14");
         Common16 = content.Load<SpriteFont>("Fonts\\Common16");
         Common18 = content.Load<SpriteFont>("Fonts\\Common18");
+        Common24 = content.Load<SpriteFont>("Fonts\\Common24");
     }
 }
