@@ -18,15 +18,18 @@ internal class LoadSaveState : GameState
     private readonly List<IComponent> saveComponents;
     private readonly ISaveHandler saveHandler;
     private readonly IButtonFactory buttonFactory;
+    private readonly IRadioButtonManager radioButtonManager;
 
     public LoadSaveState(
         IGameStateSwitcher stateSwitcher,
         ISaveHandler saveHandler,
-        IButtonFactory buttonFactory
+        IButtonFactory buttonFactory,
+        IRadioButtonManager radioButtonManager
     ) : base(stateSwitcher)
     {
         this.saveHandler = saveHandler;
         this.buttonFactory = buttonFactory;
+        this.radioButtonManager = radioButtonManager;
 
         Drawables.Add(new Sprite(Textures.SavesWindow, new Vector2(40, 70), Layers.UIBackground));
         Drawables.Add(new Sprite(Textures.Background, Vector2.Zero, Layers.Background));
@@ -66,19 +69,26 @@ internal class LoadSaveState : GameState
     public override void Start(GameState previousState)
     {
         saveComponents.Clear();
+
         var saveInfos = saveHandler.Select();
         var deltaY = 0;
-        foreach (var saveInfo in saveInfos)
+        var radioButtons = new RadioButton[saveInfos.Length];
+        for (var i = 0; i < saveInfos.Length; i++)
         {
+            var saveInfo = saveInfos[i];
             var button = buttonFactory.CreateSaveButton(Textures.Save, Textures.Save, new Vector2(63, 100 + deltaY), saveInfo);
             button.OnEnabled += () => ChoiceSave(saveInfo);
+            radioButtons[i] = button;
             saveComponents.Add(button);
             deltaY += 120;
         }
+
+        radioButtonManager.LinkRadioButtons(radioButtons);
     }
 
     public override void Stop()
     {
+        loadButton.Inactive = true;
     }
 
     public override void Draw(SpriteBatch spriteBatch, float scale)
