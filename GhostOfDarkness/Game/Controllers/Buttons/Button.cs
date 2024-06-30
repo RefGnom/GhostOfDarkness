@@ -39,11 +39,5 @@ public class Button : BaseButton
         spriteBatch.Draw(texture, position, null, color, 0, Vector2.Zero, scale, SpriteEffects.None, buttonLayer);
     }
 
-    protected override bool InBounds(Vector2 relativeMousePosition)
-    {
-        var width = texture.Width * Scale;
-        var height = texture.Height * Scale;
-        var bounds = new Rectangle(0, 0, (int)width, (int)height);
-        return bounds.Contains(relativeMousePosition);
-    }
+    protected override Rectangle GetBounds() => texture.Bounds.Shift(Position);
 }
