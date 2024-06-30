@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 using System;
+using Game.Controllers;
 using Game.Controllers.Switcher;
 using Game.Game.GameStates;
 using Game.Interfaces;

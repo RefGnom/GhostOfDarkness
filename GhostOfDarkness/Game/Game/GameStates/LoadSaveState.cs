@@ -1,14 +1,18 @@
-﻿using Core.Saves;
+﻿using System.Collections.Generic;
+using Core.Saves;
 using game;
+using Game.Controllers;
 using Game.Interfaces;
 using Game.View;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace Game.Game.GameStates;
 
 internal class LoadSaveState : GameState
 {
     private readonly ISaveHandler saveHandler;
+    private readonly List<IComponent> SaveComponents;
 
     public LoadSaveState(
         IGameStateSwitcher stateSwitcher,
@@ -31,6 +35,8 @@ internal class LoadSaveState : GameState
         var back = new Button(Textures.ButtonBackground, new Vector2(1432, 960), "Back");
         back.OnClicked += Back;
         Components.Add(back);
+
+        SaveComponents = new List<IComponent>();
     }
 
     public override void Back()
@@ -54,19 +60,38 @@ internal class LoadSaveState : GameState
         var deltaY = 0;
         foreach (var saveInfo in saveInfos)
         {
-            var text = new Text(
-                new Rectangle(new Point(40, 70 + deltaY), new Point(100, 16)),
-                $"{saveInfo.Name} time: {saveInfo.PlayTime}",
-                Align.Left,
-                0,
-                Fonts.Common16
+            var button = new SaveButton(Textures.ButtonBackground,
+                new Vector2(60, 90 + deltaY),
+                saveInfo.Name,
+                saveInfo.Difficulty.ToString(),
+                saveInfo.PlayTime.ToString()
             );
-            Drawables.Add(text);
-            deltaY += 20;
+            SaveComponents.Add(button);
+            deltaY += 120;
         }
     }
 
     public override void Stop()
     {
+    }
+
+    public override void Draw(SpriteBatch spriteBatch, float scale)
+    {
+        base.Draw(spriteBatch, scale);
+
+        foreach (var saveComponent in SaveComponents)
+        {
+            saveComponent.Draw(spriteBatch, scale);
+        }
+    }
+
+    public override void Update(float deltaTime)
+    {
+        base.Update(deltaTime);
+
+        foreach (var saveComponent in SaveComponents)
+        {
+            saveComponent.Update(deltaTime);
+        }
     }
 }

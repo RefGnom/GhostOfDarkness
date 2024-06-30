@@ -24,20 +24,20 @@
 *.sdf
 ipch/
 
-GhostOfDarkness/[Cc]ore/[Oo]bj*/
-GhostOfDarkness/[Cc]ore/[Bb]in*/
-GhostOfDarkness/[Cc]ore/[Dd]ebug*/
-GhostOfDarkness/[Cc]ore/[Rr]elease*/
+GhostOfDarkness/[Cc]ore/[Oo]bj
+GhostOfDarkness/[Cc]ore/[Bb]in
+GhostOfDarkness/[Cc]ore/[Dd]ebug
+GhostOfDarkness/[Cc]ore/[Rr]elease
 
-GhostOfDarkness/[Gg]ame/[Oo]bj*/
-GhostOfDarkness/[Gg]ame/[Bb]in*/
-GhostOfDarkness/[Gg]ame/[Dd]ebug*/
-GhostOfDarkness/[Gg]ame/[Rr]elease*/
+GhostOfDarkness/[Gg]ame/[Oo]bj
+GhostOfDarkness/[Gg]ame/[Bb]in
+GhostOfDarkness/[Gg]ame/[Dd]ebug
+GhostOfDarkness/[Gg]ame/[Rr]elease
 
-GhostOfDarkness/[Mm]apEditor/[Oo]bj*/
-GhostOfDarkness/[Mm]apEditor/[Bb]in*/
-GhostOfDarkness/[Mm]apEditor/[Dd]ebug*/
-GhostOfDarkness/[Mm]apEditor/[Rr]elease*/
+GhostOfDarkness/[Mm]apEditor/[Oo]bj
+GhostOfDarkness/[Mm]apEditor/[Bb]in
+GhostOfDarkness/[Mm]apEditor/[Dd]ebug
+GhostOfDarkness/[Mm]apEditor/[Rr]elease
 
 GhostOfDarkness/[Ss]aves
 
