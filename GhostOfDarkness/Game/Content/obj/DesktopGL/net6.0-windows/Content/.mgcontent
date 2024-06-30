@@ -10,6 +10,7 @@
     <File>D:/Programming/Projects/GhostOfDarkness/GhostOfDarkness/Game/Content/Fonts/Common14.spritefont</File>
     <File>D:/Programming/Projects/GhostOfDarkness/GhostOfDarkness/Game/Content/Fonts/Common16.spritefont</File>
     <File>D:/Programming/Projects/GhostOfDarkness/GhostOfDarkness/Game/Content/Fonts/Common18.spritefont</File>
+    <File>D:/Programming/Projects/GhostOfDarkness/GhostOfDarkness/Game/Content/Fonts/Common24.spritefont</File>
     <File>D:/Programming/Projects/GhostOfDarkness/GhostOfDarkness/Game/Content/Fonts/Debug.spritefont</File>
     <File>D:/Programming/Projects/GhostOfDarkness/GhostOfDarkness/Game/Content/Service/Door color.png</File>
     <File>D:/Programming/Projects/GhostOfDarkness/GhostOfDarkness/Game/Content/Service/Hallway floor color.png</File>
@@ -79,6 +80,7 @@
     <File>D:/Programming/Projects/GhostOfDarkness/GhostOfDarkness/Game/Content/Textures/UI/Switcher/RightArrow.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

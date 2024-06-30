@@ -55,6 +55,13 @@
 /processorParam:TextureFormat=Compressed
 /build:Fonts/Common18.spritefont
 
+#begin Fonts/Common24.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:PremultiplyAlpha=True
+/processorParam:TextureFormat=Compressed
+/build:Fonts/Common24.spritefont
+
 #begin Fonts/Debug.spritefont
 /importer:FontDescriptionImporter
 /processor:FontDescriptionProcessor

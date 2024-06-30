@@ -56,12 +56,13 @@ internal class LoadSaveState : GameState
 
     public override void Start(GameState previousState)
     {
+        SaveComponents.Clear();
         var saveInfos = saveHandler.Select();
         var deltaY = 0;
         foreach (var saveInfo in saveInfos)
         {
             var button = new SaveButton(Textures.Save,
-                new Vector2(60, 90 + deltaY),
+                new Vector2(63, 100 + deltaY),
                 saveInfo.Name,
                 saveInfo.Difficulty.ToString(),
                 saveInfo.PlayTime.ToString()

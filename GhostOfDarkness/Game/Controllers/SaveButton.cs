@@ -7,7 +7,8 @@ namespace Game.Controllers;
 
 public class SaveButton : Button
 {
-    private static readonly SpriteFont font = Fonts.Common14;
+    private static readonly SpriteFont nameFont = Fonts.Common16;
+    private static readonly SpriteFont infoFont = Fonts.Common14;
 
     private readonly string saveName;
     private readonly string difficulty;
@@ -30,15 +31,15 @@ public class SaveButton : Button
     {
         const int deltaX = 30;
         var namePosition = GetTextPosition(deltaX, 20);
-        spriteBatch.DrawString(Fonts.Common16, saveName, namePosition, Color.White, 0, Vector2.Zero, scale, SpriteEffects.None, TextLayer);
+        spriteBatch.DrawString(nameFont, saveName, namePosition, Color.White, 0, Vector2.Zero, scale, SpriteEffects.None, TextLayer);
 
-        var deltaY = Texture.Height - font.MeasureString(difficulty).Y - 10;
+        var deltaY = Texture.Height - infoFont.MeasureString(difficulty).Y - 15;
         var difficultyPosition = GetTextPosition(deltaX, deltaY);
-        spriteBatch.DrawString(font, difficulty, difficultyPosition, Color.White, 0, Vector2.Zero, scale, SpriteEffects.None, TextLayer);
+        spriteBatch.DrawString(infoFont, difficulty, difficultyPosition, Color.White, 0, Vector2.Zero, scale, SpriteEffects.None, TextLayer);
 
-        var playTimeSize = font.MeasureString(playTime);
+        var playTimeSize = infoFont.MeasureString(playTime);
         var timePosition = GetTextPosition(Texture.Width - playTimeSize.X - deltaX, deltaY);
-        spriteBatch.DrawString(font, playTime, timePosition, Color.White, 0, Vector2.Zero, scale, SpriteEffects.None, TextLayer);
+        spriteBatch.DrawString(infoFont, playTime, timePosition, Color.White, 0, Vector2.Zero, scale, SpriteEffects.None, TextLayer);
 
         return;
         Vector2 GetTextPosition(float dx, float dy) => (Position + new Vector2(dx, dy)) * scale;

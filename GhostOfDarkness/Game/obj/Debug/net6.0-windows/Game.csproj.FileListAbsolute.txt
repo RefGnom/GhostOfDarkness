@@ -222,3 +222,4 @@ D:\Programming\Projects\GhostOfDarkness\GhostOfDarkness\Game\obj\Debug\net6.0-wi
 D:\Programming\Projects\GhostOfDarkness\GhostOfDarkness\Game\bin\Debug\net6.0-windows\Content\Textures\UI\Save.xnb
 D:\Programming\Projects\GhostOfDarkness\GhostOfDarkness\Game\bin\Debug\net6.0-windows\Content\Fonts\Common10.xnb
 D:\Programming\Projects\GhostOfDarkness\GhostOfDarkness\Game\bin\Debug\net6.0-windows\Content\Fonts\Common14.xnb
+D:\Programming\Projects\GhostOfDarkness\GhostOfDarkness\Game\bin\Debug\net6.0-windows\Content\Fonts\Common24.xnb
