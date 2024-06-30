@@ -65,21 +65,16 @@ internal class LoadSaveState : GameState
 
     public override void Start(GameState previousState)
     {
-        // saveComponents.Clear();
-        // var saveInfos = saveHandler.Select();
-        // var deltaY = 0;
-        // foreach (var saveInfo in saveInfos)
-        // {
-        //     var button = new SaveButton(Textures.Save,
-        //         new Vector2(63, 100 + deltaY),
-        //         saveInfo.Name,
-        //         saveInfo.Difficulty.ToString(),
-        //         saveInfo.PlayTime.ToString()
-        //     );
-        //     button.OnClicked += () => ChoiceSave(saveInfo);
-        //     saveComponents.Add(button);
-        //     deltaY += 120;
-        // }
+        saveComponents.Clear();
+        var saveInfos = saveHandler.Select();
+        var deltaY = 0;
+        foreach (var saveInfo in saveInfos)
+        {
+            var button = buttonFactory.CreateSaveButton(Textures.Save, Textures.Save, new Vector2(63, 100 + deltaY), saveInfo);
+            button.OnEnabled += () => ChoiceSave(saveInfo);
+            saveComponents.Add(button);
+            deltaY += 120;
+        }
     }
 
     public override void Stop()
