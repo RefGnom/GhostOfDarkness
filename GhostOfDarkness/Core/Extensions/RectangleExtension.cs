@@ -48,4 +48,13 @@ public static class RectangleExtension
         rectangle.Offset(x, y);
         return rectangle;
     }
+
+    public static Rectangle Scale(this Rectangle rectangle, float scale)
+    {
+        var x = rectangle.X * scale;
+        var y = rectangle.Y * scale;
+        var width = rectangle.Width * scale;
+        var height = rectangle.Height * scale;
+        return new Rectangle((int)x, (int)y, (int)width, (int)height);
+    }
 }

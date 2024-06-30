@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Core.Extensions;
 using game;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -30,7 +31,7 @@ public abstract class BaseButton : IComponent
             return;
         }
 
-        Selected = InBounds(MouseController.WindowPosition - Position);
+        Selected = InBounds(MouseController.WindowPosition);
         if (Selected && MouseController.LeftButtonClicked())
         {
             OnClicked?.Invoke();
@@ -57,5 +58,7 @@ public abstract class BaseButton : IComponent
     {
     }
 
-    protected abstract bool InBounds(Vector2 relativeMousePosition);
+    private bool InBounds(Vector2 mousePosition) => GetBounds().Scale(Scale).Contains(mousePosition);
+
+    protected abstract Rectangle GetBounds();
 }
