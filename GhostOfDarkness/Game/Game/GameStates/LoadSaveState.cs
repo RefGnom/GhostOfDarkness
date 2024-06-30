@@ -27,6 +27,7 @@ internal class LoadSaveState : GameState
         var load = new Button(Textures.ButtonBackground, new Vector2(40, 960), "Load");
         load.OnClicked += Play;
         Components.Add(load);
+        load.Active = false;
 
         var createNew = new Button(Textures.ButtonBackground, new Vector2(538, 960), "Create New Game");
         createNew.OnClicked += NewGame;

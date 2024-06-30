@@ -1,4 +1,5 @@
 ﻿using System;
+using Core.Extensions;
 using game;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -16,6 +17,7 @@ public class Button : IComponent
     protected float Scale;
 
     public bool Selected { get; set; }
+    public bool Active { get; set; } = true;
 
     public event Action OnClicked;
 
@@ -34,7 +36,8 @@ public class Button : IComponent
         this.SelectedColor = selectedColor;
     }
 
-    public Button(Texture2D texture, Vector2 position, string text, float buttonLayer, float textLayer, Color selectedColor) : this(texture, position, text, selectedColor)
+    public Button(Texture2D texture, Vector2 position, string text, float buttonLayer, float textLayer, Color selectedColor) : this(texture, position, text,
+        selectedColor)
     {
         this.ButtonLayer = buttonLayer;
         this.TextLayer = textLayer;
@@ -48,17 +51,15 @@ public class Button : IComponent
 
     public void Update(float deltaTime)
     {
-        if (InBounds(MouseController.WindowPosition))
+        if (!Active)
         {
-            Selected = true;
-            if (MouseController.LeftButtonClicked())
-            {
-                OnClicked?.Invoke();
-            }
+            return;
         }
-        else
+
+        Selected = InBounds(MouseController.WindowPosition);
+        if (Selected && MouseController.LeftButtonClicked())
         {
-            Selected = false;
+            OnClicked?.Invoke();
         }
     }
 
@@ -72,7 +73,10 @@ public class Button : IComponent
     protected virtual void DrawTexture(SpriteBatch spriteBatch, float scale)
     {
         var position = Position * scale;
-        var color = Selected ? SelectedColor : Color.White;
+        var defaultColor = Color.White;
+        var color = Active
+            ? Selected ? SelectedColor : defaultColor
+            : defaultColor.WithAlpha(200).WithColorDelta(190);
         spriteBatch.Draw(Texture, position, null, color, 0, Vector2.Zero, scale, SpriteEffects.None, ButtonLayer);
     }
 
