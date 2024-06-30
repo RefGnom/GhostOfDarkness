@@ -8,9 +8,9 @@ public class RadioButtonManager : IRadioButtonManager
         for (var i = 0; i < count; i++)
         {
             var buttonForLink = radioButtons[i];
-            for (var j = 0; j < count; j++)
+            for (var j = 1; j < count; j++)
             {
-                buttonForLink.OnEnabled += radioButtons[(i + j + 1) % count].Disable;
+                buttonForLink.OnEnabled += radioButtons[(i + j) % count].Disable;
             }
         }
     }
