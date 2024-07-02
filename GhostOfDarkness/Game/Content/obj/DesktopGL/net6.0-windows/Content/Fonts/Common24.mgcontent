@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <SourceFile>D:/Programming/Projects/GhostOfDarkness/GhostOfDarkness/Game/Content/Fonts/Common24.spritefont</SourceFile>
-  <SourceTime>2024-06-30T17:01:11.777998+05:00</SourceTime>
+  <SourceTime>2024-07-03T02:11:36.5990899+05:00</SourceTime>
   <DestFile>D:/Programming/Projects/GhostOfDarkness/GhostOfDarkness/Game/Content/bin/DesktopGL/Content/Fonts/Common24.xnb</DestFile>
-  <DestTime>2024-06-30T17:02:03.5655999+05:00</DestTime>
+  <DestTime>2024-07-03T02:16:24.4817128+05:00</DestTime>
   <Importer>FontDescriptionImporter</Importer>
   <ImporterTime>2022-07-26T16:44:56+05:00</ImporterTime>
   <Processor>FontDescriptionProcessor</Processor>
