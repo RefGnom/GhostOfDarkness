@@ -1,4 +1,5 @@
 ﻿using game;
+using Game.Controllers.Buttons;
 using Game.Interfaces;
 using Game.View;
 using Microsoft.Xna.Framework;
@@ -12,28 +13,28 @@ internal class MainMenuState : GameState
     private readonly Button settings;
     private readonly Button exit;
 
-    public MainMenuState(IGameStateSwitcher stateSwitcher) : base(stateSwitcher)
+    public MainMenuState(IGameStateSwitcher stateSwitcher, IButtonFactory buttonFactory) : base(stateSwitcher)
     {
         Drawables.Add(new Sprite(Textures.Background, Vector2.Zero, Layers.Background));
 
         const int buttonDistance = 150;
         var position = new Vector2(160, 275);
-        newGame = new Button(Textures.ButtonBackground, position, "New Game");
+        newGame = buttonFactory.CreateButtonWithText(Textures.ButtonBackground, position, "New Game");
         newGame.OnClicked += NewGame;
         Components.Add(newGame);
 
         position.Y += buttonDistance;
-        loadSave = new Button(Textures.ButtonBackground, position, "Load Game");
+        loadSave = buttonFactory.CreateButtonWithText(Textures.ButtonBackground, position, "Load Game");
         loadSave.OnClicked += LoadSave;
         Components.Add(loadSave);
 
         position.Y += buttonDistance;
-        settings = new Button(Textures.ButtonBackground, position, "Settings");
+        settings = buttonFactory.CreateButtonWithText(Textures.ButtonBackground, position, "Settings");
         settings.OnClicked += OpenSettings;
         Components.Add(settings);
 
         position.Y += buttonDistance;
-        exit = new Button(Textures.ButtonBackground, position, "Exit");
+        exit = buttonFactory.CreateButtonWithText(Textures.ButtonBackground, position, "Exit");
         exit.OnClicked += Exit;
         Components.Add(exit);
     }

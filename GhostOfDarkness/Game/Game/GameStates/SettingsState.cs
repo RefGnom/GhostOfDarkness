@@ -3,7 +3,10 @@ using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 using System;
+using Game.ContentLoaders;
+using Game.Controllers.Buttons;
 using Game.Controllers.Switcher;
+using Game.Enums;
 using Game.Game.GameStates;
 using Game.Interfaces;
 using Game.View;
@@ -17,7 +20,7 @@ internal class SettingsState : GameState
     private Action displayModeAction;
     private Action resolutionAction;
 
-    public SettingsState(IGameStateSwitcher stateSwitcher) : base(stateSwitcher)
+    public SettingsState(IGameStateSwitcher stateSwitcher, IButtonFactory buttonFactory) : base(stateSwitcher)
     {
         Drawables.Add(new Sprite(Textures.Background, Vector2.Zero, Layers.Background));
 
@@ -46,7 +49,7 @@ internal class SettingsState : GameState
             { "На весь экран", () => displayModeAction = () => Settings.SetDisplayMode(true) },
         };
         displayMode.Start();
-        var displayModeText = new Text(new Rectangle((int)position.X - textWidth, (int)position.Y - 12, textWidth, height), "Режим отображения", Align.Left, 0, Fonts.Common16);
+        var displayModeText = new Text(new Rectangle((int)position.X - textWidth, (int)position.Y - 12, textWidth, height), "Режим отображения", Fonts.Common16, Align.Left);
         Components.Add(displayMode);
         Drawables.Add(displayModeText);
 
@@ -59,7 +62,7 @@ internal class SettingsState : GameState
             { "3840x2160", () => resolutionAction = () => Settings.SetSizeScreen(3840, 2160) },
         };
         resolution.Start();
-        var resolutionText = new Text(new Rectangle((int)position.X - textWidth, (int)position.Y - 12, textWidth, height), "Разрешение", Align.Left, 0, Fonts.Common16);
+        var resolutionText = new Text(new Rectangle((int)position.X - textWidth, (int)position.Y - 12, textWidth, height), "Разрешение", Fonts.Common16, Align.Left);
         Components.Add(resolution);
         Drawables.Add(resolutionText);
 
@@ -67,7 +70,7 @@ internal class SettingsState : GameState
         var musicVolume = new ProgressBar(0, 1, position, 6);
         musicVolume.ValueOnChanged += (value) => musicVolumeAction = () => MediaPlayer.Volume = value;
         musicVolume.SetValue(0.3f);
-        var musicVolumeText = new Text(new Rectangle((int)position.X - textWidth, (int)position.Y - 16, textWidth, height), "Громкость музыки", Align.Left, 0, Fonts.Common16);
+        var musicVolumeText = new Text(new Rectangle((int)position.X - textWidth, (int)position.Y - 16, textWidth, height), "Громкость музыки", Fonts.Common16, Align.Left);
         Components.Add(musicVolume);
         Drawables.Add(musicVolumeText);
 
@@ -75,15 +78,15 @@ internal class SettingsState : GameState
         var soundVolume = new ProgressBar(0, 1, position, 6);
         soundVolume.ValueOnChanged += (value) => soundsVolumeAction = () => SoundEffect.MasterVolume = value;
         soundVolume.SetValue(0.3f);
-        var soundVolumeText = new Text(new Rectangle((int)position.X - textWidth, (int)position.Y - 16, textWidth, height), "Громкость звуков", Align.Left, 0, Fonts.Common16);
+        var soundVolumeText = new Text(new Rectangle((int)position.X - textWidth, (int)position.Y - 16, textWidth, height), "Громкость звуков", Fonts.Common16, Align.Left);
         Components.Add(soundVolume);
         Drawables.Add(soundVolumeText);
 
-        var save = new Button(Textures.ButtonBackground, new Vector2(934, 960), "Save");
+        var save = buttonFactory.CreateButtonWithText(Textures.ButtonBackground, new Vector2(934, 960), "Save");
         save.OnClicked += Save;
         Components.Add(save);
 
-        var exit = new Button(Textures.ButtonBackground, new Vector2(1432, 960), "Exit");
+        var exit = buttonFactory.CreateButtonWithText(Textures.ButtonBackground, new Vector2(1432, 960), "Exit");
         exit.OnClicked += Exit;
         Components.Add(exit);
 
@@ -121,8 +124,8 @@ internal class SettingsState : GameState
     {
         var widthName = 500;
         var line = new Sprite(Textures.SettingsString, position, Layers.UIBackground);
-        line.AddText(new Text(new Rectangle(position.ToPoint(), new Point(widthName, Textures.SettingsString.Height)), name, Align.Left, 10, Fonts.Buttons));
-        line.AddText(new Text(new Rectangle((int)position.X + widthName, (int)position.Y, 250, Textures.SettingsString.Height), key.ToString(), Align.Center, 0, Fonts.Buttons));
+        line.AddText(new Text(new Rectangle(position.ToPoint(), new Point(widthName, Textures.SettingsString.Height)), name, Fonts.Buttons, Align.Left, 10));
+        line.AddText(new Text(new Rectangle((int)position.X + widthName, (int)position.Y, 250, Textures.SettingsString.Height), key.ToString(), Fonts.Buttons));
         return line;
     }
 }

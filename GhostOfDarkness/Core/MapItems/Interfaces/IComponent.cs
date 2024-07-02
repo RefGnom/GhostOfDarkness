@@ -1,6 +1,6 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
 
-namespace Core;
+namespace Core.MapItems.Interfaces;
 
 public interface IComponent
 {

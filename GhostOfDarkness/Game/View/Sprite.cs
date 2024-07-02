@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using game;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using IDrawable = game.IDrawable;

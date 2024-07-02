@@ -1,5 +1,6 @@
 ﻿using System.Text;
 using game;
+using Game.ContentLoaders;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -13,7 +14,7 @@ internal class TextInput : IDrawable
     private readonly Vector2 position;
     private readonly StringBuilder text;
 
-    private static SpriteFont Font => Fonts.Buttons;
+    private static SpriteFont Font => Fonts.Common24;
     public string Text => text.ToString();
 
     public TextInput(Texture2D background, Vector2 position)
@@ -31,6 +32,11 @@ internal class TextInput : IDrawable
     public void Disable()
     {
         KeyboardController.GameWindow.TextInput -= InputText;
+    }
+
+    public void Clear()
+    {
+        text.Clear();
     }
 
     private void InputText(object sender, TextInputEventArgs e)

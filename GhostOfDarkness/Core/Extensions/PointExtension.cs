@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 
-namespace Game.Extensions;
+namespace Core.Extensions;
 
-internal static class PointExtension
+public static class PointExtension
 {
     public static IEnumerable<(Point, float)> GetNeighbors(this Point point)
     {

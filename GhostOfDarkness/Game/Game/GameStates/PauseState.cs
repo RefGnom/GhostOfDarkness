@@ -1,29 +1,30 @@
-﻿using Game.Game.GameStates;
+﻿using game;
+using Game.Controllers.Buttons;
 using Game.Interfaces;
 using Game.View;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace game;
+namespace Game.Game.GameStates;
 
 internal class PauseState : GameState
 {
-    public PauseState(IGameStateSwitcher stateSwitcher) : base(stateSwitcher)
+    public PauseState(IGameStateSwitcher stateSwitcher, IButtonFactory buttonFactory) : base(stateSwitcher)
     {
         Drawables.Add(new Sprite(Textures.PauseBackground, new Vector2(564, 312), Layers.UIBackground));
 
         var position = new Vector2(736, 370);
-        var continueGame = new Button(Textures.ButtonBackground, position, "Resume");
+        var continueGame = buttonFactory.CreateButtonWithText(Textures.ButtonBackground, position, "Resume");
         continueGame.OnClicked += Play;
         Components.Add(continueGame);
 
         position.Y += 130;
-        var settings = new Button(Textures.ButtonBackground, position, "Settings");
+        var settings = buttonFactory.CreateButtonWithText(Textures.ButtonBackground, position, "Settings");
         settings.OnClicked += OpenSettings;
         Components.Add(settings);
 
         position.Y += 130;
-        var mainMenu = new Button(Textures.ButtonBackground, position, "To Main Menu");
+        var mainMenu = buttonFactory.CreateButtonWithText(Textures.ButtonBackground, position, "To Main Menu");
         mainMenu.OnClicked += Exit;
         Components.Add(mainMenu);
     }

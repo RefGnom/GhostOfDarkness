@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using game;
+using Game.Interfaces;
 using Game.Structures;
 using Microsoft.Xna.Framework;
 using NUnit.Framework;
@@ -7,7 +7,7 @@ using NUnit.Framework;
 namespace Game.Tests;
 
 [TestFixture]
-internal class CollisionDetecterTests
+internal class CollisionDetectorTests
 {
     private class TestCreature : ICollisionable
     {

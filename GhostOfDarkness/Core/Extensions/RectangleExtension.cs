@@ -1,11 +1,8 @@
 ﻿using Microsoft.Xna.Framework;
-using System;
-using System.Collections.Generic;
-using Game.Extensions;
 
-namespace game;
+namespace Core.Extensions;
 
-internal static class RectangleExtension
+public static class RectangleExtension
 {
     public static IEnumerable<(Rectangle, float)> GetNeighbors(this Rectangle rectangle, int shift)
     {
@@ -18,9 +15,7 @@ internal static class RectangleExtension
     }
 
     public static float Distance(this Rectangle rectangle1, Rectangle rectangle2)
-    {
-        return rectangle1.Center.CalculateDistanceByPixels(rectangle2.Center);
-    }
+        => rectangle1.Center.CalculateDistanceByPixels(rectangle2.Center);
 
     public static float Radius(this Rectangle rectangle)
     {
@@ -52,5 +47,14 @@ internal static class RectangleExtension
     {
         rectangle.Offset(x, y);
         return rectangle;
+    }
+
+    public static Rectangle Scale(this Rectangle rectangle, float scale)
+    {
+        var x = rectangle.X * scale;
+        var y = rectangle.Y * scale;
+        var width = rectangle.Width * scale;
+        var height = rectangle.Height * scale;
+        return new Rectangle((int)x, (int)y, (int)width, (int)height);
     }
 }

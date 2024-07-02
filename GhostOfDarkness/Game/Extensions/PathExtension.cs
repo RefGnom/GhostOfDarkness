@@ -1,12 +1,12 @@
-﻿using Microsoft.Xna.Framework;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
+using Microsoft.Xna.Framework;
 
-namespace game;
+namespace Game.Extensions;
 
 internal static class PathExtension
 {
-    public static List<Vector2> ToMovementVectors(this Path<Point> value)
+    public static List<Vector2> ToMovementVectors(this IEnumerable<Point> value)
     {
         var path = value.ToList();
         path.Reverse();

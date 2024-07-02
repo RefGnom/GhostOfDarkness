@@ -2,7 +2,7 @@
 
 namespace game;
 
-internal interface IDrawable
+public interface IDrawable
 {
     void Draw(SpriteBatch spriteBatch, float scale);
 }

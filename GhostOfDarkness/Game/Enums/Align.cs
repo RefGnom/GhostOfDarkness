@@ -1,8 +1,12 @@
-﻿namespace game;
+﻿using System;
 
-internal enum Align
+namespace Game.Enums;
+
+[Flags]
+public enum Align
 {
-    Left,
-    Center,
-    Right
+    Up = 1,
+    Down = 2,
+    Left = 4,
+    Right = 8
 }

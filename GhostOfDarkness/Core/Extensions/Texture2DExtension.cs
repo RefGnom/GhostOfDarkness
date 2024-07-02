@@ -1,8 +1,8 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
 
-namespace Game.Extensions;
+namespace Core.Extensions;
 
-internal static class Texture2DExtension
+public static class Texture2DExtension
 {
     public static int[,] TransformToColorsArray(this Texture2D texture)
     {

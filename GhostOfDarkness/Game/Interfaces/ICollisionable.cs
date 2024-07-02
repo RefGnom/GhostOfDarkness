@@ -1,6 +1,7 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Core.Extensions;
+using Microsoft.Xna.Framework;
 
-namespace game;
+namespace Game.Interfaces;
 
 internal interface ICollisionable
 {

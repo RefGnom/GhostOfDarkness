@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿namespace Core.Extensions;
 
-namespace game;
-
-internal static class FloatExtension
+public static class FloatExtension
 {
-    private static readonly List<(float, string)> directions = new()
+    private static readonly List<(float, string?)> directions = new List<(float, string?)>
     {
         (0 * MathF.PI / 4, "N"),
         (1 * MathF.PI / 4, "NE"),
@@ -17,19 +14,20 @@ internal static class FloatExtension
         (7 * MathF.PI / 4, "NW"),
     };
 
-    public static string ToCardinalDirection(this float angle)
+    public static string? ToCardinalDirection(this float angle)
     {
         foreach (var (value, direction) in directions)
         {
             if (angle.InBounds(value, MathF.PI / 8)
                 || angle.InBounds(value + 2 * MathF.PI, MathF.PI / 8))
+            {
                 return direction;
+            }
         }
+
         return null;
     }
 
-    public static bool InBounds(this float value, float target, float delta)
-    {
-        return target - delta <= value && value < target + delta;
-    }
+    private static bool InBounds(this float value, float target, float delta)
+        => target - delta <= value && value < target + delta;
 }

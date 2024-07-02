@@ -20,12 +20,26 @@
 /processorParam:TextureFormat=Compressed
 /build:Fonts/Buttons.spritefont
 
+#begin Fonts/Common10.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:PremultiplyAlpha=True
+/processorParam:TextureFormat=Compressed
+/build:Fonts/Common10.spritefont
+
 #begin Fonts/Common12.spritefont
 /importer:FontDescriptionImporter
 /processor:FontDescriptionProcessor
 /processorParam:PremultiplyAlpha=True
 /processorParam:TextureFormat=Compressed
 /build:Fonts/Common12.spritefont
+
+#begin Fonts/Common14.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:PremultiplyAlpha=True
+/processorParam:TextureFormat=Compressed
+/build:Fonts/Common14.spritefont
 
 #begin Fonts/Common16.spritefont
 /importer:FontDescriptionImporter
@@ -40,6 +54,13 @@
 /processorParam:PremultiplyAlpha=True
 /processorParam:TextureFormat=Compressed
 /build:Fonts/Common18.spritefont
+
+#begin Fonts/Common24.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:PremultiplyAlpha=True
+/processorParam:TextureFormat=Compressed
+/build:Fonts/Common24.spritefont
 
 #begin Fonts/Debug.spritefont
 /importer:FontDescriptionImporter
@@ -707,6 +728,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Textures/UI/ProgressBar/ProgressBarValue.png
+
+#begin Textures/UI/Save.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Textures/UI/Save.png
 
 #begin Textures/UI/Saves window.png
 /importer:TextureImporter

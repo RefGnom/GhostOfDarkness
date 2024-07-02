@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 
-namespace game;
+namespace Game.Structures;
 
 internal class Path<T> : IEnumerable<T>
 {
@@ -27,8 +27,5 @@ internal class Path<T> : IEnumerable<T>
         }
     }
 
-    IEnumerator IEnumerable.GetEnumerator()
-    {
-        return GetEnumerator();
-    }
+    IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
 }

@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using game;
+using Game.ContentLoaders;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using IDrawable = game.IDrawable;
@@ -30,7 +30,7 @@ internal class Message : IDrawable
 
     public Message(string text, bool getNextFromChoice = true, bool getOnNextFromChoice = true, int numberChoice = 0)
     {
-        this.text = new Text(GetBounds(numberChoice), text, Align.Center, 0, Fonts.Common16);
+        this.text = new Text(GetBounds(numberChoice), text, Fonts.Common16);
         this.getNextFromChoice = getNextFromChoice;
         this.getOnNextFromChoice = getOnNextFromChoice;
     }
