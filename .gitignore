@@ -24,15 +24,10 @@
 *.sdf
 ipch/
 
-GhostOfDarkness/[Gg]ame/[Oo]bj/
-GhostOfDarkness/[Gg]ame/[Bb]in
-GhostOfDarkness/[Gg]ame/[Dd]ebug*/
-GhostOfDarkness/[Gg]ame/[Rr]elease*/
-
-GhostOfDarkness/[Mm]apEditor/[Oo]bj/
-GhostOfDarkness/[Mm]apEditor/[Bb]in
-GhostOfDarkness/[Mm]apEditor/[Dd]ebug*/
-GhostOfDarkness/[Mm]apEditor/[Rr]elease*/
+[Oo]bj
+[Bb]in
+[Dd]ebug
+[Rr]elease
 
 Ankh.NoLoad
 
@@ -47,4 +42,6 @@ GhostOfDarkness/[Gg]ame/[Bb]uild/
 
 *.cachefile
 *.dll
+*.sln
+*.orig
 /GhostOfDarkness/.idea/
