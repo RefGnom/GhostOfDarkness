@@ -12,8 +12,9 @@ namespace Game.Game.GameStates;
 
 internal class LoadSaveState : GameState
 {
-    private SaveInfo selectedInfo;
+    private SaveInfo selectedSaveInfo;
     private readonly Button loadButton;
+    private readonly Button deleteButton;
 
     private readonly List<IComponent> saveComponents;
     private readonly ISaveHandler saveHandler;
@@ -34,10 +35,13 @@ internal class LoadSaveState : GameState
         Drawables.Add(new Sprite(Textures.SavesWindow, new Vector2(40, 70), Layers.UIBackground));
         Drawables.Add(new Sprite(Textures.Background, Vector2.Zero, Layers.Background));
 
-        loadButton = buttonFactory.CreateButtonWithText(Textures.ButtonBackground, new Vector2(40, 960), "Load");
+        loadButton = buttonFactory.CreateButtonWithText(Textures.ButtonBackground, new Vector2(40, 800), "Load");
         loadButton.OnClicked += Play;
-        loadButton.Inactive = true;
         Components.Add(loadButton);
+
+        deleteButton = buttonFactory.CreateButtonWithText(Textures.ButtonBackground, new Vector2(40, 960), "Delete");
+        deleteButton.OnClicked += DeleteSave;
+        Components.Add(deleteButton);
 
         var createNew = buttonFactory.CreateButtonWithText(Textures.ButtonBackground, new Vector2(538, 960), "Create New Game");
         createNew.OnClicked += NewGame;
@@ -62,12 +66,14 @@ internal class LoadSaveState : GameState
 
     public override void Play()
     {
-        Console.WriteLine("Start save '{0}'", selectedInfo.Name);
+        Console.WriteLine("Start save '{0}'", selectedSaveInfo.Name);
         Switcher.SwitchState<PlayState>();
     }
 
     public override void Start(GameState previousState)
     {
+        loadButton.Inactive = true;
+        deleteButton.Inactive = true;
         saveComponents.Clear();
 
         var saveInfos = saveHandler.Select();
@@ -88,7 +94,6 @@ internal class LoadSaveState : GameState
 
     public override void Stop()
     {
-        loadButton.Inactive = true;
     }
 
     public override void Draw(SpriteBatch spriteBatch, float scale)
@@ -113,7 +118,14 @@ internal class LoadSaveState : GameState
 
     private void ChoiceSave(SaveInfo saveInfo)
     {
-        selectedInfo = saveInfo;
+        selectedSaveInfo = saveInfo;
         loadButton.Inactive = false;
+        deleteButton.Inactive = false;
+    }
+
+    private void DeleteSave()
+    {
+        saveHandler.Delete(selectedSaveInfo.Name);
+        Start(null);
     }
 }
