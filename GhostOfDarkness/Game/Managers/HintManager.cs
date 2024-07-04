@@ -1,5 +1,6 @@
 ﻿using game;
 using Game.ContentLoaders;
+using Game.Graphics;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -20,7 +21,7 @@ internal static class HintManager
         currentMessage = null;
     }
 
-    public static void Draw(SpriteBatch spriteBatch, float scale)
+    public static void Draw(ISpriteBatch spriteBatch, float scale)
     {
         if (currentMessage is null)
         {

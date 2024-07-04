@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using Game.ContentLoaders;
+using Game.Graphics;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using IDrawable = game.IDrawable;
+using IDrawable = Game.Interfaces.IDrawable;
 
 namespace Game.View;
 
@@ -106,14 +107,14 @@ internal class Message : IDrawable
         choices[currentChoiceIndex].Font = Fonts.Common18;
     }
 
-    public void Draw(SpriteBatch spriteBatch, float scale)
+    public void Draw(ISpriteBatch spriteBatch, float scale)
     {
         text.Draw(spriteBatch, scale);
         if (choices is not null)
         {
-            for (var i = 0; i < choices.Count; i++)
+            foreach (var choice in choices)
             {
-                choices[i].Draw(spriteBatch, scale);
+                choice.Draw(spriteBatch, scale);
             }
         }
     }

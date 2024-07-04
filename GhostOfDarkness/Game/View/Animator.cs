@@ -1,7 +1,9 @@
-﻿using Microsoft.Xna.Framework;
+﻿using game;
+using Game.Graphics;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace game;
+namespace Game.View;
 
 internal class Animator
 {
@@ -29,10 +31,7 @@ internal class Animator
         this.countDrawsForUpdateFrame = countDrawsForUpdateFrame;
     }
 
-    public float GetAnimationTime(int animation)
-    {
-        return countFramesInAnimations[animation] * countDrawsForUpdateFrame / 30f;
-    }
+    public float GetAnimationTime(int animation) => countFramesInAnimations[animation] * countDrawsForUpdateFrame / 30f;
 
     public void SetAnimation(int animation, bool looped = true)
     {
@@ -40,34 +39,36 @@ internal class Animator
         animationLooped = looped;
     }
 
-    public void Draw(Vector2 position, SpriteBatch spriteBatch, SpriteEffects flip, float layerDepth, float scale = 1f)
+    public void Draw(Vector2 position, ISpriteBatch spriteBatch, SpriteEffects flip, float layerDepth, float scale = 1f)
     {
         var frame = GetFrame();
         spriteBatch.Draw(texture, position, frame, Color.White, 0, Origin, scale, flip, layerDepth);
         IncrementFrame();
     }
 
-    public void Draw(Vector2 position, SpriteBatch spriteBatch, SpriteEffects flip, float rotation, float layerDepth, float scale)
+    public void Draw(Vector2 position, ISpriteBatch spriteBatch, SpriteEffects flip, float rotation, float layerDepth, float scale)
     {
         var frame = GetFrame();
         spriteBatch.Draw(texture, position, frame, Color.White, rotation, Origin, scale, flip, layerDepth);
         IncrementFrame();
     }
 
-    private Rectangle GetFrame()
-    {
-        return new Rectangle(countFrames[currentAnimation] / countDrawsForUpdateFrame * frameWidth,
-            frameHeight * currentAnimation, frameWidth, frameHeight);
-    }
+    private Rectangle GetFrame() => new Rectangle(countFrames[currentAnimation] / countDrawsForUpdateFrame * frameWidth,
+        frameHeight * currentAnimation, frameWidth, frameHeight);
 
     private void IncrementFrame()
     {
         if (GameController.IsPaused)
+        {
             return;
+        }
+
         var lastFrame = countFrames[currentAnimation];
         countFrames[currentAnimation] = (countFrames[currentAnimation] + 1)
-            % (countFramesInAnimations[currentAnimation] * countDrawsForUpdateFrame);
+                                        % (countFramesInAnimations[currentAnimation] * countDrawsForUpdateFrame);
         if (!animationLooped && countFrames[currentAnimation] == 0)
+        {
             countFrames[currentAnimation] = lastFrame;
+        }
     }
 }

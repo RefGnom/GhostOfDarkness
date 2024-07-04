@@ -1,6 +1,10 @@
 ﻿using System.Collections.Generic;
 using Core.Extensions;
 using game;
+using Game.Creatures.CreatureStates;
+using Game.Graphics;
+using Game.Managers;
+using Game.View;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace Game.Creatures;
@@ -90,7 +94,7 @@ internal class PlayerView : CreatureStatesController
         base.Update(deltaTime);
     }
 
-    public override void Draw(SpriteBatch spriteBatch, float scale)
+    public override void Draw(ISpriteBatch spriteBatch, float scale)
     {
         var flip = SpriteEffects.None;
         animator.Draw(model.Position, spriteBatch, flip, rotation, Layers.Creatures, 1);

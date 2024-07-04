@@ -1,5 +1,6 @@
 ﻿using Core.Extensions;
 using game;
+using Game.Graphics;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -26,7 +27,7 @@ public class Button : BaseButton
         Layer = buttonLayer;
     }
 
-    protected override void DrawButton(SpriteBatch spriteBatch, float scale)
+    protected override void DrawButton(ISpriteBatch spriteBatch, float scale)
     {
         var position = Position * scale;
         var defaultColor = Color.White;

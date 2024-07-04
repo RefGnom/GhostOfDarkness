@@ -1,6 +1,9 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
+using Game.Graphics;
+using Game.Managers;
+using Game.View;
 
 namespace game;
 
@@ -68,7 +71,7 @@ internal class MeleeEnemyView : EnemyView
         };
     }
 
-    public override void Draw(SpriteBatch spriteBatch, float scale)
+    public override void Draw(ISpriteBatch spriteBatch, float scale)
     {
         var flip = model.Direction.X < 0 ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
         animator.Draw(model.Position, spriteBatch, flip, Layers.Creatures, scaleFactor);

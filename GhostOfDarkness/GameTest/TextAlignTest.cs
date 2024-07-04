@@ -4,7 +4,6 @@ using Game.View;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using NSubstitute;
-using Unmockable;
 
 namespace GameTest;
 
@@ -26,12 +25,7 @@ public class TextAlignTest : TestBase
         var text = new Text(defaultBounds, defaultMessage, font, Align.Up);
         var expectedPosition = defaultBounds.Center.ToVector2();
 
-        //var spriteBatch = SubstituteProvider.GetSpriteBatch();
-
-        var spriteBatch = Interceptor.For<SpriteBatch>()
-            .Setup(x => x.DrawString(font, defaultMessage, expectedPosition, Color.White, 0, Vector2.Zero, 1, SpriteEffects.None, Layers.Text));
-
-        spriteBatch.Ex
+        var spriteBatch = SubstituteProvider.GetSpriteBatch();
         text.Draw(spriteBatch, 1);
         spriteBatch.Received().DrawString(font, defaultMessage, expectedPosition, Color.White, 0, Vector2.Zero, 1, SpriteEffects.None, Layers.Text);
     }

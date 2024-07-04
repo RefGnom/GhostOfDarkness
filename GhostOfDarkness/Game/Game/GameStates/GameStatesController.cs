@@ -3,8 +3,8 @@ using System.Linq;
 using Core.Saves;
 using game;
 using Game.Controllers.Buttons;
+using Game.Graphics;
 using Game.Interfaces;
-using Microsoft.Xna.Framework.Graphics;
 
 namespace Game.Game.GameStates;
 
@@ -66,7 +66,7 @@ internal class GameStatesController : IGameStateSwitcher, IDrawable, IUpdateable
 
     public virtual void StartGame() { }
 
-    public virtual void Draw(SpriteBatch spriteBatch, float scale)
+    public virtual void Draw(ISpriteBatch spriteBatch, float scale)
     {
         currentState.Draw(spriteBatch, scale);
     }

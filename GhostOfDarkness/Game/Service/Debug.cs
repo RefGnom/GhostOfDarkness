@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
 using Game.ContentLoaders;
+using Game.Graphics;
 
 namespace game;
 
@@ -42,7 +43,7 @@ internal static class Debug
         lastWindowHeight = windowHeight;
     }
 
-    public static void DrawMessages(SpriteBatch spriteBatch)
+    public static void DrawMessages(ISpriteBatch spriteBatch)
     {
         var currentPosition = topPosition;
         for (var i = 0; i < messages.Count; i++)

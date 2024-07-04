@@ -1,5 +1,7 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Game.Graphics;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using IDrawable = Game.Interfaces.IDrawable;
 
 namespace game;
 
@@ -15,7 +17,7 @@ internal class HealthBar : IDrawable
         this.maxHealth = maxHealth;
         health = maxHealth;
         origin = new Vector2(Textures.HealthBarBackground.Width, 0);
-        GameManager.Instance.Drawer.RegisterHUD(this);
+        GameManager.Instance.Drawer.RegisterHud(this);
     }
 
     public void SetHealth(float health)
@@ -23,7 +25,7 @@ internal class HealthBar : IDrawable
         this.health = health;
     }
 
-    public void Draw(SpriteBatch spriteBatch, float scale)
+    public void Draw(ISpriteBatch spriteBatch, float scale)
     {
         var position = new Vector2(1920 - 15, 15);
         var percent = health / maxHealth;

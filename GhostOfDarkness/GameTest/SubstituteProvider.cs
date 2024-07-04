@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Game.Graphics;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using NSubstitute;
 
@@ -36,10 +37,7 @@ public static class SubstituteProvider
             null);
     }
 
-    public static SpriteBatchMock GetSpriteBatch() => Substitute.For<SpriteBatchMock>(new object[]
-    {
-        defaultGraphicsDevice
-    });
+    public static ISpriteBatch GetSpriteBatch() => Substitute.For<ISpriteBatch>();
 
     private class TestGame : Microsoft.Xna.Framework.Game
     {

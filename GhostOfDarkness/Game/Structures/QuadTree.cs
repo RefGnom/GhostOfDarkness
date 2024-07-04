@@ -2,10 +2,11 @@
 using System.Linq;
 using Core.Extensions;
 using game;
+using Game.Graphics;
 using Game.Interfaces;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using IDrawable = game.IDrawable;
+using IDrawable = Game.Interfaces.IDrawable;
 
 namespace Game.Structures;
 
@@ -36,7 +37,7 @@ internal class QuadTree : IDrawable
     public QuadTree(Rectangle boundary)
     {
         this.boundary = boundary;
-        items = new();
+        items = [];
         nodes = new QuadTree[4];
     }
 
@@ -130,16 +131,16 @@ internal class QuadTree : IDrawable
     private void Subdivide()
     {
         var quarter = boundary.Quarter();
-        nodes[0] = new(quarter);
+        nodes[0] = new QuadTree(quarter);
         quarter.Offset(quarter.Width, 0);
-        nodes[1] = new(quarter);
+        nodes[1] = new QuadTree(quarter);
         quarter.Offset(0, quarter.Height);
-        nodes[2] = new(quarter);
+        nodes[2] = new QuadTree(quarter);
         quarter.Offset(-quarter.Width, 0);
-        nodes[3] = new(quarter);
+        nodes[3] = new QuadTree(quarter);
     }
 
-    public void Draw(SpriteBatch spriteBatch, float scale)
+    public void Draw(ISpriteBatch spriteBatch, float scale)
     {
         if (!Show)
         {

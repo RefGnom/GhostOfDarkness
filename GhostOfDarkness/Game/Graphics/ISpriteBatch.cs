@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Game.Graphics;
 
-public interface ISpriteBatchMock
+public interface ISpriteBatch
 {
     void Begin(
         SpriteSortMode sortMode = SpriteSortMode.Deferred,

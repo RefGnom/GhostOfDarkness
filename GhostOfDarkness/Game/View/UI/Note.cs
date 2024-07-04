@@ -1,8 +1,10 @@
 ﻿using Game.ContentLoaders;
 using Game.Game;
+using Game.Graphics;
 using Game.Managers;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using IDrawable = Game.Interfaces.IDrawable;
 
 namespace game;
 
@@ -31,7 +33,7 @@ internal class Note : IDrawable, IInteractable
         this.backgroundScale = backgroundScale;
     }
 
-    public void Draw(SpriteBatch spriteBatch, float scale)
+    public void Draw(ISpriteBatch spriteBatch, float scale)
     {
         if (isOpen)
         {

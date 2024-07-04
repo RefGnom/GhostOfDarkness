@@ -1,8 +1,8 @@
-﻿using Microsoft.Xna.Framework.Graphics;
+﻿using Game.Graphics;
 
-namespace game;
+namespace Game.Interfaces;
 
 public interface IDrawable
 {
-    void Draw(SpriteBatch spriteBatch, float scale);
+    void Draw(ISpriteBatch spriteBatch, float scale);
 }

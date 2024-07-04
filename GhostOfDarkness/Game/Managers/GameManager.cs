@@ -1,4 +1,6 @@
-﻿namespace game;
+﻿using Game.Managers;
+
+namespace game;
 
 internal class GameManager
 {

@@ -1,10 +1,11 @@
 ﻿using System.Text;
 using game;
 using Game.ContentLoaders;
+using Game.Graphics;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using IDrawable = game.IDrawable;
+using IDrawable = Game.Interfaces.IDrawable;
 
 namespace Game.Controllers;
 
@@ -67,7 +68,7 @@ internal class TextInput : IDrawable
         return textSize.X <= background.Width - 2 * textSize.Y;
     }
 
-    public void Draw(SpriteBatch spriteBatch, float scale)
+    public void Draw(ISpriteBatch spriteBatch, float scale)
     {
         var position = this.position * scale;
         var textSize = Font.MeasureString(Text);

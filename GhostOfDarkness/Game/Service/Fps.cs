@@ -1,6 +1,8 @@
 ﻿using Game.ContentLoaders;
+using Game.Graphics;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using IDrawable = Game.Interfaces.IDrawable;
 
 namespace game;
 
@@ -15,7 +17,7 @@ internal class Fps : IDrawable
     public Fps(float frequencyUpdate)
     {
         this.frequencyUpdate = frequencyUpdate;
-        GameManager.Instance.Drawer.RegisterUI(this);
+        GameManager.Instance.Drawer.RegisterUi(this);
     }
 
     public void Update(GameTime gameTime)
@@ -32,7 +34,7 @@ internal class Fps : IDrawable
         frames++;
     }
 
-    public void Draw(SpriteBatch spriteBatch, float scale)
+    public void Draw(ISpriteBatch spriteBatch, float scale)
     {
         if (Settings.ShowFPS)
             spriteBatch.DrawString(Fonts.Debug, msg, new Vector2(5, 5), Color.White, 0, Vector2.Zero, 1, SpriteEffects.None, Layers.Text);

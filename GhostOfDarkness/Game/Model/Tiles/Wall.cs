@@ -1,6 +1,9 @@
-﻿using Game.Interfaces;
+﻿using Game.Graphics;
+using Game.Interfaces;
+using Game.Managers;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using IDrawable = Game.Interfaces.IDrawable;
 
 namespace game;
 
@@ -15,7 +18,7 @@ internal class Wall : IDrawable, ICollisionable
         Position = position;
     }
 
-    public void Draw(SpriteBatch spriteBatch, float scale)
+    public void Draw(ISpriteBatch spriteBatch, float scale)
     {
         spriteBatch.Draw(Textures.Wall, Position, null, Color.White, 0, Vector2.Zero, 0.5f, SpriteEffects.None, Layers.Tiles);
         if (Settings.ShowHitboxes)

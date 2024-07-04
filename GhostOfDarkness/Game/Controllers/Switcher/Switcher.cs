@@ -7,9 +7,9 @@ using game;
 using Game.ContentLoaders;
 using Game.Controllers.Buttons;
 using Game.Enums;
+using Game.Graphics;
 using Game.View;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using IComponent = game.IComponent;
 
 namespace Game.Controllers.Switcher;
@@ -65,7 +65,7 @@ internal class Switcher : IComponent, IEnumerable<string>
         rightArrow.Update(deltaTime);
     }
 
-    public void Draw(SpriteBatch spriteBatch, float scale)
+    public void Draw(ISpriteBatch spriteBatch, float scale)
     {
         leftArrow.Draw(spriteBatch, scale);
         rightArrow.Draw(spriteBatch, scale);

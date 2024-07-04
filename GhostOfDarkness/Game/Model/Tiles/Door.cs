@@ -1,7 +1,10 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
+using Game.Graphics;
 using Game.Interfaces;
+using Game.Managers;
+using IDrawable = Game.Interfaces.IDrawable;
 
 namespace game;
 
@@ -34,7 +37,7 @@ internal class Door : IDrawable, ICollisionable
         Close();
     }
 
-    public void Draw(SpriteBatch spriteBatch, float scale)
+    public void Draw(ISpriteBatch spriteBatch, float scale)
     {
         spriteBatch.Draw(currentTexture, Center, null, Color.White, rotation, origin, scaleFactor, SpriteEffects.None, Layers.Tiles);
         floor.Draw(spriteBatch, scale);

@@ -1,6 +1,9 @@
 ﻿using System.Collections.Generic;
 using Core.Extensions;
 using game;
+using Game.Graphics;
+using Game.Managers;
+using Game.View;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -86,7 +89,7 @@ internal class BossView : EnemyView
         };
     }
 
-    public override void Draw(SpriteBatch spriteBatch, float scale)
+    public override void Draw(ISpriteBatch spriteBatch, float scale)
     {
         animator.Draw(model.Position, spriteBatch, SpriteEffects.None, Layers.Creatures, scaleFactor);
         var origin = new Vector2(model.Hitbox.Width / 2, model.Hitbox.Height / 2);

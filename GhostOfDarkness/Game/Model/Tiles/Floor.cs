@@ -1,5 +1,7 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Game.Graphics;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using IDrawable = Game.Interfaces.IDrawable;
 
 namespace game;
 
@@ -20,7 +22,7 @@ internal class Floor : IDrawable
         texture = Textures.GetFloorTexture(name);
     }
 
-    public void Draw(SpriteBatch spriteBatch, float scale)
+    public void Draw(ISpriteBatch spriteBatch, float scale)
     {
         spriteBatch.Draw(texture, position, null, Color.Gray, 0, Vector2.Zero, 0.5f, SpriteEffects.None, Layers.Floor);
     }
