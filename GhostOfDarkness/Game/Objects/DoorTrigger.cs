@@ -1,9 +1,11 @@
-﻿using game;
+﻿using Core.DependencyInjection;
+using game;
 using Game.Interfaces;
 using Microsoft.Xna.Framework;
 
 namespace Game.Objects;
 
+[DiIgnore]
 internal class DoorTrigger : ITrigger
 {
     public Rectangle Hitbox { get; private set; }

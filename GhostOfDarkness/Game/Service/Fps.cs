@@ -1,4 +1,5 @@
-﻿using Game.ContentLoaders;
+﻿using Core.DependencyInjection;
+using Game.ContentLoaders;
 using Game.Graphics;
 using Game.Managers;
 using Microsoft.Xna.Framework;
@@ -7,6 +8,7 @@ using IDrawable = Game.Interfaces.IDrawable;
 
 namespace Game.Service;
 
+[DiIgnore]
 internal class Fps : IDrawable
 {
     private float frames;

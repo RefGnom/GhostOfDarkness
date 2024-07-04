@@ -1,8 +1,10 @@
-﻿using game;
+﻿using Core.DependencyInjection;
+using game;
 using Game.Interfaces;
 
 namespace Game.Creatures.CreatureStates;
 
+[DiIgnore]
 internal class IdleState : CreatureState
 {
     public IdleState(IStateSwitcher stateSwitcher) : base(stateSwitcher)

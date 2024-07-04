@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Core.DependencyInjection;
 using game;
 using Game.Graphics;
 using Game.Interfaces;
 
 namespace Game.Creatures.CreatureStates;
 
+[DiIgnore]
 public abstract class CreatureStatesController : IStateSwitcher, IDrawable
 {
     private CreatureState currentState;

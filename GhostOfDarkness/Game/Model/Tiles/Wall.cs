@@ -1,4 +1,5 @@
-﻿using Game.Graphics;
+﻿using Core.DependencyInjection;
+using Game.Graphics;
 using Game.Interfaces;
 using Game.Managers;
 using Game.Service;
@@ -8,6 +9,7 @@ using IDrawable = Game.Interfaces.IDrawable;
 
 namespace game;
 
+[DiIgnore]
 internal class Wall : IDrawable, ICollisionable
 {
     public Vector2 Position { get; private set; }

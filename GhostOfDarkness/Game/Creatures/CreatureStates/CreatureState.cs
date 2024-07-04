@@ -1,9 +1,11 @@
 ﻿using System;
+using Core.DependencyInjection;
 using game;
 using Game.Interfaces;
 
 namespace Game.Creatures.CreatureStates;
 
+[DiIgnore]
 public abstract class CreatureState : IState
 {
     protected float TimeLeft;

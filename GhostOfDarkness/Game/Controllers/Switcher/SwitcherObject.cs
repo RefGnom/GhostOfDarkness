@@ -1,4 +1,5 @@
 ﻿using System;
+using Core.DependencyInjection;
 using Game.Enums;
 using Game.View;
 using Microsoft.Xna.Framework;
@@ -6,6 +7,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Game.Controllers.Switcher;
 
+[DiIgnore]
 internal class SwitcherObject : Text
 {
     private bool active;

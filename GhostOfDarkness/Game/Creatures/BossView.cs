@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Core.DependencyInjection;
 using Core.Extensions;
 using game;
 using Game.Creatures.CreatureStates;
@@ -11,6 +12,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Game.Creatures;
 
+[DiIgnore]
 internal class BossView : EnemyView
 {
     private readonly Animator animator = AnimatorsCreator.GetAnimator("Boss");

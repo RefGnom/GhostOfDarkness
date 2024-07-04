@@ -1,10 +1,12 @@
 ﻿using System;
+using Core.DependencyInjection;
 using Core.Extensions;
 using Game.Managers;
 using Microsoft.Xna.Framework;
 
 namespace Game.Creatures;
 
+[DiIgnore]
 public abstract class Enemy : Creature
 {
     private bool isIdle;

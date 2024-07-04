@@ -1,7 +1,9 @@
 ﻿using System.Collections.Generic;
+using Core.DependencyInjection;
 
 namespace Game.Structures;
 
+[DiIgnore]
 internal class PathNode<T>
 {
     public readonly T Value;

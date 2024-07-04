@@ -1,7 +1,6 @@
-﻿using System;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 
-namespace Game.DependencyInjection;
+namespace Core.DependencyInjection;
 
 [AttributeUsage(AttributeTargets.Class | AttributeTargets.Interface)]
 public class DiScopeAttribute : Attribute

@@ -1,4 +1,5 @@
-﻿using Game.ContentLoaders;
+﻿using Core.DependencyInjection;
+using Game.ContentLoaders;
 using Game.Game;
 using Game.Graphics;
 using Game.Interfaces;
@@ -10,6 +11,7 @@ using IDrawable = Game.Interfaces.IDrawable;
 
 namespace game;
 
+[DiIgnore]
 internal class Note : IDrawable, IInteractable
 {
     private string text;

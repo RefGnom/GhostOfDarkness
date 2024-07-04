@@ -1,17 +1,31 @@
-﻿using System;
-using System.Linq;
-using System.Reflection;
+﻿using System.Reflection;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Game.DependencyInjection;
+namespace Core.DependencyInjection;
 
 public static class DiConfigurator
 {
+    private static readonly List<Assembly> assemblies;
+
+    static DiConfigurator()
+    {
+        assemblies = new List<Assembly>();
+    }
+
+    public static void AddAssembly(Assembly assembly)
+    {
+        assemblies.Add(assembly);
+    }
+
     public static IServiceProvider Configure()
     {
         var serviceCollection = new ServiceCollection();
-        var assembly = AppDomain.CurrentDomain.GetAssemblies().Single(x => x.GetName().Name == "Game");
-        RegisterAllTypesFromAssembly(serviceCollection, assembly);
+        AddCurrentAssembly();
+
+        foreach (var assembly in assemblies)
+        {
+            RegisterAllTypesFromAssembly(serviceCollection, assembly);
+        }
 
         return serviceCollection.BuildServiceProvider();
     }
@@ -46,5 +60,11 @@ public static class DiConfigurator
                 serviceCollection.Add(serviceDescriptor);
             }
         }
+    }
+
+    private static void AddCurrentAssembly()
+    {
+        var assembly = AppDomain.CurrentDomain.GetAssemblies().Single(x => x.GetName().Name == "Core");
+        AddAssembly(assembly);
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Core.DependencyInjection;
 using Core.Extensions;
 using Game.Graphics;
 using Game.Interfaces;
@@ -8,6 +9,7 @@ using IDrawable = Game.Interfaces.IDrawable;
 
 namespace Game.Controllers.Buttons;
 
+[DiIgnore]
 public abstract class BaseButton : IComponent
 {
     private readonly List<IDrawable> drawables = [];

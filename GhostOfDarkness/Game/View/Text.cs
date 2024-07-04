@@ -1,4 +1,5 @@
-﻿using Game.Enums;
+﻿using Core.DependencyInjection;
+using Game.Enums;
 using Game.Graphics;
 using Game.Service;
 using Microsoft.Xna.Framework;
@@ -7,6 +8,7 @@ using IDrawable = Game.Interfaces.IDrawable;
 
 namespace Game.View;
 
+[DiIgnore]
 public class Text : IDrawable
 {
     private readonly Rectangle bounds;

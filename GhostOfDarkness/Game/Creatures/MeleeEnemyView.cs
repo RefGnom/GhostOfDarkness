@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Core.DependencyInjection;
 using game;
 using Game.Creatures.CreatureStates;
 using Game.Graphics;
@@ -10,6 +11,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Game.Creatures;
 
+[DiIgnore]
 internal class MeleeEnemyView : EnemyView
 {
     private readonly Animator animator = AnimatorsCreator.GetAnimator("Melee Enemy");

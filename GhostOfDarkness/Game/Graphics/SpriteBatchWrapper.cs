@@ -1,7 +1,9 @@
-﻿using Microsoft.Xna.Framework.Graphics;
+﻿using Core.DependencyInjection;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace Game.Graphics;
 
+[DiIgnore]
 public class SpriteBatchWrapper : SpriteBatch, ISpriteBatch
 {
     public SpriteBatchWrapper(GraphicsDevice graphicsDevice) : base(graphicsDevice)

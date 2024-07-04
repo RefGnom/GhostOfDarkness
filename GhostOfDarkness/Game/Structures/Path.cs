@@ -1,8 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Core.DependencyInjection;
 
 namespace Game.Structures;
 
+[DiIgnore]
 public class Path<T> : IEnumerable<T>
 {
     public readonly T Value;
