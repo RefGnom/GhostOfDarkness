@@ -3,7 +3,7 @@ using System.Linq;
 using System.Reflection;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Game.EntryPoint;
+namespace Game.DependencyInjection;
 
 public static class DiConfigurator
 {
@@ -20,23 +20,29 @@ public static class DiConfigurator
     {
         foreach (var typeInfo in assembly.DefinedTypes)
         {
-            var skipType = typeInfo.IsInterface || typeInfo.IsEnum || typeInfo.IsAbstract;
+            var skipType = typeInfo.IsInterface || typeInfo.IsEnum || typeInfo.IsAbstract || typeInfo.GetCustomAttribute<DiIgnoreAttribute>() is not null;
             if (skipType)
             {
                 continue;
             }
 
+            var diScopeAttribute = typeInfo.GetCustomAttribute<DiScopeAttribute>();
+            var serviceLifetime = diScopeAttribute?.ServiceLifetime ?? ServiceLifetime.Singleton;
             var interfaces = typeInfo.ImplementedInterfaces.Where(x => x.Assembly == assembly).ToArray();
 
             if (interfaces.Length == 0)
             {
-                var serviceDescriptor = new ServiceDescriptor(typeInfo, typeInfo, ServiceLifetime.Singleton);
+                var serviceDescriptor = new ServiceDescriptor(typeInfo, typeInfo, serviceLifetime);
                 serviceCollection.Add(serviceDescriptor);
             }
 
             foreach (var interfaceType in interfaces)
             {
-                var serviceDescriptor = new ServiceDescriptor(interfaceType, typeInfo, ServiceLifetime.Singleton);
+                var interfaceDiScopeAttribute = interfaceType.GetCustomAttribute<DiScopeAttribute>();
+                var interfaceServiceLifetime = interfaceDiScopeAttribute?.ServiceLifetime ?? ServiceLifetime.Singleton;
+
+                serviceLifetime = diScopeAttribute is null ? interfaceServiceLifetime : serviceLifetime;
+                var serviceDescriptor = new ServiceDescriptor(interfaceType, typeInfo, serviceLifetime);
                 serviceCollection.Add(serviceDescriptor);
             }
         }
