@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using Core.DependencyInjection;
 using Game.ContentLoaders;
 using Game.Graphics;
 using Microsoft.Xna.Framework;
@@ -9,7 +8,6 @@ using IDrawable = Game.Interfaces.IDrawable;
 
 namespace Game.View;
 
-[DiIgnore]
 internal class Message : IDrawable
 {
     private readonly int width = 400;

@@ -1,5 +1,4 @@
 ﻿using System.Text;
-using Core.DependencyInjection;
 using Game.ContentLoaders;
 using Game.Graphics;
 using Game.Service;
@@ -10,7 +9,6 @@ using IDrawable = Game.Interfaces.IDrawable;
 
 namespace Game.Controllers;
 
-[DiIgnore]
 internal class TextInput : IDrawable
 {
     private readonly Texture2D background;

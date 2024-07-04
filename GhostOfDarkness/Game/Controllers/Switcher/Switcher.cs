@@ -2,7 +2,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using Core.DependencyInjection;
 using Core.Extensions;
 using game;
 using Game.ContentLoaders;
@@ -16,7 +15,6 @@ using IComponent = Game.Interfaces.IComponent;
 
 namespace Game.Controllers.Switcher;
 
-[DiIgnore]
 internal class Switcher : IComponent, IEnumerable<string>
 {
     private readonly Vector2 backgroundPosition;

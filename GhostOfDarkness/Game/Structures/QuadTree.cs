@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Core.DependencyInjection;
 using Core.Extensions;
 using game;
 using Game.Graphics;
@@ -12,7 +11,6 @@ using IDrawable = Game.Interfaces.IDrawable;
 
 namespace Game.Structures;
 
-[DiIgnore]
 public class QuadTree : IDrawable
 {
     private const int threshold = 4;

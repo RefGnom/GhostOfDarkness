@@ -1,9 +1,7 @@
 ﻿using System;
-using Core.DependencyInjection;
 
 namespace Game.Objects;
 
-[DiIgnore]
 internal class LoopedUnorderedQueue<T>
 {
     private readonly T[] items;

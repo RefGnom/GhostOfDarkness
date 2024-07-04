@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using Core.DependencyInjection;
 using game;
 using Game.Controllers;
 using Game.Managers;
@@ -9,7 +8,6 @@ using Microsoft.Xna.Framework;
 
 namespace Game.Creatures;
 
-[DiIgnore]
 internal class Player : Creature
 {
     private readonly HealthBar healthBar;

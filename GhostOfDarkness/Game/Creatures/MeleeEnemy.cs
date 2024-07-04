@@ -1,10 +1,8 @@
-﻿using Core.DependencyInjection;
-using Game.Managers;
+﻿using Game.Managers;
 using Microsoft.Xna.Framework;
 
 namespace Game.Creatures;
 
-[DiIgnore]
 internal class MeleeEnemy : Enemy
 {
     private const float scale = 1.5f;

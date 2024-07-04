@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using Core.DependencyInjection;
 using Core.Extensions;
 using game;
 using Game.Algorithms;
@@ -12,7 +11,6 @@ using IDrawable = Game.Interfaces.IDrawable;
 
 namespace Game.Model;
 
-[DiIgnore]
 public class Room : IDrawable
 {
     private readonly Tile[,] tiles;

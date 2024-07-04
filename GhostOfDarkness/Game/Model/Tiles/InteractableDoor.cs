@@ -1,11 +1,9 @@
-﻿using Core.DependencyInjection;
-using Game.Interfaces;
+﻿using Game.Interfaces;
 using Game.Managers;
 using Microsoft.Xna.Framework;
 
 namespace game;
 
-[DiIgnore]
 internal class InteractableDoor : IInteractable
 {
     private readonly Door first;

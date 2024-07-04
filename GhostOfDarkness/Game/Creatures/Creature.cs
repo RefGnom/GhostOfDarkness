@@ -1,5 +1,4 @@
 ﻿using System;
-using Core.DependencyInjection;
 using Game.Creatures.CreatureStates;
 using Game.Interfaces;
 using Game.Managers;
@@ -7,7 +6,6 @@ using Microsoft.Xna.Framework;
 
 namespace Game.Creatures;
 
-[DiIgnore]
 public abstract class Creature : ICollisionable
 {
     public Vector2 Position { get; protected set; }

@@ -1,12 +1,10 @@
-﻿using Core.DependencyInjection;
-using game;
+﻿using game;
 using Game.Graphics;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace Game.View;
 
-[DiIgnore]
 internal class Animator
 {
     public readonly Vector2 Origin;

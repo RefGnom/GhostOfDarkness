@@ -1,5 +1,4 @@
-﻿using Core.DependencyInjection;
-using Core.Extensions;
+﻿using Core.Extensions;
 using Game.Graphics;
 using Game.Service;
 using Microsoft.Xna.Framework;
@@ -7,7 +6,6 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Game.Controllers.Buttons;
 
-[DiIgnore]
 public class Button : BaseButton
 {
     private readonly Texture2D texture;

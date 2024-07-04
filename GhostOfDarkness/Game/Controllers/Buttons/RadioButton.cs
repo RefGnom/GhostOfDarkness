@@ -1,5 +1,4 @@
 ﻿using System;
-using Core.DependencyInjection;
 using Core.Extensions;
 using Game.Graphics;
 using Game.Service;
@@ -8,7 +7,6 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Game.Controllers.Buttons;
 
-[DiIgnore]
 public class RadioButton : BaseButton
 {
     private bool enabled;

@@ -1,5 +1,4 @@
-﻿using Core.DependencyInjection;
-using game;
+﻿using game;
 using Game.Interfaces;
 using Game.Managers;
 using Microsoft.Xna.Framework;
@@ -7,7 +6,6 @@ using IDrawable = Game.Interfaces.IDrawable;
 
 namespace Game.Model;
 
-[DiIgnore]
 public class Tile
 {
     private IDrawable entity;

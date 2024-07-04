@@ -1,5 +1,4 @@
-﻿using Core.DependencyInjection;
-using Game.Graphics;
+﻿using Game.Graphics;
 using Game.Managers;
 using Game.Service;
 using Microsoft.Xna.Framework;
@@ -8,7 +7,6 @@ using IDrawable = Game.Interfaces.IDrawable;
 
 namespace game;
 
-[DiIgnore]
 internal class EducationRoomUI : IDrawable
 {
     private static EducationRoomUI instance;

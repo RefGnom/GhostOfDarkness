@@ -1,5 +1,4 @@
-﻿using Core.DependencyInjection;
-using Game.Graphics;
+﻿using Game.Graphics;
 using Game.Service;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -7,7 +6,6 @@ using IDrawable = Game.Interfaces.IDrawable;
 
 namespace game;
 
-[DiIgnore]
 internal class Floor : IDrawable
 {
     private readonly Texture2D texture;

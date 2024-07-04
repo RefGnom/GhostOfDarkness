@@ -1,7 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
-using Core.DependencyInjection;
 using Game.Graphics;
 using Game.Interfaces;
 using Game.Managers;
@@ -10,7 +9,6 @@ using IDrawable = Game.Interfaces.IDrawable;
 
 namespace game;
 
-[DiIgnore]
 internal class Door : IDrawable, ICollisionable
 {
     private readonly Texture2D closedTexture;

@@ -1,7 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
-using Core.DependencyInjection;
 using Game.Controllers;
 using Game.Graphics;
 using Game.Interfaces;
@@ -9,7 +8,6 @@ using Game.Service;
 
 namespace game;
 
-[DiIgnore]
 internal class ProgressBar : IComponent
 {
     private readonly float minValue;

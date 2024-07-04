@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using Core.DependencyInjection;
 using Game.Graphics;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -7,7 +6,6 @@ using IDrawable = Game.Interfaces.IDrawable;
 
 namespace Game.View;
 
-[DiIgnore]
 internal class Sprite : IDrawable
 {
     private readonly Texture2D texture;

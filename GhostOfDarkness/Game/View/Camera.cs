@@ -1,9 +1,7 @@
-﻿using Core.DependencyInjection;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 
 namespace game;
 
-[DiIgnore]
 internal class Camera
 {
     private readonly float maxScale = 1.4f;

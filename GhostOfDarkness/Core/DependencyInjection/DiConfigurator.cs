@@ -34,7 +34,7 @@ public static class DiConfigurator
     {
         foreach (var typeInfo in assembly.DefinedTypes)
         {
-            var skipType = typeInfo.IsInterface || typeInfo.IsEnum || typeInfo.IsAbstract || typeInfo.GetCustomAttribute<DiIgnoreAttribute>() is not null;
+            var skipType = typeInfo.IsInterface || typeInfo.IsEnum || typeInfo.IsAbstract || typeInfo.GetCustomAttribute<DiUsageAttribute>() is null;
             if (skipType)
             {
                 continue;

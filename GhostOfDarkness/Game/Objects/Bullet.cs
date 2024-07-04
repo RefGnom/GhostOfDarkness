@@ -1,5 +1,4 @@
-﻿using Core.DependencyInjection;
-using game;
+﻿using game;
 using Game.Graphics;
 using Game.Interfaces;
 using Game.Managers;
@@ -9,7 +8,6 @@ using IDrawable = Game.Interfaces.IDrawable;
 
 namespace Game.Objects;
 
-[DiIgnore]
 internal class Bullet : IDrawable, ICollisionable
 {
     private readonly Vector2 direction;
