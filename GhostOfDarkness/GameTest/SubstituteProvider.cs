@@ -28,12 +28,12 @@ public static class SubstituteProvider
     {
         var texture = GetTexture2D(1, 1);
         return new SpriteFont(texture,
-            new List<Rectangle>(),
-            new List<Rectangle>(),
-            new List<char>(),
+            [],
+            [],
+            [],
             1,
             1,
-            new List<Vector3>(),
+            [],
             null);
     }
 
@@ -51,7 +51,7 @@ public static class SubstituteProvider
             }
         }
 
-        public TestGame()
+        private TestGame()
         {
             var graphics = new GraphicsDeviceManager(this);
             graphics.ApplyChanges();
