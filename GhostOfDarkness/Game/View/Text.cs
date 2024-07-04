@@ -6,7 +6,7 @@ using IDrawable = game.IDrawable;
 
 namespace Game.View;
 
-internal class Text : IDrawable
+public class Text : IDrawable
 {
     private readonly Rectangle bounds;
     private readonly Align align;
