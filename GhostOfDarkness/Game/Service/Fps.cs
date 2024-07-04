@@ -1,10 +1,11 @@
 ﻿using Game.ContentLoaders;
 using Game.Graphics;
+using Game.Managers;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using IDrawable = Game.Interfaces.IDrawable;
 
-namespace game;
+namespace Game.Service;
 
 internal class Fps : IDrawable
 {
@@ -31,12 +32,15 @@ internal class Fps : IDrawable
             frames = 0;
             previousDeltaTime = now;
         }
+
         frames++;
     }
 
     public void Draw(ISpriteBatch spriteBatch, float scale)
     {
-        if (Settings.ShowFPS)
+        if (Settings.ShowFps)
+        {
             spriteBatch.DrawString(Fonts.Debug, msg, new Vector2(5, 5), Color.White, 0, Vector2.Zero, 1, SpriteEffects.None, Layers.Text);
+        }
     }
 }

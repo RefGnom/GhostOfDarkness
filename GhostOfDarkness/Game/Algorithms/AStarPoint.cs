@@ -1,12 +1,12 @@
 ﻿using System.Collections.Generic;
 using Core.Extensions;
-using game;
 using Game.Model;
+using Game.Structures;
 using Microsoft.Xna.Framework;
 
 namespace Game.Algorithms;
 
-internal static class AStarPoint
+public static class AStarPoint
 {
     public static List<Point> FindPath(Room room, Point start, Point end)
     {

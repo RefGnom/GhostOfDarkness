@@ -11,7 +11,7 @@ using IDrawable = Game.Interfaces.IDrawable;
 
 namespace Game.Model;
 
-internal class Room : IDrawable
+public class Room : IDrawable
 {
     private readonly Tile[,] tiles;
     private readonly int tileSize;

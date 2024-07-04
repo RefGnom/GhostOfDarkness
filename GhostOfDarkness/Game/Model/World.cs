@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using game;
 using Game.Creatures;
+using Game.Managers;
 using Microsoft.Xna.Framework;
 
 namespace Game.Model;
@@ -37,8 +39,8 @@ internal class World
 
     public World()
     {
-        rooms = new();
-        GameManager.Instance.CollisionDetecter.CreateQuadTree(width, height);
+        rooms = [];
+        GameManager.Instance.CollisionDetector.CreateQuadTree(width, height);
         for (var i = 0; i < Textures.Rooms.Count; i++)
         {
             var (name, texture) = Textures.Rooms[i];
@@ -184,13 +186,6 @@ internal class World
 
     private Room GetCurrentRoom(Creature player)
     {
-        foreach (var room in rooms)
-        {
-            if (room.InputTrigger is not null && room.InputTrigger.Triggered(player))
-            {
-                return room;
-            }
-        }
-        return null;
+        return rooms.FirstOrDefault(room => room.InputTrigger is not null && room.InputTrigger.Triggered(player));
     }
 }

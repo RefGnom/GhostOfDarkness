@@ -1,23 +1,32 @@
-﻿using Game.Interfaces;
+﻿using game;
+using Game.Interfaces;
+using Game.Managers;
 using Microsoft.Xna.Framework;
 using IDrawable = Game.Interfaces.IDrawable;
 
-namespace game;
+namespace Game.Model;
 
-internal class Tile
+public class Tile
 {
     private IDrawable entity;
     public readonly Vector2 Position;
     public readonly int Size;
 
-    public IDrawable Entity {
+    public IDrawable Entity
+    {
         get => entity;
         set
         {
-            if (entity is not null && entity is ICollisionable)
-                GameManager.Instance.CollisionDetecter.Unregister(entity as ICollisionable);
-            if (value is ICollisionable)
-                GameManager.Instance.CollisionDetecter.Register(value as ICollisionable);
+            if (entity is ICollisionable oldCollisionable)
+            {
+                GameManager.Instance.CollisionDetector.Unregister(oldCollisionable);
+            }
+
+            if (value is ICollisionable collisionable)
+            {
+                GameManager.Instance.CollisionDetector.Register(collisionable);
+            }
+
             entity = value;
         }
     }
@@ -42,9 +51,6 @@ internal class Tile
 
     public void SetFloor(string name = null)
     {
-        if (name is null)
-            Entity = new Floor(Position);
-        else
-            Entity = new Floor(Position, name);
+        Entity = name is null ? new Floor(Position) : new Floor(Position, name);
     }
 }

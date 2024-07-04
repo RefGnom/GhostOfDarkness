@@ -1,7 +1,9 @@
 ﻿using Game.ContentLoaders;
 using Game.Game;
 using Game.Graphics;
+using Game.Interfaces;
 using Game.Managers;
+using Game.Service;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using IDrawable = Game.Interfaces.IDrawable;
@@ -41,7 +43,7 @@ internal class Note : IDrawable, IInteractable
             var origin = new Vector2(texture.Width / 2, texture.Height / 2) * backgroundScale;
             var topLeft = GameView.Center - origin;
             spriteBatch.DrawString(Fonts.Common12, text, topLeft + new Vector2(70, 50), Color.Black, 0, Vector2.Zero, 1, SpriteEffects.None, Layers.Text);
-            spriteBatch.Draw(texture, GameView.Center, null, Color.White, 0, origin, backgroundScale, SpriteEffects.None, Layers.UIBackground);
+            spriteBatch.Draw(texture, GameView.Center, null, Color.White, 0, origin, backgroundScale, SpriteEffects.None, Layers.UiBackground);
         }
     }
 

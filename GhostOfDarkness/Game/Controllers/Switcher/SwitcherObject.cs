@@ -1,10 +1,10 @@
-﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using System;
+﻿using System;
 using Game.Enums;
 using Game.View;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
-namespace game;
+namespace Game.Controllers.Switcher;
 
 internal class SwitcherObject : Text
 {

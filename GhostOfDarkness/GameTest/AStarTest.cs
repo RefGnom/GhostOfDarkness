@@ -1,15 +1,13 @@
-﻿using Microsoft.Xna.Framework;
-using NUnit.Framework;
-using System.Collections.Generic;
+﻿using FluentAssertions;
 using Game.Algorithms;
 using Game.Model;
+using Microsoft.Xna.Framework;
 
-namespace game.Tests;
+namespace GameTest;
 
-[TestFixture]
-internal class AStartTests
+public class AStartTest : TestBase
 {
-    private static readonly int size = 32;
+    private const int size = 32;
 
     private static Room CreateRoom(int width, int height)
     {
@@ -54,12 +52,15 @@ internal class AStartTests
     [Test]
     public void DiagonalPathBetterThanOrthogonal()
     {
-        var size = 10;
-        var room = CreateRoom(size, size);
+        const int testSize = 10;
+        var room = CreateRoom(testSize, testSize);
         var expected = new List<Point>();
-        for (var i = 0; i < size; i++)
+        for (var i = 0; i < testSize; i++)
+        {
             expected.Add(new Point(i, i));
-        var actual = AStarPoint.FindPath(room, new Point(0, 0), new Point(size - 1, size - 1));
+        }
+
+        var actual = AStarPoint.FindPath(room, new Point(0, 0), new Point(testSize - 1, testSize - 1));
         TestPath(expected, actual);
     }
 
@@ -68,16 +69,17 @@ internal class AStartTests
     {
         var room = CreateRoom(4, 4);
         var actual = AStarPoint.FindPath(room, new Point(0, 0), new Point(-1, -1));
-        Assert.IsNull(actual);
+        actual.Should().BeNull();
     }
 
-    private static void TestPath(List<Point> expected, List<Point> actual)
+    private static void TestPath(IReadOnlyList<Point> expected, IReadOnlyList<Point> actual)
     {
-        Assert.IsNotNull(actual);
-        Assert.AreEqual(expected.Count, actual.Count);
+        actual.Should().NotBeNull();
+        actual.Should().HaveCount(expected.Count);
+
         for (var i = 0; i < expected.Count; i++)
         {
-            Assert.AreEqual(expected[i], actual[i]);
+            actual[i].Should().Be(expected[i]);
         }
     }
 }

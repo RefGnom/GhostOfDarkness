@@ -1,4 +1,6 @@
 ﻿using Game.Graphics;
+using Game.Managers;
+using Game.Service;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using IDrawable = Game.Interfaces.IDrawable;
@@ -32,7 +34,7 @@ internal class HealthBar : IDrawable
         var width = Textures.HealthBarBackground.Width * percent;
         var height = Textures.HealthBarBackground.Height;
         var healthRectangle = new Rectangle(0, 0, (int)width, height);
-        spriteBatch.Draw(Textures.HealthBarBackground, position * scale, null, Color.White, 0, origin, localScale * scale, SpriteEffects.None, Layers.HUDBackground);
-        spriteBatch.Draw(Textures.HealthBarForeground, position * scale, healthRectangle, Color.White, 0, origin, localScale * scale, SpriteEffects.None, Layers.HUDForeground);
+        spriteBatch.Draw(Textures.HealthBarBackground, position * scale, null, Color.White, 0, origin, localScale * scale, SpriteEffects.None, Layers.HudBackground);
+        spriteBatch.Draw(Textures.HealthBarForeground, position * scale, healthRectangle, Color.White, 0, origin, localScale * scale, SpriteEffects.None, Layers.HudForeground);
     }
 }

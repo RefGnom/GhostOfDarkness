@@ -1,7 +1,7 @@
 ﻿using System.Text;
-using game;
 using Game.ContentLoaders;
 using Game.Graphics;
+using Game.Service;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -55,12 +55,7 @@ internal class TextInput : IDrawable
         }
     }
 
-    private static bool IsValid(char symbol) => symbol >= 'a' && symbol <= 'z'
-                                                || symbol >= 'A' && symbol <= 'Z'
-                                                || symbol >= 'а' && symbol <= 'я'
-                                                || symbol >= 'А' && symbol <= 'Я'
-                                                || symbol == ' '
-                                                || symbol >= '0' && symbol <= '9';
+    private static bool IsValid(char symbol) => char.IsLetter(symbol) || char.IsDigit(symbol) || symbol == ' ';
 
     private bool IsHavePlace()
     {
@@ -73,7 +68,7 @@ internal class TextInput : IDrawable
         var position = this.position * scale;
         var textSize = Font.MeasureString(Text);
         var textPosition = position + new Vector2(textSize.Y, background.Height / 2 - textSize.Y / 2) * scale;
-        spriteBatch.Draw(background, position, null, Color.White, 0, Vector2.Zero, scale, SpriteEffects.None, Layers.UI);
+        spriteBatch.Draw(background, position, null, Color.White, 0, Vector2.Zero, scale, SpriteEffects.None, Layers.Ui);
         spriteBatch.DrawString(Font, Text, textPosition, Color.White, 0, Vector2.Zero, scale, SpriteEffects.None, Layers.Text);
     }
 }

@@ -4,6 +4,7 @@ using Game.ContentLoaders;
 using Game.Controllers;
 using Game.Graphics;
 using Game.Managers;
+using Game.Service;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Media;
@@ -41,9 +42,9 @@ internal class GameView : Microsoft.Xna.Framework.Game
     protected override void Initialize()
     {
         LoadContent();
-        model = new();
-        controller = new(model, this);
-        fps = new(0.3f);
+        model = new GameModel();
+        controller = new GameController(model, this);
+        fps = new Fps(0.3f);
         Debug.Initialize(WindowHeight);
         KeyboardController.GameWindow = Window;
         MediaPlayer.Volume = 0.3f;

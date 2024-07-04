@@ -1,18 +1,18 @@
 ﻿using System.Collections.Generic;
 using Core.Extensions;
-using game;
 using Game.Model;
+using Game.Structures;
 using Microsoft.Xna.Framework;
 
 namespace Game.Algorithms;
 
-internal static class AStarRectangle
+public static class AStarRectangle
 {
     public static List<Rectangle> FindPath(Room room, Rectangle start, Rectangle end, float maxCost)
     {
         if (start.Distance(end) <= start.Radius() + end.Radius())
         {
-            return new List<Rectangle>();
+            return [];
         }
 
         var forOpen = new PriorityQueue<PathNode<Rectangle>, float>();

@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using Core.Extensions;
-using game;
 using Game.Graphics;
+using Game.Interfaces;
 using Microsoft.Xna.Framework;
 using IDrawable = Game.Interfaces.IDrawable;
 
@@ -10,7 +10,7 @@ namespace Game.Controllers.Buttons;
 
 public abstract class BaseButton : IComponent
 {
-    private readonly List<IDrawable> drawables = new List<IDrawable>();
+    private readonly List<IDrawable> drawables = [];
     protected Vector2 Position;
     protected float Scale;
     protected float Layer;

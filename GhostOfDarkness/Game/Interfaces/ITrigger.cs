@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework;
 
 namespace game;
 
-internal interface ITrigger
+public interface ITrigger
 {
     public Rectangle Hitbox { get; }
 

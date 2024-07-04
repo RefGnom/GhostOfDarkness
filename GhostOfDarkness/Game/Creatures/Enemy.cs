@@ -1,17 +1,17 @@
 ﻿using System;
 using Core.Extensions;
-using game;
+using Game.Managers;
 using Microsoft.Xna.Framework;
 
 namespace Game.Creatures;
 
-internal abstract class Enemy : Creature
+public abstract class Enemy : Creature
 {
     private bool isIdle;
     private bool hitboxDeleted;
 
     public new bool CanDelete => View.CanDelete;
-    private static CollisionDetecter CollisionDetecter => GameManager.Instance.CollisionDetecter;
+    private static CollisionDetector CollisionDetector => GameManager.Instance.CollisionDetector;
 
     public event Func<Creature, Rectangle, float, Vector2> GetMovementVector;
 
@@ -24,10 +24,10 @@ internal abstract class Enemy : Creature
     private bool TryAttack(Creature target)
     {
         var distance = Vector2.Distance(Position, target.Position);
-        if (distance <= AttackDistance && currentColdown <= 0)
+        if (distance <= AttackDistance && CurrentCooldown <= 0)
         {
             target.TakeDamage(Damage);
-            currentColdown = cooldown;
+            CurrentCooldown = Cooldown;
             return true;
         }
         return false;
@@ -80,7 +80,7 @@ internal abstract class Enemy : Creature
             View.SetStateRun();
         }
 
-        currentColdown -= deltaTime;
+        CurrentCooldown -= deltaTime;
     }
 
     protected virtual bool TryMoveToPlayer(float deltaTime, Creature target)
@@ -97,7 +97,7 @@ internal abstract class Enemy : Creature
             return false;
         }
 
-        movementVector = CollisionDetecter.GetMovementVectorWithoutCollision(this, movementVector.X, movementVector.Y, Speed, deltaTime);
+        movementVector = CollisionDetector.GetMovementVectorWithoutCollision(this, movementVector.X, movementVector.Y, Speed, deltaTime);
         if (movementVector == Vector2.Zero)
         {
             return false;

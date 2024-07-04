@@ -4,6 +4,7 @@ using game;
 using Game.Creatures.CreatureStates;
 using Game.Graphics;
 using Game.Managers;
+using Game.Service;
 using Game.View;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -12,6 +13,7 @@ namespace Game.Creatures;
 internal class PlayerView : CreatureStatesController
 {
     private readonly Animator animator = AnimatorsCreator.GetAnimator("Player");
+
     private static readonly Dictionary<string, int> animations = new Dictionary<string, int>
     {
         ["idle"] = 0,
@@ -96,7 +98,7 @@ internal class PlayerView : CreatureStatesController
 
     public override void Draw(ISpriteBatch spriteBatch, float scale)
     {
-        var flip = SpriteEffects.None;
+        const SpriteEffects flip = SpriteEffects.None;
         animator.Draw(model.Position, spriteBatch, flip, rotation, Layers.Creatures, 1);
         if (Settings.ShowHitboxes)
         {

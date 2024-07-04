@@ -1,18 +1,18 @@
-﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Game.ContentLoaders;
 using Game.Graphics;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
-namespace game;
+namespace Game.Service;
 
 internal static class Debug
 {
-    private static List<(string Message, int DrawsCount)> messages = new();
+    private static readonly List<(string Message, int DrawsCount)> messages = [];
     private static Vector2 topPosition;
     private static int lastWindowHeight;
-    private static int drawsCount = 300;
-    private static int maxLogCount = 20;
+    private static readonly int drawsCount = 300;
+    private static readonly int maxLogCount = 20;
 
     public static void Initialize(int windowHeight)
     {
@@ -39,7 +39,10 @@ internal static class Debug
     public static void Update(int windowHeight)
     {
         if (lastWindowHeight != windowHeight)
+        {
             topPosition.Y += windowHeight - lastWindowHeight;
+        }
+
         lastWindowHeight = windowHeight;
     }
 
@@ -48,7 +51,7 @@ internal static class Debug
         var currentPosition = topPosition;
         for (var i = 0; i < messages.Count; i++)
         {
-            var (message, drawsCount) = messages[i];
+            var (message, _) = messages[i];
             var offset = Fonts.Debug.MeasureString(message);
             messages[i] = (message, drawsCount - 1);
             if (drawsCount < 0)
@@ -58,6 +61,7 @@ internal static class Debug
                 topPosition.Y += offset.Y;
                 continue;
             }
+
             spriteBatch.DrawString(Fonts.Debug, message, currentPosition, Color.Black, 0, Vector2.Zero, 1, SpriteEffects.None, Layers.Text);
             currentPosition.Y += offset.Y;
         }

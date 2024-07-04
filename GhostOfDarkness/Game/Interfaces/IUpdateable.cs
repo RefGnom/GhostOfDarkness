@@ -1,4 +1,4 @@
-﻿namespace game;
+﻿namespace Game.Interfaces;
 
 internal interface IUpdateable
 {

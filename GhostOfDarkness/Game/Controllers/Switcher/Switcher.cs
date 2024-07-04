@@ -8,9 +8,10 @@ using Game.ContentLoaders;
 using Game.Controllers.Buttons;
 using Game.Enums;
 using Game.Graphics;
+using Game.Service;
 using Game.View;
 using Microsoft.Xna.Framework;
-using IComponent = game.IComponent;
+using IComponent = Game.Interfaces.IComponent;
 
 namespace Game.Controllers.Switcher;
 
@@ -30,8 +31,8 @@ internal class Switcher : IComponent, IEnumerable<string>
         leftArrow.OnClicked += Back;
         rightArrow = new Button(Textures.SwitcherRightArrow, position.Shift(360, 0), Color.Black);
         rightArrow.OnClicked += Next;
-        background = new Sprite(Textures.SwitcherBackground, backgroundPosition, Layers.UIBackground);
-        options = new List<SwitcherObject>();
+        background = new Sprite(Textures.SwitcherBackground, backgroundPosition, Layers.UiBackground);
+        options = [];
     }
 
     public void Add(string value, Action onActivated = null, Action onDeactivated = null)

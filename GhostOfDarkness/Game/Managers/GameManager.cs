@@ -1,6 +1,6 @@
-﻿using Game.Managers;
+﻿using game;
 
-namespace game;
+namespace Game.Managers;
 
 internal class GameManager
 {
@@ -9,16 +9,16 @@ internal class GameManager
 
     public Drawer Drawer { get; private set; }
     public DialogManager DialogManager { get; private set; }
-    public CollisionDetecter CollisionDetecter { get; private set; }
+    public CollisionDetector CollisionDetector { get; private set; }
     public Camera Camera { get; private set; }
 
     private GameManager()
     {
         instance = this;
-        Drawer = new();
-        DialogManager = new();
-        CollisionDetecter = new();
-        Camera = new(true);
+        Drawer = new Drawer();
+        DialogManager = new DialogManager();
+        CollisionDetector = new CollisionDetector();
+        Camera = new Camera(true);
     }
 
     public void Update()

@@ -1,11 +1,12 @@
-﻿using Microsoft.Xna.Framework;
-using System;
+﻿using System;
 using Game.Creatures.CreatureStates;
 using Game.Interfaces;
+using Game.Managers;
+using Microsoft.Xna.Framework;
 
-namespace game;
+namespace Game.Creatures;
 
-internal abstract class Creature : ICollisionable
+public abstract class Creature : ICollisionable
 {
     public Vector2 Position { get; protected set; }
     public Vector2 Direction { get; protected set; }
@@ -21,8 +22,8 @@ internal abstract class Creature : ICollisionable
     public string Tag { get; set; }
 
     private readonly float maxHealth;
-    protected readonly float cooldown;
-    protected float currentColdown;
+    protected readonly float Cooldown;
+    protected float CurrentCooldown;
 
     public Creature(Vector2 position, float speed, float health, float damage, float attackDistance, float cooldown)
     {
@@ -33,13 +34,16 @@ internal abstract class Creature : ICollisionable
         maxHealth = health;
         Damage = damage;
         AttackDistance = attackDistance;
-        this.cooldown = cooldown;
+        this.Cooldown = cooldown;
     }
 
     public void Heal(int percent)
     {
         if (percent > 100 || percent < 0)
+        {
             throw new ArgumentException("percent it should be between 0 and 100");
+        }
+
         var takenDamage = maxHealth - Health;
         Health += takenDamage / 100 * percent;
     }
@@ -48,14 +52,14 @@ internal abstract class Creature : ICollisionable
 
     public void Move(Vector2 movementVector)
     {
-        GameManager.Instance.CollisionDetecter.Unregister(this);
+        GameManager.Instance.CollisionDetector.Unregister(this);
         Position += movementVector;
-        GameManager.Instance.CollisionDetecter.Register(this);
+        GameManager.Instance.CollisionDetector.Register(this);
     }
 
     public static void Create(Creature creature)
     {
-        GameManager.Instance.CollisionDetecter.Register(creature);
+        GameManager.Instance.CollisionDetector.Register(creature);
         GameManager.Instance.Drawer.Register(creature.View);
     }
 
@@ -67,12 +71,12 @@ internal abstract class Creature : ICollisionable
 
     public static void DeleteHitbox(Creature creature)
     {
-        GameManager.Instance.CollisionDetecter.Unregister(creature);
+        GameManager.Instance.CollisionDetector.Unregister(creature);
     }
 
     public static void DeleteFromLocation(Creature creature)
     {
         GameManager.Instance.Drawer.Unregister(creature.View);
-        GameManager.Instance.CollisionDetecter.Unregister(creature);
+        GameManager.Instance.CollisionDetector.Unregister(creature);
     }
 }

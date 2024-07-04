@@ -9,6 +9,7 @@ using Game.Controllers.Switcher;
 using Game.Enums;
 using Game.Game.GameStates;
 using Game.Interfaces;
+using Game.Service;
 using Game.View;
 
 namespace game;
@@ -123,7 +124,7 @@ internal class SettingsState : GameState
     private static Sprite CreateString(Vector2 position, string name, Keys key)
     {
         var widthName = 500;
-        var line = new Sprite(Textures.SettingsString, position, Layers.UIBackground);
+        var line = new Sprite(Textures.SettingsString, position, Layers.UiBackground);
         line.AddText(new Text(new Rectangle(position.ToPoint(), new Point(widthName, Textures.SettingsString.Height)), name, Fonts.Buttons, Align.Left, 10));
         line.AddText(new Text(new Rectangle((int)position.X + widthName, (int)position.Y, 250, Textures.SettingsString.Height), key.ToString(), Fonts.Buttons));
         return line;

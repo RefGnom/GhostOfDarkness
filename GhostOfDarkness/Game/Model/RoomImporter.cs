@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Core.Extensions;
 using game;
+using Game.Objects;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using IDrawable = Game.Interfaces.IDrawable;

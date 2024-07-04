@@ -7,7 +7,7 @@ using Game.Interfaces;
 
 namespace Game.Creatures.CreatureStates;
 
-internal abstract class CreatureStatesController : IStateSwitcher, IDrawable
+public abstract class CreatureStatesController : IStateSwitcher, IDrawable
 {
     private CreatureState currentState;
     private List<CreatureState> states;
@@ -17,10 +17,10 @@ internal abstract class CreatureStatesController : IStateSwitcher, IDrawable
     public bool Killed => currentState.Killed;
     public bool CanDelete => currentState.CanDelete;
 
-    protected void SetStates(List<CreatureState> states)
+    protected void SetStates(List<CreatureState> statesList)
     {
-        this.states = states;
-        currentState = states.FirstOrDefault(s => s is IdleState);
+        this.states = statesList;
+        currentState = statesList.FirstOrDefault(s => s is IdleState);
         if (currentState is null)
         {
             throw new ArgumentException("expected idle state but was null");

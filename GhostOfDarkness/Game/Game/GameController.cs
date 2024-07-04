@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using Game.Controllers;
 using Game.Game;
 using Game.Game.GameStates;
+using Game.Managers;
+using Game.Service;
 using Game.Structures;
 
 namespace game;
@@ -65,7 +67,7 @@ internal class GameController : GameStatesController
 
         if (KeyboardController.IsSingleKeyDown(Settings.ShowOrHideFps))
         {
-            Settings.ShowFPS = !Settings.ShowFPS;
+            Settings.ShowFps = !Settings.ShowFps;
         }
 
         if (IsPlay)

@@ -1,6 +1,6 @@
 ﻿namespace game;
 
-internal interface IState
+public interface IState
 {
     public void Start(IState previousState);
 

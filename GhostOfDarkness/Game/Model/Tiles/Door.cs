@@ -4,6 +4,7 @@ using System;
 using Game.Graphics;
 using Game.Interfaces;
 using Game.Managers;
+using Game.Service;
 using IDrawable = Game.Interfaces.IDrawable;
 
 namespace game;

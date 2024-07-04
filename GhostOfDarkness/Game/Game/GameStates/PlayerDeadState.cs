@@ -1,6 +1,7 @@
 ﻿using game;
 using Game.Controllers.Buttons;
 using Game.Interfaces;
+using Game.Service;
 using Game.View;
 using Microsoft.Xna.Framework;
 
@@ -10,7 +11,7 @@ internal class PlayerDeadState : GameState
 {
     public PlayerDeadState(IGameStateSwitcher stateSwitcher, IButtonFactory buttonFactory) : base(stateSwitcher)
     {
-        Drawables.Add(new Sprite(Textures.PauseBackground, new Vector2(564, 312), Layers.UIBackground));
+        Drawables.Add(new Sprite(Textures.PauseBackground, new Vector2(564, 312), Layers.UiBackground));
 
         var position = new Vector2(736, 430);
         var restart = buttonFactory.CreateButtonWithText(Textures.ButtonBackground, position, "Restart");

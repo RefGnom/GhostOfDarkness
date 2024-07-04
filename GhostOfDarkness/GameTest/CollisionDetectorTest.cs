@@ -1,65 +1,56 @@
-﻿using System.Collections.Generic;
+﻿using FluentAssertions;
 using Game.Interfaces;
 using Game.Structures;
 using Microsoft.Xna.Framework;
-using NUnit.Framework;
 
-namespace Game.Tests;
+namespace GameTest;
 
-[TestFixture]
-internal class CollisionDetectorTests
+public class CollisionDetectorTest
 {
-    private class TestCreature : ICollisionable
-    {
-        public Rectangle Hitbox => new Rectangle(0, 0, 4, 4);
-        public Vector2 Position { get; init; }
-        public bool CanCollide { get; init; }
-
-        public TestCreature(Vector2 position, bool canCollide)
-        {
-            Position = position;
-            CanCollide = canCollide;
-        }
-    }
-
     [Test]
     public void CountElementsTest()
     {
-        var count = 10;
+        const int count = 10;
         var boundary = new Rectangle(0, 0, 64, 64);
         var quadtree = new QuadTree(boundary);
         var collisionables = new List<TestCreature>();
+
         for (var i = 0; i < count; i++)
         {
             var collisionable = new TestCreature(Vector2.Zero, true);
             quadtree.Insert(collisionable);
             collisionables.Add(collisionable);
         }
+
         for (var i = 0; i < count; i++)
         {
             quadtree.Remove(collisionables[i]);
         }
-        Assert.AreEqual(0, quadtree.Count);
+
+        quadtree.Count.Should().Be(0);
     }
 
     [Test]
     public void DeleteUnusefulQuadrantsTest()
     {
-        var count = 10;
+        const int count = 10;
         var boundary = new Rectangle(0, 0, 64, 64);
         var quadtree = new QuadTree(boundary);
         var collisionables = new List<TestCreature>();
+
         for (var i = 0; i < count; i++)
         {
             var collisionable = new TestCreature(Vector2.Zero, true);
             quadtree.Insert(collisionable);
             collisionables.Add(collisionable);
         }
+
         for (var i = 0; i < count; i++)
         {
             quadtree.Remove(collisionables[i]);
         }
-        Assert.AreEqual(false, quadtree.Divided);
+
+        quadtree.Divided.Should().BeFalse();
     }
 
     [Test]
@@ -71,7 +62,7 @@ internal class CollisionDetectorTests
         var collisionable = new TestCreature(Vector2.Zero, true);
         quadtree.Insert(collisionable);
 
-        Assert.AreEqual(false, quadtree.IsIntersectedWithItems(collisionable));
+        quadtree.IsIntersectedWithItems(collisionable).Should().BeFalse();
     }
 
     [Test]
@@ -81,7 +72,7 @@ internal class CollisionDetectorTests
         var quadtree = new QuadTree(boundary);
 
         var collisionable = new TestCreature(Vector2.Zero, true);
-        Assert.AreEqual(false, quadtree.IsIntersectedWithItems(collisionable));
+        quadtree.IsIntersectedWithItems(collisionable).Should().BeFalse();
     }
 
     [Test]
@@ -93,7 +84,8 @@ internal class CollisionDetectorTests
         var collisionable1 = new TestCreature(Vector2.Zero, true);
         quadtree.Insert(collisionable1);
         var collisionable2 = new TestCreature(Vector2.Zero, true);
-        Assert.AreEqual(true, quadtree.IsIntersectedWithItems(collisionable2));
+
+        quadtree.IsIntersectedWithItems(collisionable2).Should().BeTrue();
     }
 
     [Test]
@@ -105,19 +97,19 @@ internal class CollisionDetectorTests
         var collisionable1 = new TestCreature(Vector2.Zero, false);
         quadtree.Insert(collisionable1);
         var collisionable2 = new TestCreature(Vector2.Zero, true);
-        Assert.AreEqual(false, quadtree.IsIntersectedWithItems(collisionable2));
+        quadtree.IsIntersectedWithItems(collisionable2).Should().BeFalse();
 
 
         collisionable1 = new TestCreature(Vector2.Zero, true);
         quadtree.Insert(collisionable1);
         collisionable2 = new TestCreature(Vector2.Zero, false);
-        Assert.AreEqual(false, quadtree.IsIntersectedWithItems(collisionable2));
+        quadtree.IsIntersectedWithItems(collisionable2).Should().BeFalse();
 
 
         collisionable1 = new TestCreature(Vector2.Zero, false);
         quadtree.Insert(collisionable1);
         collisionable2 = new TestCreature(Vector2.Zero, false);
-        Assert.AreEqual(false, quadtree.IsIntersectedWithItems(collisionable2));
+        quadtree.IsIntersectedWithItems(collisionable2).Should().BeFalse();
     }
 
     [Test]
@@ -131,12 +123,25 @@ internal class CollisionDetectorTests
 
         var collisionable2 = new TestCreature(Vector2.Zero, true);
         var movement = Vector2.Zero;
-        Assert.AreEqual(false, quadtree.IsIntersectedWithItems(collisionable2, movement));
+        quadtree.IsIntersectedWithItems(collisionable2, movement).Should().BeFalse();
 
         movement.Y = 1;
-        Assert.AreEqual(false, quadtree.IsIntersectedWithItems(collisionable2, movement));
+        quadtree.IsIntersectedWithItems(collisionable2, movement).Should().BeFalse();
 
         movement.X = 1;
-        Assert.AreEqual(true, quadtree.IsIntersectedWithItems(collisionable2, movement));
+        quadtree.IsIntersectedWithItems(collisionable2, movement).Should().BeTrue();
+    }
+
+    private class TestCreature : ICollisionable
+    {
+        public Rectangle Hitbox => new Rectangle(0, 0, 4, 4);
+        public Vector2 Position { get; init; }
+        public bool CanCollide { get; init; }
+
+        public TestCreature(Vector2 position, bool canCollide)
+        {
+            Position = position;
+            CanCollide = canCollide;
+        }
     }
 }

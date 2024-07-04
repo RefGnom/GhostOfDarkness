@@ -1,12 +1,14 @@
-﻿using Game.Controllers;
+﻿using game;
+using Game.Controllers;
 using Game.Graphics;
+using Game.Service;
 using Game.View;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using IDrawable = Game.Interfaces.IDrawable;
 
-namespace game;
+namespace Game.Managers;
 
 internal class DialogManager : IDrawable
 {
@@ -32,15 +34,20 @@ internal class DialogManager : IDrawable
     public void Update()
     {
         if (!enabledDialog)
+        {
             return;
+        }
+
         if (KeyboardController.IsKeyDown(Keys.Down))
         {
             message.MoveNextChoice();
         }
+
         if (KeyboardController.IsKeyDown(Keys.Up))
         {
             message.MoveBackChoice();
         }
+
         if (KeyboardController.IsKeyDown(Keys.Enter))
         {
             message.OnNext?.Invoke();
@@ -49,6 +56,7 @@ internal class DialogManager : IDrawable
                 Disable();
                 return;
             }
+
             message = message.Next;
         }
     }
@@ -59,7 +67,7 @@ internal class DialogManager : IDrawable
         {
             message.Draw(spriteBatch, scale);
             var hintPosition = new Vector2(1800, 1000);
-            spriteBatch.Draw(Textures.DialogHelpUI, hintPosition * scale, null, Color.White, 0, Vector2.Zero, scale, SpriteEffects.None, Layers.HUDBackground);
+            spriteBatch.Draw(Textures.DialogHelpUI, hintPosition * scale, null, Color.White, 0, Vector2.Zero, scale, SpriteEffects.None, Layers.HudBackground);
         }
     }
 }

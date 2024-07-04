@@ -1,6 +1,7 @@
-﻿using Game.Interfaces;
+﻿using game;
+using Game.Interfaces;
 
-namespace game;
+namespace Game.Creatures.CreatureStates;
 
 internal class DeadState : CreatureState
 {
@@ -25,7 +26,7 @@ internal class DeadState : CreatureState
     public override void Start(IState previousState)
     {
         Killed = true;
-        timeLeft = OnStarted.Invoke();
+        TimeLeft = OnStarted.Invoke();
     }
 
     public override void Stop()
@@ -34,9 +35,12 @@ internal class DeadState : CreatureState
 
     public override void Update(float deltaTime)
     {
-        timeLeft -= deltaTime;
-        if (timeLeft <= 0)
+        TimeLeft -= deltaTime;
+        if (TimeLeft <= 0)
+        {
             CanDelete = true;
+        }
+
         OnUpdate?.Invoke();
     }
 

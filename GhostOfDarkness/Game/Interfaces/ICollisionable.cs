@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework;
 
 namespace Game.Interfaces;
 
-internal interface ICollisionable
+public interface ICollisionable
 {
     public Rectangle Hitbox { get; }
     public Vector2 Position { get; }

@@ -3,6 +3,8 @@ using Microsoft.Xna.Framework.Media;
 using System.Collections.Generic;
 using Game.Controllers;
 using Game.Creatures;
+using Game.Interfaces;
+using Game.Managers;
 using Game.Model;
 
 namespace game;

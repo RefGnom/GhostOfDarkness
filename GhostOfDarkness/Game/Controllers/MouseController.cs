@@ -1,8 +1,10 @@
-﻿using Microsoft.Xna.Framework;
+﻿using System;
+using game;
+using Game.Managers;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
-using System;
 
-namespace game;
+namespace Game.Controllers;
 
 internal static class MouseController
 {
@@ -15,38 +17,26 @@ internal static class MouseController
 
     public static event Action LeftButtonOnClicked;
 
-    public static bool LeftButtonPressed()
-    {
-        return currentState.LeftButton == ButtonState.Pressed;
-    }
+    public static bool LeftButtonPressed() => currentState.LeftButton == ButtonState.Pressed;
 
-    public static bool LeftButtonClicked()
-    {
-        return currentState.LeftButton == ButtonState.Pressed
-            && previousState.LeftButton == ButtonState.Released;
-    }
+    public static bool LeftButtonClicked() => currentState.LeftButton == ButtonState.Pressed
+                                              && previousState.LeftButton == ButtonState.Released;
 
-    public static bool LeftButtonUnclicked()
-    {
-        return currentState.LeftButton == ButtonState.Released
-            && previousState.LeftButton == ButtonState.Pressed;
-    }
+    public static bool LeftButtonReleased() => currentState.LeftButton == ButtonState.Released
+                                                && previousState.LeftButton == ButtonState.Pressed;
 
-    public static bool RightButtonClicked()
-    {
-        return currentState.RightButton == ButtonState.Pressed
-            && previousState.RightButton == ButtonState.Released;
-    }
+    public static bool RightButtonClicked() => currentState.RightButton == ButtonState.Pressed
+                                               && previousState.RightButton == ButtonState.Released;
 
-    public static int ScrollValue()
-    {
-        return (currentState.ScrollWheelValue - previousState.ScrollWheelValue) / 120;
-    }
+    public static int ScrollValue() => (currentState.ScrollWheelValue - previousState.ScrollWheelValue) / 120;
 
     public static void Update()
     {
         if (LeftButtonClicked())
+        {
             LeftButtonOnClicked?.Invoke();
+        }
+
         previousState = currentState;
         currentState = Mouse.GetState();
     }

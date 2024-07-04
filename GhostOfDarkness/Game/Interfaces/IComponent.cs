@@ -1,6 +1,4 @@
-﻿using Game.Interfaces;
-
-namespace game;
+﻿namespace Game.Interfaces;
 
 internal interface IComponent : IUpdateable, IDrawable
 {

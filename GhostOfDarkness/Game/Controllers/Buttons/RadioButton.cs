@@ -1,7 +1,7 @@
 ﻿using System;
 using Core.Extensions;
-using game;
 using Game.Graphics;
+using Game.Service;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -29,7 +29,7 @@ public class RadioButton : BaseButton
         Vector2 position,
         Color? disabledColor = null,
         Color? enabledColor = null
-    ) : base(position, Layers.UI)
+    ) : base(position, Layers.Ui)
     {
         if (disabledTexture.Bounds != enabledTexture.Bounds)
         {

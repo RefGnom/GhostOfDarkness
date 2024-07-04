@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using game;
+using Game.Controllers;
 using Game.Managers;
 using Game.Objects;
 using Microsoft.Xna.Framework;
@@ -17,12 +18,12 @@ internal class Player : Creature
     public bool IsCollide { get; set; }
     public Func<bool> Attack { get; set; }
 
-    private static CollisionDetecter CollisionDetector => GameManager.Instance.CollisionDetecter;
+    private static CollisionDetector CollisionDetector => GameManager.Instance.CollisionDetector;
 
     public Player(Vector2 position, float speed, float health, float damage, float cooldown) : base(position, speed, health, damage, 100, cooldown)
     {
         View = new PlayerView(this);
-        Bullets = new();
+        Bullets = [];
         healthBar = new HealthBar(health);
         Hitbox = HitboxManager.Player;
         IsCollide = true;
@@ -41,6 +42,7 @@ internal class Player : Creature
             Delete(this);
             return;
         }
+
         UpdateDirection();
         if (View.CanAttack && Attack is not null && Attack.Invoke())
         {
@@ -53,20 +55,20 @@ internal class Player : Creature
         }
 
         UpdateBullets(deltaTime);
-        currentColdown -= deltaTime;
+        CurrentCooldown -= deltaTime;
         healthBar.SetHealth(Health);
         View.Update(deltaTime);
     }
 
     private void Shoot()
     {
-        if (currentColdown <= 0)
+        if (CurrentCooldown <= 0)
         {
             // 30?? (Чтобы пули вылетали вне хитбокса)
             var bullet = new Bullet(Position + Direction * 30, Direction);
             Bullets.Add(bullet);
             GameManager.Instance.Drawer.Register(bullet);
-            currentColdown = cooldown;
+            CurrentCooldown = Cooldown;
             View.SetStateAttack();
         }
     }
@@ -77,11 +79,12 @@ internal class Player : Creature
         for (var i = 0; i < Bullets.Count; i++)
         {
             Bullets[i].Update(deltaTime);
-            var obj = CollisionDetector.CollisionWithbjects(Bullets[i]);
+            var obj = CollisionDetector.CollisionWithObjects(Bullets[i]);
             if (obj is Enemy enemy)
             {
                 enemy.TakeDamage(Damage);
             }
+
             if (Bullets[i].IsDead || obj is not null)
             {
                 GameManager.Instance.Drawer.Unregister(Bullets[i]);
@@ -100,7 +103,8 @@ internal class Player : Creature
 
     private void Move(float deltaTime)
     {
-        var movementVector = IsCollide ? CollisionDetector.GetMovementVectorWithoutCollision(this, DeltaX, DeltaY, Speed, deltaTime) : new Vector2(DeltaX, DeltaY);
+        var movementVector =
+            IsCollide ? CollisionDetector.GetMovementVectorWithoutCollision(this, DeltaX, DeltaY, Speed, deltaTime) : new Vector2(DeltaX, DeltaY);
 
         DeltaX = 0;
         DeltaY = 0;

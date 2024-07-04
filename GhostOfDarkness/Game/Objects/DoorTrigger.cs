@@ -1,7 +1,8 @@
-﻿using Game.Interfaces;
+﻿using game;
+using Game.Interfaces;
 using Microsoft.Xna.Framework;
 
-namespace game;
+namespace Game.Objects;
 
 internal class DoorTrigger : ITrigger
 {
@@ -12,13 +13,7 @@ internal class DoorTrigger : ITrigger
         Hitbox = hitbox;
     }
 
-    public bool Triggered(ICollisionable collisionable)
-    {
-        return collisionable.Collision(Hitbox);
-    }
+    public bool Triggered(ICollisionable collisionable) => collisionable.Collision(Hitbox);
 
-    public bool Triggered(Vector2 position)
-    {
-        return Hitbox.Contains(position);
-    }
+    public bool Triggered(Vector2 position) => Hitbox.Contains(position);
 }

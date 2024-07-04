@@ -1,8 +1,10 @@
 ﻿using System.Collections.Generic;
 using Core.Extensions;
 using game;
+using Game.Creatures.CreatureStates;
 using Game.Graphics;
 using Game.Managers;
+using Game.Service;
 using Game.View;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -43,7 +45,7 @@ internal class BossView : EnemyView
         var idle = new IdleState(this);
         idle.OnStarted = () =>
         {
-            var direction = model.Direction.ToAngle().ToCardinalDirection();
+            var direction = Model.Direction.ToAngle().ToCardinalDirection();
             animator.SetAnimation(animations[$"idle-{direction}"]);
             return animator.GetAnimationTime(animations[$"idle-{direction}"]);
         };
@@ -57,7 +59,7 @@ internal class BossView : EnemyView
         var attack = new AttackState(this);
         attack.OnStarted = () =>
         {
-            var direction = model.Direction.ToAngle().ToCardinalDirection();
+            var direction = Model.Direction.ToAngle().ToCardinalDirection();
             animator.SetAnimation(animations[$"attack-{direction}"]);
             return animator.GetAnimationTime(animations[$"attack-{direction}"]) / 2;
         };
@@ -65,7 +67,7 @@ internal class BossView : EnemyView
         var takeDamage = new TakeDamageState(this);
         takeDamage.OnStarted = () =>
         {
-            var direction = model.Direction.ToAngle().ToCardinalDirection();
+            var direction = Model.Direction.ToAngle().ToCardinalDirection();
             animator.SetAnimation(animations[$"idle-{direction}"]);
             return animator.GetAnimationTime(animations[$"idle-{direction}"]) * 0.2f;
         };
@@ -73,7 +75,7 @@ internal class BossView : EnemyView
         var dead = new DeadState(this);
         dead.OnStarted = () =>
         {
-            model.Direction.ToAngle().ToCardinalDirection();
+            Model.Direction.ToAngle().ToCardinalDirection();
             animator.SetAnimation(animations["death"], false);
             return animator.GetAnimationTime(animations["death"]) * 20;
         };
@@ -91,11 +93,11 @@ internal class BossView : EnemyView
 
     public override void Draw(ISpriteBatch spriteBatch, float scale)
     {
-        animator.Draw(model.Position, spriteBatch, SpriteEffects.None, Layers.Creatures, scaleFactor);
-        var origin = new Vector2(model.Hitbox.Width / 2, model.Hitbox.Height / 2);
+        animator.Draw(Model.Position, spriteBatch, SpriteEffects.None, Layers.Creatures, ScaleFactor);
+        var origin = new Vector2(Model.Hitbox.Width / 2, Model.Hitbox.Height / 2);
         if (Settings.ShowHitboxes)
         {
-            HitboxManager.DrawHitbox(spriteBatch, model.Position, model.Hitbox, origin);
+            HitboxManager.DrawHitbox(spriteBatch, Model.Position, Model.Hitbox, origin);
         }
     }
 }

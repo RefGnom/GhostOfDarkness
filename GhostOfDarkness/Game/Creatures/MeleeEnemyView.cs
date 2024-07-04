@@ -1,11 +1,14 @@
-﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using game;
+using Game.Creatures.CreatureStates;
 using Game.Graphics;
 using Game.Managers;
+using Game.Service;
 using Game.View;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
-namespace game;
+namespace Game.Creatures;
 
 internal class MeleeEnemyView : EnemyView
 {
@@ -21,7 +24,7 @@ internal class MeleeEnemyView : EnemyView
 
     public MeleeEnemyView(float scale)
     {
-        scaleFactor = scale;
+        ScaleFactor = scale;
         SetStates(CreateStates());
     }
 
@@ -73,10 +76,10 @@ internal class MeleeEnemyView : EnemyView
 
     public override void Draw(ISpriteBatch spriteBatch, float scale)
     {
-        var flip = model.Direction.X < 0 ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
-        animator.Draw(model.Position, spriteBatch, flip, Layers.Creatures, scaleFactor);
-        var origin = new Vector2(model.Hitbox.Width / 2, model.Hitbox.Height / 2);
+        var flip = Model.Direction.X < 0 ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
+        animator.Draw(Model.Position, spriteBatch, flip, Layers.Creatures, ScaleFactor);
+        var origin = new Vector2(Model.Hitbox.Width / 2, Model.Hitbox.Height / 2);
         if (Settings.ShowHitboxes)
-            HitboxManager.DrawHitbox(spriteBatch, model.Position, model.Hitbox, origin);
+            HitboxManager.DrawHitbox(spriteBatch, Model.Position, Model.Hitbox, origin);
     }
 }

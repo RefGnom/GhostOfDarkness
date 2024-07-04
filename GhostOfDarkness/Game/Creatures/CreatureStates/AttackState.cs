@@ -1,6 +1,7 @@
-﻿using Game.Interfaces;
+﻿using game;
+using Game.Interfaces;
 
-namespace game;
+namespace Game.Creatures.CreatureStates;
 
 internal class AttackState : CreatureState
 {
@@ -20,12 +21,12 @@ internal class AttackState : CreatureState
 
     public override void TakeDamage()
     {
-        switcher.SwitchState<TakeDamageState>();
+        Switcher.SwitchState<TakeDamageState>();
     }
 
     public override void Start(IState previousState)
     {
-        timeLeft = OnStarted.Invoke();
+        TimeLeft = OnStarted.Invoke();
     }
 
     public override void Stop()
@@ -35,9 +36,12 @@ internal class AttackState : CreatureState
 
     public override void Update(float deltaTime)
     {
-        timeLeft -= deltaTime;
-        if (timeLeft <= 0)
-            switcher.SwitchState<FightState>();
+        TimeLeft -= deltaTime;
+        if (TimeLeft <= 0)
+        {
+            Switcher.SwitchState<FightState>();
+        }
+
         OnUpdate?.Invoke();
     }
 

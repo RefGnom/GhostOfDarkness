@@ -2,6 +2,7 @@
 using Game.Controllers.Buttons;
 using Game.Graphics;
 using Game.Interfaces;
+using Game.Service;
 using Game.View;
 using Microsoft.Xna.Framework;
 
@@ -14,12 +15,12 @@ internal class ConfirmationState : GameState
         Drawables.Add(new Sprite(Textures.PauseBackground, new Vector2(564, 312), Layers.ConfirmationWindowBackground));
 
         var position = new Vector2(736, 430);
-        var confirm = buttonFactory.CreateButtonWithText(Textures.ButtonBackground, position, "Confirm", Layers.ConfirmationWindowUI, Layers.ConfirmationWindowText);
+        var confirm = buttonFactory.CreateButtonWithText(Textures.ButtonBackground, position, "Confirm", Layers.ConfirmationWindowUi, Layers.ConfirmationWindowText);
         confirm.OnClicked += Confirm;
         Components.Add(confirm);
 
         position.Y += 140;
-        var cancel = buttonFactory.CreateButtonWithText(Textures.ButtonBackground, position, "Cancel", Layers.ConfirmationWindowUI, Layers.ConfirmationWindowText);
+        var cancel = buttonFactory.CreateButtonWithText(Textures.ButtonBackground, position, "Cancel", Layers.ConfirmationWindowUi, Layers.ConfirmationWindowText);
         cancel.OnClicked += Back;
         Components.Add(cancel);
     }

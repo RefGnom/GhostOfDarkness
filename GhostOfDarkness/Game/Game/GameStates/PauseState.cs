@@ -2,6 +2,7 @@
 using Game.Controllers.Buttons;
 using Game.Graphics;
 using Game.Interfaces;
+using Game.Service;
 using Game.View;
 using Microsoft.Xna.Framework;
 
@@ -11,7 +12,7 @@ internal class PauseState : GameState
 {
     public PauseState(IGameStateSwitcher stateSwitcher, IButtonFactory buttonFactory) : base(stateSwitcher)
     {
-        Drawables.Add(new Sprite(Textures.PauseBackground, new Vector2(564, 312), Layers.UIBackground));
+        Drawables.Add(new Sprite(Textures.PauseBackground, new Vector2(564, 312), Layers.UiBackground));
 
         var position = new Vector2(736, 370);
         var continueGame = buttonFactory.CreateButtonWithText(Textures.ButtonBackground, position, "Resume");

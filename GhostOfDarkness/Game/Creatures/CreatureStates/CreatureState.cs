@@ -1,12 +1,13 @@
 ﻿using System;
+using game;
 using Game.Interfaces;
 
-namespace game;
+namespace Game.Creatures.CreatureStates;
 
-internal abstract class CreatureState : IState
+public abstract class CreatureState : IState
 {
-    protected float timeLeft;
-    protected readonly IStateSwitcher switcher;
+    protected float TimeLeft;
+    protected readonly IStateSwitcher Switcher;
 
     public bool CanAttack { get; protected set; }
     public bool CanMove { get; protected set; }
@@ -16,9 +17,9 @@ internal abstract class CreatureState : IState
     public Func<float> OnStarted;
     public Func<float> OnUpdate;
 
-    public CreatureState(IStateSwitcher stateSwitcher)
+    protected CreatureState(IStateSwitcher stateSwitcher)
     {
-        switcher = stateSwitcher;
+        Switcher = stateSwitcher;
     }
 
     public abstract void Start(IState previousState);

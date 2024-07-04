@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Game.Structures;
 
-internal class Path<T> : IEnumerable<T>
+public class Path<T> : IEnumerable<T>
 {
     public readonly T Value;
     public readonly Path<T> Previous;

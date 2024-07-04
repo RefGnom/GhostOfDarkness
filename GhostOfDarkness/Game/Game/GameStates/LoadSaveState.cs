@@ -5,6 +5,7 @@ using game;
 using Game.Controllers.Buttons;
 using Game.Graphics;
 using Game.Interfaces;
+using Game.Service;
 using Game.View;
 using Microsoft.Xna.Framework;
 
@@ -32,7 +33,7 @@ internal class LoadSaveState : GameState
         this.buttonFactory = buttonFactory;
         this.radioButtonManager = radioButtonManager;
 
-        Drawables.Add(new Sprite(Textures.SavesWindow, new Vector2(40, 70), Layers.UIBackground));
+        Drawables.Add(new Sprite(Textures.SavesWindow, new Vector2(40, 70), Layers.UiBackground));
         Drawables.Add(new Sprite(Textures.Background, Vector2.Zero, Layers.Background));
 
         loadButton = buttonFactory.CreateButtonWithText(Textures.ButtonBackground, new Vector2(40, 800), "Load");

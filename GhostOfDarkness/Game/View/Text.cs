@@ -1,6 +1,6 @@
-﻿using game;
-using Game.Enums;
+﻿using Game.Enums;
 using Game.Graphics;
+using Game.Service;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using IDrawable = Game.Interfaces.IDrawable;

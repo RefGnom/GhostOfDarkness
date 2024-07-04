@@ -1,4 +1,6 @@
 ﻿using Game.Graphics;
+using Game.Managers;
+using Game.Service;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using IDrawable = Game.Interfaces.IDrawable;
@@ -23,6 +25,6 @@ internal class EducationRoomUI : IDrawable
 
     public void Draw(ISpriteBatch spriteBatch, float scale)
     {
-        spriteBatch.Draw(Textures.EducationUI, position, null, Color.White, 0, Vector2.Zero, 1, SpriteEffects.None, Layers.StaticUI);
+        spriteBatch.Draw(Textures.EducationUI, position, null, Color.White, 0, Vector2.Zero, 1, SpriteEffects.None, Layers.StaticUi);
     }
 }

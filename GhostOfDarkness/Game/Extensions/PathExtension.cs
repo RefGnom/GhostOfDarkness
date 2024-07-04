@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework;
 
 namespace Game.Extensions;
 
-internal static class PathExtension
+public static class PathExtension
 {
     public static List<Vector2> ToMovementVectors(this IEnumerable<Point> value)
     {

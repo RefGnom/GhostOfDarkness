@@ -6,7 +6,7 @@ using Microsoft.Xna.Framework;
 
 namespace Game.Algorithms;
 
-internal static class PathFinder
+public static class PathFinder
 {
     public static Path<Rectangle> GetMovementVector(Room room, Rectangle hitbox, Rectangle target, int maxDistance)
     {

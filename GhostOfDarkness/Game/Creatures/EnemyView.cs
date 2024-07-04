@@ -1,15 +1,14 @@
-﻿using Game.Creatures;
-using Game.Creatures.CreatureStates;
+﻿using Game.Creatures.CreatureStates;
 
-namespace game;
+namespace Game.Creatures;
 
-internal abstract class EnemyView : CreatureStatesController
+public abstract class EnemyView : CreatureStatesController
 {
-    protected float scaleFactor = 1;
-    protected Enemy model;
+    protected float ScaleFactor = 1;
+    protected Enemy Model;
 
     public void SetModel(Enemy model)
     {
-        this.model = model;
+        Model = model;
     }
 }

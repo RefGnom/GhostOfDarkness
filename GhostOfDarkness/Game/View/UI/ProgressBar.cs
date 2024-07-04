@@ -1,7 +1,10 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
+using Game.Controllers;
 using Game.Graphics;
+using Game.Interfaces;
+using Game.Service;
 
 namespace game;
 
@@ -57,7 +60,7 @@ internal class ProgressBar : IComponent
     {
         if (MouseController.LeftButtonClicked() && MauseInBounds())
             active = true;
-        if (MouseController.LeftButtonUnclicked())
+        if (MouseController.LeftButtonReleased())
             active = false;
 
         if (active)
@@ -69,8 +72,8 @@ internal class ProgressBar : IComponent
 
     public void Draw(ISpriteBatch spriteBatch, float scale)
     {
-        spriteBatch.Draw(background, position * scale, null, Color.White, 0, groundOrigin, scale, SpriteEffects.None, Layers.UIBackground);
-        spriteBatch.Draw(foreground, position * scale, new Rectangle(0, 0, (int)xValue, bounds.Height), Color.White, 0, groundOrigin, scale, SpriteEffects.None, Layers.UI);
+        spriteBatch.Draw(background, position * scale, null, Color.White, 0, groundOrigin, scale, SpriteEffects.None, Layers.UiBackground);
+        spriteBatch.Draw(foreground, position * scale, new Rectangle(0, 0, (int)xValue, bounds.Height), Color.White, 0, groundOrigin, scale, SpriteEffects.None, Layers.Ui);
         spriteBatch.Draw(value, new Vector2(position.X + xValue, position.Y) * scale, null, Color.White, 0, valueOrigin, scale, SpriteEffects.None, Layers.Text);
         lastScale = scale;
     }

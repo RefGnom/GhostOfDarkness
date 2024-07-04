@@ -4,15 +4,16 @@ using Core.Extensions;
 using game;
 using Game.Graphics;
 using Game.Interfaces;
+using Game.Service;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using IDrawable = Game.Interfaces.IDrawable;
 
 namespace Game.Structures;
 
-internal class QuadTree : IDrawable
+public class QuadTree : IDrawable
 {
-    private static readonly int threshold = 4;
+    private const int threshold = 4;
 
     private readonly Rectangle boundary;
     private readonly List<ICollisionable> items;
@@ -66,7 +67,7 @@ internal class QuadTree : IDrawable
         }
     }
 
-    internal void Remove(ICollisionable item)
+    public void Remove(ICollisionable item)
     {
         var hitbox = item.Hitbox.Shift(item.Position);
         if (!hitbox.Intersects(boundary) || items.Remove(item) || nodes[0] is null)
@@ -114,6 +115,7 @@ internal class QuadTree : IDrawable
                 return t;
             }
         }
+
         if (nodes[0] is not null)
         {
             foreach (var t in nodes)
@@ -125,6 +127,7 @@ internal class QuadTree : IDrawable
                 }
             }
         }
+
         return null;
     }
 
@@ -151,16 +154,16 @@ internal class QuadTree : IDrawable
         var horizontal = Textures.HorizontalLine;
         var position = boundary.Location.ToVector2();
         var source = new Rectangle(0, 0, 2, boundary.Height);
-        spriteBatch.Draw(vertical, position, source, Color.White, 0, new Vector2(1.5f, 0), 1, SpriteEffects.None, Layers.HUDForeground);
+        spriteBatch.Draw(vertical, position, source, Color.White, 0, new Vector2(1.5f, 0), 1, SpriteEffects.None, Layers.HudForeground);
         source = new Rectangle(0, 0, boundary.Width, 2);
-        spriteBatch.Draw(horizontal, position, source, Color.White, 0, new Vector2(0, 1.5f), 1, SpriteEffects.None, Layers.HUDForeground);
+        spriteBatch.Draw(horizontal, position, source, Color.White, 0, new Vector2(0, 1.5f), 1, SpriteEffects.None, Layers.HudForeground);
         position.X += boundary.Width;
         source = new Rectangle(0, 0, 2, boundary.Height);
-        spriteBatch.Draw(vertical, position, source, Color.White, 0, new Vector2(1.5f, 0), 1, SpriteEffects.None, Layers.HUDForeground);
+        spriteBatch.Draw(vertical, position, source, Color.White, 0, new Vector2(1.5f, 0), 1, SpriteEffects.None, Layers.HudForeground);
         position.X -= boundary.Width;
         position.Y += boundary.Height;
         source = new Rectangle(0, 0, boundary.Width, 2);
-        spriteBatch.Draw(horizontal, position, source, Color.White, 0, new Vector2(0, 1.5f), 1, SpriteEffects.None, Layers.HUDForeground);
+        spriteBatch.Draw(horizontal, position, source, Color.White, 0, new Vector2(0, 1.5f), 1, SpriteEffects.None, Layers.HudForeground);
 
         if (nodes[0] is not null)
         {

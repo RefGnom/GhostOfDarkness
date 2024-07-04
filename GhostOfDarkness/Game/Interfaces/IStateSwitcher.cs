@@ -2,7 +2,7 @@
 
 namespace Game.Interfaces;
 
-internal interface IStateSwitcher
+public interface IStateSwitcher
 {
     public void SwitchState<T>() where T : IState;
 
