@@ -4,10 +4,10 @@ using Core.Extensions;
 using game;
 using Game.Algorithms;
 using Game.Creatures;
+using Game.Graphics;
 using Game.Interfaces;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using IDrawable = game.IDrawable;
+using IDrawable = Game.Interfaces.IDrawable;
 
 namespace Game.Model;
 
@@ -108,7 +108,7 @@ internal class Room : IDrawable
         }
     }
 
-    public void Draw(SpriteBatch spriteBatch, float scale)
+    public void Draw(ISpriteBatch spriteBatch, float scale)
     {
         for (var column = 0; column < tiles.GetLength(0); column++)
         {

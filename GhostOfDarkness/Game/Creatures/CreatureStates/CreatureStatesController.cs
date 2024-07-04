@@ -1,10 +1,11 @@
-﻿using Microsoft.Xna.Framework.Graphics;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using game;
+using Game.Graphics;
 using Game.Interfaces;
 
-namespace game;
+namespace Game.Creatures.CreatureStates;
 
 internal abstract class CreatureStatesController : IStateSwitcher, IDrawable
 {
@@ -21,7 +22,10 @@ internal abstract class CreatureStatesController : IStateSwitcher, IDrawable
         this.states = states;
         currentState = states.FirstOrDefault(s => s is IdleState);
         if (currentState is null)
+        {
             throw new ArgumentException("expected idle state but was null");
+        }
+
         currentState.Start(null);
     }
 
@@ -55,5 +59,5 @@ internal abstract class CreatureStatesController : IStateSwitcher, IDrawable
 
     public void SetStateDead() => currentState.Kill();
 
-    public abstract void Draw(SpriteBatch spriteBatch, float scale);
+    public abstract void Draw(ISpriteBatch spriteBatch, float scale);
 }

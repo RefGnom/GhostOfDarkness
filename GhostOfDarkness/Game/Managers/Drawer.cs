@@ -1,27 +1,28 @@
-﻿using Microsoft.Xna.Framework.Graphics;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using Game.Graphics;
+using Game.Interfaces;
 
-namespace game;
+namespace Game.Managers;
 
 internal class Drawer
 {
-    private readonly List<IDrawable> drawables = new();
-    private readonly List<IDrawable> UIdrawables = new();
-    private readonly List<IDrawable> HUDdrawables = new();
+    private readonly List<IDrawable> drawables = [];
+    private readonly List<IDrawable> uiDrawables = [];
+    private readonly List<IDrawable> hudDrawables = [];
 
     public void Register(IDrawable drawable)
     {
         drawables.Add(drawable);
     }
 
-    public void RegisterUI(IDrawable drawable)
+    public void RegisterUi(IDrawable drawable)
     {
-        UIdrawables.Add(drawable);
+        uiDrawables.Add(drawable);
     }
 
-    public void RegisterHUD(IDrawable drawable)
+    public void RegisterHud(IDrawable drawable)
     {
-        HUDdrawables.Add(drawable);
+        hudDrawables.Add(drawable);
     }
 
     public void Unregister(IDrawable drawable)
@@ -29,17 +30,17 @@ internal class Drawer
         drawables.Remove(drawable);
     }
 
-    public void UnregisterUI(IDrawable drawable)
+    public void UnregisterUi(IDrawable drawable)
     {
-        UIdrawables.Remove(drawable);
+        uiDrawables.Remove(drawable);
     }
 
-    public void UnregisterHUD(IDrawable drawable)
+    public void UnregisterHud(IDrawable drawable)
     {
-        HUDdrawables.Remove(drawable);
+        hudDrawables.Remove(drawable);
     }
 
-    public void Draw(SpriteBatch spriteBatch, float scale)
+    public void Draw(ISpriteBatch spriteBatch, float scale)
     {
         foreach (var drawable in drawables)
         {
@@ -47,17 +48,17 @@ internal class Drawer
         }
     }
 
-    public void DrawUI(SpriteBatch spriteBatch, float scale)
+    public void DrawUi(ISpriteBatch spriteBatch, float scale)
     {
-        foreach (var drawable in UIdrawables)
+        foreach (var drawable in uiDrawables)
         {
             drawable.Draw(spriteBatch, scale);
         }
     }
 
-    public void DrawHUD(SpriteBatch spriteBatch, float scale)
+    public void DrawHud(ISpriteBatch spriteBatch, float scale)
     {
-        foreach (var drawable in HUDdrawables)
+        foreach (var drawable in hudDrawables)
         {
             drawable.Draw(spriteBatch, scale);
         }

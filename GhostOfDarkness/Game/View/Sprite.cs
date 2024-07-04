@@ -1,7 +1,8 @@
 ﻿using System.Collections.Generic;
+using Game.Graphics;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using IDrawable = game.IDrawable;
+using IDrawable = Game.Interfaces.IDrawable;
 
 namespace Game.View;
 
@@ -22,7 +23,7 @@ internal class Sprite : IDrawable
         this.scaleFactor = scaleFactor;
     }
 
-    public void Draw(SpriteBatch spriteBatch, float scale)
+    public void Draw(ISpriteBatch spriteBatch, float scale)
     {
         spriteBatch.Draw(texture, position * scale, null, Color.White, 0, Vector2.Zero, scale * scaleFactor, SpriteEffects.None, layer);
         foreach (var t in texts)

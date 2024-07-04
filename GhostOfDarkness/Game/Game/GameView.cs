@@ -2,6 +2,7 @@
 using game;
 using Game.ContentLoaders;
 using Game.Controllers;
+using Game.Graphics;
 using Game.Managers;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -16,7 +17,7 @@ internal class GameView : Microsoft.Xna.Framework.Game
     private Fps fps;
 
     private readonly GraphicsDeviceManager graphics;
-    private SpriteBatch spriteBatch;
+    private ISpriteBatch spriteBatch;
 
     public static int WindowWidth { get; private set; }
     public static int WindowHeight { get; private set; }
@@ -51,7 +52,7 @@ internal class GameView : Microsoft.Xna.Framework.Game
 
     protected override void LoadContent()
     {
-        spriteBatch = new SpriteBatch(GraphicsDevice);
+        spriteBatch = new SpriteBatchWrapper(GraphicsDevice);
         Textures.Load(Content);
         Fonts.Load(Content);
         Sounds.Load(Content);
@@ -106,7 +107,7 @@ internal class GameView : Microsoft.Xna.Framework.Game
         spriteBatch.Begin(sortMode: SpriteSortMode.BackToFront);
         controller.Draw(spriteBatch, Scale);
         Debug.DrawMessages(spriteBatch);
-        GameManager.Instance.Drawer.DrawUI(spriteBatch, Scale);
+        GameManager.Instance.Drawer.DrawUi(spriteBatch, Scale);
         spriteBatch.End();
     }
 
@@ -115,7 +116,7 @@ internal class GameView : Microsoft.Xna.Framework.Game
         spriteBatch.Begin(sortMode: SpriteSortMode.BackToFront);
         HintManager.Draw(spriteBatch, Scale);
         Debug.DrawMessages(spriteBatch);
-        GameManager.Instance.Drawer.DrawHUD(spriteBatch, Scale);
+        GameManager.Instance.Drawer.DrawHud(spriteBatch, Scale);
         spriteBatch.End();
     }
     #endregion

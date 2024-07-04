@@ -1,6 +1,7 @@
 ﻿using System;
 using Core.Extensions;
 using game;
+using Game.Graphics;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -61,7 +62,7 @@ public class RadioButton : BaseButton
         currentColor = disabledColor;
     }
 
-    protected override void DrawButton(SpriteBatch spriteBatch, float scale)
+    protected override void DrawButton(ISpriteBatch spriteBatch, float scale)
     {
         var position = Position * scale;
         var color = Selected && !enabled ? currentColor.WithColorDelta(230) : currentColor;

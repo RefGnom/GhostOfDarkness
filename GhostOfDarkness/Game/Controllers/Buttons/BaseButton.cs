@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using Core.Extensions;
 using game;
+using Game.Graphics;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using IDrawable = game.IDrawable;
+using IDrawable = Game.Interfaces.IDrawable;
 
 namespace Game.Controllers.Buttons;
 
@@ -47,7 +47,7 @@ public abstract class BaseButton : IComponent
         UpdateButton(deltaTime);
     }
 
-    public void Draw(SpriteBatch spriteBatch, float scale)
+    public void Draw(ISpriteBatch spriteBatch, float scale)
     {
         Scale = scale;
         DrawButton(spriteBatch, scale);
@@ -61,7 +61,7 @@ public abstract class BaseButton : IComponent
     {
     }
 
-    protected virtual void DrawButton(SpriteBatch spriteBatch, float scale)
+    protected virtual void DrawButton(ISpriteBatch spriteBatch, float scale)
     {
     }
 

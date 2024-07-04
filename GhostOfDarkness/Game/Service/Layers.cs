@@ -2,7 +2,7 @@
 
 // Depth in [0.00f; 0.60f]
 // Lower values are rendered on top of higher values
-internal static class Layers
+public static class Layers
 {
     public static readonly float ConfirmationWindowText = 0.01f;
     public static readonly float ConfirmationWindowUI = 0.02f;

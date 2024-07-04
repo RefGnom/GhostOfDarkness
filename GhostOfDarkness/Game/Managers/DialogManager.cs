@@ -1,8 +1,10 @@
 ﻿using Game.Controllers;
+using Game.Graphics;
 using Game.View;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using IDrawable = Game.Interfaces.IDrawable;
 
 namespace game;
 
@@ -13,7 +15,7 @@ internal class DialogManager : IDrawable
 
     public DialogManager()
     {
-        GameManager.Instance.Drawer.RegisterHUD(this);
+        GameManager.Instance.Drawer.RegisterHud(this);
     }
 
     public void Enable(Message message)
@@ -51,7 +53,7 @@ internal class DialogManager : IDrawable
         }
     }
 
-    public void Draw(SpriteBatch spriteBatch, float scale)
+    public void Draw(ISpriteBatch spriteBatch, float scale)
     {
         if (enabledDialog)
         {

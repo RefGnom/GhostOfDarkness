@@ -1,5 +1,6 @@
 ﻿using Game.Interfaces;
 using Microsoft.Xna.Framework;
+using IDrawable = Game.Interfaces.IDrawable;
 
 namespace game;
 

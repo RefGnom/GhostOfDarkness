@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using game;
+using Game.Graphics;
 using Game.Interfaces;
-using Microsoft.Xna.Framework.Graphics;
 
 namespace Game.Game.GameStates;
 
@@ -45,7 +45,7 @@ internal abstract class GameState : IState, IDrawable, IUpdateable
         }
     }
 
-    public virtual void Draw(SpriteBatch spriteBatch, float scale)
+    public virtual void Draw(ISpriteBatch spriteBatch, float scale)
     {
         foreach (var component in Components)
         {

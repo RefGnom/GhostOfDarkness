@@ -1,9 +1,9 @@
 ﻿using game;
 using Game.Controllers.Buttons;
+using Game.Graphics;
 using Game.Interfaces;
 using Game.View;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 
 namespace Game.Game.GameStates;
 
@@ -57,7 +57,7 @@ internal class PauseState : GameState
     {
     }
 
-    public override void Draw(SpriteBatch spriteBatch, float scale)
+    public override void Draw(ISpriteBatch spriteBatch, float scale)
     {
         base.Draw(spriteBatch, scale);
     }

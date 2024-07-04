@@ -1,8 +1,11 @@
-﻿using Game.Interfaces;
+﻿using game;
+using Game.Graphics;
+using Game.Interfaces;
+using Game.Managers;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
+using IDrawable = Game.Interfaces.IDrawable;
 
-namespace game;
+namespace Game.Objects;
 
 internal class Bullet : IDrawable, ICollisionable
 {
@@ -27,10 +30,12 @@ internal class Bullet : IDrawable, ICollisionable
         lifetime -= deltaTime;
     }
 
-    public void Draw(SpriteBatch spriteBatch, float scale)
+    public void Draw(ISpriteBatch spriteBatch, float scale)
     {
         spriteBatch.Draw(Textures.Bullet, Position, Color.Orange);
         if (Settings.ShowHitboxes)
+        {
             HitboxManager.DrawHitbox(spriteBatch, Position, HitboxManager.Bullet, Vector2.Zero);
+        }
     }
 }

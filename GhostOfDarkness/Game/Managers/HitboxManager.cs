@@ -1,7 +1,9 @@
-﻿using Microsoft.Xna.Framework;
+﻿using game;
+using Game.Graphics;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace game;
+namespace Game.Managers;
 
 internal static class HitboxManager
 {
@@ -11,7 +13,7 @@ internal static class HitboxManager
     public static readonly Rectangle Bullet = new(1, 1, 8, 8);
     public static readonly Rectangle Wall = new(0, 0, 32, 32);
 
-    public static void DrawHitbox(SpriteBatch spriteBatch, Vector2 position, Rectangle hitbox, Vector2 origin)
+    public static void DrawHitbox(ISpriteBatch spriteBatch, Vector2 position, Rectangle hitbox, Vector2 origin)
     {
         spriteBatch.Draw(Textures.Hitbox, position, hitbox, Color.White, 0, origin, 1, SpriteEffects.None, 0);
     }

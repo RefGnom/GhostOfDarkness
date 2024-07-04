@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
+using Game.Graphics;
 
 namespace game;
 
@@ -66,7 +67,7 @@ internal class ProgressBar : IComponent
         }
     }
 
-    public void Draw(SpriteBatch spriteBatch, float scale)
+    public void Draw(ISpriteBatch spriteBatch, float scale)
     {
         spriteBatch.Draw(background, position * scale, null, Color.White, 0, groundOrigin, scale, SpriteEffects.None, Layers.UIBackground);
         spriteBatch.Draw(foreground, position * scale, new Rectangle(0, 0, (int)xValue, bounds.Height), Color.White, 0, groundOrigin, scale, SpriteEffects.None, Layers.UI);

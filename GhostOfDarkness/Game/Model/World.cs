@@ -60,7 +60,7 @@ internal class World
                 EducationRoomUI.Create(position);
                 var note = new Note(position + new Vector2(256, 272), Story.DungeonDescription, Vector2.One);
                 GameModel.AddInteractable(note);
-                GameManager.Instance.Drawer.RegisterHUD(note);
+                GameManager.Instance.Drawer.RegisterHud(note);
             }
         }
     }

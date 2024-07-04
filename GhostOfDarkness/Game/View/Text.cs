@@ -1,12 +1,13 @@
 ﻿using game;
 using Game.Enums;
+using Game.Graphics;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using IDrawable = game.IDrawable;
+using IDrawable = Game.Interfaces.IDrawable;
 
 namespace Game.View;
 
-internal class Text : IDrawable
+public class Text : IDrawable
 {
     private readonly Rectangle bounds;
     private readonly Align align;
@@ -59,7 +60,7 @@ internal class Text : IDrawable
         int IsFlagged(Align alignCompare) => (align & alignCompare) != 0 ? 1 : 0;
     }
 
-    public void Draw(SpriteBatch spriteBatch, float scale)
+    public void Draw(ISpriteBatch spriteBatch, float scale)
     {
         spriteBatch.DrawString(font, Value, position * scale, Color.White, 0, Vector2.Zero, scale, SpriteEffects.None, layer);
     }
