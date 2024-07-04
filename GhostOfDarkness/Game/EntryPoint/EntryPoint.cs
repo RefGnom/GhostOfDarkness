@@ -1,6 +1,6 @@
 ﻿using Game.Game;
 
-namespace game.Program;
+namespace Game.EntryPoint;
 
 public static class Program
 {
