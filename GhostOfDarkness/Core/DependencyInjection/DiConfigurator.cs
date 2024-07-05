@@ -10,7 +10,10 @@ public static class DiConfigurator
     static DiConfigurator()
     {
         assemblies = new List<Assembly>();
+        OnConfigure = _ => { };
     }
+
+    public static Action<IServiceCollection> OnConfigure { get; set; }
 
     public static void AddAssembly(Assembly assembly)
     {
@@ -27,6 +30,7 @@ public static class DiConfigurator
             RegisterAllTypesFromAssembly(serviceCollection, assembly);
         }
 
+        OnConfigure(serviceCollection);
         return serviceCollection.BuildServiceProvider();
     }
 
