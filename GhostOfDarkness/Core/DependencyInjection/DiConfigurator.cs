@@ -83,12 +83,12 @@ public static class DiConfigurator
         var implementationUsageAttribute = implementationType.GetCustomAttribute<DiUsageAttribute>();
         var serviceUsageAttribute = serviceType.GetCustomAttribute<DiUsageAttribute>();
 
-        if (implementationUsageAttribute is null && serviceUsageAttribute is null)
+        if (serviceUsageAttribute is null)
         {
             return null;
         }
 
-        var serviceLifetime = implementationUsageAttribute?.ServiceLifetime ?? serviceUsageAttribute!.ServiceLifetime;
+        var serviceLifetime = implementationUsageAttribute?.ServiceLifetime ?? serviceUsageAttribute.ServiceLifetime;
         return new ServiceDescriptor(serviceType, implementationType, serviceLifetime);
     }
 
