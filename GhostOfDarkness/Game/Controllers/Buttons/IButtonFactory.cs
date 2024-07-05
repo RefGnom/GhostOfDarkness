@@ -1,10 +1,12 @@
-﻿using Core.Saves;
+﻿using Core.DependencyInjection;
+using Core.Saves;
 using Game.Enums;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace Game.Controllers.Buttons;
 
+[DiUsage]
 public interface IButtonFactory
 {
     Button CreateButtonWithText(Texture2D texture, Vector2 position, string text, Align align = 0, int indentX = 0, int indentY = 0);

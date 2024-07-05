@@ -56,16 +56,40 @@ public static class DiConfigurator
 
             foreach (var interfaceType in interfaces)
             {
-                var interfaceDiUsageAttribute = interfaceType.GetCustomAttribute<DiUsageAttribute>();
-
-                if (diUsageAttribute is not null || interfaceDiUsageAttribute is not null)
+                var serviceDescriptor = CreateServiceDescriptor(interfaceType, typeInfo);
+                if (serviceDescriptor != null)
                 {
-                    var serviceLifetime = diUsageAttribute?.ServiceLifetime ?? interfaceDiUsageAttribute!.ServiceLifetime;
-                    var serviceDescriptor = new ServiceDescriptor(interfaceType, typeInfo, serviceLifetime);
                     serviceCollection.Add(serviceDescriptor);
                 }
             }
+
+            var baseType = typeInfo.BaseType;
+
+            if (baseType is null)
+            {
+                continue;
+            }
+
+            var serviceDescriptorBaseType = CreateServiceDescriptor(baseType, typeInfo);
+            if (serviceDescriptorBaseType != null)
+            {
+                serviceCollection.Add(serviceDescriptorBaseType);
+            }
         }
+    }
+
+    private static ServiceDescriptor? CreateServiceDescriptor(Type serviceType, Type implementationType)
+    {
+        var implementationUsageAttribute = implementationType.GetCustomAttribute<DiUsageAttribute>();
+        var serviceUsageAttribute = serviceType.GetCustomAttribute<DiUsageAttribute>();
+
+        if (implementationUsageAttribute is null && serviceUsageAttribute is null)
+        {
+            return null;
+        }
+
+        var serviceLifetime = implementationUsageAttribute?.ServiceLifetime ?? serviceUsageAttribute!.ServiceLifetime;
+        return new ServiceDescriptor(serviceType, implementationType, serviceLifetime);
     }
 
     private static void AddCurrentAssembly()
