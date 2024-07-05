@@ -1,5 +1,4 @@
-﻿using game;
-using Game.Interfaces;
+﻿using Game.Interfaces;
 using Microsoft.Xna.Framework;
 
 namespace Game.Objects;

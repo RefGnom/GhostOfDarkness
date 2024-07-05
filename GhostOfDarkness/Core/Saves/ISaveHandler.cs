@@ -1,5 +1,8 @@
-﻿namespace Core.Saves;
+﻿using Core.DependencyInjection;
 
+namespace Core.Saves;
+
+[DiUsage]
 public interface ISaveHandler
 {
     public void Create(Save save, string saveName);

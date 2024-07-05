@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using Game.View;
+using Game.ContentLoaders;
 
-namespace game;
+namespace Game.View;
 
 internal static class AnimatorsCreator
 {

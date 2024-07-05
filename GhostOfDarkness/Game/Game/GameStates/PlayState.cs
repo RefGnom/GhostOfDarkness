@@ -1,7 +1,7 @@
-﻿using Game.Game.GameStates;
-using Game.Interfaces;
+﻿using Game.Interfaces;
+using Game.Managers;
 
-namespace game;
+namespace Game.Game.GameStates;
 
 internal class PlayState : GameState
 {

@@ -1,4 +1,4 @@
-﻿using game;
+﻿using Game.ContentLoaders;
 using Game.Graphics;
 using Game.Interfaces;
 using Game.Managers;

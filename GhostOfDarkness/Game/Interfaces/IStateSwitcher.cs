@@ -1,6 +1,4 @@
-﻿using game;
-
-namespace Game.Interfaces;
+﻿namespace Game.Interfaces;
 
 public interface IStateSwitcher
 {

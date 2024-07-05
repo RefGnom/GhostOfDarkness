@@ -1,6 +1,6 @@
-﻿using game;
-using Game.Interfaces;
+﻿using Game.Interfaces;
 using Game.Managers;
+using Game.Model.Tiles;
 using Microsoft.Xna.Framework;
 using IDrawable = Game.Interfaces.IDrawable;
 

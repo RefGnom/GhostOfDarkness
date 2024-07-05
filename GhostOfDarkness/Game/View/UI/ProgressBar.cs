@@ -1,12 +1,13 @@
-﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using System;
+﻿using System;
+using Game.ContentLoaders;
 using Game.Controllers;
 using Game.Graphics;
 using Game.Interfaces;
 using Game.Service;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
-namespace game;
+namespace Game.View.UI;
 
 internal class ProgressBar : IComponent
 {

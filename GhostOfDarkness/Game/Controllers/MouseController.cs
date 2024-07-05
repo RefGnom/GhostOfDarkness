@@ -1,6 +1,6 @@
 ﻿using System;
-using game;
 using Game.Managers;
+using Game.View;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 

@@ -1,4 +1,4 @@
-﻿using game;
+﻿using Game.Game;
 using Game.Graphics;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;

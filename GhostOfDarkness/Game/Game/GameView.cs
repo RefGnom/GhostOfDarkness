@@ -1,10 +1,10 @@
 ﻿using System;
-using game;
 using Game.ContentLoaders;
 using Game.Controllers;
 using Game.Graphics;
 using Game.Managers;
 using Game.Service;
+using Game.View;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Media;

@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using Game.View;
 
-namespace game;
+namespace Game.View;
 
 internal static class Story
 {

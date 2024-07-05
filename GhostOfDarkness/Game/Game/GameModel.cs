@@ -1,13 +1,15 @@
-﻿using Microsoft.Xna.Framework.Input;
-using Microsoft.Xna.Framework.Media;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using Game.ContentLoaders;
 using Game.Controllers;
 using Game.Creatures;
 using Game.Interfaces;
 using Game.Managers;
 using Game.Model;
+using Game.View;
+using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Media;
 
-namespace game;
+namespace Game.Game;
 
 internal class GameModel
 {

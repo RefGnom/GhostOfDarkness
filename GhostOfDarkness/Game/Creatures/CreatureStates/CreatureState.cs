@@ -1,5 +1,4 @@
 ﻿using System;
-using game;
 using Game.Interfaces;
 
 namespace Game.Creatures.CreatureStates;
