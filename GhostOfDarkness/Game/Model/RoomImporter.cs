@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using Core.Extensions;
-using game;
+using Game.ContentLoaders;
+using Game.Game;
+using Game.Model.Tiles;
 using Game.Objects;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;

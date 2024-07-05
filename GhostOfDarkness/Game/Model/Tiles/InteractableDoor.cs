@@ -2,7 +2,7 @@
 using Game.Managers;
 using Microsoft.Xna.Framework;
 
-namespace game;
+namespace Game.Model.Tiles;
 
 internal class InteractableDoor : IInteractable
 {

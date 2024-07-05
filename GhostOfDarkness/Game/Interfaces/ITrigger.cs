@@ -1,7 +1,6 @@
-﻿using Game.Interfaces;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 
-namespace game;
+namespace Game.Interfaces;
 
 public interface ITrigger
 {

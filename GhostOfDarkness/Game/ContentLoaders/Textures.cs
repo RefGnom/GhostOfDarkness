@@ -1,10 +1,10 @@
-﻿using Microsoft.Xna.Framework.Content;
-using Microsoft.Xna.Framework.Graphics;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using Game.Service;
+using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework.Graphics;
 
-namespace game;
+namespace Game.ContentLoaders;
 
 internal static class Textures
 {
@@ -17,7 +17,7 @@ internal static class Textures
     public static Texture2D Boss { get; private set; }
     public static Texture2D HealthBarForeground { get; private set; }
     public static Texture2D HealthBarBackground { get; private set; }
-    public static Texture2D EducationUI { get; private set; }
+    public static Texture2D EducationUi { get; private set; }
     public static Texture2D Paper { get; private set; }
     public static Texture2D Wall { get; private set; }
     public static Texture2D Door { get; private set; }
@@ -32,7 +32,7 @@ internal static class Textures
     public static Texture2D Background { get; private set; }
     public static Texture2D HorizontalLine { get; private set; }
     public static Texture2D VerticalLine { get; private set; }
-    public static Texture2D DialogHelpUI { get; private set; }
+    public static Texture2D DialogHelpUi { get; private set; }
 
     #region ProgressBar
     public static Texture2D ProgressBarBackground { get; private set; }
@@ -65,7 +65,7 @@ internal static class Textures
         Boss = Load("Textures\\Creatures\\Boss");
         HealthBarForeground = Load("Textures\\HUD\\HealthBarForeground");
         HealthBarBackground = Load("Textures\\HUD\\HealthBarBackground");
-        EducationUI = Load("Textures\\UI\\EducationUI");
+        EducationUi = Load("Textures\\UI\\EducationUI");
         Paper = Load("Textures\\UI\\Paper");
         Wall = Load("Textures\\Tiles\\Wall");
         Door = Load("Textures\\Tiles\\Door");
@@ -80,7 +80,7 @@ internal static class Textures
         Background = Load("Textures\\UI\\Background");
         HorizontalLine = Load("Service\\Horizontal line");
         VerticalLine = Load("Service\\Vertical line");
-        DialogHelpUI = Load("Textures\\UI\\Dialog helper");
+        DialogHelpUi = Load("Textures\\UI\\Dialog helper");
         ProgressBarBackground = Load("Textures\\UI\\ProgressBar\\ProgressBarBackground");
         ProgressBarForeground = Load("Textures\\UI\\ProgressBar\\ProgressBarForeground");
         ProgressBarValue = Load("Textures\\UI\\ProgressBar\\ProgressBarValue");

@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using game;
 using Game.Controllers;
 using Game.Managers;
 using Game.Objects;
+using Game.View.HUD;
 using Microsoft.Xna.Framework;
 
 namespace Game.Creatures;

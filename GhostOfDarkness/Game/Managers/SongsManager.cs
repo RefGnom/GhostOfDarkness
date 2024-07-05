@@ -1,7 +1,7 @@
 ﻿using Game.Objects;
 using Microsoft.Xna.Framework.Media;
 
-namespace game;
+namespace Game.Managers;
 
 internal static class SongsManager
 {

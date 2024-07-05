@@ -1,4 +1,4 @@
-﻿using game;
+﻿using Game.ContentLoaders;
 using Game.Controllers;
 using Game.Graphics;
 using Game.Service;
@@ -67,7 +67,7 @@ internal class DialogManager : IDrawable
         {
             message.Draw(spriteBatch, scale);
             var hintPosition = new Vector2(1800, 1000);
-            spriteBatch.Draw(Textures.DialogHelpUI, hintPosition * scale, null, Color.White, 0, Vector2.Zero, scale, SpriteEffects.None, Layers.HudBackground);
+            spriteBatch.Draw(Textures.DialogHelpUi, hintPosition * scale, null, Color.White, 0, Vector2.Zero, scale, SpriteEffects.None, Layers.HudBackground);
         }
     }
 }

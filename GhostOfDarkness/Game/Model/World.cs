@@ -1,8 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using game;
+using Game.ContentLoaders;
 using Game.Creatures;
+using Game.Game;
 using Game.Managers;
+using Game.View;
+using Game.View.UI;
 using Microsoft.Xna.Framework;
 
 namespace Game.Model;

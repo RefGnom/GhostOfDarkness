@@ -1,4 +1,4 @@
-﻿using game;
+﻿using Game.View;
 
 namespace Game.Managers;
 

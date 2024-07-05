@@ -1,14 +1,14 @@
-﻿using Microsoft.Xna.Framework.Input;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using Game.Controllers;
-using Game.Game;
 using Game.Game.GameStates;
 using Game.Managers;
 using Game.Service;
 using Game.Structures;
+using Game.View;
+using Microsoft.Xna.Framework.Input;
 
-namespace game;
+namespace Game.Game;
 
 internal class GameController : GameStatesController
 {

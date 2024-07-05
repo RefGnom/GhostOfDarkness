@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using Core.Extensions;
-using game;
 using Game.Algorithms;
 using Game.Creatures;
 using Game.Graphics;

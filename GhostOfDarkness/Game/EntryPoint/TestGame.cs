@@ -1,8 +1,9 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Game.ContentLoaders;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
-namespace game.Program;
+namespace Game.EntryPoint;
 
 internal class TestGame : Microsoft.Xna.Framework.Game
 {

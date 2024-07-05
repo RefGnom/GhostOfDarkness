@@ -8,7 +8,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using IDrawable = Game.Interfaces.IDrawable;
 
-namespace game;
+namespace Game.View.UI;
 
 internal class Note : IDrawable, IInteractable
 {

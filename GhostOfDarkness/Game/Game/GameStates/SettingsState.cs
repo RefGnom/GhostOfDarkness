@@ -1,18 +1,18 @@
-﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Audio;
-using Microsoft.Xna.Framework.Input;
-using Microsoft.Xna.Framework.Media;
-using System;
+﻿using System;
 using Game.ContentLoaders;
 using Game.Controllers.Buttons;
 using Game.Controllers.Switcher;
 using Game.Enums;
-using Game.Game.GameStates;
 using Game.Interfaces;
 using Game.Service;
 using Game.View;
+using Game.View.UI;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
+using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Media;
 
-namespace game;
+namespace Game.Game.GameStates;
 
 internal class SettingsState : GameState
 {

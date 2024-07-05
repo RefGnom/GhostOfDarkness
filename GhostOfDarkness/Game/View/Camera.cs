@@ -1,6 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 
-namespace game;
+namespace Game.View;
 
 internal class Camera
 {

@@ -2,7 +2,7 @@
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Media;
 
-namespace game;
+namespace Game.ContentLoaders;
 
 internal static class Sounds
 {
@@ -17,20 +17,17 @@ internal static class Sounds
 
     public static void Load(ContentManager content)
     {
-        hallwaySongs = new
-        (
+        hallwaySongs = new LoopedUnorderedQueue<Song>(
             content.Load<Song>("Sounds\\FortressOfDoom-ChadMossholder"),
             content.Load<Song>("Sounds\\BeastOfTheArena"),
             content.Load<Song>("Sounds\\PhobosSpace")
         );
-        roomSongs = new
-        (
+        roomSongs = new LoopedUnorderedQueue<Song>(
             content.Load<Song>("Sounds\\TheBaronOfHell"),
             content.Load<Song>("Sounds\\DemonicCorruption"),
             content.Load<Song>("Sounds\\InfiltrateTheCult")
         );
-        bossSongs = new
-        (
+        bossSongs = new LoopedUnorderedQueue<Song>(
             content.Load<Song>("Sounds\\CultistBase"),
             content.Load<Song>("Sounds\\TheOnlyThingTheyFearIsYou"),
             content.Load<Song>("Sounds\\TheSuperGoreNest")
