@@ -34,30 +34,32 @@ public static class DiConfigurator
     {
         foreach (var typeInfo in assembly.DefinedTypes)
         {
-            var skipType = typeInfo.IsInterface || typeInfo.IsEnum || typeInfo.IsAbstract || typeInfo.GetCustomAttribute<DiUsageAttribute>() is null;
+            var skipType = typeInfo.IsInterface || typeInfo.IsEnum || typeInfo.IsAbstract;
             if (skipType)
             {
                 continue;
             }
 
-            var diScopeAttribute = typeInfo.GetCustomAttribute<DiScopeAttribute>();
-            var serviceLifetime = diScopeAttribute?.ServiceLifetime ?? ServiceLifetime.Singleton;
+            var diUsageAttribute = typeInfo.GetCustomAttribute<DiUsageAttribute>();
             var interfaces = typeInfo.ImplementedInterfaces.Where(x => x.Assembly == assembly).ToArray();
 
-            if (interfaces.Length == 0)
+            if (interfaces.Length == 0 && diUsageAttribute is not null)
             {
+                var serviceLifetime = diUsageAttribute.ServiceLifetime;
                 var serviceDescriptor = new ServiceDescriptor(typeInfo, typeInfo, serviceLifetime);
                 serviceCollection.Add(serviceDescriptor);
             }
 
             foreach (var interfaceType in interfaces)
             {
-                var interfaceDiScopeAttribute = interfaceType.GetCustomAttribute<DiScopeAttribute>();
-                var interfaceServiceLifetime = interfaceDiScopeAttribute?.ServiceLifetime ?? ServiceLifetime.Singleton;
+                var interfaceDiUsageAttribute = interfaceType.GetCustomAttribute<DiUsageAttribute>();
 
-                serviceLifetime = diScopeAttribute is null ? interfaceServiceLifetime : serviceLifetime;
-                var serviceDescriptor = new ServiceDescriptor(interfaceType, typeInfo, serviceLifetime);
-                serviceCollection.Add(serviceDescriptor);
+                if (diUsageAttribute is not null || interfaceDiUsageAttribute is not null)
+                {
+                    var serviceLifetime = diUsageAttribute?.ServiceLifetime ?? interfaceDiUsageAttribute!.ServiceLifetime;
+                    var serviceDescriptor = new ServiceDescriptor(interfaceType, typeInfo, serviceLifetime);
+                    serviceCollection.Add(serviceDescriptor);
+                }
             }
         }
     }

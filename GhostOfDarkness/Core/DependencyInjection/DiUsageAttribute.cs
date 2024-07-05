@@ -1,6 +1,13 @@
-﻿namespace Core.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 
-[AttributeUsage(AttributeTargets.Class)]
+namespace Core.DependencyInjection;
+
+[AttributeUsage(AttributeTargets.Class | AttributeTargets.Interface)]
 public class DiUsageAttribute : Attribute
 {
+    public readonly ServiceLifetime ServiceLifetime;
+    public DiUsageAttribute(ServiceLifetime serviceLifetime = ServiceLifetime.Singleton)
+    {
+        ServiceLifetime = serviceLifetime;
+    }
 }
