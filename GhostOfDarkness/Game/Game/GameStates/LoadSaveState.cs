@@ -36,7 +36,7 @@ internal class LoadSaveState : GameState
         Drawables.Add(new Sprite(Textures.SavesWindow, new Vector2(40, 70), Layers.UiBackground));
         Drawables.Add(new Sprite(Textures.Background, Vector2.Zero, Layers.Background));
 
-        loadButton = buttonFactory.CreateButtonWithText(Textures.ButtonBackground, new Vector2(40, 800), "Load");
+        loadButton = buttonFactory.CreateButtonWithText(Textures.ButtonBackground, new Vector2(40, 860), "Load");
         loadButton.OnClicked += Play;
         Components.Add(loadButton);
 
