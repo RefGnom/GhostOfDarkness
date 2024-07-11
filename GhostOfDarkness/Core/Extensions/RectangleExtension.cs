@@ -61,7 +61,6 @@ public static class RectangleExtension
     public static Vector2 GetVectorInBounds(this Rectangle bounds, Vector2 vector, Point? indent = null)
     {
         indent ??= Point.Zero;
-        var newVector = vector;
 
         var location = bounds.Location + indent.Value;
         var size = bounds.Size - indent.Value * new Point(2, 2);
@@ -69,24 +68,24 @@ public static class RectangleExtension
 
         if (vector.X < boundsWithIndent.Left)
         {
-            newVector.X = boundsWithIndent.Left;
+            vector.X = boundsWithIndent.Left;
         }
 
         if (vector.X > boundsWithIndent.Right)
         {
-            newVector.X = boundsWithIndent.Right;
+            vector.X = boundsWithIndent.Right;
         }
 
         if (vector.Y < boundsWithIndent.Top)
         {
-            newVector.Y = boundsWithIndent.Top;
+            vector.Y = boundsWithIndent.Top;
         }
 
         if (vector.Y > boundsWithIndent.Bottom)
         {
-            newVector.Y = boundsWithIndent.Bottom;
+            vector.Y = boundsWithIndent.Bottom;
         }
 
-        return newVector;
+        return vector;
     }
 }
