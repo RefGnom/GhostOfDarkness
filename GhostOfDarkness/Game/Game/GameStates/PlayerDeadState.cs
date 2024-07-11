@@ -1,6 +1,5 @@
 ﻿using Game.ContentLoaders;
 using Game.Controllers.Buttons;
-using Game.Interfaces;
 using Game.Service;
 using Game.View;
 using Microsoft.Xna.Framework;
@@ -9,7 +8,7 @@ namespace Game.Game.GameStates;
 
 internal class PlayerDeadState : GameState
 {
-    public PlayerDeadState(IGameStateSwitcher stateSwitcher, IButtonFactory buttonFactory) : base(stateSwitcher)
+    public PlayerDeadState(IButtonFactory buttonFactory)
     {
         Drawables.Add(new Sprite(Textures.PauseBackground, new Vector2(564, 312), Layers.UiBackground));
 

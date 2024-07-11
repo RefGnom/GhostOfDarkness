@@ -1,6 +1,5 @@
 ﻿using Game.ContentLoaders;
 using Game.Controllers.Buttons;
-using Game.Interfaces;
 using Game.Service;
 using Game.View;
 using Microsoft.Xna.Framework;
@@ -14,7 +13,7 @@ internal class MainMenuState : GameState
     private readonly Button settings;
     private readonly Button exit;
 
-    public MainMenuState(IGameStateSwitcher stateSwitcher, IButtonFactory buttonFactory) : base(stateSwitcher)
+    public MainMenuState(IButtonFactory buttonFactory)
     {
         Drawables.Add(new Sprite(Textures.Background, Vector2.Zero, Layers.Background));
 
