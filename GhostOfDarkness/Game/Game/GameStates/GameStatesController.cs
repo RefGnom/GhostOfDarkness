@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Core.Saves;
-using Game.Controllers.Buttons;
+using Game.Configuration;
 using Game.Graphics;
 using Game.Interfaces;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Game.Game.GameStates;
 
@@ -17,18 +17,13 @@ internal class GameStatesController : IGameStateSwitcher, IDrawable, IUpdateable
 
     public GameStatesController()
     {
-        states = new List<GameState>()
+        states = DiConfiguration.ServiceProvider.GetServices<GameState>().ToList();
+        foreach (var state in states)
         {
-            new MainMenuState(this, new ButtonFactory()),
-            new LoadSaveState(this, new SaveHandler(), new ButtonFactory(), new RadioButtonManager()),
-            new ConfirmationState(this, new ButtonFactory()),
-            new CreateGameState(this, new SaveHandler(), new SaveProvider(), new ButtonFactory()),
-            new PauseState(this, new ButtonFactory()),
-            new PlayerDeadState(this, new ButtonFactory()),
-            new PlayState(this),
-            new SettingsState(this, new ButtonFactory())
-        };
-        currentState = states[0];
+            state.Switcher = this;
+        }
+
+        currentState = states.Single(x => x is MainMenuState);
         currentState.Start(currentState);
     }
 
@@ -63,7 +58,9 @@ internal class GameStatesController : IGameStateSwitcher, IDrawable, IUpdateable
         currentState = (GameState)state;
     }
 
-    public virtual void StartGame() { }
+    public virtual void StartGame()
+    {
+    }
 
     public virtual void Draw(ISpriteBatch spriteBatch, float scale)
     {

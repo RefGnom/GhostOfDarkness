@@ -1,7 +1,6 @@
 ﻿using Game.ContentLoaders;
 using Game.Controllers.Buttons;
 using Game.Graphics;
-using Game.Interfaces;
 using Game.Service;
 using Game.View;
 using Microsoft.Xna.Framework;
@@ -10,7 +9,7 @@ namespace Game.Game.GameStates;
 
 internal class ConfirmationState : GameState
 {
-    public ConfirmationState(IGameStateSwitcher stateSwitcher, IButtonFactory buttonFactory) : base(stateSwitcher)
+    public ConfirmationState(IButtonFactory buttonFactory)
     {
         Drawables.Add(new Sprite(Textures.PauseBackground, new Vector2(564, 312), Layers.ConfirmationWindowBackground));
 

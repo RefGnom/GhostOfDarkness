@@ -3,7 +3,6 @@ using Game.ContentLoaders;
 using Game.Controllers.Buttons;
 using Game.Controllers.Switcher;
 using Game.Enums;
-using Game.Interfaces;
 using Game.Service;
 using Game.View;
 using Game.View.UI;
@@ -21,7 +20,7 @@ internal class SettingsState : GameState
     private Action displayModeAction;
     private Action resolutionAction;
 
-    public SettingsState(IGameStateSwitcher stateSwitcher, IButtonFactory buttonFactory) : base(stateSwitcher)
+    public SettingsState(IButtonFactory buttonFactory)
     {
         Drawables.Add(new Sprite(Textures.Background, Vector2.Zero, Layers.Background));
 

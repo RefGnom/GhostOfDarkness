@@ -1,14 +1,9 @@
-﻿using Game.Interfaces;
-using Game.Managers;
+﻿using Game.Managers;
 
 namespace Game.Game.GameStates;
 
 internal class PlayState : GameState
 {
-    public PlayState(IGameStateSwitcher stateSwitcher) : base(stateSwitcher)
-    {
-    }
-
     public override void Back()
     {
         Switcher.SwitchState<PauseState>();

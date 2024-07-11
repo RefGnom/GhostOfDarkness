@@ -1,28 +1,46 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using Core.DependencyInjection;
 using Game.Graphics;
 using Game.Interfaces;
 
 namespace Game.Game.GameStates;
 
+[DiUsage]
 internal abstract class GameState : IState, IDrawable, IUpdateable
 {
-    protected readonly IGameStateSwitcher Switcher;
+    private IGameStateSwitcher switcher;
+
+    public IGameStateSwitcher Switcher
+    {
+        get
+        {
+            if (switcher == null)
+            {
+                throw new InvalidOperationException("Switcher must be initialized");
+            }
+
+            return switcher;
+        }
+        set
+        {
+            if (switcher != null)
+            {
+                throw new InvalidOperationException("Switcher already initialized");
+            }
+
+            switcher = value;
+        }
+    }
+
     protected GameState PreviousState;
-    protected readonly List<IComponent> Components;
-    protected readonly List<IDrawable> Drawables;
-    private readonly List<IUpdateable> updatables;
+    protected readonly List<IComponent> Components = [];
+    protected readonly List<IDrawable> Drawables = [];
+    private readonly List<IUpdateable> updatables = [];
 
     public bool IsConfirmed { get; protected set; }
     public bool GameIsExit { get; protected set; }
     public bool Saved { get; protected set; }
-
-    protected GameState(IGameStateSwitcher stateSwitcher)
-    {
-        Switcher = stateSwitcher;
-        Components = new List<IComponent>();
-        Drawables = new List<IDrawable>();
-        updatables = new List<IUpdateable>();
-    }
 
     public void Start(IState previousState)
     {
@@ -57,27 +75,51 @@ internal abstract class GameState : IState, IDrawable, IUpdateable
         }
     }
 
-    public virtual void Start(GameState previousState) { }
+    public virtual void Start(GameState previousState)
+    {
+    }
 
-    public virtual void Stop() { }
+    public virtual void Stop()
+    {
+    }
 
-    public virtual void Back() { }
+    public virtual void Back()
+    {
+    }
 
-    public virtual void NewGame() { }
+    public virtual void NewGame()
+    {
+    }
 
-    public virtual void LoadSave() { }
+    public virtual void LoadSave()
+    {
+    }
 
-    public virtual void OpenSettings() { }
+    public virtual void OpenSettings()
+    {
+    }
 
-    public virtual void Exit() { }
+    public virtual void Exit()
+    {
+    }
 
-    public virtual void Play() { }
+    public virtual void Play()
+    {
+    }
 
-    public virtual void Dead() { }
+    public virtual void Dead()
+    {
+    }
 
-    public virtual void Restart() { }
+    public virtual void Restart()
+    {
+    }
 
-    public virtual void Confirm() { }
+    public virtual void Confirm()
+    {
+    }
 
-    public virtual void Save() { }
+    public virtual void Save()
+    {
+    }
 }

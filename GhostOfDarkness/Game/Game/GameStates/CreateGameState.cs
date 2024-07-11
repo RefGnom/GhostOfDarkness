@@ -4,7 +4,6 @@ using Game.ContentLoaders;
 using Game.Controllers;
 using Game.Controllers.Buttons;
 using Game.Graphics;
-using Game.Interfaces;
 using Game.Service;
 using Game.View;
 using Microsoft.Xna.Framework;
@@ -18,11 +17,10 @@ internal class CreateGameState : GameState
     private readonly TextInput textInput;
 
     public CreateGameState(
-        IGameStateSwitcher stateSwitcher,
         ISaveHandler saveHandler,
         ISaveProvider saveProvider,
         IButtonFactory buttonFactory
-    ) : base(stateSwitcher)
+    )
     {
         this.saveHandler = saveHandler;
         this.saveProvider = saveProvider;

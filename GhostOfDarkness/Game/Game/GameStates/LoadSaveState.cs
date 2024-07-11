@@ -23,11 +23,10 @@ internal class LoadSaveState : GameState
     private readonly IRadioButtonManager radioButtonManager;
 
     public LoadSaveState(
-        IGameStateSwitcher stateSwitcher,
         ISaveHandler saveHandler,
         IButtonFactory buttonFactory,
         IRadioButtonManager radioButtonManager
-    ) : base(stateSwitcher)
+    )
     {
         this.saveHandler = saveHandler;
         this.buttonFactory = buttonFactory;
