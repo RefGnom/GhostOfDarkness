@@ -22,7 +22,7 @@ internal class GameController : GameStatesController
 
     public GameController(GameModel model, GameView view)
     {
-        actions = new();
+        actions = new Dictionary<Keys, Action>();
         this.model = model;
         this.view = view;
         RegisterKeys();
@@ -34,13 +34,19 @@ internal class GameController : GameStatesController
         MouseController.Update();
 
         if (GameIsExit)
+        {
             view.CloseGame();
+        }
 
         if (model.Started && model.Player.IsDead)
+        {
             Dead();
+        }
 
         if (KeyboardController.IsSingleKeyDown(Keys.Escape))
+        {
             Back();
+        }
 
         //var keys = KeyboardController.GetPressedKeys();
         //foreach (var key in keys)
@@ -54,10 +60,9 @@ internal class GameController : GameStatesController
             Save();
         }
 
-        if (KeyboardController.IsSingleKeyDown(Settings.SwitchPlayerCollision))
+        if (KeyboardController.IsSingleKeyDown(Settings.SwitchPlayerCollision) && model.Started)
         {
-            if (model.Started)
-                model.Player.IsCollide = !model.Player.IsCollide;
+            model.Player.IsCollide = !model.Player.IsCollide;
         }
 
         if (KeyboardController.IsSingleKeyDown(Settings.ShowOrHideQuadTree))
@@ -71,7 +76,9 @@ internal class GameController : GameStatesController
         }
 
         if (IsPlay)
+        {
             UpdateModel(deltaTime);
+        }
 
         IsPaused = !IsPlay;
         base.Update(deltaTime);
@@ -89,10 +96,14 @@ internal class GameController : GameStatesController
         model.Update(deltaTime);
 
         if (KeyboardController.IsSingleKeyDown(Settings.ShowOrHideHitboxes))
+        {
             Settings.ShowHitboxes = !Settings.ShowHitboxes;
+        }
 
         if (KeyboardController.IsSingleKeyDown(Settings.SwitchCameraFollow))
+        {
             Camera.FollowPlayer = !Camera.FollowPlayer;
+        }
 
         HandleKeys(KeyboardController.GetPressedKeys());
     }
@@ -101,8 +112,10 @@ internal class GameController : GameStatesController
     {
         foreach (var key in keys)
         {
-            if (actions.ContainsKey(key))
-                actions[key]();
+            if (actions.TryGetValue(key, out var action))
+            {
+                action();
+            }
         }
     }
 

@@ -41,14 +41,18 @@ internal class GameView : Microsoft.Xna.Framework.Game
 
     protected override void Initialize()
     {
-        LoadContent();
+        base.Initialize();
+
+        // var buttonFactory = DiConfiguration.ServiceProvider.GetService<IButtonFactory>();
+        // var button = buttonFactory.CreateButtonWithText(Textures.ButtonBackground, new Vector2(100, 100), "Тестовая кнопка");
+        // GameManager.Instance.Drawer.RegisterUi(button);
+
         model = new GameModel();
         controller = new GameController(model, this);
         fps = new Fps(0.3f);
         Debug.Initialize(WindowHeight);
         KeyboardController.GameWindow = Window;
         MediaPlayer.Volume = 0.3f;
-        base.Initialize();
     }
 
     protected override void LoadContent()
