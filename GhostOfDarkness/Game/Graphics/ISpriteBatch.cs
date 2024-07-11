@@ -21,6 +21,13 @@ public interface ISpriteBatch
     void Draw(
         Texture2D texture,
         Vector2 position,
+        float scale,
+        float layerDepth
+    );
+
+    void Draw(
+        Texture2D texture,
+        Vector2 position,
         Rectangle? sourceRectangle,
         Color color,
         float rotation,
