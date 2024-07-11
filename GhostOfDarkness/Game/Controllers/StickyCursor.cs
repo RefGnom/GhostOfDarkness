@@ -7,20 +7,18 @@ public class StickyCursor
 {
     private readonly Rectangle outerBounds;
     private readonly Point? indent;
-    private Rectangle innerBounds;
-    private Vector2 origin;
     private Vector2 offset;
     private float scale = 1;
 
     public bool IsStuck { get; private set; }
     public bool Selected { get; private set; }
-    public Vector2 StickPosition { get; private set; }
+    public Rectangle InnerBounds { get; private set; }
 
-    public StickyCursor(Rectangle outerBounds, Rectangle innerBounds, Point? indent)
+    public StickyCursor(Rectangle outerBounds, Rectangle innerBounds, Point? indent = null)
     {
-        origin = new Vector2(innerBounds.Width / 2f, innerBounds.Height / 2f);
         this.outerBounds = outerBounds;
-        this.innerBounds = innerBounds.Shift(-origin);
+        var origin = new Vector2(innerBounds.Width / 2f, innerBounds.Height / 2f);
+        InnerBounds = innerBounds.Shift(-origin);
         this.indent = indent;
     }
 
@@ -29,7 +27,7 @@ public class StickyCursor
         var mousePosition = MouseController.WindowPosition / scale;
         if (MouseController.LeftButtonClicked() && MouseInBounds(mousePosition))
         {
-            offset = mousePosition - innerBounds.Center.ToVector2();
+            offset = mousePosition - InnerBounds.Center.ToVector2();
             IsStuck = true;
         }
 
@@ -41,8 +39,9 @@ public class StickyCursor
         Selected = MouseInBounds(mousePosition) || IsStuck;
         if (IsStuck)
         {
-            StickPosition = outerBounds.GetVectorInBounds(mousePosition - offset, indent);
-            innerBounds.Location = StickPosition.ToPoint() - origin.ToPoint();
+            var position = mousePosition - offset;
+            var rectangle = new Rectangle(position.ToPoint(), InnerBounds.Size);
+            InnerBounds = outerBounds.GetRectangleInBounds(rectangle, indent);
         }
     }
 
@@ -51,5 +50,5 @@ public class StickyCursor
         scale = newScale;
     }
 
-    private bool MouseInBounds(Vector2 mousePosition) => innerBounds.Contains(mousePosition);
+    private bool MouseInBounds(Vector2 mousePosition) => InnerBounds.Contains(mousePosition);
 }

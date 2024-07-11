@@ -88,4 +88,35 @@ public static class RectangleExtension
 
         return vector;
     }
+
+    public static Rectangle GetRectangleInBounds(this Rectangle bounds, Rectangle rectangle, Point? indent = null)
+    {
+        indent ??= Point.Zero;
+
+        var location = bounds.Location + indent.Value;
+        var size = bounds.Size - indent.Value * new Point(2, 2);
+        var boundsWithIndent = new Rectangle(location, size);
+
+        if (rectangle.Left < boundsWithIndent.Left)
+        {
+            rectangle.X = boundsWithIndent.Left;
+        }
+
+        if (rectangle.Right > boundsWithIndent.Right)
+        {
+            rectangle.X = boundsWithIndent.Right - rectangle.Width;
+        }
+
+        if (rectangle.Top < boundsWithIndent.Top)
+        {
+            rectangle.Y = boundsWithIndent.Top;
+        }
+
+        if (rectangle.Top > boundsWithIndent.Bottom)
+        {
+            rectangle.Y = boundsWithIndent.Bottom - rectangle.Height;
+        }
+
+        return rectangle;
+    }
 }

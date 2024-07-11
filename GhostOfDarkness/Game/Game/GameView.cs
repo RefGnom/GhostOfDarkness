@@ -5,6 +5,7 @@ using Game.Graphics;
 using Game.Managers;
 using Game.Service;
 using Game.View;
+using Game.View.UI;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Media;
@@ -50,6 +51,8 @@ internal class GameView : Microsoft.Xna.Framework.Game
         Input.KeyboardService.SetGameWindow(Window);
         Input.MouseService.SetCamera(Camera);
         MediaPlayer.Volume = 0.3f;
+
+        box = new ScrollBar(new Vector2(800, 100), Textures.SavesWindow, Textures.Wall, new Point(0, 0));
     }
 
     protected override void LoadContent()
@@ -60,6 +63,7 @@ internal class GameView : Microsoft.Xna.Framework.Game
         Sounds.Load(Content);
     }
 
+    private ScrollBar box;
     protected override void Update(GameTime gameTime)
     {
         var deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
@@ -69,6 +73,8 @@ internal class GameView : Microsoft.Xna.Framework.Game
         fps.Update(gameTime);
         SongsManager.Update();
         controller.Update(deltaTime);
+
+        box.Update(deltaTime);
 
         if (model.Started)
         {
@@ -109,6 +115,8 @@ internal class GameView : Microsoft.Xna.Framework.Game
         spriteBatch.Begin(sortMode: SpriteSortMode.BackToFront);
         controller.Draw(spriteBatch, Scale);
         Debug.DrawMessages(spriteBatch);
+        spriteBatch.Draw(Textures.SavesWindow, new Vector2(800, 100) * Scale, Scale, Layers.Ui);
+        box.Draw(spriteBatch, Scale);
         GameManager.Instance.Drawer.DrawUi(spriteBatch, Scale);
         spriteBatch.End();
     }
