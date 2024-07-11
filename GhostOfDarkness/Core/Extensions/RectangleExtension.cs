@@ -57,4 +57,36 @@ public static class RectangleExtension
         var height = rectangle.Height * scale;
         return new Rectangle((int)x, (int)y, (int)width, (int)height);
     }
+
+    public static Vector2 GetVectorInBounds(this Rectangle bounds, Vector2 vector, Point? indent = null)
+    {
+        indent ??= Point.Zero;
+        var newVector = vector;
+
+        var location = bounds.Location + indent.Value;
+        var size = bounds.Size - indent.Value * new Point(2, 2);
+        var boundsWithIndent = new Rectangle(location, size);
+
+        if (vector.X < boundsWithIndent.Left)
+        {
+            newVector.X = boundsWithIndent.Left;
+        }
+
+        if (vector.X > boundsWithIndent.Right)
+        {
+            newVector.X = boundsWithIndent.Right;
+        }
+
+        if (vector.Y < boundsWithIndent.Top)
+        {
+            newVector.Y = boundsWithIndent.Top;
+        }
+
+        if (vector.Y > boundsWithIndent.Bottom)
+        {
+            newVector.Y = boundsWithIndent.Bottom;
+        }
+
+        return newVector;
+    }
 }
