@@ -1,5 +1,5 @@
 ﻿using Game.ContentLoaders;
-using Game.Controllers;
+using Game.Controllers.InputServices;
 using Game.Graphics;
 using Game.Service;
 using Game.View;
@@ -38,17 +38,17 @@ internal class DialogManager : IDrawable
             return;
         }
 
-        if (KeyboardController.IsKeyDown(Keys.Down))
+        if (Input.KeyboardService.IsSingleKeyDown(Keys.Down))
         {
             message.MoveNextChoice();
         }
 
-        if (KeyboardController.IsKeyDown(Keys.Up))
+        if (Input.KeyboardService.IsSingleKeyDown(Keys.Up))
         {
             message.MoveBackChoice();
         }
 
-        if (KeyboardController.IsKeyDown(Keys.Enter))
+        if (Input.KeyboardService.IsSingleKeyDown(Keys.Enter))
         {
             message.OnNext?.Invoke();
             if (message.Next is null)

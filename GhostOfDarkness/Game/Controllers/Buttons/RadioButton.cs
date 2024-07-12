@@ -1,5 +1,6 @@
 ﻿using System;
 using Core.Extensions;
+using Game.Controllers.InputServices;
 using Game.Graphics;
 using Game.Service;
 using Microsoft.Xna.Framework;
@@ -29,7 +30,7 @@ public class RadioButton : BaseButton
         Vector2 position,
         Color? disabledColor = null,
         Color? enabledColor = null
-    ) : base(position, Layers.Ui)
+    ) : base(position, Layers.Ui, Input.MouseService)
     {
         if (disabledTexture.Bounds != enabledTexture.Bounds)
         {

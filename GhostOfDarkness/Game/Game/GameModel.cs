@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using Game.ContentLoaders;
-using Game.Controllers;
+using Game.Controllers.InputServices;
 using Game.Creatures;
 using Game.Interfaces;
 using Game.Managers;
@@ -13,7 +13,7 @@ namespace Game.Game;
 
 internal class GameModel
 {
-    private static readonly List<IInteractable> interactables = new();
+    private static readonly List<IInteractable> interactables = [];
 
     public World World { get; private set; }
     public Player Player { get; private set; }
@@ -22,10 +22,12 @@ internal class GameModel
 
     public void Start()
     {
-        World = new();
+        World = new World();
         World.Generate(1);
-        Player = new(World.CurrentRoom.Center, 330f, 100, 25, 0.3f);
-        Player.Attack = MouseController.LeftButtonPressed;
+        Player = new Player(World.CurrentRoom.Center, 330f, 100, 25, 0.3f)
+        {
+            Attack = Input.MouseService.LeftButtonPressed
+        };
         Started = true;
     }
 
@@ -65,8 +67,10 @@ internal class GameModel
         {
             if (item.CanInteract(Player.Position))
             {
-                if (KeyboardController.IsSingleKeyDown(Keys.E))
+                if (Input.KeyboardService.IsSingleKeyDown(Keys.E))
+                {
                     item.Interact();
+                }
             }
             item.Update(deltaTime);
         }

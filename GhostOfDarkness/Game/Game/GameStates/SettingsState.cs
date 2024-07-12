@@ -1,6 +1,7 @@
 ﻿using System;
 using Game.ContentLoaders;
 using Game.Controllers.Buttons;
+using Game.Controllers.InputServices;
 using Game.Controllers.Switcher;
 using Game.Enums;
 using Game.Service;
@@ -24,7 +25,7 @@ internal class SettingsState : GameState
     {
         Drawables.Add(new Sprite(Textures.Background, Vector2.Zero, Layers.Background));
 
-        var position = new Vector2(1920 / 2 - Textures.SettingsString.Width / 2, 30);
+        var position = new Vector2(1920 / 2f - Textures.SettingsString.Width / 2f, 30);
         position = new Vector2(30, 30);
         var height = 60;
         Drawables.Add(CreateString(position, "Menu", Settings.OpenMenu));
@@ -49,7 +50,8 @@ internal class SettingsState : GameState
             { "На весь экран", () => displayModeAction = () => Settings.SetDisplayMode(true) },
         };
         displayMode.Start();
-        var displayModeText = new Text(new Rectangle((int)position.X - textWidth, (int)position.Y - 12, textWidth, height), "Режим отображения", Fonts.Common16, Align.Left);
+        var displayModeText = new Text(new Rectangle((int)position.X - textWidth, (int)position.Y - 12, textWidth, height), "Режим отображения", Fonts.Common16,
+            Align.Left);
         Components.Add(displayMode);
         Drawables.Add(displayModeText);
 
@@ -62,23 +64,26 @@ internal class SettingsState : GameState
             { "3840x2160", () => resolutionAction = () => Settings.SetSizeScreen(3840, 2160) },
         };
         resolution.Start();
-        var resolutionText = new Text(new Rectangle((int)position.X - textWidth, (int)position.Y - 12, textWidth, height), "Разрешение", Fonts.Common16, Align.Left);
+        var resolutionText = new Text(new Rectangle((int)position.X - textWidth, (int)position.Y - 12, textWidth, height), "Разрешение", Fonts.Common16,
+            Align.Left);
         Components.Add(resolution);
         Drawables.Add(resolutionText);
 
         position = new Vector2(1200, 300);
-        var musicVolume = new ProgressBar(0, 1, position, 6);
+        var musicVolume = new ProgressBar(Input.MouseService, 0, 1, position, 6);
         musicVolume.ValueOnChanged += (value) => musicVolumeAction = () => MediaPlayer.Volume = value;
         musicVolume.SetValue(0.3f);
-        var musicVolumeText = new Text(new Rectangle((int)position.X - textWidth, (int)position.Y - 16, textWidth, height), "Громкость музыки", Fonts.Common16, Align.Left);
+        var musicVolumeText = new Text(new Rectangle((int)position.X - textWidth, (int)position.Y - 16, textWidth, height), "Громкость музыки", Fonts.Common16,
+            Align.Left);
         Components.Add(musicVolume);
         Drawables.Add(musicVolumeText);
 
         position.Y += height;
-        var soundVolume = new ProgressBar(0, 1, position, 6);
+        var soundVolume = new ProgressBar(Input.MouseService, 0, 1, position, 6);
         soundVolume.ValueOnChanged += (value) => soundsVolumeAction = () => SoundEffect.MasterVolume = value;
         soundVolume.SetValue(0.3f);
-        var soundVolumeText = new Text(new Rectangle((int)position.X - textWidth, (int)position.Y - 16, textWidth, height), "Громкость звуков", Fonts.Common16, Align.Left);
+        var soundVolumeText = new Text(new Rectangle((int)position.X - textWidth, (int)position.Y - 16, textWidth, height), "Громкость звуков", Fonts.Common16,
+            Align.Left);
         Components.Add(soundVolume);
         Drawables.Add(soundVolumeText);
 

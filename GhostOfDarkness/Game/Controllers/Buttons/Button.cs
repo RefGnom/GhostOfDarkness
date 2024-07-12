@@ -1,4 +1,5 @@
 ﻿using Core.Extensions;
+using Game.Controllers.InputServices;
 using Game.Graphics;
 using Game.Service;
 using Microsoft.Xna.Framework;
@@ -11,7 +12,7 @@ public class Button : BaseButton
     private readonly Texture2D texture;
     private readonly Color selectedColor;
 
-    public Button(Texture2D texture, Vector2 position) : base(position, Layers.Ui)
+    public Button(Texture2D texture, Vector2 position) : base(position, Layers.Ui, Input.MouseService)
     {
         this.texture = texture;
         selectedColor = Color.LightGray;

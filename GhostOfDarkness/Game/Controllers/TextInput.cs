@@ -1,5 +1,6 @@
 ﻿using System.Text;
 using Game.ContentLoaders;
+using Game.Controllers.InputServices;
 using Game.Graphics;
 using Game.Service;
 using Microsoft.Xna.Framework;
@@ -13,26 +14,28 @@ internal class TextInput : IDrawable
 {
     private readonly Texture2D background;
     private readonly Vector2 position;
+    private readonly IKeyboardService keyboardService;
     private readonly StringBuilder text;
 
     private static SpriteFont Font => Fonts.Common24;
     public string Text => text.ToString();
 
-    public TextInput(Texture2D background, Vector2 position)
+    public TextInput(Texture2D background, Vector2 position, IKeyboardService keyboardService)
     {
         this.background = background;
         this.position = position;
+        this.keyboardService = keyboardService;
         text = new StringBuilder();
     }
 
     public void Enable()
     {
-        KeyboardController.GameWindow.TextInput += InputText;
+        keyboardService.GetGameWindow().TextInput += InputText;
     }
 
     public void Disable()
     {
-        KeyboardController.GameWindow.TextInput -= InputText;
+        keyboardService.GetGameWindow().TextInput -= InputText;
     }
 
     public void Clear()
@@ -65,10 +68,10 @@ internal class TextInput : IDrawable
 
     public void Draw(ISpriteBatch spriteBatch, float scale)
     {
-        var position = this.position * scale;
+        var positionWithScale = this.position * scale;
         var textSize = Font.MeasureString(Text);
-        var textPosition = position + new Vector2(textSize.Y, background.Height / 2 - textSize.Y / 2) * scale;
-        spriteBatch.Draw(background, position, null, Color.White, 0, Vector2.Zero, scale, SpriteEffects.None, Layers.Ui);
+        var textPosition = positionWithScale + new Vector2(textSize.Y, background.Height / 2f - textSize.Y / 2) * scale;
+        spriteBatch.Draw(background, positionWithScale, null, Color.White, 0, Vector2.Zero, scale, SpriteEffects.None, Layers.Ui);
         spriteBatch.DrawString(Font, Text, textPosition, Color.White, 0, Vector2.Zero, scale, SpriteEffects.None, Layers.Text);
     }
 }
