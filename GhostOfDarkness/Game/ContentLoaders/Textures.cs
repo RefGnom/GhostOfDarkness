@@ -33,6 +33,8 @@ internal static class Textures
     public static Texture2D HorizontalLine { get; private set; }
     public static Texture2D VerticalLine { get; private set; }
     public static Texture2D DialogHelpUi { get; private set; }
+    public static Texture2D ScrollBar { get; private set; }
+    public static Texture2D ScrollBox { get; private set; }
 
     #region ProgressBar
     public static Texture2D ProgressBarBackground { get; private set; }
@@ -87,6 +89,8 @@ internal static class Textures
         SwitcherLeftArrow = Load("Textures\\UI\\Switcher\\LeftArrow");
         SwitcherRightArrow = Load("Textures\\UI\\Switcher\\RightArrow");
         SwitcherBackground = Load("Textures\\UI\\Switcher\\Background");
+        ScrollBar = Load("Textures\\UI\\ScrollBar");
+        ScrollBox = Load("Textures\\UI\\ScrollBox");
         LoadTileColors();
         LoadRooms();
     }
