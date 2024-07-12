@@ -1,10 +1,12 @@
 ﻿using Core.Extensions;
+using Game.Controllers.InputServices;
 using Microsoft.Xna.Framework;
 
 namespace Game.Controllers;
 
 public class StickyCursor
 {
+    private readonly IMouseService mouseService;
     private readonly Rectangle outerBounds;
     private readonly Point? indent;
     private Vector2 offset;
@@ -14,8 +16,9 @@ public class StickyCursor
     public bool Selected { get; private set; }
     public Rectangle InnerBounds { get; private set; }
 
-    public StickyCursor(Rectangle outerBounds, Rectangle innerBounds, Point? indent = null)
+    public StickyCursor(IMouseService mouseService, Rectangle outerBounds, Rectangle innerBounds, Point? indent = null)
     {
+        this.mouseService = mouseService;
         this.outerBounds = outerBounds;
         var origin = new Vector2(innerBounds.Width / 2f, innerBounds.Height / 2f);
         InnerBounds = innerBounds.Shift(-origin);
@@ -24,14 +27,14 @@ public class StickyCursor
 
     public void Update()
     {
-        var mousePosition = MouseController.WindowPosition / scale;
-        if (MouseController.LeftButtonClicked() && MouseInBounds(mousePosition))
+        var mousePosition = mouseService.GetWindowPosition() / scale;
+        if (mouseService.LeftButtonClicked() && MouseInBounds(mousePosition))
         {
             offset = mousePosition - InnerBounds.Center.ToVector2();
             IsStuck = true;
         }
 
-        if (MouseController.LeftButtonReleased())
+        if (mouseService.LeftButtonReleased())
         {
             IsStuck = false;
         }

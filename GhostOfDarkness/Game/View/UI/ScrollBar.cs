@@ -1,5 +1,6 @@
 ﻿using Core.Extensions;
 using Game.Controllers;
+using Game.Controllers.InputServices;
 using Game.Graphics;
 using Game.Interfaces;
 using Game.Service;
@@ -53,7 +54,7 @@ public class ScrollBar : IComponent
             {
                 customScale = value;
                 origin = texture.Bounds.Center.ToVector2() * customScale;
-                stickyCursor = new StickyCursor(outerBounds, GetBounds(), indent);
+                stickyCursor = new StickyCursor(Input.MouseService, outerBounds, GetBounds(), indent);
             }
         }
 
