@@ -2,12 +2,12 @@
 
 namespace Game.View;
 
-internal class Camera
+public class Camera
 {
-    private readonly float maxScale = 1.4f;
-    private readonly float minScale = 0.8f;
+    private const float maxScale = 1.4f;
+    private const float minScale = 0.8f;
+    private const float scaleStepSize = 0.05f;
     private float scale;
-    private readonly float scaleStepSize = 0.05f;
     private int screenWidth;
     private int screenHeight;
 
@@ -24,13 +24,15 @@ internal class Camera
     public void Follow(Vector2 playerPosition, int width, int height, float deltaTime)
     {
         if (!FollowPlayer)
+        {
             return;
+        }
 
         screenWidth = width;
         screenHeight = height;
 
         var position = Matrix.CreateTranslation(-playerPosition.X, -playerPosition.Y, 0);
-        var offset = Matrix.CreateTranslation(screenWidth / 2 / scale, screenHeight / 2 / scale, 0);
+        var offset = Matrix.CreateTranslation(screenWidth / 2f / scale, screenHeight / 2f / scale, 0);
         var scaleMatrix = Matrix.CreateScale(scale);
 
         Transform = position * offset * scaleMatrix;
@@ -40,18 +42,14 @@ internal class Camera
     {
         if ((scale <= maxScale || amount < 0)
             && (scale >= minScale || amount > 0))
+        {
             scale += amount * scaleStepSize;
+        }
     }
 
-    public Vector2 ScreenToWorld(Vector2 value)
-    {
-        return Vector2.Transform(value, Matrix.Invert(Transform));
-    }
+    public Vector2 ScreenToWorld(Vector2 value) => Vector2.Transform(value, Matrix.Invert(Transform));
 
-    public Vector2 WorldToScreen(Vector2 value)
-    {
-        return Vector2.Transform(value, Transform);
-    }
+    public Vector2 WorldToScreen(Vector2 value) => Vector2.Transform(value, Transform);
 
     public Rectangle GetVisibleArea()
     {
