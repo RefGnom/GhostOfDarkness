@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Game.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Game.Controllers.InputServices;
 
@@ -7,47 +8,7 @@ public static class Input
     private static IMouseService mouseService;
     private static IKeyboardService keyboardService;
 
-    public static IMouseService MouseService
-    {
-        get
-        {
-            if (mouseService is null)
-            {
-                throw new InvalidOperationException("Mouse service must be initialized");
-            }
+    public static IMouseService MouseService => mouseService ??= DiConfiguration.ServiceProvider.GetService<IMouseService>();
 
-            return mouseService;
-        }
-        set
-        {
-            if (mouseService is not null)
-            {
-                throw new InvalidOperationException("Mouse service must be initialized once");
-            }
-
-            mouseService = value;
-        }
-    }
-
-    public static IKeyboardService KeyboardService
-    {
-        get
-        {
-            if (keyboardService is null)
-            {
-                throw new InvalidOperationException("Keyboard service must be initialized");
-            }
-
-            return keyboardService;
-        }
-        set
-        {
-            if (keyboardService is not null)
-            {
-                throw new InvalidOperationException("Keyboard service must be initialized once");
-            }
-
-            keyboardService = value;
-        }
-    }
+    public static IKeyboardService KeyboardService => keyboardService ??= DiConfiguration.ServiceProvider.GetService<IKeyboardService>();
 }
