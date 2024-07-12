@@ -44,9 +44,9 @@ public class StickyCursor
         if (IsStuck)
         {
             var positionDelta = mousePosition - attachPosition;
-            innerBoundsPosition = new Rectangle(outerBounds.Location, outerBounds.Size - InnerBounds.Size).GetVectorInBounds(innerBoundsPosition.Shift(positionDelta), indent);
-            InnerBounds = new Rectangle(innerBoundsPosition.ToPoint(), InnerBounds.Size);
-            //InnerBounds = outerBounds.GetRectangleInBounds(newInnerBounds, indent);
+            innerBoundsPosition = outerBounds.Subtract(InnerBounds, outerBounds.Location)
+                .GetVectorInBounds(innerBoundsPosition.Shift(positionDelta), indent);
+            InnerBounds = InnerBounds.WithLocation(innerBoundsPosition);
             attachPosition = mousePosition;
         }
     }

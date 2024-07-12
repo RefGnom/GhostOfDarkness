@@ -21,7 +21,11 @@ public class ScrollBar : IComponent
         this.scrollBarTexture = scrollBarTexture;
         var outerBounds = scrollBarTexture.Bounds.Shift(position);
         scrollBox = new ScrollBox(outerBounds, scrollBoxTexture, position, boxIndent ?? Point.Zero);
-        //scrollBox.CustomScale = new Vector2(5f, 0.45f);
+    }
+
+    public void SetBoxScale(Vector2 scale)
+    {
+        scrollBox.CustomScale = scale;
     }
 
     public void Update(float deltaTime)
@@ -37,15 +41,16 @@ public class ScrollBar : IComponent
 
     private class ScrollBox : IComponent
     {
-        private readonly Vector2 selectedScale = new Vector2(1.02f, 1.02f);
+        private readonly Vector2 selectedScale = new Vector2(1.05f, 1.05f);
 
         private readonly Texture2D texture;
         private readonly Rectangle outerBounds;
         private readonly Point indent;
+        private readonly Vector2 basePosition;
+        private readonly Vector2 origin;
         private StickyCursor stickyCursor;
         private Vector2 position;
         private Vector2 customScale;
-        private Vector2 origin;
 
         public Vector2 CustomScale
         {
@@ -53,8 +58,9 @@ public class ScrollBar : IComponent
             set
             {
                 customScale = value;
-                origin = texture.Bounds.Center.ToVector2() * customScale;
-                stickyCursor = new StickyCursor(Input.MouseService, outerBounds, GetBounds(), indent);
+                var innerBounds = GetBounds();
+                stickyCursor = new StickyCursor(Input.MouseService, outerBounds, innerBounds, indent);
+                position = stickyCursor.InnerBounds.Center.ToVector2();
             }
         }
 
@@ -62,7 +68,9 @@ public class ScrollBar : IComponent
         {
             this.texture = texture;
             this.indent = indent ?? Point.Zero;
-            this.position = position + this.indent.ToVector2();
+            this.position = position;
+            basePosition = position;
+            origin = this.texture.Bounds.Center.ToVector2();
             this.outerBounds = outerBounds;
             CustomScale = Vector2.One;
         }
@@ -73,7 +81,7 @@ public class ScrollBar : IComponent
 
             if (stickyCursor.IsStuck)
             {
-                position = stickyCursor.InnerBounds.Location.ToVector2();
+                position = stickyCursor.InnerBounds.Center.ToVector2();
             }
         }
 
@@ -82,13 +90,14 @@ public class ScrollBar : IComponent
             stickyCursor.SetScale(scale);
             var vectorScale = stickyCursor.Selected ? selectedScale : Vector2.One;
             vectorScale = vectorScale * scale * CustomScale;
-            spriteBatch.Draw(texture, position * scale, null, Color.White, 0, origin, vectorScale, SpriteEffects.None, Layers.Ui);
+            spriteBatch.Draw(texture, position * scale, origin, vectorScale, Layers.Ui);
         }
 
         private Rectangle GetBounds()
         {
             var size = new Vector2(texture.Width, texture.Height) * CustomScale;
-            return new Rectangle(position.ToPoint(), size.ToPoint());
+            var boundsPosition = basePosition;
+            return new Rectangle(boundsPosition.ToPoint(), size.ToPoint());
         }
     }
 }

@@ -64,6 +64,15 @@ public static class RectangleExtension
         return new Rectangle((int)x, (int)y, (int)width, (int)height);
     }
 
+    public static Rectangle WithLocation(this Rectangle rectangle, Vector2 location)
+    {
+        rectangle.Location = location.ToPoint();
+        return rectangle;
+    }
+
+    public static Rectangle Subtract(this Rectangle minuend, Rectangle subtrahend, Point location)
+        => new Rectangle(location, minuend.Size - subtrahend.Size);
+
     public static Vector2 GetVectorInBounds(this Rectangle bounds, Vector2 vector, Point? indent = null)
     {
         indent ??= Point.Zero;
