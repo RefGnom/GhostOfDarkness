@@ -9,7 +9,8 @@ public class StickyCursor
     private readonly IMouseService mouseService;
     private readonly Rectangle outerBounds;
     private readonly Point? indent;
-    private Vector2 offset;
+    private Vector2 attachPosition;
+    private Vector2 innerBoundsPosition;
     private float scale = 1;
 
     public bool IsStuck { get; private set; }
@@ -20,8 +21,8 @@ public class StickyCursor
     {
         this.mouseService = mouseService;
         this.outerBounds = outerBounds;
-        var origin = new Vector2(innerBounds.Width / 2f, innerBounds.Height / 2f);
-        InnerBounds = innerBounds.Shift(-origin);
+        InnerBounds = innerBounds.Shift(indent ?? Point.Zero);
+        innerBoundsPosition = InnerBounds.Location.ToVector2();
         this.indent = indent;
     }
 
@@ -30,7 +31,7 @@ public class StickyCursor
         var mousePosition = mouseService.GetWindowPosition() / scale;
         if (mouseService.LeftButtonClicked() && MouseInBounds(mousePosition))
         {
-            offset = mousePosition - InnerBounds.Center.ToVector2();
+            attachPosition = mousePosition;
             IsStuck = true;
         }
 
@@ -42,9 +43,11 @@ public class StickyCursor
         Selected = MouseInBounds(mousePosition) || IsStuck;
         if (IsStuck)
         {
-            var position = mousePosition - offset;
-            var rectangle = new Rectangle(position.ToPoint(), InnerBounds.Size);
-            InnerBounds = outerBounds.GetRectangleInBounds(rectangle, indent);
+            var positionDelta = mousePosition - attachPosition;
+            innerBoundsPosition = new Rectangle(outerBounds.Location, outerBounds.Size - InnerBounds.Size).GetVectorInBounds(innerBoundsPosition.Shift(positionDelta), indent);
+            InnerBounds = new Rectangle(innerBoundsPosition.ToPoint(), InnerBounds.Size);
+            //InnerBounds = outerBounds.GetRectangleInBounds(newInnerBounds, indent);
+            attachPosition = mousePosition;
         }
     }
 

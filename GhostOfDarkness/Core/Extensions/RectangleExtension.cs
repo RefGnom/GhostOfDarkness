@@ -43,6 +43,12 @@ public static class RectangleExtension
         return rectangle;
     }
 
+    public static Rectangle Shift(this Rectangle rectangle, Point amount)
+    {
+        rectangle.Offset(amount);
+        return rectangle;
+    }
+
     public static Rectangle Shift(this Rectangle rectangle, int x, int y)
     {
         rectangle.Offset(x, y);
@@ -112,7 +118,7 @@ public static class RectangleExtension
             rectangle.Y = boundsWithIndent.Top;
         }
 
-        if (rectangle.Top > boundsWithIndent.Bottom)
+        if (rectangle.Bottom > boundsWithIndent.Bottom)
         {
             rectangle.Y = boundsWithIndent.Bottom - rectangle.Height;
         }

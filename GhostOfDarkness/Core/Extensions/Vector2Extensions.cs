@@ -25,4 +25,6 @@ public static class Vector2Extensions
     }
 
     public static Vector2 Shift(this Vector2 vector, float dx, float dy) => new Vector2(vector.X + dx, vector.Y + dy);
+
+    public static Vector2 Shift(this Vector2 vector, Vector2 delta) => new Vector2(vector.X + delta.X, vector.Y + delta.Y);
 }
