@@ -1,6 +1,6 @@
 ﻿using System;
 using Game.ContentLoaders;
-using Game.Controllers;
+using Game.Controllers.InputServices;
 using Game.Graphics;
 using Game.Interfaces;
 using Game.Service;
@@ -11,6 +11,7 @@ namespace Game.View.UI;
 
 internal class ProgressBar : IComponent
 {
+    private readonly IMouseService mouseService;
     private readonly float minValue;
     private readonly float maxValue;
     private readonly Vector2 position;
@@ -28,19 +29,39 @@ internal class ProgressBar : IComponent
     public float Value { get; private set; }
     public event Action<float> ValueOnChanged;
 
-    public ProgressBar(float minValue, float maxValue, Vector2 position, int indent = 0)
-        : this(minValue, maxValue, position, Textures.ProgressBarBackground, Textures.ProgressBarForeground, Textures.ProgressBarValue, indent)
-    { }
-
-    public ProgressBar(float minValue, float maxValue, Vector2 position, Texture2D background, Texture2D foreground, Texture2D value, int indent = 0)
+    public ProgressBar(IMouseService mouseService, float minValue, float maxValue, Vector2 position, int indent = 0)
+        : this(
+            mouseService,
+            minValue,
+            maxValue,
+            position,
+            Textures.ProgressBarBackground,
+            Textures.ProgressBarForeground,
+            Textures.ProgressBarValue,
+            indent
+        )
     {
+    }
+
+    public ProgressBar(
+        IMouseService mouseService,
+        float minValue,
+        float maxValue,
+        Vector2 position,
+        Texture2D background,
+        Texture2D foreground,
+        Texture2D value,
+        int indent = 0
+    )
+    {
+        this.mouseService = mouseService;
         this.minValue = minValue;
         this.maxValue = maxValue;
-        groundOrigin = new Vector2(0, background.Height / 2);
-        valueOrigin = new Vector2(value.Width / 2, value.Height / 2);
+        groundOrigin = new Vector2(0, background.Height / 2f);
+        valueOrigin = new Vector2(value.Width / 2f, value.Height / 2f);
         bounds = background.Bounds;
         bounds.Location = position.ToPoint();
-        position.Y += background.Height / 2;
+        position.Y += background.Height / 2f;
         this.position = position;
         this.background = background;
         this.foreground = foreground;
@@ -51,7 +72,10 @@ internal class ProgressBar : IComponent
     public void SetValue(float value)
     {
         if (value < minValue || value > maxValue)
-            throw new ArgumentException($"value should be between {minValue} {maxValue}");
+        {
+            throw new ArgumentException($"Value should be between {minValue} {maxValue}");
+        }
+
         Value = value;
         ValueOnChanged?.Invoke(Value);
         xValue = (Value - minValue) * (bounds.Width - indent) / maxValue;
@@ -59,10 +83,15 @@ internal class ProgressBar : IComponent
 
     public void Update(float deltaTime)
     {
-        if (MouseController.LeftButtonClicked() && MauseInBounds())
+        if (mouseService.LeftButtonClicked() && MouseInBounds())
+        {
             active = true;
-        if (MouseController.LeftButtonReleased())
+        }
+
+        if (mouseService.LeftButtonReleased())
+        {
             active = false;
+        }
 
         if (active)
         {
@@ -74,33 +103,45 @@ internal class ProgressBar : IComponent
     public void Draw(ISpriteBatch spriteBatch, float scale)
     {
         spriteBatch.Draw(background, position * scale, null, Color.White, 0, groundOrigin, scale, SpriteEffects.None, Layers.UiBackground);
-        spriteBatch.Draw(foreground, position * scale, new Rectangle(0, 0, (int)xValue, bounds.Height), Color.White, 0, groundOrigin, scale, SpriteEffects.None, Layers.Ui);
-        spriteBatch.Draw(value, new Vector2(position.X + xValue, position.Y) * scale, null, Color.White, 0, valueOrigin, scale, SpriteEffects.None, Layers.Text);
+        spriteBatch.Draw(foreground, position * scale, new Rectangle(0, 0, (int)xValue, bounds.Height), Color.White, 0, groundOrigin, scale, SpriteEffects.None,
+            Layers.Ui);
+        spriteBatch.Draw(value, new Vector2(position.X + xValue, position.Y) * scale, null, Color.White, 0, valueOrigin, scale, SpriteEffects.None,
+            Layers.Text);
         lastScale = scale;
     }
 
-    private bool MauseInBounds()
+    private bool MouseInBounds()
     {
-        var mouse = MouseController.WindowPosition / lastScale;
-        var result = bounds.Contains(mouse);
-        return result;
+        var mouse = mouseService.GetWindowPosition() / lastScale;
+        // ReSharper disable once PossiblyImpureMethodCallOnReadonlyVariable
+        return bounds.Contains(mouse);
     }
 
     private void UpdateValue()
     {
         var width = bounds.Width - indent;
-        xValue = MouseController.WindowPosition.X - bounds.X * lastScale;
+        xValue = mouseService.GetWindowPosition().X - bounds.X * lastScale;
 
         if (xValue < indent)
+        {
             xValue = indent;
+        }
+
         if (xValue > width * lastScale)
+        {
             xValue = width * lastScale;
+        }
 
         xValue /= lastScale;
         Value = minValue + xValue * maxValue / width;
-        if (xValue == indent / lastScale || Value < minValue)
+        if (Math.Abs(xValue - indent / lastScale) < 0.1f || Value < minValue)
+        {
             Value = minValue;
+        }
+
         if (Value > maxValue)
+        {
             Value = maxValue;
+        }
     }
 }

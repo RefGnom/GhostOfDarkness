@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Core.Extensions;
+using Game.Controllers.InputServices;
 using Game.Graphics;
 using Game.Interfaces;
 using Microsoft.Xna.Framework;
@@ -14,16 +15,18 @@ public abstract class BaseButton : IComponent
     protected Vector2 Position;
     protected float Scale;
     protected float Layer;
+    private readonly IMouseService mouseService;
 
     public bool Selected { get; set; }
     public bool Inactive { get; set; }
 
     public event Action OnClicked;
 
-    protected BaseButton(Vector2 position, float layer)
+    protected BaseButton(Vector2 position, float layer, IMouseService mouseService)
     {
         Position = position;
         Layer = layer;
+        this.mouseService = mouseService;
     }
 
     public void AddDrawable(IDrawable drawable)
@@ -38,8 +41,8 @@ public abstract class BaseButton : IComponent
             return;
         }
 
-        Selected = InBounds(MouseController.WindowPosition);
-        if (Selected && MouseController.LeftButtonClicked())
+        Selected = InBounds(mouseService.GetWindowPosition());
+        if (Selected && mouseService.LeftButtonClicked())
         {
             OnClicked?.Invoke();
         }

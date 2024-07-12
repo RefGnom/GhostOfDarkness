@@ -3,6 +3,7 @@ using Core.Saves;
 using Game.ContentLoaders;
 using Game.Controllers;
 using Game.Controllers.Buttons;
+using Game.Controllers.InputServices;
 using Game.Graphics;
 using Game.Service;
 using Game.View;
@@ -35,7 +36,7 @@ internal class CreateGameState : GameState
         create.OnClicked += CreateGame;
         Components.Add(create);
 
-        textInput = new TextInput(Textures.FieldForText, new Vector2(380, 466));
+        textInput = new TextInput(Textures.FieldForText, new Vector2(380, 466), Input.KeyboardService);
     }
 
     public override void Back()

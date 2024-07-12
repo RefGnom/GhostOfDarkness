@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using Game.Controllers;
+using Game.Controllers.InputServices;
 using Game.Game.GameStates;
 using Game.Managers;
 using Game.Service;
@@ -16,22 +16,26 @@ internal class GameController : GameStatesController
 
     private readonly GameModel model;
     private readonly GameView view;
+    private readonly IMouseService mouseService;
+    private readonly IKeyboardService keyboardService;
 
     private static Camera Camera => GameManager.Instance.Camera;
     public static bool IsPaused { get; private set; }
 
-    public GameController(GameModel model, GameView view)
+    public GameController(GameModel model, GameView view, IMouseService mouseService, IKeyboardService keyboardService)
     {
         actions = new Dictionary<Keys, Action>();
         this.model = model;
         this.view = view;
+        this.mouseService = mouseService;
+        this.keyboardService = keyboardService;
         RegisterKeys();
     }
 
     public override void Update(float deltaTime)
     {
-        KeyboardController.Update();
-        MouseController.Update();
+        keyboardService.Update(deltaTime);
+        mouseService.Update(deltaTime);
 
         if (GameIsExit)
         {
@@ -43,7 +47,7 @@ internal class GameController : GameStatesController
             Dead();
         }
 
-        if (KeyboardController.IsSingleKeyDown(Keys.Escape))
+        if (keyboardService.IsSingleKeyDown(Keys.Escape))
         {
             Back();
         }
@@ -54,23 +58,23 @@ internal class GameController : GameStatesController
         //    Debug.Log($"{key} {keys.Length}");
         //}
 
-        if (KeyboardController.IsSingleKeyDown(Keys.Enter))
+        if (keyboardService.IsSingleKeyDown(Keys.Enter))
         {
             Confirm();
             Save();
         }
 
-        if (KeyboardController.IsSingleKeyDown(Settings.SwitchPlayerCollision) && model.Started)
+        if (keyboardService.IsSingleKeyDown(Settings.SwitchPlayerCollision) && model.Started)
         {
             model.Player.IsCollide = !model.Player.IsCollide;
         }
 
-        if (KeyboardController.IsSingleKeyDown(Settings.ShowOrHideQuadTree))
+        if (keyboardService.IsSingleKeyDown(Settings.ShowOrHideQuadTree))
         {
             QuadTree.Show = !QuadTree.Show;
         }
 
-        if (KeyboardController.IsSingleKeyDown(Settings.ShowOrHideFps))
+        if (keyboardService.IsSingleKeyDown(Settings.ShowOrHideFps))
         {
             Settings.ShowFps = !Settings.ShowFps;
         }
@@ -95,17 +99,17 @@ internal class GameController : GameStatesController
     {
         model.Update(deltaTime);
 
-        if (KeyboardController.IsSingleKeyDown(Settings.ShowOrHideHitboxes))
+        if (keyboardService.IsSingleKeyDown(Settings.ShowOrHideHitboxes))
         {
             Settings.ShowHitboxes = !Settings.ShowHitboxes;
         }
 
-        if (KeyboardController.IsSingleKeyDown(Settings.SwitchCameraFollow))
+        if (keyboardService.IsSingleKeyDown(Settings.SwitchCameraFollow))
         {
             Camera.FollowPlayer = !Camera.FollowPlayer;
         }
 
-        HandleKeys(KeyboardController.GetPressedKeys());
+        HandleKeys(keyboardService.GetPressedKeys());
     }
 
     private void HandleKeys(Keys[] keys)

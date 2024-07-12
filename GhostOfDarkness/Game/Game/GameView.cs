@@ -1,6 +1,6 @@
 ﻿using System;
 using Game.ContentLoaders;
-using Game.Controllers;
+using Game.Controllers.InputServices;
 using Game.Graphics;
 using Game.Managers;
 using Game.Service;
@@ -43,15 +43,12 @@ internal class GameView : Microsoft.Xna.Framework.Game
     {
         base.Initialize();
 
-        // var buttonFactory = DiConfiguration.ServiceProvider.GetService<IButtonFactory>();
-        // var button = buttonFactory.CreateButtonWithText(Textures.ButtonBackground, new Vector2(100, 100), "Тестовая кнопка");
-        // GameManager.Instance.Drawer.RegisterUi(button);
-
         model = new GameModel();
-        controller = new GameController(model, this);
+        controller = new GameController(model, this, Input.MouseService, Input.KeyboardService);
         fps = new Fps(0.3f);
         Debug.Initialize(WindowHeight);
-        KeyboardController.GameWindow = Window;
+        Input.KeyboardService.SetGameWindow(Window);
+        Input.MouseService.SetCamera(Camera);
         MediaPlayer.Volume = 0.3f;
     }
 
@@ -76,7 +73,7 @@ internal class GameView : Microsoft.Xna.Framework.Game
         if (model.Started)
         {
             Camera.Follow(model.Player.Position, WindowWidth, WindowHeight, deltaTime);
-            Camera.ChangeScale(MouseController.ScrollValue());
+            Camera.ChangeScale(Input.MouseService.ScrollValue());
         }
 
         Debug.Update(WindowHeight);

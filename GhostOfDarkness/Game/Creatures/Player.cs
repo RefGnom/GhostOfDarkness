@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using Game.Controllers;
+using Game.Controllers.InputServices;
 using Game.Managers;
 using Game.Objects;
 using Game.View.HUD;
@@ -96,7 +96,7 @@ internal class Player : Creature
 
     private void UpdateDirection()
     {
-        var direction = MouseController.WorldPosition - Position;
+        var direction = Input.MouseService.GetWorldPosition() - Position;
         direction.Normalize();
         Direction = direction;
     }
