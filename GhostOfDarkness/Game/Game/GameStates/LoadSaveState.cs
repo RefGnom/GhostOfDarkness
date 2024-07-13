@@ -1,12 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using Core.Saves;
 using Game.ContentLoaders;
-using Game.Controllers;
 using Game.Controllers.Buttons;
-using Game.Controllers.InputServices;
-using Game.Graphics;
-using Game.Interfaces;
 using Game.Service;
 using Game.View;
 using Game.View.UI;
@@ -19,8 +14,8 @@ internal class LoadSaveState : GameState
     private SaveInfo selectedSaveInfo;
     private readonly Button loadButton;
     private readonly Button deleteButton;
+    private readonly ScrollMenu scrollMenu;
 
-    private readonly List<IComponent> saveComponents;
     private readonly ISaveHandler saveHandler;
     private readonly IButtonFactory buttonFactory;
     private readonly IRadioButtonManager radioButtonManager;
@@ -56,28 +51,11 @@ internal class LoadSaveState : GameState
         back.OnClicked += Back;
         Components.Add(back);
 
-        saveComponents = [];
-
-        var scrollBounds = new ScrollBounds(
-            Input.MouseService,
-            new Rectangle(savesBackgroundPosition.ToPoint(), savesBackgroundTexture.Bounds.Size)
+        scrollMenu = new ScrollMenu(
+            new Rectangle(savesBackgroundPosition.ToPoint(), savesBackgroundTexture.Bounds.Size),
+            new Vector2(971, 130)
         );
-
-        var savesScrollBar = new ScrollBar(
-            new Vector2(971, 130),
-            Textures.ScrollBar,
-            Textures.ScrollBox,
-            new Point(1, 2),
-            scrollBounds
-        );
-
-        scrollBounds.OnScroll += scrollValue =>
-        {
-            const int percentsPerShift = 10;
-            var shiftValue = scrollValue * percentsPerShift / 100f;
-            savesScrollBar.ShiftBox(shiftValue);
-        };
-        Components.Add(savesScrollBar);
+        Components.Add(scrollMenu);
     }
 
     public override void Back()
@@ -100,7 +78,6 @@ internal class LoadSaveState : GameState
     {
         loadButton.Inactive = true;
         deleteButton.Inactive = true;
-        saveComponents.Clear();
 
         var saveInfos = saveHandler.Select();
         var deltaY = 0;
@@ -111,7 +88,7 @@ internal class LoadSaveState : GameState
             var button = buttonFactory.CreateSaveButton(Textures.Save, Textures.Save, new Vector2(63, 100 + deltaY), saveInfo);
             button.OnEnabled += () => ChoiceSave(saveInfo);
             radioButtons[i] = button;
-            saveComponents.Add(button);
+            scrollMenu.AppendComponent(button);
             deltaY += 120;
         }
 
@@ -120,26 +97,7 @@ internal class LoadSaveState : GameState
 
     public override void Stop()
     {
-    }
-
-    public override void Draw(ISpriteBatch spriteBatch, float scale)
-    {
-        base.Draw(spriteBatch, scale);
-
-        foreach (var saveComponent in saveComponents)
-        {
-            saveComponent.Draw(spriteBatch, scale);
-        }
-    }
-
-    public override void Update(float deltaTime)
-    {
-        base.Update(deltaTime);
-
-        foreach (var saveComponent in saveComponents)
-        {
-            saveComponent.Update(deltaTime);
-        }
+        scrollMenu.ClearComponents();
     }
 
     private void ChoiceSave(SaveInfo saveInfo)
@@ -152,6 +110,7 @@ internal class LoadSaveState : GameState
     private void DeleteSave()
     {
         saveHandler.Delete(selectedSaveInfo.Name);
+        Stop();
         Start(null);
     }
 }

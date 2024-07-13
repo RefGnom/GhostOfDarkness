@@ -14,21 +14,18 @@ public class ScrollBar : IComponent
     private readonly Vector2 position;
     private readonly Texture2D scrollBarTexture;
     private readonly ScrollBox scrollBox;
-    private readonly ScrollBounds scrollBounds;
 
     public ScrollBar(
         Vector2 position,
         Texture2D scrollBarTexture,
         Texture2D scrollBoxTexture,
-        Point? boxIndent = null,
-        ScrollBounds scrollBounds = null
+        Point? boxIndent = null
     )
     {
         this.position = position;
         this.scrollBarTexture = scrollBarTexture;
         var outerBounds = scrollBarTexture.Bounds.Shift(position);
         scrollBox = new ScrollBox(outerBounds, scrollBoxTexture, position, boxIndent ?? Point.Zero);
-        this.scrollBounds = scrollBounds;
     }
 
     public void SetBoxScale(Vector2 scale)
@@ -44,14 +41,12 @@ public class ScrollBar : IComponent
     public void Update(float deltaTime)
     {
         scrollBox.Update(deltaTime);
-        scrollBounds?.Update(deltaTime);
     }
 
     public void Draw(ISpriteBatch spriteBatch, float scale)
     {
         spriteBatch.Draw(scrollBarTexture, position * scale, scale, Layers.Ui);
         scrollBox.Draw(spriteBatch, scale);
-        scrollBounds?.SetScale(scale);
     }
 
     private class ScrollBox : IComponent
