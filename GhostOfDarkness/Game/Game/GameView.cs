@@ -73,7 +73,7 @@ internal class GameView : Microsoft.Xna.Framework.Game
         if (model.Started)
         {
             Camera.Follow(model.Player.Position, WindowWidth, WindowHeight, deltaTime);
-            Camera.ChangeScale(Input.MouseService.ScrollValue());
+            Camera.ChangeScale(Input.MouseService.GetScrollValue());
         }
 
         Debug.Update(WindowHeight);

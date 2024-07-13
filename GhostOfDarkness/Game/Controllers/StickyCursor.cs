@@ -1,4 +1,5 @@
-﻿using Core.Extensions;
+﻿using System;
+using Core.Extensions;
 using Game.Controllers.InputServices;
 using Microsoft.Xna.Framework;
 
@@ -17,6 +18,8 @@ public class StickyCursor
     public bool Selected { get; private set; }
     public Rectangle InnerBounds { get; private set; }
 
+    public Action<Rectangle> InnerBoundsChanged;
+
     public StickyCursor(IMouseService mouseService, Rectangle outerBounds, Rectangle innerBounds, Point? indent = null)
     {
         this.mouseService = mouseService;
@@ -24,6 +27,20 @@ public class StickyCursor
         InnerBounds = innerBounds.Shift(indent ?? Point.Zero);
         innerBoundsPosition = InnerBounds.Location.ToVector2();
         this.indent = indent;
+    }
+
+    public void ShiftInnerBoundsVertical(float shiftValue)
+    {
+        if (shiftValue < -1 || shiftValue > 1)
+        {
+            throw new ArgumentException("Shift value must be between -1 and 1");
+        }
+
+        var totalVerticalPixels = outerBounds.Height - InnerBounds.Height;
+        var pixelsToShift = totalVerticalPixels * -shiftValue;
+        var shiftedInnerBounds = InnerBounds.Shift(0, (int)pixelsToShift);
+        InnerBounds = outerBounds.GetRectangleInBounds(shiftedInnerBounds, indent);
+        InnerBoundsChanged(InnerBounds);
     }
 
     public void Update()
@@ -47,6 +64,7 @@ public class StickyCursor
             innerBoundsPosition = outerBounds.Subtract(InnerBounds, outerBounds.Location)
                 .GetVectorInBounds(innerBoundsPosition.Shift(positionDelta), indent);
             InnerBounds = InnerBounds.WithLocation(innerBoundsPosition);
+            InnerBoundsChanged(InnerBounds);
             attachPosition = mousePosition;
         }
     }

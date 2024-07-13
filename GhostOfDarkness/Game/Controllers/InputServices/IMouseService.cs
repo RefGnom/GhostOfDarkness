@@ -17,5 +17,5 @@ public interface IMouseService : IUpdateable
     bool RightButtonClicked();
     bool RightButtonReleased();
     bool RightButtonPressed();
-    int ScrollValue();
+    int GetScrollValue();
 }

@@ -2,11 +2,14 @@
 using System.Collections.Generic;
 using Core.Saves;
 using Game.ContentLoaders;
+using Game.Controllers;
 using Game.Controllers.Buttons;
+using Game.Controllers.InputServices;
 using Game.Graphics;
 using Game.Interfaces;
 using Game.Service;
 using Game.View;
+using Game.View.UI;
 using Microsoft.Xna.Framework;
 
 namespace Game.Game.GameStates;
@@ -32,7 +35,9 @@ internal class LoadSaveState : GameState
         this.buttonFactory = buttonFactory;
         this.radioButtonManager = radioButtonManager;
 
-        Drawables.Add(new Sprite(Textures.SavesWindow, new Vector2(40, 70), Layers.UiBackground));
+        var savesBackgroundPosition = new Vector2(40, 70);
+        var savesBackgroundTexture = Textures.SavesWindow;
+        Drawables.Add(new Sprite(savesBackgroundTexture, savesBackgroundPosition, Layers.UiBackground));
         Drawables.Add(new Sprite(Textures.Background, Vector2.Zero, Layers.Background));
 
         loadButton = buttonFactory.CreateButtonWithText(Textures.ButtonBackground, new Vector2(40, 860), "Load");
@@ -51,7 +56,28 @@ internal class LoadSaveState : GameState
         back.OnClicked += Back;
         Components.Add(back);
 
-        saveComponents = new List<IComponent>();
+        saveComponents = [];
+
+        var scrollBounds = new ScrollBounds(
+            Input.MouseService,
+            new Rectangle(savesBackgroundPosition.ToPoint(), savesBackgroundTexture.Bounds.Size)
+        );
+
+        var savesScrollBar = new ScrollBar(
+            new Vector2(971, 130),
+            Textures.ScrollBar,
+            Textures.ScrollBox,
+            new Point(1, 2),
+            scrollBounds
+        );
+
+        scrollBounds.OnScroll += scrollValue =>
+        {
+            const int percentsPerShift = 10;
+            var shiftValue = scrollValue * percentsPerShift / 100f;
+            savesScrollBar.ShiftBox(shiftValue);
+        };
+        Components.Add(savesScrollBar);
     }
 
     public override void Back()

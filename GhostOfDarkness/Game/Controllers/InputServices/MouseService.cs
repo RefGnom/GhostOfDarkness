@@ -36,7 +36,7 @@ public class MouseService : IMouseService
 
     public bool RightButtonPressed() => currentState.RightButton == ButtonState.Pressed;
 
-    public int ScrollValue() => (currentState.ScrollWheelValue - previousState.ScrollWheelValue) / 120;
+    public int GetScrollValue() => (currentState.ScrollWheelValue - previousState.ScrollWheelValue) / 120;
 
     public void Update(float deltaTime)
     {

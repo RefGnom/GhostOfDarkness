@@ -14,13 +14,21 @@ public class ScrollBar : IComponent
     private readonly Vector2 position;
     private readonly Texture2D scrollBarTexture;
     private readonly ScrollBox scrollBox;
+    private readonly ScrollBounds scrollBounds;
 
-    public ScrollBar(Vector2 position, Texture2D scrollBarTexture, Texture2D scrollBoxTexture, Point? boxIndent = null)
+    public ScrollBar(
+        Vector2 position,
+        Texture2D scrollBarTexture,
+        Texture2D scrollBoxTexture,
+        Point? boxIndent = null,
+        ScrollBounds scrollBounds = null
+    )
     {
         this.position = position;
         this.scrollBarTexture = scrollBarTexture;
         var outerBounds = scrollBarTexture.Bounds.Shift(position);
         scrollBox = new ScrollBox(outerBounds, scrollBoxTexture, position, boxIndent ?? Point.Zero);
+        this.scrollBounds = scrollBounds;
     }
 
     public void SetBoxScale(Vector2 scale)
@@ -28,15 +36,22 @@ public class ScrollBar : IComponent
         scrollBox.CustomScale = scale;
     }
 
+    public void ShiftBox(float shiftValue)
+    {
+        scrollBox.Shift(shiftValue);
+    }
+
     public void Update(float deltaTime)
     {
         scrollBox.Update(deltaTime);
+        scrollBounds?.Update(deltaTime);
     }
 
     public void Draw(ISpriteBatch spriteBatch, float scale)
     {
         spriteBatch.Draw(scrollBarTexture, position * scale, scale, Layers.Ui);
         scrollBox.Draw(spriteBatch, scale);
+        scrollBounds?.SetScale(scale);
     }
 
     private class ScrollBox : IComponent
@@ -60,6 +75,7 @@ public class ScrollBar : IComponent
                 customScale = value;
                 var innerBounds = GetBounds();
                 stickyCursor = new StickyCursor(Input.MouseService, outerBounds, innerBounds, indent);
+                stickyCursor.InnerBoundsChanged += bounds => position = bounds.Center.ToVector2();
                 position = stickyCursor.InnerBounds.Center.ToVector2();
             }
         }
@@ -73,6 +89,11 @@ public class ScrollBar : IComponent
             origin = this.texture.Bounds.Center.ToVector2();
             this.outerBounds = outerBounds;
             CustomScale = Vector2.One;
+        }
+
+        public void Shift(float shiftValue)
+        {
+            stickyCursor.ShiftInnerBoundsVertical(shiftValue);
         }
 
         public void Update(float deltaTime)
